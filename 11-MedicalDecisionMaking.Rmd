@@ -1,0 +1,14 @@
+# Medical decision making {#mdm}
+
+## Reading list
+
+### Risk communication
+
+* Sisk BA, Baker JN (2018) Microethics of Communication—Hidden Roles of Bias and Heuristics in the Words We Choose. JAMA Pediatr;172(12):1115–1116. doi:https://doi.org/10.1001/jamapediatrics.2018.3111.
+* Steinhardt Joe (2019) The role of numeric and statistical content on risk perception in infographics about road safety, Journal of Risk Research, DOI:10.1080/13669877.2019.1596147
+* Kunneman M, Stiggelbout AM, Pieterse AH (2019) Do clinicians convey what they intend? Lay interpretation of verbal risk labels used in decision encounters. Patient Educ Couns. 2019 Aug 26. pii: S0738-3991(19)30377-5. doi: 10.1016/j.pec.2019.08.035.
+* NICE guidance on risk communication: https://twitter.com/BerksMaternity/status/1171542152842817536/photo/1. [Figure](figures/mdm/nicenice_riskcommunication.jpeg)
+* Okan Y, Smith SG, Bruine de Bruin W (2019) How is cervical cancer screening information communicated in UK websites? Cross-sectional analysis of content and quantitative presentation formatsBMJ Open 2019;9:e029551. doi: 10.1136/bmjopen-2019-029551.
+* Yen, Renata W, Barr, Paul J, Cochran, Nan, Aarts, Johanna W, Légaré, France, Reed, Malcolm, O'Mallley, A James, Scalia, Peter, Guérard, Genevieve Painchaud, Backer, Grant, Reilly, Clifford, Elwyn, Glyn and Durand, Marie-Anne (2019) Medical students’ knowledge and attitudes towards shared decision-making: results from a multinational cross-sectional survey. Medical Decision Making. http://sro.sussex.ac.uk/id/eprint/85728/
+* 
+

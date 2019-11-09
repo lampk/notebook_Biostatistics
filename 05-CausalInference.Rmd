@@ -1,0 +1,5 @@
+# Causal Inference {#CausalInference}
+
+## Reading list
+
+* Daniel Westreich (2019) Epidemiology by Design: A Causal Approach to the Health Sciences. Oxford University Press. https://global.oup.com/academic/product/epidemiology-by-design-9780190665760?cc=vn&lang=en&

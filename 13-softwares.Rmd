@@ -1,0 +1,6 @@
+# Softwares {#softwares}
+
+## R
+
+* library(printr). https://twitter.com/robinson_es/status/1192875040393629696
+* Javier Luraschi, Kevin Kuo, Edgar Ruiz (2019) Mastering Apache Spark with R. https://therinspark.com/?utm_content=buffer62cba&utm_medium=social&utm_source=twitter&utm_campaign=buffer

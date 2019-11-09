@@ -1,0 +1,29 @@
+# New {#new}
+
+* Bianchi, M. T., Alexander, B. M., & Cash, S. S. (2009). Incorporating Uncertainty Into Medical Decision Making: An Approach to Unexpected Test Results. Medical Decision Making, 29(1), 116–124. https://doi.org/10.1177/0272989X08323620
+
+* Nobles AL, Leas EC, Althouse BM, et al. Requests for Diagnoses of Sexually Transmitted Diseases on a Social Media Platform. JAMA. 2019;322(17):1712–1713. doi:https://doi.org/10.1001/jama.2019.14390
+
+* Steve Ruberg (2019) No. 13: Unconsciously Biased and Consciously Unbiased. https://analytixthinking.blog/2019/11/07/no-13-unconsciously-biased-and-consciously-unbiased/
+
+* renv: Project Environments for R. https://blog.rstudio.com/2019/11/06/renv-project-environments-for-r/
+
+* The frontier of simulation-based inference. https://deepai.org/publication/the-frontier-of-simulation-based-inference
+
+* Non-randomized studies using causal-modelling may give different answers than RCTs: a meta-epidemiological study. DOI: https://doi.org/10.1016/j.jclinepi.2019.10.012. 
+
+* Four mistakes to avoid when talking with patients about risk. https://www.aafp.org/journals/fpm/blogs/inpractice/entry/risk_communication_mistakes.html#.XDYKYKwH6CA.twitter
+
+* 5 mistakes of communicating risk. https://www.youtube.com/watch?v=jAY3H92MXGU
+
+*  @BenVanCalster's keynote on Machine learning: calm down!. https://twitter.com/Georg__Heinze/status/1192796427619065857
+
+* What logic gives us the authority to say something about an individual by observing other individuals, however similar? https://twitter.com/yudapearl/status/1192768005316341760. http://ftp.cs.ucla.edu/pub/stat_ser/r375-reprint.pdf
+
+* Just released today, and it is shameful: https://ncd.gov/sites/default/files/NCD_Quality_Adjusted_Life_Report_508.pdf.  Recommendation against QALYs and #healtheconomics  to support resource allocation decisions. https://twitter.com/dollendorf/status/1192181668985102338
+
+* stats might kill personalized medicine. https://twitter.com/KertViele/status/1192194206049226754
+
+* RStudio Package Manager. https://blog.rstudio.com/2019/11/07/package-manager-v1-1-no-interruptions/
+
+

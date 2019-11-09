@@ -1,0 +1,6 @@
+book_filename: "notebook_Biostatistics"
+language:
+  ui:
+    chapter_name: "Topic "
+delete_merged_file: true
+output_dir: "docs"

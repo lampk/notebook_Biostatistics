@@ -1,0 +1,264 @@
+--- 
+title: "Notes on Biostatistics"
+author: "Phùng Khánh Lâm"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: lampk/notebook_Biostatistics
+description: "My notes on Biostatistics"
+---
+
+# Preface {-}
+
+
+<!--chapter:end:index.Rmd-->
+
+# Bookdown {-}
+
+This is a _sample_ book written in **Markdown**. You can use anything that Pandoc's Markdown supports, e.g., a math equation $a^2 + b^2 = c^2$.
+
+The **bookdown** package can be installed from CRAN or Github:
+
+```{r eval=FALSE}
+install.packages("bookdown")
+# or the development version
+# devtools::install_github("rstudio/bookdown")
+```
+
+Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading `#`.
+
+To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <https://yihui.name/tinytex/>.
+
+```{r include=FALSE}
+# automatically create a bib database for R packages
+knitr::write_bib(c(
+  .packages(), 'bookdown', 'knitr', 'rmarkdown'
+), 'packages.bib')
+```
+
+You can label chapter and section titles using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
+
+Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
+
+```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
+par(mar = c(4, 4, .1, .1))
+plot(pressure, type = 'b', pch = 19)
+```
+
+Reference a figure by its code chunk label with the `fig:` prefix, e.g., see Figure \@ref(fig:nice-fig). Similarly, you can reference tables generated from `knitr::kable()`, e.g., see Table \@ref(tab:nice-tab).
+
+```{r nice-tab, tidy=FALSE}
+knitr::kable(
+  head(iris, 20), caption = 'Here is a nice table!',
+  booktabs = TRUE
+)
+```
+
+You can write citations, too. For example, we are using the **bookdown** package [@R-bookdown] in this sample book, which was built on top of R Markdown and **knitr** [@xie2015].
+
+<!--chapter:end:00-bookdown.Rmd-->
+
+# New {#new}
+
+* Bianchi, M. T., Alexander, B. M., & Cash, S. S. (2009). Incorporating Uncertainty Into Medical Decision Making: An Approach to Unexpected Test Results. Medical Decision Making, 29(1), 116–124. https://doi.org/10.1177/0272989X08323620
+
+* Nobles AL, Leas EC, Althouse BM, et al. Requests for Diagnoses of Sexually Transmitted Diseases on a Social Media Platform. JAMA. 2019;322(17):1712–1713. doi:https://doi.org/10.1001/jama.2019.14390
+
+* Steve Ruberg (2019) No. 13: Unconsciously Biased and Consciously Unbiased. https://analytixthinking.blog/2019/11/07/no-13-unconsciously-biased-and-consciously-unbiased/
+
+* renv: Project Environments for R. https://blog.rstudio.com/2019/11/06/renv-project-environments-for-r/
+
+* The frontier of simulation-based inference. https://deepai.org/publication/the-frontier-of-simulation-based-inference
+
+* Non-randomized studies using causal-modelling may give different answers than RCTs: a meta-epidemiological study. DOI: https://doi.org/10.1016/j.jclinepi.2019.10.012. 
+
+* Four mistakes to avoid when talking with patients about risk. https://www.aafp.org/journals/fpm/blogs/inpractice/entry/risk_communication_mistakes.html#.XDYKYKwH6CA.twitter
+
+* 5 mistakes of communicating risk. https://www.youtube.com/watch?v=jAY3H92MXGU
+
+*  @BenVanCalster's keynote on Machine learning: calm down!. https://twitter.com/Georg__Heinze/status/1192796427619065857
+
+* What logic gives us the authority to say something about an individual by observing other individuals, however similar? https://twitter.com/yudapearl/status/1192768005316341760. http://ftp.cs.ucla.edu/pub/stat_ser/r375-reprint.pdf
+
+* Just released today, and it is shameful: https://ncd.gov/sites/default/files/NCD_Quality_Adjusted_Life_Report_508.pdf.  Recommendation against QALYs and #healtheconomics  to support resource allocation decisions. https://twitter.com/dollendorf/status/1192181668985102338
+
+* stats might kill personalized medicine. https://twitter.com/KertViele/status/1192194206049226754
+
+* RStudio Package Manager. https://blog.rstudio.com/2019/11/07/package-manager-v1-1-no-interruptions/
+
+
+
+<!--chapter:end:00-new.Rmd-->
+
+# Initial data analysis {#ida}
+
+
+<!--chapter:end:01-ida.Rmd-->
+
+# Data cleaning {#DataCleaning}
+
+<!--chapter:end:02-datacleaning.Rmd-->
+
+# Descriptive analysis {#DescriptiveAnalysis}
+
+<!--chapter:end:03-DescriptiveAnalysis.Rmd-->
+
+# Graphics {#graphics}
+
+<!--chapter:end:04-graphics.Rmd-->
+
+# Causal Inference {#CausalInference}
+
+## Reading list
+
+* Daniel Westreich (2019) Epidemiology by Design: A Causal Approach to the Health Sciences. Oxford University Press. https://global.oup.com/academic/product/epidemiology-by-design-9780190665760?cc=vn&lang=en&
+
+<!--chapter:end:05-CausalInference.Rmd-->
+
+# Study design {#StudyDesign}
+
+<!--chapter:end:06-design.Rmd-->
+
+# Hypothesis Testing {#HypothesisTesting}
+
+<!--chapter:end:07-HypothesisTesting.Rmd-->
+
+# P value {#Pvalue}
+
+<!--chapter:end:08-p.Rmd-->
+
+# Bayesian data analysis {#Bayesian}
+
+<!--chapter:end:09-Bayesian.Rmd-->
+
+# Prediction models {#PredictionModels}
+
+<!--chapter:end:10-PredictionModels.Rmd-->
+
+# Medical decision making {#mdm}
+
+## Reading list
+
+### Risk communication
+
+* Sisk BA, Baker JN (2018) Microethics of Communication—Hidden Roles of Bias and Heuristics in the Words We Choose. JAMA Pediatr;172(12):1115–1116. doi:https://doi.org/10.1001/jamapediatrics.2018.3111.
+* Steinhardt Joe (2019) The role of numeric and statistical content on risk perception in infographics about road safety, Journal of Risk Research, DOI:10.1080/13669877.2019.1596147
+* Kunneman M, Stiggelbout AM, Pieterse AH (2019) Do clinicians convey what they intend? Lay interpretation of verbal risk labels used in decision encounters. Patient Educ Couns. 2019 Aug 26. pii: S0738-3991(19)30377-5. doi: 10.1016/j.pec.2019.08.035.
+* NICE guidance on risk communication: https://twitter.com/BerksMaternity/status/1171542152842817536/photo/1. [Figure](figures/mdm/nicenice_riskcommunication.jpeg)
+* Okan Y, Smith SG, Bruine de Bruin W (2019) How is cervical cancer screening information communicated in UK websites? Cross-sectional analysis of content and quantitative presentation formatsBMJ Open 2019;9:e029551. doi: 10.1136/bmjopen-2019-029551.
+* Yen, Renata W, Barr, Paul J, Cochran, Nan, Aarts, Johanna W, Légaré, France, Reed, Malcolm, O'Mallley, A James, Scalia, Peter, Guérard, Genevieve Painchaud, Backer, Grant, Reilly, Clifford, Elwyn, Glyn and Durand, Marie-Anne (2019) Medical students’ knowledge and attitudes towards shared decision-making: results from a multinational cross-sectional survey. Medical Decision Making. http://sro.sussex.ac.uk/id/eprint/85728/
+* 
+
+
+<!--chapter:end:11-MedicalDecisionMaking.Rmd-->
+
+# Intensive Longitudinal data analysis {#ild}
+
+## Reading list
+
+### Papers:
+
+* T. Asparouhov, E. L. Hamaker, and B. Muthén. “Dynamic Structural Equation Models”. In: _Structural Equation Modeling:
+A Multidisciplinary Journal_ 25.3 (Dec. 2017), pp. 359-388. DOI: 10.1080/10705511.2017.1406803. <URL:
+https://doi.org/10.1080/10705511.2017.1406803>.
+
+* T. Asparouhov and B. Muthén. “Comparison of Models for the Analysis of Intensive Longitudinal Data”. In: _Structural
+Equation Modeling: A Multidisciplinary Journal_ (Jul. 2019), pp. 1-23. DOI: 10.1080/10705511.2019.1626733. <URL:
+https://doi.org/10.1080/10705511.2019.1626733>.
+
+* E. M. Chi and G. C. Reinsel. “Models for Longitudinal Data with Random Effects and AR(1) Errors”. In: _Journal of the
+American Statistical Association_ 84.406 (Jun. 1989), pp. 452-459. DOI: 10.1080/01621459.1989.10478790. <URL:
+https://doi.org/10.1080/01621459.1989.10478790>.
+
+* L. M. Collins. “Analysis of Longitudinal Data: The Integration of Theoretical Model, Temporal Design, and Statistical
+Model”. In: _Annual Review of Psychology_ 57.1 (Jan. 2006), pp. 505-528. DOI: 10.1146/annurev.psych.57.102904.190146.
+<URL: https://doi.org/10.1146/annurev.psych.57.102904.190146>.
+
+* S. C. Duncan, T. E. Duncan, and H. Hops. “Analysis of longitudinal data within accelerated longitudinal designs.” In:
+_Psychological Methods_ 1.3 (1996), pp. 236-248. DOI: 10.1037/1082-989x.1.3.236. <URL:
+https://doi.org/10.1037/1082-989x.1.3.236>.
+
+* T. E. Duncan and S. C. Duncan. “An introduction to latent growth curve modeling”. In: _Behavior Therapy_ 35.2 (2004),
+pp. 333-363. DOI: 10.1016/s0005-7894(04)80042-x. <URL: https://doi.org/10.1016/s0005-7894(04)80042-x>.
+
+* E. L. Hamaker and M. Wichers. “No Time Like the Present”. In: _Current Directions in Psychological Science_ 26.1
+(Feb. 2017), pp. 10-15. DOI: 10.1177/0963721416666518. <URL: https://doi.org/10.1177/0963721416666518>.
+
+* E. L. Hamaker, T. Asparouhov, A. Brose, et al. “At the Frontiers of Modeling Intensive Longitudinal Data: Dynamic
+Structural Equation Models for the Affective Measurements from the COGITO Study”. In: _Multivariate Behavioral Research_
+53.6 (Apr. 2018), pp. 820-841. DOI: 10.1080/00273171.2018.1446819. <URL: https://doi.org/10.1080/00273171.2018.1446819>.
+
+* N. C. Jacobson, S. Chow, and M. G. Newman. “The Differential Time-Varying Effect Model (DTVEM): A tool for diagnosing
+and modeling time lags in intensive longitudinal data”. In: _Behavior Research Methods_ 51.1 (Aug. 2018), pp. 295-315.
+DOI: 10.3758/s13428-018-1101-0. <URL: https://doi.org/10.3758/s13428-018-1101-0>.
+
+* S. Jahng and P. K. Wood. “Multilevel Models for Intensive Longitudinal Data with Heterogeneous Autoregressive Errors:
+The Effect of Misspecification and Correction with Cholesky Transformation”. In: _Frontiers in Psychology_ 8 (Feb. 2017).
+DOI: 10.3389/fpsyg.2017.00262. <URL: https://doi.org/10.3389/fpsyg.2017.00262>.
+
+* M. Karas, J. Bai, M. Strączkiewicz, et al. “Accelerometry Data in Health Research: Challenges and Opportunities”.
+In: _Statistics in Biosciences_ 11.2 (Jan. 2019), pp. 210-237. DOI: 10.1007/s12561-018-9227-2. <URL:
+https://doi.org/10.1007/s12561-018-9227-2>.
+
+* S. T. Lanza, S. A. Vasilenko, and M. A. Russell. “Time-varying effect modeling to address new questions in
+behavioral research: Examples in marijuana use.” In: _Psychology of Addictive Behaviors_ 30.8 (Dec. 2016), pp. 939-954.
+DOI: 10.1037/adb0000208. <URL: https://doi.org/10.1037/adb0000208>.
+
+* Y. Miyazaki and S. W. Raudenbush. “Tests for linkage of multiple cohorts in an accelerated longitudinal design.” In:
+_Psychological Methods_ 5.1 (2000), pp. 44-63. DOI: 10.1037/1082-989x.5.1.44. <URL:
+https://doi.org/10.1037/1082-989x.5.1.44>.
+
+* S. W. RAUDENBUSH and W. CHAN. “Growth Curve Analysis in Accelerated Longitudinal Designs”. In: _Journal of Research
+in Crime and Delinquency_ 29.4 (Nov. 1992), pp. 387-411. DOI: 10.1177/0022427892029004001. <URL:
+https://doi.org/10.1177/0022427892029004001>.
+
+* J. Windt, C. L. Ardern, T. J. Gabbett, et al. “Getting the most out of intensive longitudinal data: a methodological
+review of workload\textendashinjury studies”. In: _BMJ Open_ 8.10 (Oct. 2018), p. e022626. DOI:
+10.1136/bmjopen-2018-022626. <URL: https://doi.org/10.1136/bmjopen-2018-022626>.
+
+* S. Yang, J. A. Cranford, R. Li, et al. “A time-varying effect model for studying gender differences in health
+behavior”. In: _Statistical Methods in Medical Research_ 26.6 (Oct. 2015), pp. 2812-2820. DOI: 10.1177/0962280215610608.
+<URL: https://doi.org/10.1177/0962280215610608>.
+
+### Books
+
+* Walls T, Schafer J (eds.) (2006). _Models for intensive longitudinal data_. Oxford University Press.
+
+* K. van Montfort, J. H. Oud, and M. C. Voelkle, ed. _Continuous time modeling in the behavioural and related
+sciences_. Springer, 2019.
+
+* O. Ryan, R. Kuiper, and E. Hamaker. “A continuous time approach to intensive longitudinal data: What, Why and How?”
+In: _Continuous time modeling in the behavioural and related sciences_. Springer, 2019. Chap. 2.
+
+### Software
+
+* L. Ou, M. D. Hunter, and S. Chow. “What's for dynr: A package for linear and nonlinear dynamic modeling in R”. In:
+_The R Journal_ (2019), pp. 1-20. DOI: 10.32614/RJ-2019-012.
+
+### Presentations
+
+* B. Muthen, T. Asparouhov, and E. Hamaker. _Which methods do we need for intensive longitudinal data_. 2016.
+
+* N. Schuurman. _Analyzing Intensive Longitudinal Data_. 2018.
+
+<!--chapter:end:12-ild.Rmd-->
+
+# Softwares {#softwares}
+
+## R
+
+* library(printr). https://twitter.com/robinson_es/status/1192875040393629696
+* Javier Luraschi, Kevin Kuo, Edgar Ruiz (2019) Mastering Apache Spark with R. https://therinspark.com/?utm_content=buffer62cba&utm_medium=social&utm_source=twitter&utm_campaign=buffer
+
+<!--chapter:end:13-softwares.Rmd-->
+
+`r if (knitr:::is_html_output()) '
+# References {-}
+'`
+
+<!--chapter:end:99-references.Rmd-->
+

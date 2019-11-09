@@ -1,0 +1,88 @@
+# Intensive Longitudinal data analysis {#ild}
+
+## Reading list
+
+### Papers:
+
+* T. Asparouhov, E. L. Hamaker, and B. Muthén. “Dynamic Structural Equation Models”. In: _Structural Equation Modeling:
+A Multidisciplinary Journal_ 25.3 (Dec. 2017), pp. 359-388. DOI: 10.1080/10705511.2017.1406803. <URL:
+https://doi.org/10.1080/10705511.2017.1406803>.
+
+* T. Asparouhov and B. Muthén. “Comparison of Models for the Analysis of Intensive Longitudinal Data”. In: _Structural
+Equation Modeling: A Multidisciplinary Journal_ (Jul. 2019), pp. 1-23. DOI: 10.1080/10705511.2019.1626733. <URL:
+https://doi.org/10.1080/10705511.2019.1626733>.
+
+* E. M. Chi and G. C. Reinsel. “Models for Longitudinal Data with Random Effects and AR(1) Errors”. In: _Journal of the
+American Statistical Association_ 84.406 (Jun. 1989), pp. 452-459. DOI: 10.1080/01621459.1989.10478790. <URL:
+https://doi.org/10.1080/01621459.1989.10478790>.
+
+* L. M. Collins. “Analysis of Longitudinal Data: The Integration of Theoretical Model, Temporal Design, and Statistical
+Model”. In: _Annual Review of Psychology_ 57.1 (Jan. 2006), pp. 505-528. DOI: 10.1146/annurev.psych.57.102904.190146.
+<URL: https://doi.org/10.1146/annurev.psych.57.102904.190146>.
+
+* S. C. Duncan, T. E. Duncan, and H. Hops. “Analysis of longitudinal data within accelerated longitudinal designs.” In:
+_Psychological Methods_ 1.3 (1996), pp. 236-248. DOI: 10.1037/1082-989x.1.3.236. <URL:
+https://doi.org/10.1037/1082-989x.1.3.236>.
+
+* T. E. Duncan and S. C. Duncan. “An introduction to latent growth curve modeling”. In: _Behavior Therapy_ 35.2 (2004),
+pp. 333-363. DOI: 10.1016/s0005-7894(04)80042-x. <URL: https://doi.org/10.1016/s0005-7894(04)80042-x>.
+
+* E. L. Hamaker and M. Wichers. “No Time Like the Present”. In: _Current Directions in Psychological Science_ 26.1
+(Feb. 2017), pp. 10-15. DOI: 10.1177/0963721416666518. <URL: https://doi.org/10.1177/0963721416666518>.
+
+* E. L. Hamaker, T. Asparouhov, A. Brose, et al. “At the Frontiers of Modeling Intensive Longitudinal Data: Dynamic
+Structural Equation Models for the Affective Measurements from the COGITO Study”. In: _Multivariate Behavioral Research_
+53.6 (Apr. 2018), pp. 820-841. DOI: 10.1080/00273171.2018.1446819. <URL: https://doi.org/10.1080/00273171.2018.1446819>.
+
+* N. C. Jacobson, S. Chow, and M. G. Newman. “The Differential Time-Varying Effect Model (DTVEM): A tool for diagnosing
+and modeling time lags in intensive longitudinal data”. In: _Behavior Research Methods_ 51.1 (Aug. 2018), pp. 295-315.
+DOI: 10.3758/s13428-018-1101-0. <URL: https://doi.org/10.3758/s13428-018-1101-0>.
+
+* S. Jahng and P. K. Wood. “Multilevel Models for Intensive Longitudinal Data with Heterogeneous Autoregressive Errors:
+The Effect of Misspecification and Correction with Cholesky Transformation”. In: _Frontiers in Psychology_ 8 (Feb. 2017).
+DOI: 10.3389/fpsyg.2017.00262. <URL: https://doi.org/10.3389/fpsyg.2017.00262>.
+
+* M. Karas, J. Bai, M. Strączkiewicz, et al. “Accelerometry Data in Health Research: Challenges and Opportunities”.
+In: _Statistics in Biosciences_ 11.2 (Jan. 2019), pp. 210-237. DOI: 10.1007/s12561-018-9227-2. <URL:
+https://doi.org/10.1007/s12561-018-9227-2>.
+
+* S. T. Lanza, S. A. Vasilenko, and M. A. Russell. “Time-varying effect modeling to address new questions in
+behavioral research: Examples in marijuana use.” In: _Psychology of Addictive Behaviors_ 30.8 (Dec. 2016), pp. 939-954.
+DOI: 10.1037/adb0000208. <URL: https://doi.org/10.1037/adb0000208>.
+
+* Y. Miyazaki and S. W. Raudenbush. “Tests for linkage of multiple cohorts in an accelerated longitudinal design.” In:
+_Psychological Methods_ 5.1 (2000), pp. 44-63. DOI: 10.1037/1082-989x.5.1.44. <URL:
+https://doi.org/10.1037/1082-989x.5.1.44>.
+
+* S. W. RAUDENBUSH and W. CHAN. “Growth Curve Analysis in Accelerated Longitudinal Designs”. In: _Journal of Research
+in Crime and Delinquency_ 29.4 (Nov. 1992), pp. 387-411. DOI: 10.1177/0022427892029004001. <URL:
+https://doi.org/10.1177/0022427892029004001>.
+
+* J. Windt, C. L. Ardern, T. J. Gabbett, et al. “Getting the most out of intensive longitudinal data: a methodological
+review of workload\textendashinjury studies”. In: _BMJ Open_ 8.10 (Oct. 2018), p. e022626. DOI:
+10.1136/bmjopen-2018-022626. <URL: https://doi.org/10.1136/bmjopen-2018-022626>.
+
+* S. Yang, J. A. Cranford, R. Li, et al. “A time-varying effect model for studying gender differences in health
+behavior”. In: _Statistical Methods in Medical Research_ 26.6 (Oct. 2015), pp. 2812-2820. DOI: 10.1177/0962280215610608.
+<URL: https://doi.org/10.1177/0962280215610608>.
+
+### Books
+
+* Walls T, Schafer J (eds.) (2006). _Models for intensive longitudinal data_. Oxford University Press.
+
+* K. van Montfort, J. H. Oud, and M. C. Voelkle, ed. _Continuous time modeling in the behavioural and related
+sciences_. Springer, 2019.
+
+* O. Ryan, R. Kuiper, and E. Hamaker. “A continuous time approach to intensive longitudinal data: What, Why and How?”
+In: _Continuous time modeling in the behavioural and related sciences_. Springer, 2019. Chap. 2.
+
+### Software
+
+* L. Ou, M. D. Hunter, and S. Chow. “What's for dynr: A package for linear and nonlinear dynamic modeling in R”. In:
+_The R Journal_ (2019), pp. 1-20. DOI: 10.32614/RJ-2019-012.
+
+### Presentations
+
+* B. Muthen, T. Asparouhov, and E. Hamaker. _Which methods do we need for intensive longitudinal data_. 2016.
+
+* N. Schuurman. _Analyzing Intensive Longitudinal Data_. 2018.
