@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Topic 6 Causal Inference | Notes on Biostatistics</title>
+  <title>Topic 17 Detection Limits | Notes on Biostatistics</title>
   <meta name="description" content="My notes on Biostatistics" />
   <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Topic 6 Causal Inference | Notes on Biostatistics" />
+  <meta property="og:title" content="Topic 17 Detection Limits | Notes on Biostatistics" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="lampk/notebook_Biostatistics" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Topic 6 Causal Inference | Notes on Biostatistics" />
+  <meta name="twitter:title" content="Topic 17 Detection Limits | Notes on Biostatistics" />
   
   <meta name="twitter:description" content="My notes on Biostatistics" />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="graphics.html">
-<link rel="next" href="StudyDesign.html">
+<link rel="prev" href="sap.html">
+<link rel="next" href="epidemiology.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -322,14 +322,173 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="CausalInference" class="section level1">
-<h1><span class="header-section-number">Topic 6</span> Causal Inference</h1>
-<div id="reading-list" class="section level2">
-<h2><span class="header-section-number">6.1</span> Reading list</h2>
+<div id="detectionlimit" class="section level1">
+<h1><span class="header-section-number">Topic 17</span> Detection Limits</h1>
+<div id="reading-list-5" class="section level2">
+<h2><span class="header-section-number">17.1</span> Reading list</h2>
 <ul>
-<li>Daniel Westreich (2019) Epidemiology by Design: A Causal Approach to the Health Sciences. Oxford University Press. <a href="https://global.oup.com/academic/product/epidemiology-by-design-9780190665760?cc=vn&amp;lang=en&amp;" class="uri">https://global.oup.com/academic/product/epidemiology-by-design-9780190665760?cc=vn&amp;lang=en&amp;</a></li>
+<li><p>Stephen Senn, Nick Holford, Hans Hockey (2012) The ghosts of departed quantities: approaches to dealing with observations below the limit of quantitation. Statistics in Medicine, 31: 4280–4295.</p></li>
+<li><p><a href="https://discourse.datamethods.org/t/modelling-outcome-data-with-a-limit-of-detection-is-a-hurdle-model-appropriate/1427/7" class="uri">https://discourse.datamethods.org/t/modelling-outcome-data-with-a-limit-of-detection-is-a-hurdle-model-appropriate/1427/7</a></p></li>
+<li><p>Beal SJ. Ways to fit a PK model with some data below the quantification limit. Journal of Pharmacokinetics and Pharmacodynamics 2001; 28 :481–504.</p></li>
+<li><p>Beal SL. Errata: ways to fit a PK model with some data below the quantification limit. Journal of Pharmacokinetics and Pharmacodynamics 2002; 29 :309.</p></li>
 </ul>
+</div>
+<div id="summary-4" class="section level2">
+<h2><span class="header-section-number">17.2</span> Summary</h2>
+<div id="below-detection-limit-bdl" class="section level3">
+<h3><span class="header-section-number">17.2.1</span> Below detection limit (BDL)</h3>
+<ul>
+<li><p>BDL is the problem when the measurements are reported as being below the quantification limit of the assay.</p></li>
+<li><p>Commonly seen in pharmacokinetic data.</p></li>
+<li><p>“quantification limit” (QL): the lowest concentration at which the assay has been validated</p></li>
+</ul>
+</div>
+<div id="ways-to-deal-with-bdl" class="section level3">
+<h3><span class="header-section-number">17.2.2</span> Ways to deal with BDL</h3>
+<div id="m1-discard-bdl-observations" class="section level4">
+<h4><span class="header-section-number">17.2.2.1</span> M1: discard BDL observations</h4>
+<ul>
+<li><p>simply discard them and apply least squares to the remaining observations</p></li>
+<li>Problem:
+<ul>
+<li>create bias as the lower of the remaining observations misrepresent the true lower concentrations (the lower remaining observations are selectively too high)</li>
+</ul></li>
+</ul>
+</div>
+<div id="m2" class="section level4">
+<h4><span class="header-section-number">17.2.2.2</span> M2</h4>
+<ul>
+<li><p>the BQL observations can be discarded, and under the assumption that all the D ( t ) are normal, the method of maximum conditional likelihood estimation can be applied to the remaining observations (method M2)</p></li>
+<li><p>the likelihood for the data, conditional on the fact that by design, all (remaining) observations are above the QL, is maximized with respect to the model parameters</p></li>
+</ul>
+</div>
+<div id="m3-handle-the-bql-observations-as-fixed-point-or-type-i-censored-observations" class="section level4">
+<h4><span class="header-section-number">17.2.2.3</span> M3: handle the BQL observations as fixed-point (or Type I) censored observations</h4>
+<ul>
+<li><p>“The maximum likelihood estimation method is used to fit the PK model to all the observations, and the likelihoods for the BQL observations in particular are taken to be the likelihoods that these observations are indeed BQL”</p></li>
+<li><p>allows the BQL observations to be retained, but handles these as censored observations, under the assumption that all the D ( t ) are normal.</p></li>
+<li><p>The likelihood for all the data is maximized with respect to the model parameters, and the likelihood for a BQL observation in particular is taken to be the likelihood that the observation is indeed BQL.</p></li>
+</ul>
+</div>
+<div id="m4-m3-adjustment-to-recognize-that-a-measurement-cannot-really-be-negative" class="section level4">
+<h4><span class="header-section-number">17.2.2.4</span> M4: M3 + adjustment to recognize that a measurement cannot really be negative</h4>
+</div>
+<div id="m5-impute-with-dl2" class="section level4">
+<h4><span class="header-section-number">17.2.2.5</span> M5: impute with DL/2</h4>
+</div>
+<div id="m6" class="section level4">
+<h4><span class="header-section-number">17.2.2.6</span> M6</h4>
+<ul>
+<li>each BQL observation x is replaced by QL/2, except that any and all consecutive BQL observations succeeding x are discarded</li>
+</ul>
+</div>
+<div id="m7-impute-with-0" class="section level4">
+<h4><span class="header-section-number">17.2.2.7</span> M7: impute with 0</h4>
+<ul>
+<li>Problem:
+<ul>
+<li>create bias as 0 is always too low.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="case-studies-1" class="section level2">
+<h2><span class="header-section-number">17.3</span> Case studies</h2>
+<div id="voriconazole-data" class="section level3">
+<h3><span class="header-section-number">17.3.1</span> Voriconazole data</h3>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">## voriconazole data</span>
 
+<span class="co">### original concentration values</span>
+dat &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">8505</span>, <span class="dv">8489</span>, <span class="dv">8024</span>, <span class="dv">7893</span>, <span class="dv">7284</span>, <span class="dv">7180</span>, <span class="dv">6417</span>, <span class="dv">6286</span>, <span class="dv">5956</span>, <span class="dv">5771</span>, 
+         <span class="dv">5602</span>, <span class="dv">5478</span>, <span class="dv">5354</span>, <span class="dv">5324</span>, <span class="dv">4887</span>, <span class="dv">4240</span>, <span class="dv">3614</span>, <span class="dv">3611</span>, <span class="dv">3484</span>, <span class="dv">3402</span>,
+         <span class="dv">3110</span>, <span class="dv">2851</span>, <span class="dv">2736</span>, <span class="dv">2730</span>, <span class="dv">2687</span>, <span class="dv">2603</span>, <span class="dv">2433</span>, <span class="dv">2426</span>, <span class="dv">2389</span>, <span class="dv">2359</span>,
+         <span class="dv">1981</span>, <span class="dv">1952</span>, <span class="dv">1821</span>, <span class="dv">1771</span>, <span class="dv">1699</span>, <span class="dv">1530</span>, <span class="dv">1528</span>, <span class="dv">1526</span>, <span class="dv">1409</span>, <span class="dv">1290</span>,
+          <span class="dv">965</span>,  <span class="dv">844</span>,  <span class="dv">715</span>,  <span class="dv">689</span>,  <span class="dv">516</span>,  <span class="dv">467</span>,  <span class="dv">231</span>,  <span class="dv">206</span>,  <span class="dv">164</span>, <span class="fl">40.6</span>
+         )
+
+<span class="co">### define censoring limit (Lower Limit Of Quantification)</span>
+LLOQ &lt;-<span class="st"> </span><span class="dv">1000</span>
+
+<span class="co">### assumed data are censored at the LLOQ</span>
+<span class="co">### - create censoring indicator</span>
+CENSOR &lt;-<span class="st"> </span><span class="kw">I</span>(dat <span class="op">&lt;</span><span class="st"> </span>LLOQ) 
+<span class="co">### - numeric version of censoring indicator</span>
+Ind &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(CENSOR)
+<span class="co">### - calculate censored values</span>
+COBS &lt;-<span class="st"> </span>dat <span class="op">+</span><span class="st"> </span>(LLOQ <span class="op">-</span><span class="st"> </span>dat) <span class="op">*</span><span class="st"> </span>Ind
+<span class="co">### - create data frame for analysis</span>
+vori &lt;-<span class="st"> </span><span class="kw">data.frame</span>(<span class="dt">concentration =</span> dat,
+                   <span class="dt">censor =</span> CENSOR,
+                   <span class="dt">values =</span> COBS)
+
+<span class="co">### Analysis using censReg package of Arne Henningsen</span>
+<span class="co">### - load library censReg</span>
+<span class="kw">library</span>(censReg)</code></pre>
+<pre><code>## Warning: package &#39;censReg&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## Loading required package: maxLik</code></pre>
+<pre><code>## Warning: package &#39;maxLik&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## Loading required package: miscTools</code></pre>
+<pre><code>## Warning: package &#39;miscTools&#39; was built under R version 3.5.2</code></pre>
+<pre><code>## 
+## Please cite the &#39;maxLik&#39; package as:
+## Henningsen, Arne and Toomet, Ott (2011). maxLik: A package for maximum likelihood estimation in R. Computational Statistics 26(3), 443-458. DOI 10.1007/s00180-010-0217-1.
+## 
+## If you have questions, suggestions, or comments regarding the &#39;maxLik&#39; package, please use a forum or &#39;tracker&#39; at maxLik&#39;s R-Forge site:
+## https://r-forge.r-project.org/projects/maxlik/</code></pre>
+<pre><code>## 
+## Please cite the &#39;censReg&#39; package as:
+## Henningsen, Arne (2017). censReg: Censored Regression (Tobit) Models. R package version 0.5. http://CRAN.R-Project.org/package=censReg.
+## 
+## If you have questions, suggestions, or comments regarding the &#39;censReg&#39; package, please use a forum or &#39;tracker&#39; at the R-Forge site of the &#39;sampleSelection&#39; project:
+## https://r-forge.r-project.org/projects/sampleselection/</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">### - Fit data</span>
+voriCR &lt;-<span class="st"> </span><span class="kw">censReg</span>(values <span class="op">~</span><span class="st"> </span><span class="dv">1</span>, <span class="dt">left =</span> LLOQ, <span class="dt">data =</span> vori)
+<span class="co">### - Results of fitting data as censored</span>
+<span class="kw">summary</span>(voriCR)</code></pre>
+<pre><code>## 
+## Call:
+## censReg(formula = values ~ 1, left = LLOQ, data = vori)
+## 
+## Observations:
+##          Total  Left-censored     Uncensored Right-censored 
+##             50             10             40              0 
+## 
+## Coefficients:
+##              Estimate Std. error t value  Pr(&gt; t)    
+## (Intercept) 3072.7048   403.4446   7.616 2.61e-14 ***
+## logSigma       7.9244     0.1169  67.787  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Newton-Raphson maximisation, 8 iterations
+## Return code 1: gradient close to zero
+## Log-likelihood: -383.5937 on 2 Df</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">### - Estimated parameter estimates</span>
+(estimate &lt;-<span class="st"> </span><span class="kw">coef</span>(voriCR))</code></pre>
+<pre><code>## (Intercept)    logSigma 
+##  3072.70478     7.92437</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">### - calculate sigma from log-sigma</span>
+(sigma &lt;-<span class="st"> </span><span class="kw">exp</span>(estimate[<span class="dv">2</span>]))</code></pre>
+<pre><code>## logSigma 
+## 2763.821</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">### - extract SE of log-sigma</span>
+(se.logsigma &lt;-<span class="st"> </span><span class="kw">summary</span>(voriCR)<span class="op">$</span>estimate[<span class="dv">2</span>, <span class="dv">2</span>])</code></pre>
+<pre><code>## [1] 0.1169012</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">### - calculate SE of sigma based on delta method</span>
+(se.sigma &lt;-<span class="st"> </span>sigma <span class="op">*</span><span class="st"> </span>se.logsigma)</code></pre>
+<pre><code>## logSigma 
+## 323.0941</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">### - so standard deviation is sigma</span>
+sigma</code></pre>
+<pre><code>## logSigma 
+## 2763.821</code></pre>
+<pre class="sourceCode r"><code class="sourceCode r"><span class="co">### - standard error of standard deviation</span>
+se.sigma</code></pre>
+<pre><code>## logSigma 
+## 323.0941</code></pre>
+
+</div>
 </div>
 </div>
             </section>
@@ -337,8 +496,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="graphics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="StudyDesign.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="sap.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="epidemiology.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

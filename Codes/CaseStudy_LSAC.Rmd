@@ -1,0 +1,405 @@
+---
+title: "Longitudinal Study of Australian Children (LSAC)"
+output: html_notebook
+---
+
+```{r setup}
+# working directory
+setwd(dirname(rstudioapi::getActiveDocumentContext()$path))
+
+# R libraries
+library(Hmisc)
+library(jomo)
+```
+
+```{r data}
+# data
+library(haven)
+lsac <- as.data.frame(read_dta(file = file.path("..", "data", "datL.dta")))
+```
+
+
+## Multiple Imputation in Long Format 
+
+```{r}
+# preamble
+source("CaseStudy_LSAC_preamble.R")
+```
+
+### Fully Conditional Specification with Multilevel Models (FCS-LMM-LN)
+
+#### Impute the missing values in the BMI values and the sleep problems in long format using FCS.
+
+
+* Also recall that in mice, we need to specify a predictor matrix which specifies the predictors of each imputation model. In the predictor matrix, a cell with a 
+    + 1: indicates that the column variable is a predictor with fixed effects for row variable
+    + 2: indicates that the column variable is a predictor with fixed and random effects for row variable
+    + -2: indicates the cluster variable 
+Other cells are set to zero
+
+* To impute the binary variable (sleep problems) we will use the “2l.jomo” function from the package micemd, which relies on a latent normal variable formulation
+
+* sleep_prob needs to be converted into factor
+
+```{r}
+# convert sleep_prob into factor
+lsac$sleep_prob <- as.factor(lsac$sleep_prob)
+```
+
+* Set number of imputations and number of iterations
+
+```{r}
+# set number of imputations and number of iterations
+M <- 3   # usually at least 5, here less to reduce time of demo
+NI <- 5  # usually at least 5
+NBurn <- 10 # usually at least 100, here less to reduce time of demo
+Npaniter <- 10 # usually at least 500, here less to reduce time of demo
+```
+
+* Create predictor matrix to specify the predictors of each imputation model. This is a squared matrix with number of rows and number of columns are the number of variables in the dataset. Rows and columns in the order in which they appear in the dataset. The rule to set values for this matrix is:
+    + 1 if column variable predictor with FIXED effects in imputation model of row variable
+    + 2 if column variable predictor with FIXED + RANDOM effects in imputation model of row variable
+    + -2 if column variable is cluster ID variable for row variable
+    + 0 if otherwise
+
+```{r}
+# create predictor matrix 
+nc <- ncol(lsac)
+pred <- matrix(rep(0, nc*nc), ncol = nc)
+colnames(pred) <- rownames(pred) <- names(lsac)
+pred[substr(row.names(pred), 1, 4) %in% c("slee", "bmiz"), !colnames(pred) %in% c("id","wave")] <- 1
+pred[substr(row.names(pred), 1, 4) %in% c("slee", "bmiz"), colnames(pred) %in% c("wave")] <- 2
+pred[substr(row.names(pred), 1, 4) %in% c("slee", "bmiz"), colnames(pred) %in% c("id")] <- (-2)
+
+diag(pred) <- 0
+
+pred
+```
+
+* Determine the imputation method for each variable
+
+```{r}
+# determine imputation method for each variable
+meth <- rep("", ncol(lsac))
+
+meth[substr(row.names(pred), 1, 4) %in% c("slee")] <- "2l.jomo"
+meth[substr(row.names(pred), 1, 4) %in% c("bmiz")] <- "2l.pan"  
+
+meth
+```
+
+* Perform the imputations
+
+```{r}
+# perform imputations
+
+imp <- mice(lsac, m = M, maxit = NI, predictorMatrix = pred, method = meth, 
+            seed = 2384, nburn = NBurn, paniter = Npaniter)
+```
+
+#### Check the convergence of the imputation procedure
+
+```{r}
+plot(imp)
+```
+
+#### Carry out the analysis of interest on the competed data sets. As previously, before conducting the analysis you will need to generate the previous wave BMI values and the sleep problems for waves 2-5. Record the estimated odds ratios, their 95% confidence intervals and the p value for previous BMI.
+
+* For each imputed dataset, do the analysis of interest as the following steps:
+    + Extract completed data
+    + sleep_prob is a factor at the moment, convert it back to numeric variable with values of 0 and 1
+    + get "past wave" information and remove wave 1
+    + get coefficient of interest and its standard error
+
+```{r}
+tmp_analysis <- function(m, data = imp) {
+  ## extract completed data from the imputation iteration m
+  dat <- complete(data = data, action = m)
+  ## re-write sleep_prob as a 0/1 variable
+  dat$sleep_prob <- 1 * (dat$sleep_prob == "1") + 0
+  ## create "past wave" variables, and remove wave 1 as it does not contribute to analysis
+  dat <- do.call(rbind, by(dat, dat$id, getpast))
+  dat <- dat[!dat$wave == 1, ]
+  ## fit GEE with exchangeable correlation matrix and sandwich (robust) SEs (this is default)
+  fit <- geeglm(sleep_prob ~ bmiprev + m_education + sex + birthweight + m_age + sleeprev,
+                id = id,  family = binomial, corstr = "exchangeable", data = dat)
+  ## get coefficients & standard errors
+  coefmi <- coef(summary(fit))["bmiprev","Estimate"]
+  varmi <- (coef(summary(fit))["bmiprev","Std.err"])^2
+  # return values
+  return(c(coefmi = coefmi, varmi = varmi))
+}
+```
+
+* Run the analysis on all imputation dataset
+
+```{r}
+coefmi <- vector()
+varmi <- vector()
+
+for(m in 1:M)
+{
+  tmp <- tmp_analysis(m = m, data = imp)
+  
+  coefmi <- c(coefmi, tmp["coefmi"])
+  varmi <- c(varmi, tmp["varmi"])
+}
+```
+
+* Combine results
+
+```{r}
+logodds <- combMI(coefmi, varmi, M)
+odds <- round(c(exp(logodds[c(1, 3, 4)]), logodds[5]), 3)
+odds
+```
+
+### Multivariate Normal Imputation using Multivariate Linear Mixed Models (JM-MLMM-LN)
+
+#### Repeat the multiple imputation using MVNI (JM-MLMM-LN) in long format.
+
+* sleep_prob needs to be converted into factor
+
+```{r}
+# convert sleep_prob into factor
+lsac$sleep_prob <- as.factor(lsac$sleep_prob)
+```
+
+* Set number of imputations and number of burn-in iterations
+
+```{r}
+# set number of imputations and number of burn-in iterations
+M <- 3  # usually at least 5, here less to reduce time of demo
+NBurn <- 10 # usually at least 100, here less to reduce time of demo
+NBet <- 10 # usually at least 100, here less to reduce time of demo
+```
+
+
+* You need to convert the categorical variables to be imputed to be of class “factor” and create three separate data frames: 
+    + First dataset with variables to be imputed
+    + Second dataset with complete variables which are to be used as fully-observed predictors with fixed effects in the imputation model
+    + Third dataset with fully-observed predictors with random effects in the imputation model (should be a subset of predictors in second dataset)
+
+* Create dataset with variables to be imputed
+
+```{r}
+# create data frame with variables to be imputed
+lsac_miss <- lsac[,c("sleep_prob", "bmiz")]
+```
+
+* Create dataset with complete variables with FIXED EFFECTS, with column of 1's for intercept
+
+```{r}
+# create a data frame with complete variables with FIXED EFFECTS, with column of 1's for intercept
+lsac_compFE1 <- cbind(Intercept=rep(1, nrow(lsac)),
+                      lsac[, names(lsac) %in% c("wave", "m_age", "m_education", "m_smoking", "sex", "birthweight")])
+```
+
+* Create dataset with complete variables with RANDOM EFFECTS, with column of 1's for intercept
+
+```{r}
+# create a data frame with complete variables with RANDOM EFFECTS, with column of 1's for intercept
+lsac_compRE <- cbind(Intercept = rep(1, nrow(lsac)), wave = lsac[, "wave"])
+```
+
+* Perform imputations using random intercepts and slopes, and common cluster-specfic variance (default)
+
+```{r}
+# perform imputations using random intercepts and slopes, and common cluster-specfic variance (default)
+set.seed(2946)
+imp <- jomo(Y = lsac_miss, X = lsac_compFE1, Z = lsac_compRE, clus = lsac$id, 
+            nimp = M, nburn = NBurn, nbetween = NBet)
+```
+
+#### Check the convergence of the imputation procedure.
+
+```{r}
+set.seed(2946)
+impCheck <- jomo.MCMCchain(Y = lsac_miss, X = lsac_compFE1, Z = lsac_compRE, clus = lsac$id, nburn = NBurn)
+plot(c(1:NBurn), impCheck$collectbeta[1, 1, 1:NBurn], type = "l")
+```
+
+#### Carry out the analysis of interest on the competed data sets. As previously, before conducting the analysis you will need to generate the previous wave BMI values and the sleep problems for waves 2-5. Record the estimated odds ratios, their 95% confidence intervals and the p value for previous BMI.
+
+* Analysis for each imputed dataset
+
+```{r}
+tmp_analysis <- function(m, data = imp) {
+  ## extract completed data from the imputation iteration m
+  dat <- data[data$Imputation == m, ]
+  ## rename cluster variable to id
+  dat$id <- dat$clus
+  ## re-write sleep_prob as a 0/1 variable
+  dat$sleep_prob <- 1 * (dat$sleep_prob == "1") + 0
+  ## create "past wave" variables, and remove wave 1 as it does not contribute to analysis
+  dat <- do.call(rbind, by(dat, dat$id, getpast))
+  dat <- dat[!dat$wave == 1, ]
+  ## fit GEE with exchangeable correlation matrix and sandwich (robust) SEs (this is default)
+  fit <- geeglm(sleep_prob ~ bmiprev + m_education + sex + birthweight + m_age + sleeprev,
+                id = id,  family = binomial, corstr = "exchangeable", data = dat)
+  ## get coefficients & standard errors
+  coefmi <- coef(summary(fit))["bmiprev","Estimate"]
+  varmi <- (coef(summary(fit))["bmiprev","Std.err"])^2
+  # return values
+  return(c(coefmi = coefmi, varmi = varmi))
+}
+```
+
+* Run the analysis on all imputation dataset
+
+```{r}
+coefmi <- vector()
+varmi <- vector()
+
+for(m in 1:M)
+{
+  tmp <- tmp_analysis(m = m, data = imp)
+  
+  coefmi <- c(coefmi, tmp["coefmi"])
+  varmi <- c(varmi, tmp["varmi"])
+}
+```
+
+* Combine results
+
+```{r}
+logodds <- combMI(coefmi, varmi, M)
+odds <- round(c(exp(logodds[c(1, 3, 4)]), logodds[5]), 3)
+odds
+```
+
+### Imputing Level-2 Variables using JM-MLMM-LN
+
+#### For this exercise, first set 5% of the observations in the maternal age at child birth (m_age), which is a level-2 variable, to be missing. 
+
+* Set 5% of the observations in the maternal age at child birth (m_age) to be missing
+
+```{r}
+lsac$m_age[sample(1:nrow(lsac), 0.05 * nrow(lsac))] <- NA
+```
+
+#### Repeat the multiple imputation using MVNI (JM-MLMM-LN) in long format.
+
+* You need to convert the categorical variables to be imputed to be of class “factor” Now you will need to create five separate data frames: 
+    + First dataset with level-1 variables to be imputed
+    + Second dataset with level-2 variables to be imputed
+    + Third dataset with complete level-1 variables which are to be used as fully-observed predictors with fixed effects in the imputation model 
+    + Fourth dataset with complete level-2 variables which are to be used as fully-observed predictors with fixed effects in the imputation model 
+    + Fifth dataset with fully-observed predictors with random effects in the imputation model
+
+* Set number of imputations and number of burn-in iterations
+
+```{r}
+# set number of imputations and number of burn-in iterations
+M <-3  # usually at least 5, here less to reduce time of demo
+NBurn <-10 # usually at least 100, here less to reduce time of demo
+NBet <-10 # usually at least 100, here less to reduce time of demo
+```
+
+* Set categorical variables to impute as factors
+
+```{r}
+# set categorical variables to impute as factors
+lsac[, "sleep_prob"] <- as.factor(lsac[, "sleep_prob"])
+```
+
+* Create data frame with variables to be imputed
+
+```{r}
+# create data frame with variables to be imputed
+
+# Level 1 variables
+lsac_miss1 <- lsac[, c("sleep_prob", "bmiz")]
+
+# Level 2 variables
+lsac_miss2 <- data.frame(m_age = lsac[, c("m_age")])
+```
+
+* Create a data frame with complete variables with FIXED EFFECTS, with column of 1's for intercept
+
+```{r}
+# create a data frame with complete variables with FIXED EFFECTS, with column of 1's for intercept
+
+# For Level 1 variables
+lsac_compFE1 <- cbind(Intercept = rep(1, nrow(lsac)), 
+                      lsac[,names(lsac) %in% c("wave", "m_education", "m_smoking", "sex", "birthweight")])
+
+# For Level 2 variables
+lsac_compFE2 <- cbind(Intercept = rep(1, nrow(lsac)), 
+                      lsac[, names(lsac) %in% c("m_education", "m_smoking", "sex", "birthweight")])
+```
+
+* Create a data frame with complete variables with RANDOM EFFECTS, with column of 1's for intercept
+
+```{r}
+# create a data frame with complete variables with RANDOM EFFECTS, with column of 1's for intercept
+lsac_compRE<-cbind(Intercept = rep(1, nrow(lsac)), wave = lsac[, "wave"])
+```
+
+* Perform imputations using random intercepts and slopes, and common cluster-specfic variance (default)
+
+```{r}
+# perform imputations using random intercepts and slopes, and common cluster-specfic variance (default)
+set.seed(2946)
+imp <- jomo(Y = lsac_miss1, Y2 = lsac_miss2, X = lsac_compFE1, X2 = lsac_compFE2, Z = lsac_compRE, clus=lsac$id, 
+            nimp = M, nburn = NBurn, nbetween = NBet)
+```
+
+#### Check the convergence of the imputation procedure.
+
+```{r}
+set.seed(2946)
+impCheck <- jomo.MCMCchain(Y = lsac_miss1, Y2 = lsac_miss2, X = lsac_compFE1, X2 = lsac_compFE2, Z = lsac_compRE,
+                           clus = lsac$id, nburn = NBurn)
+plot(c(1:NBurn), impCheck$collectbeta[1, 1, 1:NBurn], type = "l")
+```
+
+
+#### Carry out the analysis of interest on the competed data sets. As previously, before conducting the analysis you will need to generate the previous wave BMI values and the sleep problems for waves 2-5. Record the estimated odds ratios, their 95% confidence intervals and the p value for previous BMI.
+
+* Analysis for each imputed dataset
+
+```{r}
+tmp_analysis <- function(m, data = imp) {
+  ## extract completed data from the imputation iteration m
+  dat <- data[data$Imputation == m, ]
+  ## rename cluster variable to id
+  dat$id <- dat$clus
+  ## re-write sleep_prob as a 0/1 variable
+  dat$sleep_prob <- 1 * (dat$sleep_prob == "1") + 0
+  ## create "past wave" variables, and remove wave 1 as it does not contribute to analysis
+  dat <- do.call(rbind, by(dat, dat$id, getpast))
+  dat <- dat[!dat$wave == 1, ]
+  ## fit GEE with exchangeable correlation matrix and sandwich (robust) SEs (this is default)
+  fit <- geeglm(sleep_prob ~ bmiprev + m_education + sex + birthweight + m_age + sleeprev,
+                id = id,  family = binomial, corstr = "exchangeable", data = dat)
+  ## get coefficients & standard errors
+  coefmi <- coef(summary(fit))["bmiprev","Estimate"]
+  varmi <- (coef(summary(fit))["bmiprev","Std.err"])^2
+  # return values
+  return(c(coefmi = coefmi, varmi = varmi))
+}
+```
+
+* Run the analysis on all imputation dataset
+
+```{r}
+coefmi <- vector()
+varmi <- vector()
+
+for(m in 1:M)
+{
+  tmp <- tmp_analysis(m = m, data = imp)
+  
+  coefmi <- c(coefmi, tmp["coefmi"])
+  varmi <- c(varmi, tmp["varmi"])
+}
+```
+
+* Combine results
+
+```{r}
+logodds <- combMI(coefmi, varmi, M)
+odds <- round(c(exp(logodds[c(1, 3, 4)]), logodds[5]), 3)
+odds
+```

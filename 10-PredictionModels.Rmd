@@ -1,1 +1,1107 @@
 # Prediction models {#PredictionModels}
+
+## Introduction {#pmIntro}
+
+In daily clinical practice, one of the main tasks of clinicians is to investigate and develop three main areas of knowledge related to the patient's illness: diagnosis (whether a particular illness is present), aetiology (what is the cause of the present illness) and prognosis (what is the likely future course of the present illness) [@Miettinen2011]. Based on this, clinicians can suggest a suitable intervention or management plan for the patient under investigation. Therefore, making prognostic assessments is a natural and familiar task that clinicians have to do every day.
+
+As prediction is a fundamental component of medical decision-making, it has an important role in clinical practice. However, it is also a generally difficult task because unlike diagnosis or etiognosis, prognosis requires extrapolation to the future based on the present knowledge about a patient's disease status and characteristics. As the future is uncertain, predictions need to rely on many assumptions and making a good prediction is an extremely difficult task.
+
+### What is clinical prediction model?
+
+A prognostic model is a formal combination rule of multiple predictors from which a subject’s absolute risk of the occurrence of a disease event of interest can be calculated [@Steyerberg2013]. Prognostic modeling is an important part of prognostic research which aims to understand and improve future outcomes in subjects with a given health state [@Hemingway2013]. Developing a prognostic model is the third step of a 4-step paradigm for prognostic research which includes (1) investigating the variation of outcomes of a health condition in the context of current care (fundamental prognostic research); (2) identifying risk factors which are related to outcomes (prognostic factor research); (3) developing, validating and assessing the impact of prediction models that predict an individual’s risk of a future event (prognostic model research); (4) using prognostic information to help individualize treatment decisions for a subject or group of subjects that share similar characteristics (stratified medicine research) [@Hemingway2013].
+
+A typical prediction model has three main ingredients: an outcome, candidate predictors, and a statistical model. An outcome can be a hard endpoint such as death or the presence of clinical complication, or a surrogate endpoint such as a biomarker of severity, or a composite endpoint. Candidate predictors typically include demographic variables such as age and gender as well as clinical symptoms or biomarkers which are relevant to outcome prediction based on clinical knowledge. As prognosis is aimed to the future, predictors have to be collected at a starting point or baseline which is before the outcome occurs and the length of the lag period between the starting point and the outcome occurrence affects largely the usefulness of the derived prediction model. The relationship between outcome and predictors is modeled using a statistical model and the choice of this model depends on the type of outcome. As clinical outcomes are usually binary or survival data, the most common statistical models of choice are logistic regression and the Cox proportional hazards model, but many other statistical models have been suggested in the literature [@Steyerberg2010,@Hastie2009]. As a general rule, these three main components have to be pre-specified before fitting any model in order to avoid over-fitting and therefore to preserve the validity of the derived model.
+
+Prediction models are different from decision rules. The inputs to a prediction model are values of prognostic factors at a pre-defined time point and the output is an estimated risk of a specific outcome. Even though one may categorize estimated risks and assign suggested actions to each risk category, a typical prediction model only provides a prediction of a risk as it is intended to assist clinicians without suggesting to them what to do [@Reilly2006a]. In contrast, a decision rule is designed to directly affect clinical decisions by physicians. As accurate predictions do not always improve clinical decisions, a promising prediction model has to demonstrate its positive impact on physicians’ decisions and patients’ outcomes through different levels of impact analysis in order to be successfully translated into a useful clinical decision rule [@Reilly2006a].
+
+### Why we need prediction models?
+
+In general, the prediction making process may come with pitfalls including its subjectivity, and proneness to errors and inconsistencies [@Meehl1954, @Dawes1989, @Grove2000, @Sox2013]. Common pitfalls when estimating probability using only personal experience are:
+
+* Focusing on the presence or absence of predictors but ignoring the prior probability of the outcome.
+
+* Basing predictions on the presence of predictors with low predictive ability or a set of predictors which do not independently affect outcome.
+
+* Personal experience, especially for clinicians in their early careers, is typically a small and unrepresentative sample of the overall population.
+
+* Reliance on a false belief in the relationship between candidate predictors and outcome, as it is difficult to differentiate invalid relationships from valid ones theoretically.
+
+* A tendency to be over-confident and overstate subjective certainty.
+
+As a result, deriving precise and unbiased predictions from personal experience alone is beyond the cognitive ability of almost everyone [@Sox2013]. Therefore, additional knowledge, especially that deriving from an objective source like empirical research, is needed. Such knowledge includes published reports describing the incidence of outcomes amongst patients having a common set of clinical features and clinical prediction models. Compared to personal experience, they provide more objective and more comprehensive information, especially for rare outcomes. However, their utility and validity can vary widely depending on the quality of the clinical studies and the similarities between the research population and the population of interest. Amongst these objective sources of knowledge, clinical prediction models are recognized as powerful tools to derive prediction. Besides their ability to process and produce complex information that may go beyond human mental ability, clinical prediction models provide consistent estimates and have been shown to outperform personal judgment in many situations [@Dawes1989, @Grove2000]. Caveats in applying clinical prediction model are related to their potential to over-fit the data when they are not developed or tested properly and their potential to miss predictors which are relevant but difficult to evaluate in clinical research. For more information on what prognostic models are and how they are derived I refer to the following sections and Chapter \ref{chap:methods}.
+
+Based on these rationales, a better model for estimating the risk of the occurrence of a certain outcome in clinical practice requires both published evidence and personal experience. In addition, further adjustments to risk estimation may be required due to differences between the population of interest and the reference population, or due to the presence of extraordinary clinical features in the patient that the physician has never seen and which have not been reported anywhere [@Sox2013].
+
+As described in the previous section, the major advantage of prediction models in clinical practice is their ability to provide objective, reproducible and reliable estimation of outcome occurrence. Due to their transparency, prediction models can also enhance communication between physicians and patients [@Steyerberg2013]. Moreover, in clinical research prediction models can be used in the design stage to target a population of interest, and in the analysis stage to perform stratified analysis according to predicted risk groups or to improve the power of statistical analyses [@Steyerberg2013].
+
+#### Prognosis
+
+* Prognosis is considered as "a most excellent thing for the physician to cultivate Prognosis; for by foreseeing and foretelling... the present, the past, and the future, and explaining the omissions which patients have been guilty of, he will be the more readily believed to be ac- quainted with the circumstances of the sick, so that men will have confi- dence to intrust themselves to such a physician." [@Reynolds2001]
+
+#### Examples of what is wrong with doctor's prognosis
+
+* [@Parkes1972]:
+    + Patients with a diagnosis of cancer who were admitted to St. Christopher's Hospice during 1970-1
+    + Predictions of expected survival:
+        - From replies made by referring general practitioners or hospital medical staff on forms of application for admission of cancer patients to the hospice
+        - From assessments made by experienced medical and nursing staff of the hospice on a short questionnaire on the day of admission
+    + In 140 out of 192 successive referrals by general practitioners and 55 out of 80 referrals by hospital medical staff the referring physician had been unwilling to commit himself to a precise prediction of the probable length of survival of the patient. This left 52 forms from general practitioners and 25 from hospital doctors which contained such a prediction.
+    + 293 predictions of survival were made on 168 cancer patients (83% of whom subsequently died within 12 weeks of admission)
+        - Figure: survival predicted by admitted doctors on day of admission on 74 patients: 38 (51%) errors, 33 (87%) errors in the optimistic direction.
+
+* [@Christakis2000]:
+    + Prospective cohort study: 5 outpatient hospice programmes in Chicago, during 130 consecutive days (4 months) in 1996
+        - 343 doctors provided survival estimates for 468 terminally ill patients at the time of hospice referral
+        - patients: mean age 69 (SD 17), 45% men, 326 (65%) cancer, 62 (12%) AIDS, 116 (23%) others. 
+        - referring doctors: median 16 years of medical practice, 114 (32%) specialized in general internal med, 71 (20%) in non-oncological internal medicine subspecialties, 61 (17%) in oncology, 55 (15%) in family/general practice, 27 (8%) in geriatrics, 30 (8%) in other specialties.
+    + Outcomes: patient's estimated and actual survival
+    + Observed/Predicted survival quotient: OPQ < (2/3): optimistic prognosis, 2/3 < OPQ < 4/3: accurate prognosis, OPQ > 4/3: pessimistic
+    + Results
+        - Median survival 24 days
+        - 92 (20%) accurate (within 33% difference from actual survival), 295 (63%) overoptimistic, 81 (17%) pessimistic
+        - multivariable factors
+            > Doctors with high experience: more likely to have accurate prediction
+            > Doctors in other internal medicine subspecialties (exclude oncologist) more likely to make pessimistic prediction compare to general medicine/geriatrics.
+            > duration of doctor-patient relationship: more likely to make pssimistic prediction
+            > days since last examination: less likely to make pessimistic prediction
+    + Conclusion: 
+        - Doctors are inaccurate in their prognoses for terminally ill patients and the error is systematically optimistic.
+        - The inaccuracy is, in general, not restricted to certain kinds of doctors or patients
+        - The greater the experience of the doctor, the greater the prognostic accuracy.
+        - A stronger doctor-patient relationship is associated with lower prognostic accuracy.
+        
+* Margaret Jones (Principle Statistician, Pfizer Central Research)
+    + The preference for indices over doctors’ prognoses is not based on an
+appropriate comparison. A common pitfall in the interpretation of
+prognostic indices is the belief that high statistical significance, and
+the ability to identify subgroups with markedly different survival rates,
+equates with an ability to accurately predict survival for an individual
+patient
+    + A natural extension is therefore to combine the doctor’s predictions
+with objective prognostic factors in a statistical model in order to
+improve prediction. A simple approach is to add the doctors’ prognosis
+into the model as an additional covariate.
+    
+    
+
+##### Dawes1954
+
+* In psychotherapy
+* Clinical method: "the decision-maker combines or processes information in his or her head"
+* Actuarial/Statistical method: "conclusions rest solely on empirically established relations between data and the condition or event of interes"
+* "The combination of clinical and actuarial methods offers a third potential judgment strategies". "However, most proposals for combination presume that the two judgment methods work together harmoniously and overlook the many situations that require dichotomous choice"
+* "Fair comparison of the two methods":
+    + both methods should base judgments on the same data
+    + one must avoid conditions that can artificially inflate the accuracy of actuarial methods.
+
+##### Robinson T, Jackson R, Wells S, Kerr A, Marshall R. An observational study of how clinicians use cardiovascular risk assessment to inform statin prescribing decisions. N Z Med J. 2017;130(1463):28–38. 
+
+##### Hobbs FDR, Jukema JW, Da silva PM, McCormack T, Catapano AL. Barriers to cardiovascular disease risk scoring and primary prevention in Europe. Qjm. 2010;103(10):727–39. 
+
+##### Lloyd-Jones DM. Cardiovascular risk prediction: Basic concepts, current status, and future directions. Circulation. 2010;121(15):1768–77. 
+
+##### Koopman RJ, Mainous AG. Evaluating multivariate risk scores for clinical decision making. Fam Med. 2008;40(6):412–6. 
+
+##### Jürgensen JS. The value of risk scores. Hear Br Card Soc [Internet]. 2006;92(12):1713–4. Available from: http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1861264&tool=pmcentrez&rendertype=abstract
+
+##### Bitton A, Gaziano T. The Framingham Heart Study’s impact on global risk assessment. Prog Cardiovasc Dis. 2010;53(1):68–78. 
+
+##### Bellcross C. Approaches to applying breast cancer risk prediction models in clinical practice. Community Oncol [Internet]. 2009;6(8)(August):373–9. Available from: http://www.oncologypractice.com/co/journal/articles/0608373.pdf
+
+##### Karmali KN, Lloyd‐Jones DM. Implementing Cardiovascular Risk Prediction in Clinical Practice: The Future Is Now. J Am Heart Assoc [Internet]. 2017;6(4):e006019. Available from: http://jaha.ahajournals.org/lookup/doi/10.1161/JAHA.117.006019
+
+* The first widely used cardiovascular risk prediction equation was the Framingham Risk Score (FRS). developed from the country’s first longitudinal cardiovascular cohort study. Eventual adoption of the FRS into the Third Report of the National Cholesterol Education Program’s Adult Treatment Panel (ATP-III) cholesterol guidelines in 2001
+
+* The prevailing uncertainties have led to calls for transformative changes in the way risk prediction algorithms are developed and validated. One potential approach is to move away from population-based cohort studies toward contemporary and real-world populations from electronic health records (EHRs) that reflect current trends in racial diversity, risk factor prevalence, preventive medication use, and disease incidence. Yet, the use of EHRs as a tool for clinical research is still in
+its infancy, and few health systems have follow-up long evaluations to advance the field.
+
+* Continued progress in health information exchanges and the establish- ment of standards for data harmonization, data quality, and electronic outcome assessment may one day lead to a nationwide electronic cohort capable of supporting ongoing refinement of risk prediction equations using real-world clinical data.
+
+* However, until that time, we will likely save far more lives and prevent many more events by focusing on implementation of existing guideline-linked equations such as the PCE, with decision-support algorithms, in EHR platforms
+
+* Predicting the future is an inherently imperfect science, but
+we must not forget that quantitative risk assessment is just the start, not the end, of a treatment decision. Risk estimates must be contextualized by clinicians for patients during a shared treatment discussion.
+
+* Although recent years have seen great interest in the accuracy of cardiovascular risk prediction equations, there remains uncertainty over whether use of any cardiovascular risk estimate in clinical practice actually improves cardiovascular outcomes and there are very limited data on how to best present this information for clinical decision making.
+
+##### Karmali KN, Persell SD, Perel P, Lloyd-Jones DM, Berendsen MA, Huffman MD. Risk scoring for the primary prevention of cardiovascular disease. Beswick A, editor. Cochrane Database Syst Rev [Internet]. 2017 Mar 14;(3). Available from: http://doi.wiley.com/10.1002/14651858.CD006887
+
+* We identified 41 trials that included 194,035 participants. that systematically provided CVD risk scores or usual care to adults without a history of heart disease or stroke. 
+
+* The two most common CVD risk scores used were the Framingham CoronaryHeartDiseaseRiskScore (24 trials) and theUKProspec- tive Diabetes Study (UKPDS) risk engine. In these trials, baselineCVDriskwas presented as a5- or 10-year absolute riskofa CVD event. Six trials used risk-adjusted cardiovascular age (called by various names such as heart age, cardiovascular age, or vascular age) in addition to or in lieu ofthe absolute CVD risk information.
+
+* In addition to the risk mes- sage, interventions also included: patient education material (31 trials); clinician- or patient-facing decision-support tools (27 tri- als); nurse counselling (11 trials); academic detailing/continuing medical education (9 trials); electronic health record integration (10 trials); electronic or paper-based reminders (7 trials); and au- dit and feedback (4 trials).
+
+* Providing CVD risk scores may reduce CVD risk factor levels (like cholesterol, blood pressure, and multivariable CVD risk) by a small amount and may increase cholesterol-lowering and blood pressure-lowering medication prescribing in higher risk people. Providing CVD risk scores may reduce harms, but the results were imprecise.
+
+* There is low-quality evidence to guide the use ofCVD risk scores in clinical practice. Studies hadmultiple limitations and used different methods to provide CVD risk scores. It is likely that further research will influence these results.
+
+* In spite of the widespread promulgation of CVD risk scores in prevention guidelines, there is low-quality evidence and several gaps in evidence for guiding implementation in practice. Future studies should clearly identify how well the in- tended CVD risk score application was implemented in practice and evaluate its effectiveness in studies powered to identify reduc- tions in causal risk factor levels. Moreover, studies should identify the optimal content and format ofCVD risk messages that moti- vate behaviour change in physicians and patients, assess the impact ofproviding CVD risk information longitudinally over time, and look beyond initiation of evidence-based risk-reducing therapies to address uptake and long-term adherence to these therapies to achieve risk factor changes and eventual improvements in health outcomes.
+
+
+
+##### Bosomworth NJ. Practical use of the Framingham risk score in primary prevention: Canadian perspective. Can Fam Physician [Internet]. 2011;57(4):417–23. Available from: http://www.cfp.ca/content/57/4/417.full.pdf
+
+##### Wallace E, Uijen MJM, Clyne B, Zarabzadeh A, Keogh C, Galvin R, et al. Impact analysis studies of clinical prediction rules relevant to primary care: a systematic review. BMJ Open [Internet]. 2016;6(3):e009957. Available from: http://bmjopen.bmj.com/lookup/doi/10.1136/bmjopen-2015-009957
+
+##### Wallace E, Smith SM, Perera-Salazar R, Vaucher P, McCowan C, Collins G, et al. Framework for the impact analysis and implementation of Clinical Prediction Rules (CPRs). BMC Med Inform Decis Mak [Internet]. 2011 Jan [cited 2012 Jul 16];11(1):62. Available from: http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=3216240&tool=pmcentrez&rendertype=abstract
+
+#### How CPM can be used?
+
+* Integrated into provider workflow: integration into the electronic health record system [@Karlin-Zysman2012]
+
+#### It is time to move forward
+
+* CPM/CPRs has potential to "help clinicians make personalized and complex decisions at the point of care. They have the potential to improve patient care outcomes and reduce healthcare costs, but remain underutilized" [@Karlin-Zysman2012]
+
+* "There are a number of well-derived and validated clinical prediction rules, but few have been studied by means of an impact analysis or successfully integrated into provider workflow. There are a number of barriers to adoption at both the infrastructure and organizational levels. Research efforts should focus on impact analysis and how to successfully implement existing, well-validated clinical prediction rules into daily practice" [@Karlin-Zysman2012]
+
+* "The other urgent need is for feasibility and impact studies comparing the use of risk prediction models in real clinical practice: Can local computer systems handle the model? Can GPs and others be trained to use it? What are the resource implications?" [@Noble2012]
+
+* "Researchers have spent too much time making minor adjustments to in silico statistical models, and too little considering who would use the model, on whom, and in what circumstances."[@Noble2012]
+
+* "Recommendations include emphasis on a collaborative framework, using existing technologies, and utilization of usability and workflow integration methodology" [@Karlin-Zysman2012]
+
+* [@Reynolds2001] 
+
+#### How to move forwards
+
+* [@Wallace2011]
+
+* [@Sheridan2003]
+
+## (PART) Development {-}
+
+### Standard steps to develop clinical prediction models?
+
+In this project, all prediction models using baseline covariates were developed following current standard methodology and recommendations [@Harrell2001, @Steyerberg2010].
+
+### Clinical outcomes and candidate predictors
+
+Depending on the specific context of each study, clinical outcomes and candidate predictors were pre-defined based on clinical knowledge and prior to any analysis. All values of candidate predictors were obtained at baseline. All cases in whom the outcome had already occurred at or prior to the baseline assessment were removed from the prediction model development.
+
+### Statistical models of choice
+
+The primary outcomes in both cohorts were binary: severe \gls{DSS} (yes/no) in the DF cohort, and \gls{DSS} (yes/no) for MD. Hence, the logistic regression model was the statistical model of choice. In the MD data set, the time point of the occurrence of \gls{DSS} was also recorded; therefore, in theory, time to \gls{DSS} occurrence could also be used as an outcome and a survival model could be applied to develop a prognostic model. However, using time to event as an outcome requires a meaningful time origin. In this setting, two time origins could be used including the time point of enrolment and the time point of disease onset. As the former time point is quite arbitrary, it is less meaningful than the time point of disease onset. However, using the time of disease onset as the time origin posed two problems. First, subjects only came under observation at the time of enrolment and hence, the dataset contains possibly informative left-truncation. Second, several of the selected candidate predictors are in principle time-varying but for the majority of them their values were only recorded at a single time point, i.e. the time of enrolment. Thus, in order, to keep the analysis simple and transparent, I decided to use the logistic regression model as the main statistical model for the analysis of MD data. 
+
+However, the validity of the logistic regression models is based on the assumptions of linearity and additivity of covariate effects while these assumptions are relaxed in several modern approaches.  In addition, some of the more modern approaches are also less prone to over-fitting. Therefore, I also applied modern statistical models including the lasso, \gls{GAM}, \gls{CART}, and gradient boosting with trees as base learners [@Hastie2009] and compared their performances to the main logistic models in order to detect any defects in the latter.
+
+### Model specification
+
+For simplicity, the initial prediction model included all candidate predictors as linear and additive terms. These assumptions were subsequently assessed based on a pre-defined maximum amount of flexibility (``degrees of freedom") allowed for each continuous variables and pre-defined interaction tests. These pre-specifications depended on clinical judgment, expected associations from the literature, and the number of effective events in the data.
+
+### Model assumption assessments
+
+For logistic regression models, the initial simple models were first assessed for the plausibility of common model assumptions.
+
+#### Linearity assumption 
+
+This assumption states that the effect of a candidate predictor on the outcome depends linearly on its value (the linearity is only applied to the appropriate scale of the model, e.g. linear on the log-odds ratio scale for a logistic model). In reality, this assumption is hardly ever completely true; however if the effect of a covariate on the outcome is approximately linear, using a linear model has the benefits of simplicity and transparency. However, the performance of a prediction model can be hampered when a truly non-linear relationship is forced to be linear. In this project, this assumption was assessed in two ways:
+
+* Numerically by performing statistical test to compare goodness-of-fit between the initial model and a more flexible model which allows for non-linear effect. Natural cubic splines with pre-defined degrees of freedom and knot locations are often recommended for modeling non-linear effects [@Harrell2001] and in this case, the linear and non-linear models can be compared using a likelihood ratio test.
+
+* Graphically by assessing estimated non-linear effects of each continuous variable on the outcome from a flexible multivariable model which allows for non-linearity. The flexible multivariable model was chosen as a generalized additive model which included all continuous variables of interest modeled as natural cubic spline functions with automated selection of the required degree of smoothness, and the partial effect of each variable on outcome was extracted and visualized using term plots [@Wood2006].
+
+If pronounced non-linear terms were detected during this assessment, they were added to the model.
+
+In contrast to classical linear regression models, \gls{GAM}, \gls{CART} and boosting with trees as base learners by default allow for non-linear covariate effects. However, in the case of \gls{CART}, the linearity assumption is replaced by the often even less plausible assumption that the covariate effect can be described by a step function.
+
+#### Additivity assumption 
+
+The simple formulation of logistic regression also assumes additivity of covariates effects. This assumption is violated when there are (synergistic or antagonistic) interactions between covariates, i.e. if the effect of one covariate on the outcome depends on the levels of other covariate. Commonly seen interactions in clinical studies are between severity/place/time/age with other candidate predictors [@Steyerberg2010]. In my context, relevant potential interactions are between the day of illness at enrolment/gender and other covariates, and these interactions were assessed by overall interaction tests, i.e. likelihood ratio tests comparing the initial model and the extended model which also included pre-defined interaction terms. If this overall test was significant, further investigation was performed to identify the specific interaction. If pronounced interaction terms were detected during this assessment, they were added to the model.
+
+Of note, the additivity assumption is relaxed in \gls{CART} models and boosting with trees as base learners which automatically include interaction terms.
+
+### Model estimation
+
+Parameters of logistic regression models were estimated using standard maximum likelihood estimation. Estimation of the penalty parameter for the lasso was based on standardized covariates and leave-one-out cross validation with the likelihood as the optimization criterion as implemented in the R package glmnet version `r packageVersion('glmnet')` [@glmnet]. The \gls{CART} model built and pruned back a classification tree using default parameter settings of the R package rpart version `r packageVersion('rpart')` [@rpart]. The \gls{GAM} model was built based on default settings of the R package mgcv version `r packageVersion('mgcv')` [@mgcv]. The implementation automatically estimates the degrees of freedom of smooth terms based on generalized cross-validation. To fit a ``pure" additive model, the interaction terms were not included in the model formula. Finally, a generalized boosted regression model with a Bernoulli distribution for the outcome was fitted using classification trees as base learners as implemented in the R package gbm version `r packageVersion('gbm')` [@gbm]. Each tree has a depth of at most 2 which allows for 2-way interactions. The number of 3000 iterations and the learning rate of 0.001 were chosen as recommended by the gbm package author.
+
+### Model reduction
+
+As some candidate predictors may have negligible effects on the outcome and the full model is generally complex, it is necessary to simplify the model before applying it to clinical practice [@Steyerberg2010]. In this project, I used several different variable selection techniques including stepwise selection using the \gls{AIC} or the \gls{BIC} as selection criteria and best subset selection which searches through all possible models to find the best one regarding \gls{AIC} or \gls{BIC} criteria. Of note, the lasso by default includes variable selection by shrinking coefficients of unimportant variables to zero.
+
+### Model performance
+
+#### Performance criteria
+
+The performance of developed models was assessed in terms of overall performance, discrimination and calibration. These criteria are described in detail in [@Steyerberg2010] and only briefly discussed here. The overall performance of prediction models was quantified with the Brier score which is the average squared difference between patients' observed outcomes (0 for patients without the outcome, 1 for patients with the outcome) and their predicted risks. This quantity can range from 0 for a perfect model to a maximum value depending on the incidence of outcome for a non-informative model (for example 0.25 with a 0.5 incidence of the outcome). Discrimination measures how well a prognostic model can differentiate subjects with and without outcome. This aspect of model performance can be assessed using the c-statistic defined as the \gls{AUC}. An \gls{AUC} of 1 indicates perfect discrimination whereas an \gls{AUC} of 0.5 indicates that the model does not discriminate better than random guessing. Calibration measures the agreement between observed and predicted outcomes. This measure can be quantified in terms of calibration-in-the-large and the calibration slope. Calibration-in-the-large assesses how well the average predicted risk matches the overall observed incidence of the outcome. The optimal value of calibration-in-the-large is 0. Calibration-in-the-large of <0 or >0, respectively, indicate that predicted outcomes are systematically too high or too low. The calibration slope reflects the extremeness of the predicted outcome and is compared to 1. A calibration slope < 1 indicates that the predictions are too extreme; whereas a calibration slope > 1 implies that the predictions are not extreme enough.
+
+#### Correction for optimism
+
+As no independent validation datasets were available to assess performance of prediction models developed in this project, models were evaluated on the development dataset which imposes the risk of optimism, i.e. over-estimation of performance due to over-fitting [@Steyerberg2010]. In order to compensate for optimism and to get a realistic assessment of the performance of the entire model development process, all performance measures were corrected for optimism using temporal validation or 10-times repeated 10-fold cross-validation technique. 
+
+In temporal validation, the whole data was splitted into a training and a test set based on time. The whole model development process was applied on the training set which was the old data, and subsequently, the derived model was assessed on the test set which was the new data. This so-called ``temporal performance" represents a more truthful assessment of the whole modeling process than the optimistic apparent one [@Steyerberg2010] .  
+In 10-times repeated 10-fold cross-validation, the whole modeling procedure except for assumption assessments was firstly repeated 10 times by using a selection of nine tenths of the data for model development and one tenth for validation, respectively [@Steyerberg2010]. The cross-validation was further repeated ten times to minimize dependence on the random split into ten sub-datasets. The performance of the derived model on the test sets was then averaged across the 100 test sets to provide overall optimism-corrected performance measures. 
+
+### Model presentation
+
+The final model which had the best trade-off between simplicity and accuracy was chosen as the basis for a score chart following the approach of [@Sullivan2004]. In brief, the linear predictor of the selected model was rounded and simplified, followed by a categorization of continuous variables and assignment of a point value to each category of a covariate. The total point score for each patient obtained from the score chart is an approximation of the linear predictor corresponding to that patient which can then be converted to a predicted risk. Finally, the adequacy of this score chart was evaluated by comparing risk predictions from the score chart to those of the original statistical model, and by visualizing their agreement with a Bland - Altman plot [@Bland1986].
+
+### Adjustment of model development and validation steps for multiple imputation 
+
+For multiple imputed datasets, the above model development and validation steps were adjusted according to current recommendation [@White2011]. 
+
+For assessing the linearity and additivity assumptions, likelihood ratio test were performed comparing the simple model with linear terms and no interaction terms to models with more flexible terms for each imputed dataset. The results were then combined with method given by Meng & Rubin [@Meng1992]. Likewise, the overall multivariable model was derived by using Rubin’s rule to combine the multivariable models fitted on each imputed dataset. 
+
+Variable selection was based on backwards stepwise model selection [@Hastie2009]. At each variable selection step, the model of interest was fitted to all imputed datasets and the least significant predictor was excluded if its pooled p value was larger than 0.15 (the p-value cut-off of 0.15 was chosen to approximately mimic variable selection based on \gls{AIC}). The final model was obtained by applying Rubin's rule to aggregate parameter estimates from a model which included all predictors that remained after the variable selection procedure across imputed datasets.
+
+Regarding model validation, both temporal and cross-validation were performed as described above. In both cases, the whole modeling procedure for each statistical model of interest was applied to each imputed training set. Predictions of each fitted model on the corresponding imputed test set were obtained and then compared to observed outcomes in the test set of each imputed dataset to derive performance measure. These measures were then averaged across imputed test sets to provide a single set of measures for each model. 
+
+### Statistical software
+\label{subsec:methods_software}
+
+All analyses were performed with the statistical software `r R.Version()$version.string` [@R] and its companion packages including machine learning and multiple imputation packages (as described in the previous sections) and other packages including Hmisc version `r packageVersion('Hmisc')` [@Hmisc], ggplot2 version `r packageVersion('ggplot2')` [@ggplot2], plyr version `r packageVersion('plyr')` [@plyr] and dplyr version `r packageVersion('dplyr')` [@dplyr].
+
+### Baseline versus dynamic prediction models
+
+Traditionally, a prediction models relies on data collected at a single time point (at the time of presentation, admission, diagnosis or initiation of an intervention) to predict outcomes in the future. Even though many of these traditional prediction models are useful in clinical practice, they have several shortcomings:
+
+* Initial predictions tend to become less relevant as the disease progresses [@Rue2001]. A possible explanation is that a prediction model based on baseline information only cannot capture changes in the patient's clinical profile according to their response to treatment or natural physiologic variation reflecting the course of the disease, which may be strong predictors of the outcome [@Rue2001]. Furthermore, baseline models might also miss complications, which may strongly affect outcome, while being present at baseline but require time to become clinically apparent [@Lemeshow1988]. As a result, baseline models might not be transferable to later time points and therefore, they may not be used for individual management decisions at those time points [@Lemeshow1994, @Wagner1994] .
+
+*	Longitudinal information during the patient’s disease course is nowadays frequently collected in clinical practice, especially with the introduction of electronic health record. Baseline models are inefficient in the sense that they ignore all this subsequent after baseline.
+
+For these reasons, dynamic prediction models, which predict the future course of the disease at follow-up time points based on the accruing longitudinal information, are required to allow updating a patients' prognosis over time [@VanHouwelingen2012]. By using all available data, such models may provide much more accurate predictions compared to baseline models in many settings [@Lemeshow1988, @Christensen1993, @Hughes1992, @Rue2001, @Karp2004]. Dynamic prediction may also be appealing for clinicians as it mimics the iteration of obtaining information and updating prognosis based on the new information, a task that physicians routinely do every day in clinical practice.
+
+## Additional considerations
+
+### Sample size
+
+### Missing data
+
+### Incorporating longitudinal predictors
+
+### Competing risks
+
+### Acute vs. chronic diseases
+
+### Big data
+
+### Heterogeneity
+
+## (PART) Utilization
+
+### From prediction model to prediction rule
+
+### How to apply prediction models in clinical practice?
+
+### Will prediction models be used in clinical practice?
+
+### Clinical Decision Support System {#pmCDSS}
+
+#### Reading list
+
+* Berner, E. S., Brooks, C. M., Miller, R. A., Masarie, F. E., & Jackson, J. R. (1989). Evaluation issues in the development of expert systems in medicine. Evaluation & the health professions, 12(3), 270–281.
+
+* Langton, K. B., Johnston, M. E., Haynes, R. B., & Mathieu, A. (1992). A critical appraisal of the literature on the effects of computer-based clinical decision support systems on clinician performance and patient outcomes. Proceedings / the ... Annual Symposium on Computer Application [sic] in Medical Care. Symposium on Computer Applications in Medical Care, 626–630.
+
+* Bankowitz, R. A., Lave, J. R., & McNeil, M. A. (1992). A method for assessing the impact of a computer-based decision support system on health care outcomes. Methods of Information in Medicine, 31(1), 3–10.
+
+* Shortliffe, E. H. (1993). The adolescence of AI in medicine: will the field come of age in the ’90s? Artificial Intelligence in Medicine, 5(2), 93–106.
+
+* Johnston, M. E., Langton, K. B., Haynes, R. B., & Mathieu, A. (1994). Effects of computer-based clinical decision support systems on clinician performance and patient outcome. A critical appraisal of research. Annals of Internal Medicine, 120(2), 135–142.
+
+* Miller, R. A. (1994). Medical diagnostic decision support systems--past, present, and future: a threaded bibliography and brief commentary. Journal of the American Medical Informatics Association, 1(1), 8–27.
+
+* Li, Y. C., Haug, P. J., Lincoln, M. J., Turner, C. W., Pryor, T. A., & Warner, H. H. (1995). Assessing the behavioral impact of a diagnostic decision support system. Proceedings / the ... Annual Symposium on Computer Application [sic] in Medical Care. Symposium on Computer Applications in Medical Care, 805–809.
+
+* Shortliffe, E. H. (1995). When decision support doesn’t support. Medical Decision Making, 15(2), 187–188.
+
+* Miller, R. A. (1996). Evaluating evaluations of medical diagnostic systems. Journal of the American Medical Informatics Association, 3(6), 429–431.
+
+* Ridderikhoff, J., & van Herk, E. (1997). A diagnostic support system in general practice: is it feasible? International Journal of Medical Informatics, 45(3), 133–143.
+
+* Hunt, D. L., Haynes, R. B., Hanna, S. E., & Smith, K. (1998). Effects of computer-based clinical decision support systems on physician performance and patient outcomes: a systematic review. The Journal of the American Medical Association, 280(15), 1339–1346.
+
+* Berner, E. S., & Maisiak, R. S. (1999). Influence of case and physician characteristics on perceptions of decision support systems. Journal of the American Medical Informatics Association, 6(5), 428–434.
+
+* Wendt, T., Knaup-Gregori, P., & Winter, A. (2000). Decision support in medicine: a survey of problems of user acceptance. Studies in Health Technology and Informatics, 77, 852–856.
+
+* Kaplan, B. (2001). Evaluating informatics applications--clinical decision support systems literature review. International Journal of Medical Informatics, 64(1), 15–37.
+
+* Sim, I., Gorman, P., Greenes, R. A., Haynes, R. B., Kaplan, B., Lehmann, H., & Tang, P. C. (2001). Clinical decision support systems for the practice of evidence-based medicine. Journal of the American Medical Informatics Association, 8(6), 527–534.
+
+* Leong, T.-Y. (2003). Decision support systems in healthcare: emerging trends and success factors. In X. Yu & J. Kacprzyk (Eds.), Applied Decision Support with Soft Computing, Studies in fuzziness and soft computing (Vol. 124, pp. 151–179). Berlin, Heidelberg: Springer Berlin Heidelberg.
+
+* Kalogeropoulos, D. A., Carson, E. R., & Collinson, P. O. (2003). Towards knowledge-based systems in clinical practice: development of an integrated clinical information and knowledge management support system. Computer Methods and Programs in Biomedicine, 72(1), 65–80.
+
+* Bates, D. W., Kuperman, G. J., Wang, S., Gandhi, T., Kittler, A., Volk, L., Spurr, C., et al. (2003). Ten commandments for effective clinical decision support: making the practice of evidence-based medicine a reality. Journal of the American Medical Informatics Association, 10(6), 523–530.
+
+* Berner, E. S., & Lande, T. L. (2004). Clinical decision support systems: impacting the future of clinical decision making. In M. J. Ball, C. A. Weaver, & J. M. Kiel (Eds.), Healthcare information management systems (pp. 463–477). New York, NY: Springer New York.
+
+* Berner, E. S. (2006). Diagnostic decision support systems: why aren’t they used more and what can we do about it? AMIA Annual Symposium Proceedings, 1167–1168.
+
+* Liu, J., Wyatt, J. C., & Altman, D. G. (2006). Decision tools in health care: focus on the problem, not the solution. BMC Medical Informatics and Decision Making, 6, 4.
+
+* Osheroff, J. A., Teich, J. M., Middleton, B., Steen, E. B., Wright, A., & Detmer, D. E. (2006). A Roadmap for National Action on Clinical Decision Support . AMIA Board of Directors.
+
+* Miller, R. A. (2009). Computer-assisted diagnostic decision support: history, challenges, and possible paths forward. Advances in health sciences education : theory and practice, 14 Suppl 1, 89–106.
+
+* Miller, R. A. (2010). A History of the INTERNIST-1 and Quick Medical Reference (QMR) Computer-Assisted Diagnosis Projects, with Lessons Learned. Yearbook of medical informatics, 19(01), 121–136.
+
+* Hemens, B. J., Holbrook, A., Tonkin, M., Mackay, J. A., Weise-Kelly, L., Navarro, T., Wilczynski, N. L., et al. (2011). Computerized clinical decision support systems for drug prescribing and management: a decision-maker-researcher partnership systematic review. Implementation Science, 6, 89.
+
+* Souza, N. M., Sebaldt, R. J., Mackay, J. A., Prorok, J. C., Weise-Kelly, L., Navarro, T., Wilczynski, N. L., et al. (2011). Computerized clinical decision support systems for primary preventive care: a decision-maker-researcher partnership systematic review of effects on process of care and patient outcomes. Implementation Science, 6, 87.
+
+* Roshanov, P. S., You, J. J., Dhaliwal, J., Koff, D., Mackay, J. A., Weise-Kelly, L., Navarro, T., et al. (2011). Can computerized clinical decision support systems improve practitioners’ diagnostic test ordering behavior? A decision-maker-researcher partnership systematic review. Implementation Science, 6, 88.
+
+* Roshanov, P. S., Misra, S., Gerstein, H. C., Garg, A. X., Sebaldt, R. J., Mackay, J. A., Weise-Kelly, L., et al. (2011). Computerized clinical decision support systems for chronic disease management: a decision-maker-researcher partnership systematic review. Implementation Science, 6, 92.
+
+* Sahota, N., Lloyd, R., Ramakrishna, A., Mackay, J. A., Prorok, J. C., Weise-Kelly, L., Navarro, T., et al. (2011). Computerized clinical decision support systems for acute care management: a decision-maker-researcher partnership systematic review of effects on process of care and patient outcomes. Implementation Science, 6, 91.
+
+* Nieuwlaat, R., Connolly, S. J., Mackay, J. A., Weise-Kelly, L., Navarro, T., Wilczynski, N. L., Haynes, R. B., et al. (2011). Computerized clinical decision support systems for therapeutic drug monitoring and dosing: a decision-maker-researcher partnership systematic review. Implementation Science, 6, 90.
+
+* Middleton, B. (2012, July 18). The clinical decision support consortium:      overview . Presented at the AMIA CDS-WG.
+
+* Lauterbach, C. V., & Still, J. D. (2013). Implementing Scenarios as an Evaluation Method of the Patient-Physician Interaction in Decision Aids. In V. G. Duffy (Ed.), Digital human modeling and applications in health, safety, ergonomics, and risk management. healthcare and safety of the environment and transport, Lecture notes in computer science (Vol. 8025, pp. 232–239). Berlin, Heidelberg: Springer Berlin Heidelberg.
+
+* Zuccotti, G., Maloney, F. L., Feblowitz, J., Samal, L., Sato, L., & Wright, A. (2014). Reducing risk with clinical decision support: a study of closed malpractice claims. Applied clinical informatics, 5(3), 746–756.
+
+* Porat, T., Kostopoulou, O., Woolley, A., & Delaney, B. C. (2016). Eliciting user decision requirements for designing computerized diagnostic support for family physicians. Journal of cognitive engineering and decision making, 10(1), 57–73.
+
+* Riches, N., Panagioti, M., Alam, R., Cheraghi-Sohi, S., Campbell, S., Esmail, A., & Bower, P. (2016). The Effectiveness of Electronic Differential Diagnoses (DDX) Generators: A Systematic Review and Meta-Analysis. Plos One, 11(3), e0148991.
+
+* Dagliati, A., Tibollo, V., Sacchi, L., Malovini, A., Limongelli, I., Gabetta, M., Napolitano, C., et al. (2018). Big data as a driver for clinical decision support systems: A learning health systems perspective. Frontiers in Digital Humanities, 5.
+
+* Van de Velde, S., Kunnamo, I., Roshanov, P., Kortteisto, T., Aertgeerts, B., Vandvik, P. O., Flottorp, S., et al. (2018). The GUIDES checklist: development of a tool to improve the successful use of guideline-based computerised clinical decision support. Implementation Science, 13(1), 86.
+
+* Zikos, D., & DeLellis, N. (2018). CDSS-RM: a clinical decision support system reference model. BMC Medical Research Methodology, 18(1), 137.
+
+* Wasylewicz, A. T. M., & Scheepers-Hoeks, A. M. J. W. (2019). Clinical decision support systems. In P. Kubben, M. Dumontier, & A. Dekker (Eds.), Fundamentals of clinical data science. Cham (CH): Springer.
+
+* Albarillo, F. S., Labuszewski, L., Lopez, J., Santarossa, M., & Bhatia, N. K. (2019). Use of a Clinical Decision Support System (CDSS) to improve antimicrobial stewardship efforts at a single academic medical center. Germs, 9(2), 106–109.
+
+* Scott, P. J., Brown, A. W., Adedeji, T., Wyatt, J. C., Georgiou, A., Eisenstein, E. L., & Friedman, C. P. (2019). A review of measurement practice in studies of clinical decision support systems 1998-2017. Journal of the American Medical Informatics Association, 26(10), 1120–1128.
+
+* Clinical Decision Support Systems: Theory and Practice
+
+### Lab
+
+* [Clinical Decision Making at Havard Medical School](https://dbmi.hms.harvard.edu/research-areas/clinical-decision-making)
+
+* [Center for Health Decision Science](https://chds.hsph.harvard.edu/)
+
+* [LABORATORY FOR RATIONAL DECISION MAKING at Cornell University](https://www.human.cornell.edu/hd/research/labs/lrdm/home)
+
+* [MIT CSAIL Clinical Decision Making Group](http://groups.csail.mit.edu/medg/)
+
+* [Leicester Judgment and Decision Making Research Group](https://www2.le.ac.uk/departments/psychology/research/JDMSP)
+
+## Impact {#pmImpact}
+
+### Reading lists
+
+* Kappen thesis on Prediciton models: https://f1000.com/work/#/items/7892986/detail?collection=392279
+    + Adaptation of Clinical Prediction Models for Application in Local Settings: https://f1000.com/work/#/items/3928461/detail?collection=392279
+    + Impact of Risk Assessments on Prophylactic Antiemetic Prescription and the Incidence of Postoperative Nausea and Vomiting: a Cluster-Randomized Trial ()
+    + How Clinical Prediction Models Impact Decision Making by Physicians: an Example Study
+    + Impact of Adding Therapeutic Recommendations to Risk Assessments from a Prediction Model for Postoperative Nausea and Vomiting
+    + Evaluating the Impact of the Use of Prediction Models in Clinical Practice: Challenges and Recommendations
+    + Decision Support in the Context of a Complex Decision Situation 
+
+* Pim van Montfort thesis on implementing prediction models:
+    + Part I: Framework of conditions for implementing personalized obstetric care
+        > 
+    + Part II: Implementation and impact of personalized obstetric care
+
+#### General guidelines
+
+* Recent recommendations on evaluating impact of prediction models: Kappen et al. Diagnostic and Prognostic Research (2018) 2:11, DOI: 0.1186/s41512-018-0033-6 (https://f1000.com/work/item/6335787/resources/7296795/pdf). With real data on 2 prospective studies evaluating directive and assisstive models (suggest that directive model is more useful)
+
+* Wallace E. et al. BMC Medical Informatics and Decision Making 2011,11:62
+
+* Example of how decision analytic modeling can be used to assess the impact of a prediction model: Jenniskens, K. et al. J Clin Epidemiol 2019; 115:106-115 (https://f1000.com/work/#/items/7584644/detail?collection=392279)
+
+* Case study on CAD:
+    + Chan, H.P. et al. Investigative Radiology 1990, 25(10):1002-10.
+    + Fenton, J.J. et al. NEJM 2007, 356:1399-409.
+    + Lehman, C.D. et al. JAMA Intern Med 2015;175(11):1828-37
+    
+* Assessing new biomarkers and predictive models for use in clinical practice: a clinician's guide (https://f1000.com/work/#/items/5511638/detail?collection=392279)
+
+* A new framework to enhance the interpretation of external validation studies of clinical prediction models. (https://f1000.com/work/#/items/3923939/detail?collection=392279)
+
+* Con: Most clinical risk scores are useless (https://f1000.com/work/#/items/5513816/detail?collection=392279)
+
+* Understanding clinical prediction models as 'innovations': a mixed methods study in UK family practice. (https://f1000.com/work/#/items/5513821/detail?collection=392279)
+
+* Barriers and facilitators perceived by physicians when using prediction models in practice (https://f1000.com/work/#/items/6749168/detail?collection=392279)
+
+* Beyond accuracy: Measures for assessing machine learning models, pitfalls and guidelines (https://f1000.com/work/#/items/7390573/detail?collection=392279)
+
+* Methodological standards for the development and evaluation of clinical prediction rules: a review of the literature (https://f1000.com/work/#/items/7352060/detail?collection=392279)
+
+* Prospective evaluation of screening performance of first-trimester prediction models for preterm preeclampsia in an Asian population (https://f1000.com/work/#/items/7892998/detail?collection=392279)
+
+* Diffusing an innovation: clinician perceptions of continuous predictive analytics monitoring in intensive care. (https://f1000.com/work/#/items/7584901/detail?collection=392279)
+
+* IMPLEMENTATION OF PHARMACOGENETIC RISK PREDICTION MODELS IN PEDIATRIC ONCOLOGY (Master thesis) (https://f1000.com/work/#/items/7893000/detail?collection=392279)
+
+* Systematic review of health economic impact evaluations of risk prediction models: stop developing, start evaluating (https://f1000.com/work/#/items/7893006/detail?collection=392279)
+
+* Building Reality Checks into the Translational Pathway for Diagnostic and Prognostic Models (https://f1000.com/work/#/items/7893007/detail?collection=392279)
+
+* Key steps and common pitfalls in developing and validating risk models (https://f1000.com/work/#/items/7893014/detail?collection=392279)
+
+* EVALUATING RISK-PREDICTION MODELS USING DATA FROM ELECTRONIC HEALTH RECORDS (https://f1000.com/work/#/items/7893017/detail?collection=392279)
+
+* Prediction models: the right tool for the right problem (https://f1000.com/work/#/items/7893020/detail?collection=392279)
+
+* Prediction Models　- Why Are They Used or Not Used? (https://f1000.com/work/#/items/7893054/detail?collection=392279)
+
+
+* Clinical prediction rules: A systematic review of healthcare provider opinions and preferences (https://f1000.com/work/#/items/7893057/detail?collection=392279)
+
+* Defining evidence for precision medicine: A patient is more than a set of covariates (https://f1000.com/work/#/items/7893062/detail?collection=392279)
+
+#### Example
+
+* Advancing Continuous Predictive Analytics Monitoring: Moving from Implementation to Clinical Action in a Learning Health System (https://f1000.com/work/#/items/6749187/detail?collection=392279)
+
+* Design and implementation of a pediatric ICU acuity scoring tool as clinical decision support (https://f1000.com/work/#/items/7893036/detail?collection=392279)
+
+* Impact of risk assessments on prophylactic antiemetic prescription and the incidence of postoperative nausea and vomiting: a cluster-randomized trial (https://f1000.com/work/#/items/7893070/detail?collection=392279)
+
+* Impact of adding therapeutic recommendations to risk assessments from a prediction model for postoperative nausea and vomiting (https://f1000.com/work/#/items/5826484/detail?collection=392279)
+
+### Assessing model's usefulness
+
+## AI and ML in healthcare
+
+### What is AI?
+
+### How AI can improve healthcare?
+
+### Current stage of AI in healthcare?
+
+* Technology?
+* Application?
+
+### Underuse of AI in healthcare: why and remedy?
+
+* failed to capitalize on the special observational skills of physicians [@Shortliffe1993, @Miller1990].
+* failed to allow the user adequately to control the interaction, selecting the ways in which the program’s knowledge could most effectively be brought to bear in the consideration of a particular case [@Shortliffe1993, @Miller1990]
+* the disarray of our health-care system and its failure to build the local, regional, national, and international infrastructure for biomedical computing and communications that will be required before computer-based decision-support tools can become routine elements in the clinical setting [@Shortliffe1993]
+* inertia: systems have been designed for single problems that arise infrequently and have generally not been integrated into the routine data-management environment of the user [@Shortliffe1993]
+
+Solutions
+
+* Physicians will be attracted to computers when they are useful for essentially every patient and when the metaphor for system use is consistent across the varied applications that are offered: physician's workstation [@Shortliffe1993, @Tang1991]
+
+* The existence of a high-level institutional support for medical computing applications in clinical settings [@Shortliffe1993]
+
+### References
+
+* William J. Clancey & Edward H. Shortliffe (1984) Readings in Medical Artificial Intelligence: The First Decade. URL: http://people.dbmi.columbia.edu/~ehs7001/Clancey-Shortliffe-1984/Readings%20Book.htm
+
+* Ian Goodfellow, Yoshua Bengio, Aaron Courville (2015) Deep Learning.
+
+* Christopher D. Manning & Hinrich Schütze (1999) Foundations of Statistical Natural Language Processing.
+
+* Christopher Bishop (2007) Pattern Recognition and Machine Learning (Information Science and Statistics).
+
+* Decision Making in Health and Medicine: Integrating Evidence and Values
+
+* Medical Decision Making
+
+* Computer-Assisted Medical Decision Making
+
+* Medical Thinking: The Psychology of Medical Judgment and Decision Making
+
+* Clinical Decision Support Systems: Theory and Practice. URL: http://eknygos.lsmuni.lt/springer/583/
+
+* BIOMEDICAL INFORMATICS: Computer Applications in Health Care and Biomedicine
+
+* https://www.youtube.com/watch?v=A4-7kuO4r1o&feature=youtu.be
+
+* How AI Can Lead to Better Predictions: http://ide.mit.edu/news-blog/blog/how-ai-can-lead-better-predictions
+
+* https://f1000.com/work/item/7236611/resources/6513755/pdf
+
+### Other notes
+
+#### What is machine learning/AI?
+* Definition of machine learning (Beam and Kohane 2018) :
+ “an algorithm as existing along a continuum between fully human-guided vs fully machine-guided data analysis”
+“The trade-off between human specification of a predictive algorithm’s properties vs learning those properties from data is what is known as the machine learning spectrum”
+Big data in health (Weil 2014)
+EHR (Jones and Furukawa 2014; Hoeven et al. 2017)
+“the generation of data in massive quantities,  from sources such as high-resolution medical imaging, biosensors  with continuous output of physiologic metrics, genome sequencing, and electronic medical records.” (Topol 2019)
+
+* Expert system: Expert systems work the way an  ideal medical student would: they  take general principles about medicine and apply them to new patients. Whereas Machine learning, conversely, approaches problems as a doctor  progressing through residency  might: by learning rules from data. (Obermeyer and Emanuel 2016)
+
+* Key features of ML in predictive problem (Obermeyer and Emanuel 2016)
+Dynamic set with large number of variables vs. static set of variables
+Overfit  & validation
+Large quantity of data, quality of data (bias)
+does not solve any of the fundamental  problems of causal inference, predictors are  not causes
+
+#### ML vs. Human learning?
+“A key difference between human learning and machine learning is that humans can learn to make general and complex associations from small amounts of data. Machines, in general, require many more examples than humans to learn the same task, and machines are not endowed with common sense.” (Rajkomar et al. 2019)
+
+“machines can learn from massive  amounts of data. Whereas it is very difficult for a human physician to see more than a few tens of thousands of patients in an entire career.” (Rajkomar et al. 2019)
+
+#### Problem with human decision making
+Uncertainty and Trust (Armstrong 2018)
+
+#### Potential usefulness of machine learning/AI in medicine?
+Potential benefit of ML (Rajkomar et al. 2019)
+Review decision make by clinicians
+Identify the most effective treatment
+
+ML can augment the work of clinicians (Rajkomar et al. 2019)
+Prognosis
+“can help physicians to anticipate  future events at an expert level, drawing from  information well beyond the individual physician’s  practice experience”
+“At a  population level, the same type of forecasting  can enable reliable identification of patients who  will soon have high-risk conditions or increased  utilization of health care services; this information can be used to provide additional resources  to proactively support them.”
+Diagnosis
+“With data collected during routine care, machine learning could be used to identify likely  diagnoses during a clinical visit and raise awareness of conditions that are likely to manifest  later.”
+“However, such approaches have limitations. Less skilled clinicians may not elicit the  information necessary for a model to assist  them meaningfully, and the diagnoses that the  models are built from may be provisional or incorrect, may be conditions that do not manifest symptoms (and thus may lead to over-diagnosis), may be influenced by billing, or may simply not be recorded. “
+“However, models could  suggest questions or tests to physicians on the basis of data collected in real time; these suggestions could be helpful in scenarios in which  high-stakes misdiagnoses are common (e.g.,  childbirth) or when clinicians are uncertain.”
+“The  discordance between diagnoses that are clinically correct and those recorded in EHRs or reimbursement claims means that clinicians should  be involved from the outset in determining how  data generated as part of routine care should be  used to automate the diagnostic process”
+Treatment
+“Can a model sort  through these natural variations (variation in when and why patients present for care and how patients with  similar conditions are treated) to help physicians identify when the collective experience  points to a preferred treatment pathway”
+“a model trained on historical data would  learn only the prescribing habits of physicians,  not necessarily the ideal practices. To learn which  medication or therapy should be prescribed to  maximize patient benefit requires either carefully curated data or estimates of causal effects,  which machine-learning models do not necessarily — and sometimes cannot with a given  data set — identify.”
+“can also be used to automatically select patients who might be eligible  for randomized, controlled trials on the basis of  clinical documentation or to identify high-risk patients or subpopulations who are likely to  benefit from early or new therapies under study”
+Clinical workflow
+EHR
+Machine  learning that drives search engines can help  expose relevant information in a patient’s chart  for a clinician without multiple clicks
+Data entry of forms and text fields can be improved  with the use of machine-learning techniques  such as predictive typing, voice dictation, and automatic summarization
+automatically  authorize payment based on information already  recorded in the patient’s chart
+why helpful?
+Better in capturing and recording health care data
+allow clinicians to spend more time with their patients
+Surgery
+real-time  analysis of video of the surgical field to help  surgeons avoid critical anatomical structures or  unexpected variants or even handle more mundane tasks such as accurate counting of surgical  sponges
+Checklists can prevent surgical error, and unstinting automated monitoring of their  implementation provides additional safety
+Expanding the availability of clinical expertise
+Can machine learning extend the reach of clinicians to provide expert-level medical assessment  without personal involvement?
+obtain a  diagnosis by sending a picture that they take on  their smartphones, averting unnecessary urgent-care visit
+automated triage system and,  when appropriate, be directed to another form  of care, identify physicians  with the most relevant expertise and availability.
+may need to be hospitalized could stay at home if machines can remotely  monitor their sensor data.
+nurses might be able to take on many  tasks that are traditionally performed by doctors, primary care doctors might be able to perform some of the roles traditionally performed  by medical specialists, and medical specialists  could devote more of their time to patients who  would benefit from their particular expertise.
+machine learning in direct-to-patient applications is hindered  by formal retrospective and prospective evaluation methods
+Systematic review
+ (Shekelle et al. 2017)
+(Hemens and Iorio 2017)
+(DiCenso et al. 2009)
+(Alper and Haynes 2016)
+(Tshitoyan et al. 2019)
+ML vs EBM (Scott 2018)
+Automated Computer Density Measurement (Elmore and Wruble 2018)
+symptom checker (Fraser et al. 2018)
+Combine human prediction and ML prediction to predict disease course (Tacchella et al. 2018)
+Real-time diagnosis system (Wang et al. 2019)
+Create value in healthcare (Roski et al. 2014)
+Identify high-risk & high-cost patients (Bates et al. 2014)
+Rapid-learning health system (Etheredge 2014)
+Patient-Generated Data (Howie et al. 2014) 
+(Saunders 2014) 
+Genomic Sequencing (Phillips et al. 2014)
+
+For clinicians (Topol 2019)
+help interpret medical scans, pathology slides, skin lesions, retinal images, electrocardiograms, endoscopy, faces, and vital signs.
+
+
+For the health system
+For patients
+For data analysis
+
+#### Challenges to develop ML/AI in medicine?
+Bias in the training dataset 
+(Rajkomar et al. 2018)
+(Goodman et al. 2018)
+(Gianfrancesco et al. 2018)
+(Taniguchi et al. 2018)
+Learning from undesirable past practices (Rajkomar et al. 2019): missing data on those who should receive care, historical data on unnecessary treatment 
+Bias and iterated learning (Griffiths et al. 2008; Kaush et al. 2007; Griffiths and Kalish 2007; Sun et al. 2018; Griffiths and Christian 2006)
+Intertwined with  this concern of exacerbating pre-existing inequities is embedded  bias present in many algorithms due to lack of inclusion of minorities in datasets (Topol 2019)
+
+Availability of high-quality data (Rajkomar et al. 2019)
+Large amount of training data, even noisy  privacy & regulatory requirements
+Small but high quality data to generate a “ground truth”
+
+EHR
+Cleaning (Dziadkowiec et al. 2016)
+
+Real world data sources (Chen and Asch 2017)
+Less structured compared to data from high quality prospective study
+Prone to inadvertent bias: patient self-selection, confounding by indication, inconsistent  availability of outcome data 
+
+Prediction vs. classification
+Optimal decision = prediction + apply loss/cost/utility function to minimize expected loss & maximize expected utility (different user can use different loss/utility function) (Harrell n.d.)
+Classification = prediction + decision making (assuming all end user use the same utility function and the classification uses that correct one) (Harrell n.d.)
+
+Choose between prediction & classification
+Mechanistic (high signal:noise ratio): classification
+Probabilistic/Stochastic (low signal:noise ratio): prediction
+
+#### Challenges to apply ML/AI in medicine?
+the major barriers to adoption involve not the development of  models but technical infrastructure; legal, privacy, and policy frameworks across EHRs; health  systems; and technology providers. (Rajkomar et al. 2019)
+
+Overreliance on machine-learning models in making decisions or analyzing images  may lead to automation bias, and physicians may have decreased vigilance for errors. (Rajkomar et al. 2019) 
+This is  especially problematic if models themselves are  not interpretable enough for clinicians to identify situations in which a model is giving incorrect advice (Rajkomar et al. 2019)
+
+Expertise in regulation, oversight, and safe use (Rajkomar et al. 2019)
+will require a similarly sophisticated structure of regulatory oversight,  legal frameworks, and local practices to ensure the safe development, use, and monitoring  of systems.
+Critically, clinicians and patients who use machine-learning systems need to understand  their limitations, including instances in which a  model is not designed to generalize to a particular  scenario
+(Amarasingham et al. 2014)
+(Cohen et al. 2014)
+(Krumholz 2014)
+Privacy protection (Cohen and Mello 2019)
+(Cilliers 2019)
+Role of physicians (Sniderman et al. 2015)
+Balance innovation and safety (Auerbach et al. 2018)
+Regulatory framework (Elenko et al. 2015)
+Aggregate Patient Data (Longhurst et al. 2014)
+Ethics
+(Baldini et al. 2018)
+(Martinez-Martin and Kreitmair 2018; Fiske et al. 2019)
+(Segura Anaya et al. 2018)
+(Martinez-Martin et al. 2018)
+Publications and dissemination of research (Rajkomar et al. 2019)
+
+Unintended consequences (Cabitza et al. 2017)
+Reducing the Skills of Physicians: overreliance on the capabilities of automation, can affect physicians’ ability to derive informed opinions on the basis of detectable signs, symptoms, and available data. Further research is needed to better understand whether the overreliance on ML-DSS that could outperform or perform as well as human observers could also cause a subtle loss of self-confidence and affect the willingness of a physician to provide a definitive interpretation or diagnosis.
+Focus on Text and the Demise of Context: lead to focusing more on what can be rendered as text (ie, data) at the expense of other elements that are more difficult or impossible to easily describe. lack of information may lead to partial or misleading interpretations of ML-DSS diagnostics and therapeutic or prognostic outputs. It also could lead to reduced interest in and decreased ability to perform holistic evaluations of patients, with loss of valuable and irreducible aspects of the human experience such as psychological, relational, social, and organizational issues.
+Intrinsic Uncertainty in Medicine: intrinsic uncertainty of medical observations and interpretations: exist but is not usually considered.
+The Need to Open the Machine Learning Black Box: 
+
+Evidence of effectiveness
+(Bright et al. 2012)
+
+Unintended future use of data (O’Doherty et al. 2016)
+
+Remain questions (Fallik 2014)
+
+Implement challenge (Shaw et al. 2019)
+
+Patient
+Special consideration is needed for machine-learning applications targeted directly to patients.  Patients may not have ways to verify that the  claims made by a model maker have been substantiated by high-quality clinical evidence or  that a suggested action is reasonable. (Rajkomar et al. 2019)
+
+Automation bias
+Not all clinical decisions benefit from automation (Sintchenko and Coiera 2003; Paquerault et al. 2010)
+Systematic review about automation bias (Lyell and Coiera 2017; Goddard et al. 2014) 
+Automation bias in electronic prescribing (Lyell et al. 2018; Lyell et al. 2019; Lyell et al. 2017)
+Automation bias in CAD mamography (Alberdi et al. 2004; Povyakalo et al. 2013)
+Electrocardiogram (Tsai et al. 2003)
+
+Black box 
+it may not be possible to understand the determination of output. This opaqueness has led to both demands  for explainability, such as the European Union’s General Data  Protection Regulation requirement for transparency—deconvolution of an algorithm’s black box—before an algorithm can be used  for patient care194. While this debate of whether it is acceptable to use nontransparent algorithms for patient care is unsettled, it is notable  that many aspects of the practice of medicine are unexplained, such  as prescription of a drug without a known mechanism of action (Topol 2019)
+(Castelvecchi 2016)
+
+Privacy: 
+there will be little  interest in use of algorithms that risk revealing the details of patient  medical history198. Moreover, there is the risk of deliberate hacking of an algorithm to harm people at a large scale, such as overdosing insulin in diabetics or stimulating defibrillators to fire inside the  chests of patients with heart disease. It is increasingly possible for  an individual’s identity to be determined by facial recognition or  genomic sequence from massive databases, which further impedes  protection of privacy. At the same time, the blurring of truth made  possible by generative adversarial networks, with seemingly unlimited capacity to manipulate content, could be highly detrimental for  health (Topol 2019)
+
+#### Expectation vs. Reality
+
+##### Expectations
+“transform health care with the widespread capture  of electronic health records and  high-volume data streams from  sources ranging from insurance  claims and registries to personal  genomics and biosensors.” (Chen and Asch 2017)
+
+Increasingly, the ability to transform data into knowledge  will disrupt at least three areas of  medicine: (Obermeyer and Emanuel 2016)
+First, machine learning  will dramatically improve the ability of health professionals to establish a prognosis. Current models are limited to a handful of predictors as data need to be input manually. If data input can be automated/streamlined → can use more complicated models
+machine learning will displace much of the work of radiologists and anatomical pathologist
+machine learning will improve diagnostic accuracy. Algorithms will soon generate differential diagnoses, suggest high-value tests, and reduce  overuse of testing
+
+##### Reality
+“machine learning now  rides atop the “peak of inf lated  expectations.” (Chen and Asch 2017)
+
+Machine-learning methods are particularly suited to predictions  based on existing data, but precise predictions about the distant  future are often fundamentally  impossible. (Chen and Asch 2017). 
+
+if the future will not necessarily resemble the past,  simply accumulating mass data  over time has diminishing returns. (Chen and Asch 2017)
+
+Research into decision-support  algorithms that automatically  learn inpatient medical practice  patterns from electronic health  records reveals that accumulating  multiple years of historical data  is worse than simply using the  most recent year of data. (Chen and Asch 2017)
+
+When  our goal is learning how medicine should be practiced in the  future, the relevance of clinical  data decays with an effective  “half-life” of about 4 months (Chen et al. 2017)
+
+no  amount of algorithmic finesse  or computing power can squeeze  out information that is not present. That’s why clinical data alone  have relatively limited predictive  power for hospital readmissions  that may have more to do with  social determinants of health. (Chen and Asch 2017)
+
+chaos theory  explains why even simple nonlinear systems cannot be precisely  predicted into the distant future.  The so-called butterf ly effect refers to the future’s extreme sensitivity to initial conditions. Tiny  variations, which seem dismissible  as trivial rounding errors in measurements, can accumulate into  massively different future events.  Identical twins with the same  observable demographic characteristics, lifestyle, medical care, and  genetics necessarily generate the  same predictions — but can still  end up with completely different  real outcomes. (Chen and Asch 2017)
+
+By reframing complex phenomena in terms  of limited multiple-choice questions (e.g., Will you have a heart  attack within 10 years? Are you  more or less likely than average  to end up back in the hospital  within 30 days?), predictive algorithms can operate as diagnostic  screening tests to stratify patient  populations by risk and inform  discrete decision making (Chen and Asch 2017)
+
+even a perfectly calibrated prediction model may not  translate into better clinical care. An accurate prediction of a patient outcome does not tell us  what to do if we want to change  that outcome — in fact, we cannot even assume that it’s possible  to change the predicted outcomes (Chen and Asch 2017)
+
+Although predictive algorithms cannot eliminate medical uncertainty, they already improve allocation of scarce health care resources, helping to avert hospitalization  for patients with low-risk pulmonary embolisms (PESI) and fairly  prioritizing patients for liver transplantation by means of MELD  scores. Early-warning systems that  once would have taken years to  create can now be rapidly developed and optimized from real world data (Chen and Asch 2017)
+
+comparative studies on the effectiveness of machine learning–based decision support systems (ML-DSS) in medicine are lacking, especially regarding the effects on health outcomes. (Cabitza et al. 2017)
+
+there is a lack of awareness of the so-called 'AI Chasm', that is the gulf between developing a scienti fi cally sound algorithm and its use in any meaningful real-world applications (Keane and Topol 2018)
+
+There is also a large gulf between the experimental code produced for a proof-of-concept research study, and the eventual code to be used in a product with regulatory approvals. The latter constitutes a medical device and so must typically be rewritten from the ground up, with a quality management system in place, and in compliance with Good Manufacturing Practice (Keane and Topol 2018)
+
+Instead of a single doctor’s mistake hurting a  patient, the potential for a machine algorithm inducing iatrogenic  risk is vast. (Topol 2019)
+
+#### How to prove it work
+The number needed to benefit: (Liu et al. 2019)
+RCT: (Wang et al. 2019)
+(Perry et al. 2018)
+(Mann et al. 2011)
+NASSS (Greenhalgh et al. 2017)
+there is a need for prospective, real-world clinical evaluation of  models in use rather than only retrospective assessment of performance based on historical  data sets (Rajkomar et al. 2019)
+
+To assess the usefulness of prediction models, we must evaluate  them not on their ability to recapitulate historical trends, but instead on their accuracy in predicting future events (Chen and Asch 2017)
+
+Prospective, non-interventional studies, such as that described by Abramoff and colleagues, will likely be fundamental to addressing questions about automated diagnosis efficacy. However, such studies will not address the issue of clinical effectiveness — do patients directly benefit from the use of such AI systems?
+
+Transparent Artificial Intelligence (Hahn et al. 2018)
+
+#### Examples
+Big data at Academic Medical Center 
+Beth Israel Deaconess Medical Center (BIDMC) (Halamka 2014)
+Learning Health System
+PEDSnet (Forrest et al. 2014)
+Optum Labs (Wallace et al. 2014)
+Shared National Multipurpose Big-Data Network (Curtis et al. 2014)
+CMS
+(Brennan et al. 2014)
+Advanced Analytics
+Veterans Health Administration (Fihn et al. 2014)
+Patient-Powered Research Networks
+PCORnet (Fleurence et al. 2014)
+Health Information Technology (Mann et al. 2011)
+No Evidence Found That Hospitals Are Using New Electronic Health (Adler-Milstein and Jha 2014)
+Humanitarian health computing (Fernandez-Luque and Imran 2018)
+“A 49-year-old patient notices a painless rash on his shoulder but does not seek care.  Months later, his wife asks him to see a doctor, who diagnoses a seborrheic keratosis.  Later, when the patient undergoes a screening colonoscopy, a nurse notices a dark  macule on his shoulder and advises him to have it evaluated. One month later, the  patient sees a dermatologist, who obtains a biopsy specimen of the lesion. The f indings reveal a noncancerous pigmented lesion. Still concerned, the dermatologist requests a second reading of the biopsy specimen, and invasive melanoma is diagnosed. An oncologist initiates treatment with systemic chemotherapy. A physician  friend asks the patient why he is not receiving immunotherapy.”
+“A 49-year-old patient takes a picture of a rash on his shoulder with a smartphone app that recommends an immediate appointment with a dermatologist. His insurance company automatically  approves the direct referral, and the app schedules  an appointment with an experienced nearby dermatologist in 2 days. This appointment is automatically cross-checked with the patient’s personal calendar. The dermatologist performs a  biopsy of the lesion, and a pathologist reviews the  computer-assisted diagnosis of stage I melanoma,  which is then excised by the dermatologist.” (Rajkomar et al. 2019)
+
+Digital Screening Mammography
+(Lehman et al. 2015)
+(Fenton 2015)
+(Brem 2016; Lehman 2016)
+This is not a trivial point — computer aided detection (CAD) systems for mammography were approved by the FDA in 1998, and by 2008 74% of all screening mammograms in the Medicare population were interpreted using this technology.6 However, nearly 20 years later a large study concluded “ CAD does not improve diagnostic accuracy of mammography and may result in missed cancers. These results suggest that insurers pay more for computer-aided detection with no established bene fi tto women (Keane and Topol 2018)
+
+mortality risk prediction to make decisions on inpatient or outpatient treatment in patients with pneumonia (Caruana et al. 2015)
+
+IDx-DR: the first fully autonomous AI-based system approved for marketing in the USA by FDA (Abràmoff et al. 2018; Anon n.d.)
+
+IBM’s Watson (Ross n.d.; Anon n.d.)
+
+#### Roadmap for ML/AI in medicine
+patient–doctor relationship will be the cornerstone of the delivery of care to many patients  and that the relationship will be enriched by  additional insights from machine learning. (Rajkomar et al. 2019)
+Combining machine learning software with the best  human clinician “hardware” will  permit delivery of care that outperforms what either can do  alone (Chen and Asch 2017)
+(Koerkamp 2019)
+
+
+Bibliography
+Adler-Milstein, J. and Jha, A.K. 2014. No evidence found that hospitals are using new electronic health records to increase Medicare reimbursements. Health Affairs (Project Hope) 33(7), pp. 1271–1277.
+Alberdi, E., Povyakalo, A., Strigini, L. and Ayton, P. 2004. Effects of incorrect computer-aided detection (CAD) output on human decision-making in mammography. Academic Radiology 11(8), pp. 909–918.
+Alper, B.S. and Haynes, R.B. 2016. EBHC pyramid 5.0 for accessing preappraised evidence and guidance. Evidence-Based Medicine 21(4), pp. 123–125.
+Amarasingham, R., Patzer, R.E., Huesch, M., Nguyen, N.Q. and Xie, B. 2014. Implementing electronic health care predictive analytics: considerations and challenges. Health Affairs (Project Hope) 33(7), pp. 1148–1154.
+Armstrong, K. 2018. If you can’t beat it, join it: uncertainty and trust in medicine. Annals of Internal Medicine 168(11), pp. 818–819.
+Auerbach, A.D., Neinstein, A. and Khanna, R. 2018. Balancing innovation and safety when integrating digital tools into health care. Annals of Internal Medicine 168(10), pp. 733–734.
+Baldini, G., Botterman, M., Neisse, R. and Tallacchini, M. 2018. Ethical design in the internet of things. Science and engineering ethics 24(3), pp. 905–925.
+Bates, D.W., Saria, S., Ohno-Machado, L., Shah, A. and Escobar, G. 2014. Big data in health care: using analytics to identify and manage high-risk and high-cost patients. Health Affairs (Project Hope) 33(7), pp. 1123–1131.
+Beam, A.L. and Kohane, I.S. 2018. Big data and machine learning in health care. The Journal of the American Medical Association 319(13), pp. 1317–1318.
+Brem, R. 2016. Potential Benefits of Computer-Aided Detection for Cancer Identification and Treatment. JAMA internal medicine 176(3), p. 410.
+Brennan, N., Oelschlaeger, A., Cox, C. and Tavenner, M. 2014. Leveraging the big-data revolution: CMS is expanding capabilities to spur health system transformation. Health Affairs (Project Hope) 33(7), pp. 1195–1202.
+Bright, T.J., Wong, A., Dhurjati, R., et al. 2012. Effect of clinical decision-support systems: a systematic review. Annals of Internal Medicine 157(1), pp. 29–43.
+Cabitza, F., Rasoini, R. and Gensini, G.F. 2017. Unintended consequences of machine learning in medicine. The Journal of the American Medical Association 318(6), pp. 517–518.
+Caruana, R., Lou, Y., Gehrke, J., Koch, P., Sturm, M. and Elhadad, N. 2015. Intelligible Models for HealthCare: Predicting Pneumonia Risk and Hospital 30-day Readmission. In: Proceedings of the 21th ACM SIGKDD International Conference on Knowledge Discovery and Data Mining - KDD ’15. New York, New York, USA: ACM Press, pp. 1721–1730.
+Chen, J.H., Alagappan, M., Goldstein, M.K., Asch, S.M. and Altman, R.B. 2017. Decaying relevance of clinical data towards future decisions in data-driven inpatient clinical order sets. International Journal of Medical Informatics 102, pp. 71–79.
+Chen, J.H. and Asch, S.M. 2017. Machine Learning and Prediction in Medicine - Beyond the Peak of Inflated Expectations. The New England Journal of Medicine 376(26), pp. 2507–2509.
+Cilliers, L. 2019. Wearable devices in healthcare: Privacy and information security issues. Health information management : journal of the Health Information Management Association of Australia, p. 1833358319851684.
+Cohen, I.G., Amarasingham, R., Shah, A., Xie, B. and Lo, B. 2014. The legal and ethical concerns that arise from using complex predictive analytics in health care. Health Affairs (Project Hope) 33(7), pp. 1139–1147.
+Cohen, I.G. and Mello, M.M. 2019. Big data, big tech, and protecting patient privacy. The Journal of the American Medical Association.
+Curtis, L.H., Brown, J. and Platt, R. 2014. Four health data networks illustrate the potential for a shared national multipurpose big-data network. Health Affairs (Project Hope) 33(7), pp. 1178–1186.
+DiCenso, A., Bayley, L. and Haynes, R.B. 2009. ACP Journal Club. Editorial: Accessing preappraised evidence: fine-tuning the 5S model into a 6S model. Annals of Internal Medicine 151(6), pp. JC3-2, JC3.
+Dziadkowiec, O., Callahan, T., Ozkaynak, M., Reeder, B. and Welton, J. 2016. Using a Data Quality Framework to Clean Data Extracted from the Electronic Health Record: A Case Study. EGEMS (Washington, DC) 4(1), p. 1201.
+Elenko, E., Speier, A. and Zohar, D. 2015. A regulatory framework emerges for digital medicine. Nature Biotechnology 33(7), pp. 697–702.
+Elmore, J.G. and Wruble, J. 2018. Man versus machine: does automated computer density measurement add value? Annals of Internal Medicine 168(11), pp. 822–823.
+Etheredge, L.M. 2014. Rapid learning: a breakthrough agenda. Health Affairs (Project Hope) 33(7), pp. 1155–1162.
+Fallik, D. 2014. For big data, big questions remain. Health Affairs (Project Hope) 33(7), pp. 1111–1114.
+Fenton, J.J. 2015. Is It Time to Stop Paying for Computer-Aided Mammography? JAMA internal medicine 175(11), pp. 1837–1838.
+Fernandez-Luque, L. and Imran, M. 2018. Humanitarian health computing using artificial intelligence and social media: A narrative literature review. International Journal of Medical Informatics 114, pp. 136–142.
+Fihn, S.D., Francis, J., Clancy, C., et al. 2014. Insights from advanced analytics at the Veterans Health Administration. Health Affairs (Project Hope) 33(7), pp. 1203–1211.
+Fiske, A., Henningsen, P. and Buyx, A. 2019. Your robot therapist will see you now: ethical implications of embodied artificial intelligence in psychiatry, psychology, and psychotherapy. Journal of Medical Internet Research 21(5), p. e13216.
+Fleurence, R.L., Beal, A.C., Sheridan, S.E., Johnson, L.B. and Selby, J.V. 2014. Patient-powered research networks aim to improve patient care and health research. Health Affairs (Project Hope) 33(7), pp. 1212–1219.
+Forrest, C.B., Margolis, P., Seid, M. and Colletti, R.B. 2014. PEDSnet: how a prototype pediatric learning health system is being expanded into a national network. Health Affairs (Project Hope) 33(7), pp. 1171–1177.
+Fraser, H., Coiera, E. and Wong, D. 2018. Safety of patient-facing digital symptom checkers. The Lancet 392(10161), pp. 2263–2264.
+Gianfrancesco, M.A., Tamang, S., Yazdany, J. and Schmajuk, G. 2018. Potential biases in machine learning algorithms using electronic health record data. JAMA internal medicine 178(11), pp. 1544–1547.
+Goddard, K., Roudsari, A. and Wyatt, J.C. 2014. Automation bias: empirical results assessing influencing factors. International Journal of Medical Informatics 83(5), pp. 368–375.
+Goodman, S.N., Goel, S. and Cullen, M.R. 2018. Machine learning, health disparities, and causal reasoning. Annals of Internal Medicine 169(12), pp. 883–884.
+Greenhalgh, T., Wherton, J., Papoutsi, C., et al. 2017. Beyond Adoption: A New Framework for Theorizing and Evaluating Nonadoption, Abandonment, and Challenges to the Scale-Up, Spread, and Sustainability of Health and Care Technologies. Journal of Medical Internet Research 19(11), p. e367.
+Griffiths, T.L. and Christian, B.R. 2006. Revealing Priors on Category Structures Through Iterated Learning.
+Griffiths, T.L., Christian, B.R. and Kalish, M.L. 2008. Using category structures to test iterated learning as a method for identifying inductive biases. Cognitive science 32(1), pp. 68–107.
+Griffiths, T.L. and Kalish, M.L. 2007. Language evolution by iterated learning with bayesian agents. Cognitive science 31(3), pp. 441–480.
+Halamka, J.D. 2014. Early experiences with big data at an academic medical center. Health Affairs (Project Hope) 33(7), pp. 1132–1138.
+Harrell, F. Classification vs. Prediction [Online]. Available at: https://www.fharrell.com/post/classification/ [Accessed: 20 August 2019].
+Hemens, B.J. and Iorio, A. 2017. Computer-Aided Systematic Review Screening Comes of Age. Annals of Internal Medicine 167(3), pp. 210–211.
+Hoeven, L.R. van, Bruijne, M.C. de, Kemper, P.F., et al. 2017. Validation of multisource electronic health record data: an application to blood transfusion data. BMC Medical Informatics and Decision Making 17(1), p. 107.
+Howie, L., Hirsch, B., Locklear, T. and Abernethy, A.P. 2014. Assessing the value of patient-generated data to comparative effectiveness research. Health Affairs (Project Hope) 33(7), pp. 1220–1228.
+Jones, E.B. and Furukawa, M.F. 2014. Adoption and use of electronic health records among federally qualified health centers grew substantially during 2010-12. Health Affairs (Project Hope) 33(7), pp. 1254–1261.
+Kaush, M.L., Griffiths, T.L. and Lewandowsky, S. 2007. Iterated learning: intergenerational knowledge transmission reveals inductive biases. Psychonomic Bulletin & Review 14(2), pp. 288–294.
+Krumholz, H.M. 2014. Big data and new knowledge in medicine: the thinking, training, and tools needed for a learning health system. Health Affairs (Project Hope) 33(7), pp. 1163–1170.
+Lehman, C.D., Wellman, R.D., Buist, D.S.M., et al. 2015. Diagnostic Accuracy of Digital Screening Mammography With and Without Computer-Aided Detection. JAMA internal medicine 175(11), pp. 1828–1837.
+Lehman, C. 2016. Potential Benefits of Computer-Aided Detection for Cancer Identification and Treatment-Reply. JAMA internal medicine 176(3), p. 411.
+Liu, V.X., Bates, D.W., Wiens, J. and Shah, N.H. 2019. The number needed to benefit: estimating the value of predictive analytics in healthcare. Journal of the American Medical Informatics Association.
+Longhurst, C.A., Harrington, R.A. and Shah, N.H. 2014. A “green button” for using aggregate patient data at the point of care. Health Affairs (Project Hope) 33(7), pp. 1229–1235.
+Lyell, D. and Coiera, E. 2017. Automation bias and verification complexity: a systematic review. Journal of the American Medical Informatics Association 24(2), pp. 423–431.
+Lyell, D., Magrabi, F. and Coiera, E. 2019. Reduced verification of medication alerts increases prescribing errors. Applied clinical informatics 10(1), pp. 66–76.
+Lyell, D., Magrabi, F. and Coiera, E. 2018. The effect of cognitive load and task complexity on automation bias in electronic prescribing. Human Factors 60(7), pp. 1008–1021.
+Lyell, D., Magrabi, F., Raban, M.Z., et al. 2017. Automation bias in electronic prescribing. BMC Medical Informatics and Decision Making 17(1), p. 28.
+Mann, D.M., Kannry, J.L., Edonyabo, D., et al. 2011. Rationale, design, and implementation protocol of an electronic health record integrated clinical prediction rule (iCPR) randomized trial in primary care. Implementation Science 6, p. 109.
+Martinez-Martin, N., Insel, T.R., Dagum, P., Greely, H.T. and Cho, M.K. 2018. Data mining for health: staking out the ethical territory of digital phenotyping. npj Digital Medicine 1.
+Martinez-Martin, N. and Kreitmair, K. 2018. Ethical Issues for Direct-to-Consumer Digital Psychotherapy Apps: Addressing Accountability, Data Protection, and Consent. JMIR mental health 5(2), p. e32.
+Obermeyer, Z. and Emanuel, E.J. 2016. Predicting the Future - Big Data, Machine Learning, and Clinical Medicine. The New England Journal of Medicine 375(13), pp. 1216–1219.
+O’Doherty, K.C., Christofides, E., Yen, J., et al. 2016. If you build it, they will come: unintended future uses of organised health data collections. BMC medical ethics 17(1), p. 54.
+Paquerault, S., Hardy, P.T., Wersto, N., Chen, J. and Smith, R.C. 2010. Investigation of optimal use of computer-aided detection systems: the role of the “machine” in decision making process. Academic Radiology 17(9), pp. 1112–1121.
+Perry, W.M., Hossain, R. and Taylor, R.A. 2018. Assessment of the Feasibility of automated, real-time clinical decision support in the emergency department using electronic health record data. BMC Emergency Medicine 18(1), p. 19.
+Phillips, K.A., Trosman, J.R., Kelley, R.K., Pletcher, M.J., Douglas, M.P. and Weldon, C.B. 2014. Genomic sequencing: assessing the health care system, policy, and big-data implications. Health Affairs (Project Hope) 33(7), pp. 1246–1253.
+Povyakalo, A.A., Alberdi, E., Strigini, L. and Ayton, P. 2013. How to discriminate between computer-aided and computer-hindered decisions: a case study in mammography. Medical Decision Making 33(1), pp. 98–107.
+Rajkomar, A., Dean, J. and Kohane, I. 2019. Machine learning in medicine. The New England Journal of Medicine 380(14), pp. 1347–1358.
+Rajkomar, A., Hardt, M., Howell, M.D., Corrado, G. and Chin, M.H. 2018. Ensuring fairness in machine learning to advance health equity. Annals of Internal Medicine 169(12), pp. 866–872.
+Roski, J., Bo-Linn, G.W. and Andrews, T.A. 2014. Creating value in health care through big data: opportunities and policy implications. Health Affairs (Project Hope) 33(7), pp. 1115–1122.
+Saunders, M.K. 2014. In Denmark, big data goes to work. Health Affairs (Project Hope) 33(7), p. 1245.
+Scott, I.A. 2018. Machine Learning and Evidence-Based Medicine. Annals of Internal Medicine 169(1), pp. 44–46.
+Segura Anaya, L.H., Alsadoon, A., Costadopoulos, N. and Prasad, P.W.C. 2018. Ethical implications of user perceptions of wearable devices. Science and engineering ethics 24(1), pp. 1–28.
+Shaw, J., Rudzicz, F., Jamieson, T. and Goldfarb, A. 2019. Artificial intelligence and the implementation challenge. Journal of Medical Internet Research 21(7), p. e13659.
+Shekelle, P.G., Shetty, K., Newberry, S., Maglione, M. and Motala, A. 2017. Machine learning versus standard techniques for updating searches for systematic reviews: A diagnostic accuracy study. Annals of Internal Medicine 167(3), pp. 213–215.
+Sintchenko, V. and Coiera, E.W. 2003. Which clinical decisions benefit from automation? A task complexity approach. International Journal of Medical Informatics 70(2–3), pp. 309–316.
+Sniderman, A.D., D’Agostino, R.B. and Pencina, M.J. 2015. The role of physicians in the era of predictive analytics. The Journal of the American Medical Association 314(1), pp. 25–26.
+Sun, W., Nasraoui, O. and Shafto, P. 2018. Iterated algorithmic bias in the interactive machine learning process of information filtering. In: Proceedings of the 10th International Joint Conference on Knowledge Discovery, Knowledge Engineering and Knowledge Management. SCITEPRESS - Science and Technology Publications, pp. 110–118.
+Tacchella, A., Romano, S., Ferraldeschi, M., et al. 2018. Collaboration between a human group and artificial intelligence can improve prediction of multiple sclerosis course: a proof-of-principle study [version 2; peer review: 1 approved, 2 approved with reservations]. F1000Research 6, p. 2172.
+Taniguchi, H., Sato, H. and Shirakawa, T. 2018. A machine learning model with human cognitive biases capable of learning from small and biased datasets. Scientific reports 8(1), p. 7397.
+Topol, E.J. 2019. High-performance medicine: the convergence of human and artificial intelligence. Nature Medicine 25(1), pp. 44–56.
+Tsai, T.L., Fridsma, D.B. and Gatti, G. 2003. Computer decision support as a source of interpretation error: the case of electrocardiograms. Journal of the American Medical Informatics Association 10(5), pp. 478–483.
+Tshitoyan, V., Dagdelen, J., Weston, L., et al. 2019. Unsupervised word embeddings capture latent knowledge from materials science literature. Nature 571(7763), pp. 95–98.
+Wallace, P.J., Shah, N.D., Dennen, T., Bleicher, P.A. and Crown, W.H. 2014. Optum Labs: building a novel node in the learning health care system. Health Affairs (Project Hope) 33(7), pp. 1187–1194.
+Wang, P., Berzin, T.M., Glissen Brown, J.R., et al. 2019. Real-time automatic detection system increases colonoscopic polyp and adenoma detection rates: a prospective randomised controlled study. Gut.
+Weil, A.R. 2014. Big data in health: a new era for research and patient care. Health Affairs (Project Hope) 33(7), p. 1110.
+
+### Notes from literature
+
+#### @Shortliffe1993: AI in medicine
+
+##### AIM in perspective
+
+```{r HermanJimUnger, fig.cap="Herman by Jim Unger", echo=FALSE}
+knitr::include_graphics("figures/Herman_ JimUnger_20180319.jpg")
+```
+
+* The field of AIM began in early 1970s. Emerge at the four earliest American AIM research centers (MIT, Rutgers, the University of Pittsburgh, Stanford)
+* It is no longer possible to conduct AIM research in isolation. AIM is simply one component within a wide range of research and development activities. AIM researchers need to be knowledgeable about the interdisciplinary field of medical informatics and to have a perspective, and a willingness to explore, in fields beyond Al itself.
+* The AIM field is now well recognized, but is still poorly understood. 
+    + AIM researchers are trying to develop tools to enhance the effectiveness of clinical decision making, not to replace physicians or to offer dogmatic advice.
+    + We fully recognize the common-sense issues and pragmatic realities that should prevent any system developer from suggesting that a computer program can provide the single source of information used in reaching a diagnostic or therapeutic decision. 
+    + have demonstrated a program’s frailty at the boundaries of its knowledge and the importance of combining the user’s good sense and experience with the information that the program can provide. 
+* the argument that AIM research is experimental science, not computer programming. 
+    + the roots of the discipline arose from within computer-science departments.
+    + Physicians were intimately involved in all four early projects 
+    + experimental methods used, the technical terminologies, and the intellectual environments were derived from traditions in the still youthful field of computer science. 
+    
+##### The AIM community examines itself
+##### To what extent have AIM systems ever been intended to address user needs? 
+
+* the bulk of AIM research has been driven precisely by a desire to develop tools that address clinical needs.
+
+##### What have been the contributions of AIM research to AI? To cognitive psychology? To clinical medicine? 
+
+* AIM researchers have developed methodologies that have contributed broadly to AI: the extensive work on expert systems in medical domains during the 1970s, rule-based systems are in operation in industry and in other segments of society, and they have begun to show their commercial value and effectiveness Ironically, the medical world is still struggling to deliver such tools. We need to understand what has made medicine resistant to the adoption and use of expert-systems techniques. the problems have little to do with AI or with the quality of AIM research. 
+
+* Related field
+    + medical educational psychology
+    + clinical problem solving
+    + decision-analysis methods
+    + reasoning biases
+    + cost-benefit tradeoff
+
+##### Is AIM part of information science, computer science, AI, engineering, or part of biomedicine?
+
+* I believe that the answer to this question is ‘none of the above’.  
+* AIM is one of the core areas of research in the field of medical informat- its, and medical informatics itself is an interdisciplinary field that interacts with information science, computer science, AI, engineering, and biomedicine but is not solely a part of any of them 
+
+##### Are AIM researchers adequately trained, and to what extent is there a problem with inbreeding? 
+
+* AIM researchers must be well-trained in medical informatics. 
+* Our group, for example, has in the last decade explicitly attempted to broaden its perspective and expertise beyond medical AI to embrace the wide range of pertinent topics in medical informatics that may be crucial to the effective delivery of decision-support tools: 
+    + database methods, 
+    + human-computer interaction, 
+    + classical statistics, 
+    + computer graphics, 
+    + distributed systems, and 
+    + information retrieval 
+
+* As recent work has shown at the intersection of (for example) AI and decision analysis, AI and Bayesian statistics, Al and databases, and Al and graphical interfaces, it is in the synergies between AI methods and other techniques that the greatest hope for effective systems may lie
+
+##### Why have there been no articles in which AIM systems have been tested in clini- cal settings with regard to process or outcome of clinical care?
+
+* Anyone who has carried out a major evaluation for an AIM system can testify that such studies are time-consuming and complicated tasks. Thus formal evaluations must not be undertaken lightly, especially since they tend to distract the research team from ongoing system development and refinement.
+
+* AIM systems will require demonstrations of safety and efficacy before they will be embraced for clinical use, and our credibility with our biomedical colleagues requires that we show them the value of the systems that we develop. 
+
+* The following questions illustrate the kinds of topics that I would like to see AIM researchers ‘evaluate’ rigorously: 
+    + To what extent, and in what ways, do formal models of uncertainty enhance the performance of AIM systems (when compared with the ad hoc models of the past)?
+    + To what extent are graphical interfaces mandatory components of clinically acceptable decision support systems ? If they are, what are the implications for the design of AIM systems?
+    + How best can we interface advanced reasoning systems with the existing commercial soft- ware base (e.g. relational database management systems, forms-design software, hypertext packages)?
+    + What are the requirements and approaches for modularity and standards assure the smooth integration of AIM systems into clinical environments? 
+    
+##### Why isn’t AIM research better funded?
+##### Why have AIM systems been so difficult to transport from site to site successfully? 
+
+* In 1990, Miller and Maserie described their belief that early approaches to computer-based decision support in medicine had been flawed in their adoption of the ‘Greek oracle’ model of consultation [24] -computer programs to which a physician would turn for advice, answering patient-related questions but otherwise deferring to the dialog style and recommendations of the machine. The authors correctly observed that this model, adopted by many knowledge- based systems during the first decade of AIM research [4]: 
+    + failed to capitalize on the special observational skills of physicians and 
+    + failed to allow the user adequately to control the interaction, selecting the ways in which the program’s knowledge could most effectively be brought to bear in the consideration of a particular case
+
+* the reasons for the limited success and adoption of knowledge-based tools in medicine run much deeper than the issue of their interactive style and philosophy. Resistance to system use has occurred despite the inherent merit of the methods that AIM researchers have developed. Many of the problems are, instead, a reflection of the disarray of our health-care system and, more importantly, its failure to build the local, regional, national, and international infrastructure for biomedical computing and communications that will be required before computer-based decision-support tools can become routine elements in the clinical setting.
+
+* We must resist the temptation to blame practitioners for their typical failure to embrace the decision-support systems that we have offered to them. Fielded Al systems in other areas of society have tended to be introduced in settings where employees are told by supervisors that use of the system is part of their job [8]. In most medical settings it has been difficult to produce systems that have sufficiently clear value, cost-effectiveness, and time-saving characteristics that practitioners themselves have been drawn to use the system on its merits alone. Furthermore, there are still limited numbers of settings in which physicians work in a managerial structure where someone else can direct them to use a tool unless they want to do so. Most physicians resist such pressure, and it is not clear that external requirements for system use would be wise unless the value of the system can be documented - often a challenge for the system developers. 
+
+* If the situation is to change, there must be high-level institutional support for medical com- puting applications in clinical settings. I am not arguing for blind adoption of computational innovations, but I do believe that we must accept the impossibility of viewing the introduction of decision-support tools as a grass-roots activity that emerges from the research lab, appears as an isolated entity in a clinic or on a hospital ward, and then grows by some kind of mass effect to encompass an entire medical community. It is naivete about this point that has characterized our efforts to introduce AIM systems in the past. Instead, the greatest hope for effective systems will be realized when the infrastructure for introducing computational tools in medicine has been put in place by visionary leaders who understand the importance of networking, integration, shared access to patient data bases, and the use of standards for data-exchange, communications, and knowledge sharing.
+
+* The need to facilitate integration of computational tools derives from an argument that Greenes and I have made about physicians as ‘horizontal’ rather than ‘vertical’ users of infor- mation technology. I believe that the greatest barrier to routine use of decision support by clinicians has simply been inertia; systems have been designed for single problems that arise infrequently and have generally not been integrated into the routine data-management environment of the user. Physicians will be attracted to computers when they are useful for essentially every patient and when the metaphor for system use is consistent across the varied applications that are offered (see e.g. the physician’s workstation scenario presented in Ch. 1 of [44]). The recent emphasis on developing integrated workstations for physicians is responsive to this realization [29,46,53]; many groups are seeking to develop environments which offer, using consistent conventions for human-computer interaction, everything from medical-record review and order entry to bibliographic retrieval and the use of expert systems. Our limited success with dissemination of knowledge-based systems in medicine is, in my view, due more to this failure of integration than it is to any other basic problem with the AI technologies that have been developed.
+
+##### Conclusions 
+
+* AIM is not a field that can be set off to the side, separate from the rest of medical informatics or the world of health planning and policy making. Effective decision-support systems are dependent on the development of integrated environments for communication and computing that allow merging of knowledge-based tools with other patient data-management and information-retrieval applications. The creation of this kind of infrastructure will require vision and resources from leaders who realize that the practice of medicine is inherently an information-management task and that biomedicine must make the same kind of coordinated commitment to computing technologies as have other segments of our society in which the importance of information management is well understood. We can draw from these observations a set of three challenges that sit squarely on the agenda for the medical informatics community in the decade ahead: 
+    + The enhancement of training opportunities so that a large cadre of professionals who are broadly educated regarding the interdisciplinary nature of medical informatics (including AIM) is available to assume leadership roles in both research and in information-technology management. 
+    + The need to develop national and international biomedical-networking infrastructures that use existing and future technologies for communication, data exchange, and information retrieval. 
+    + The need for credible international standards for communications, data, and knowledge exchange that will allow both commercial and academic developers of medical information systems to know what to do in order to assure the integration of their products with other developing systems. 
+
+* As the communications infrastructure and connectivity/interchange standards are put in place to support broad access to both general and patient-specific information, we will at least see the mechanism for successfully integrating AIM systems into patient-care settings and for distributing them widely. 
+
+#### @Patel2009: AI in medicine
+
+* (the phrase ‘‘artificial intelligence’’ had been first coined at a famous Dartmouth College conference in 1956
+* The earliest work in medical artificial intelligence (AI) dates to the early 1970s,
+* Early AI in medicine (AIM) researchers had discovered the applicability of AI methods to life sciences, most visibly in the Dendral experiments
+* Early resources: SUMEX-AIM Computing Resource at Stanford University, and a sister facility at Rutgers University
+* early AIM systems:
+    + Internist-1
+    + CASNET 
+    + MYCIN
+
+#### @Jiang2017: AI in healthcare 
+
+* We believe that human physicians will not be replaced by machines in the foreseeable future, but AI can definitely assist physicians to make better clinical decisions or even replace human judgement in certain functional areas of healthcare (eg, radiology).
+
+* The increasing availability of healthcare data and rapid development of big data analytic methods has made possible the recent successful applications of AI in healthcare
+
+* Guided by relevant clinical questions, powerful AI techniques can unlock clinically relevant information hidden in the massive amount of data, which in turn can assist clinical decision making.
+
+* from medical investigators’ perspectives
+
+##### motivations of applying AI in healthcare
+
+AI:
+
+* use sophisticated algorithms to ‘learn’ features from a large volume of healthcare data, and then use the obtained insights to assist clinical practice.
+* can be equipped with learning and self-correcting abilities to improve its accuracy based on feedback.
+
+Advantages of AI:
+
+* can assist physicians by providing up-to-date medical information from journals, textbooks and clinical practices to inform proper patient care.
+* help to reduce diagnostic and therapeutic errors that are inevitable in the human clinical practice
+* extracts useful information from a large patient population to assist making real-time inferences for health risk alert and health outcome prediction
+
+##### data types that have be analysed by AI systems (Healthcare data)
+
+In the diagnosis stage:
+
+* diagnosis imaging
+* genetic testing
+* electrodiagnosis
+* physical examination notes and clinical laboratory results (large portions of unstructured narrative texts, such as clinical that are not directly analysable)
+
+##### mechanisms that enable AI systems to generate clinical meaningful results (AI devices)
+
+Two major categories
+
+###### machine learning (ML) techniques
+
+* analyse structured data such as imaging, genetic and EP data
+* cluster patients’ traits, or infer the probability of the disease outcomes
+
+Can be further groups into 2 categories
+
+###### classical machine learning techniques
+
+* constructs data analytical algorithms to extract features from data
+
+* input: 
+    + patient ‘traits’, commonly include
+        - baseline data: age, gender, disease history
+        - disease-specific data, such as diagnostic imaging, gene expressions, EP test, physical examination results, clinical symptoms, medication
+    + patients’ medical outcomes: disease indicators, patient’s survival times and quantitative disease levels (eg: tumor size)
+
+* Depending on whether to incorporate the outcomes, ML algorithms can be divided into two major categories:
+    + unsupervised learning: well known for feature extraction
+        - Clustering and principal component analysis (PCA) are two major unsupervised learning methods
+        - Clustering groups subjects with similar traits together into clusters, without using the outcome information, output the cluster labels for the patients through maximising and minimising the similarity of the patients within and between the clusters. Popular clustering algorithms include k-means clustering, hierarchical clustering and Gaussian mixture clustering.
+        - PCA is mainly for dimension reduction, especially when the trait is recorded in a large number of dimensions, such as the number of genes in a genome-wide association study
+    + supervised learning: suitable for predictive modelling via building some relationships between the patient traits (as input) and the outcome of interest (as output)
+        - considers the subjects’ outcomes together with their traits, goes through a certain training process to determine the best outputs associated with the inputs that are closest to the outcomes on average.
+        - compared with unsupervised learning, supervised learning provides more clinically relevant results.
+        - Relevant techniques include linear regression, logistic regression, naïve Bayes, decision tree, nearest neighbour, random forest, discriminant analysis, support vector machine (SVM) and neural network (SVM and neural network are the most popular ones).
+    + semisupervised learning has been proposed as a hybrid between unsupervised learning and supervised learning, which is suitable for scenarios where the outcome is missing for certain subjects
+
+###### deep learning techniques
+
+* a modern extension of the classical neural network technique.
+* One can view deep learning as a neural network with many layers, can explore more complex non-linear patterns in the data.
+* the application of deep learning in the field of medical research nearly doubled in 2016.
+* a clear majority of deep learning is used in imaging analysis, which makes sense given that images are naturally complex and high volume
+* reasons for its popularity
+    + Rapid development of modern computing enables deep learning to build up neural networks with a large number of layers
+    + the increase of the volume and complexity of data
+
+* In the medical applications, the commonly used deep learning algorithms include 
+    + convolution neural network (CNN), (the most popular one in 2016). The implementation of CNN has been included in popular software packages such as Caffe from Berkeley AI Research,39 CNTK from Microsoft40 and TensorFlow from Google
+    + recurrent neural network, 
+    + deep belief network
+    + deep neural network
+
+
+##### natural language processing (NLP) methods
+
+* extract information from unstructured data such as clinical notes/medical journals to supplement and enrich structured medical data (turning texts to machine-readable structured data)
+* An NLP pipeline comprises two main components
+
+###### text processing
+
+* identifies a series of disease-relevant keywords in the clinical notes based on the historical databases
+
+###### classification
+
+* a subset of the keywords are selected through examining their effects on the classification of the normal and abnormal cases.
+* The validated keywords then enter and enrich the structured data to support clinical decision making
+
+The NLP pipelines have been developed to assist clinical decision making on alerting treatment arrangements, monitoring adverse effects and so on
+
+Roadmap
+
+```{r Jiang2017, fig.cap="The road map from clinical data generation to natural language processing data enrichment, to machine learning data analysis, to clinical decision making", echo=FALSE}
+knitr::include_graphics("figures/Jiang2017.png")
+```
+
+
+##### disease types that the AI communities are currently tackling (Disease focus)
+
+Three major diseases: cancer, nervous system disease and cardiovascular disease
+
+* leading causes of death; therefore, early diagnoses are crucial to prevent the deterioration of patients’ health status
+* early diagnoses can be potentially achieved through improving the analysis procedures on imaging, genetic, EP or EMR, which is the strength of the AI system.
+
+Other diseases:
+
+* analysed the ocular image data to diagnose congenital cataract disease
+* detected referable diabetic retinopathy through the retinal fundus photographs
+
+###### AI applications in stroke
+
+* Early detection and diagnosis
+* Treatment: predicting and analysing the performance of stroke treatment
+* Outcome prediction and prognosis evaluation
+
+##### future of AI in healthcare
+
+* A successful AI system must possess the ML component for handling structured data (images, EP data, genetic data) and the NLP component for mining unstructured texts.
+* The IBM Watson system is a pioneer in this field. The system includes both ML and NLP modules, and has made promising progress in oncology.
+* connect an AI system with the front-end data input and the back-end clinical actions:
+    + when patients come, with their permission, their demographic information and clinical data (images, EP results, genetic results, blood pressure, medical notes and so on) are collected into the AI system. 
+    + The AI system then uses the patients’ data to come up with clinical suggestions. 
+    + These suggestions are sent to physicians to assist with their clinical decision making. 
+    + Feedback about the suggestions (correct or wrong) will also be collected and fed back into the AI system so that it can keep improving accuracy.
+    
+* the real-life implementation of AI is still facing obstacles:
+    + regulations: lack of standards to assess the safety and efficacy of AI systems. the US FDA made the first attempt to provide guidance for assessing AI systems.
+    + data exchange: AI systems need to be trained (continuously) by data from clinical studies. Current healthcare environment does not provide incentives for sharing data on the system. With the growing awareness of value-based model, all parties will have greater incentives to compile and exchange information.
+    

@@ -26,4 +26,25 @@
 
 * RStudio Package Manager. https://blog.rstudio.com/2019/11/07/package-manager-v1-1-no-interruptions/
 
+* Gypsyamber D'Souza, Elizabeth T Golub, Stephen J Gange, The Changing Science of HIV Epidemiology in the U.S, American Journal of Epidemiology, , kwz211, https://doi.org/10.1093/aje/kwz211
+
+* Sandeep Reddy, Sonia Allan, Simon Coghlan, Paul Cooper, A governance model for the application of AI in health care, Journal of the American Medical Informatics Association, , ocz192, https://doi.org/10.1093/jamia/ocz192. 
+
+* UCSF Implementation Science Program. https://epibiostat.ucsf.edu/implementation-science-program
+
+* The surge in #AI-#healthcare investments. https://www.cbinsights.com/reports/CB-Insights_Healthcare-Report-Q3-2019.pdf?utm_campaign=marketing_healthcare_q3-2019&utm_medium=email&_hsenc=p2ANqtz-8qr2mBwJAI8J7wMlCcMF5_tld4cPiUaoFAo--T_btqudMej_x0vMyU9plsCW8CuJ3W-Mvj-OIb3LPUKRZ3wVHLcL1q1g&_hsmi=79098084&utm_content=79098084&utm_source=hs_automation&hsCtaTracking=b0ed8811-4bf1-400d-a06a-56abc5fb577f%7C28d500fb-63e4-400f-9848-6ae5e743e7a6
+
+* The FDA has an opportunity to ease regulatory uncertainty by proposing a framework that guides how sponsors can use AI tools within drug development programs. https://www.statnews.com/2019/11/07/artificial-intelligence-drug-development-fda-standards-needed/?utm_content=buffera132f&utm_medium=social&utm_source=twitter&utm_campaign=twitter_organic. https://twitter.com/statnews/status/1192622850894712832
+
+* Publication School. https://twitter.com/EQUATORNetwork/status/1192360128131031040
+
+* compute growth in AI before and after Deep Learning. https://twitter.com/ilyasut/status/1192486857453359104
+
+* Artificial intelligence is no silver bullet for governance. https://twitter.com/GSCollins/status/1192413447444684800. https://www.ft.com/content/817cd3d6-b921-11e9-8a88-aa6628ac896c?segmentid=acee4131-99c2-09d3-a635-873e61754ec6
+
+* Dan Rockmore (2019) The Myth and Magic of Generating New Ideas: A mathematician on how to get the mind into motion. The New Yorker. https://www.newyorker.com/culture/annals-of-inquiry/the-myth-and-magic-of-generating-new-ideas?irclickid=VSay190RxxyOWEvwUx0Mo34GUknwPCTRQ1sdyM0&irgwc=1&source=affiliate_impactpmx_12f6tote_desktop_Viglink%20Primary&utm_source=impact-affiliate&utm_medium=27795&utm_campaign=impact&utm_content=Online%20Tracking%20Link&utm_brand=tny
+
+* "Better methods will help us get the right answers; models and measurements will ensure we ask the right questions." https://twitter.com/russpoldrack/status/1192479517748498433
+* Paul Smaldino (2019) Better methods can’t make up for mediocre theory. https://www.nature.com/articles/d41586-019-03350-5
+
 

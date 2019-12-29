@@ -1,0 +1,21 @@
+# Epidemiology {#epidemiology}
+
+## Reference
+
+* Jorn Olsen & Naomi Greene & Rodolfo Saracci & Dimitrios Trichopoulos (2015) Teaching Epidemiology: A Guide for Teachers in Epidemiology, Public Health and Clinical Medicine.
+* Moyses Szklo & F. Javier Nieto (2019) Epidemiology: Beyond the Basics. 4th Edition.
+* David D. Celentano & Moyses Szklo (2019) Gordis Epidemiology. 6th Edition.
+* Kenneth J. Rothman (2012) Epidemiology: An Introduction. 2nd Edition.
+* Kenneth J. Rothman & Sander Greenland & Timothy L. Lash (2008) Modern Epidemiology. 3rd Edition.
+* Mark Woodward (2013) Epidemiology: Study Design and Data Analysis, Third Edition (Chapman & Hall/CRC Texts in Statistical Science).
+* Jan van Den Broeck & Jonathan R Brestoff (2013) Epidemiology: Principles and Practical Guidelines.
+* Wolfgang Ahrens & Iris Pigeot (2013) Handbook of Epidemiology. 2nd Edition.
+* Sylvia Wassertheil-Smoller & Jordan Smoller (2015) Biostatistics and Epidemiology: A Primer for Health and Biomedical Professionals. 4th Edition.
+* Stephen C. Newman (2001) Biostatistical Methods in Epidemiology.
+* Alan J. Silman & Gary J. Macfarlane (2002) Epidemiological Studies: A Practical Guide. 2nd Edition.
+* Jørn Olsen & Kaare Christensen & Jeff Murray & Anders Ekbom (2010) An Introduction to Epidemiology for Health Professionals: 1 (Springer Series on Epidemiology and Public Health)
+* Ross C. Brownson & Diana B. Petitti (1998) Applied Epidemiology: Theory to Practice
+* Miquel Porta (2008) A Dictionary of Epidemiology
+* Bryan Kestenbaum (2018) Epidemiology and Biostatistics: An Introduction to Clinical Research
+* Nicholas P. Jewell (2003) Statistics for Epidemiology
+

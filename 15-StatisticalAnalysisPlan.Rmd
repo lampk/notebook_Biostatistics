@@ -1,0 +1,10 @@
+# Statistical analysis plan {#sap}
+
+## Why?
+
+Needed to preserve and improve:
+
+* Transparency
+* Reproducibility
+
+

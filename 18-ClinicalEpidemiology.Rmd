@@ -1,0 +1,23 @@
+# Clinical epidemiology {#clinicalepidemiology}
+
+## Reference
+
+* Robert H. Fletcher, Suzanne W. Fletcher & Grant S. Fletcher (2012) Clinical Epidemiology: The Essentials. 5th Edition.
+
+* O. S. Miettinen (2011) Up From Clinical Epidemiology & EBM.
+
+* Stephen B. Hulley Md & Steven R. Cummings Md & Warren S. Browner Md & Deborah G. Grady Md Mph & Thomas B. Newman Md (2006) Designing Clinical Research
+
+* * Michael S. Kramer (1988) Clinical Epidemiology and Biostatistics: A Primer for Clinical Investigators and Decision-Makers
+
+* Patrick S. Parfrey & Brendan J. Barrett (2015) Clinical Epidemiology: Practice and Methods. 2nd Edition.
+
+* R. Brian Haynes & David L. Sackett Oc Md Frsc Frcp (canad & Gordon H. Guyatt Md Msc Frcpc Faccp & Peter Tugwell (2005) Clinical Epidemiology: How to Do Clinical Practice Research
+
+* Suhail A. R. Doi & Gail M. Williams (2013) Methods of Clinical Epidemiology.
+
+* Diederick E. Grobbee & Arno W. Hoes (2014) Clinical Epidemiology: Principles, Methods, and Applications for Clinical Research. 2nd Edition.
+
+* Alvan R. Feinstein (1985) Clinical Epidemiology: The Architecture of Clinical Research.
+
+* Alvan R. Feinstein (1967) Clinical judgment.

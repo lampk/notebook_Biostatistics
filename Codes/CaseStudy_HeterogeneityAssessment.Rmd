@@ -1,0 +1,85 @@
+---
+title: "Assessment of Heterogeneity"
+bibliography: refs.bib
+output: 
+  html_document:
+    theme: cerulean
+    toc: yes
+    toc_float: yes
+---
+
+## Type of heterogeneities
+
+* Potential sources of heterogeneity among studies [@Gagnier_2012]
+    + Clinical heterogeneity: variability in the participants, treatment, or outcome characteristics or research setting
+    + Methodological heterogeneity: variability in the trial design and quality
+    + Statistical heterogeneity: variability in summary treatment effects between trials 
+    
+* Clinical heterogeneity can can cause significant statistical heterogeneity, inaccurate summary effects and associated conclusions, misleading decision  makers  and  others [@Gagnier_2012]
+
+* Variation among countries? [@Yusuf_2016]
+    + True variations in the  effects of treatment among subgroups of patients within the populations selected  for a trial are generally unlikely; however, apparent differential effects are often observed as a  consequence of randomness.
+    + " trials often show large differences in treatment effect  according to country, but they urge caution in  interpreting these observed differences. The authors suggest that some of these differences may  ref lect true differences that are due to countryspecific variation in such factors as standard of  care, nutrition, and sociological patterns of reporting. However, they argue that many observed  differences in treatment effect simply ref lect expected variability arising from the small sample  in each country."
+    + test for interaction between treatment and location. However, this test has low power.
+    
+### From the point of view of  individual participant data meta-analysis of prediction models [@Steyerberg_2019]
+
+* assessing heterogeneity in predictor effects and predictions arising from prediction models based on data from different studies.
+    + to support or refute the idea of a global prediction model;
+    + to appropriately indicate the uncertainty when applying the global model across different populations.
+
+* three aspects of heterogeneity for predictions: 
+    + baseline risk
+    + predictor effects
+    + linear predictor
+        
+
+
+
+## How to investigate heterogeneity
+
+* Should take into account multiple variables simutaneously rather than consider one-variable-at-a-time [@Kent_2010]:
+    + one-variable-at-a-time does not reflect the true heterogeneity in the data
+    
+* Should [@Kent_2010]
+    + Describe distribution of the baseline risk
+    + Describe event rate by baseline risk
+    
+* Heterogeneity in study design [@Steyerberg_2019]
+    + describe type, sample size, enrollment period in table    
+
+* Heterogeneity in case-mix [@Steyerberg_2019]
+    + Between-study heterogeneity in case-mix is a common source of heterogeneity in baseline risk and predictor-endpoint associations.
+    + Mean & SD of linear predictor
+    + distributions of individual predictors (does not take into account the possible correlation between predictors)
+    + Prevalence of outcome
+    + Membership model (quantify how well we can separate patients from different studies from each other (using the c -statistic)): multinomial logistic regression, where study membership was the outcome, all predictor variables of the CT model and 6-month mortality as covariates. The c -statistic of the membership model can be calculated by comparing the predicted probabilities for patients from one study with the predicted probabilities of patients not included in that study.
+    
+* Heterogeneity in combination of predictor effects
+    + Estimating stratified predictor effects, then use forest plots for visualization of the heterogeneity in predictor effects, then pooled estimates with associated (approximate) prediction intervals and I2 estimates.
+    + Pooling with full stratification
+        - two-stage approach because studies are first analyzed individually and corresponding results are then combined in a second multivariate step.
+        - one-stage approach would fit a logistic regression model with random effects.
+        
+* Heterogeneity in predictions from different cohorts
+    + 1-to-1 comparison of study-specific model predictions,
+    
+* Simplifications with respect to heterogeneity
+    + ignore any heterogeneity, implies that all studies agree on the baseline risk and predictor effects in the global model, and that differences in study-specific estimates only appear due to sampling error.
+    + assume that the intercepts may vary between studies but that the predictor effects are common (RE model with random intercept)
+    +  specifying that the linear predictors share a common direction in covariate space, but that the size of their effects might be systematically different (RE model with random intercept & random slope)
+    + RE model with random slopes
+
+### Clinical heterogeneity
+
+* Forest plot
+* L'Abbe plot
+* Influence plot
+* Funnel plot
+* I2
+* CoPlot
+
+* Subgroup analysis
+* Meta-regression
+
+

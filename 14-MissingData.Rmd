@@ -1,0 +1,1264 @@
+# Handling missing data {#missingdata}
+
+## Reading list
+
+
+
+
+## Further topics
+
+### When to use MI
+
+#### Whether MI is likely to be beneficial depends on range of factors…
+    + How much data are missing
+    + Which variables have missing data: confounder or outcomes/exposure
+    + Patterns of missingness
+    + Presence of auxiliary variables
+    + Correlation between the variables
+    + Correlation between variables and missingness
+    
+--> Should consider all of these factors when making the decision whether to use MI
+
+#### Which variables to impute?
+
+* Common scenario: 
+    + exposure --> outcome (relationship of interest), confounder
+
+* Missing data in the exposure or outcome
+    + Imputing the missing values will generally not add much information about $\beta$
+    + Unless, there are strong predictors of the missing values
+    + MI can introduce noise though uncertainty in the missing values (due to large between imputation variation)
+    
+* Missing data in the confounding variable
+    + Much more to gain in terms of $\beta$
+    + Expect to gain precision for estimating $\beta$
+    + Reduces bias from exclusion of participants with incomplete confounder information
+
+#### How much missing data to impute?
+
+* Common question but no easy answer!
+
+* If little missing data (e.g. <5%) --> Little to regain from MI
+
+* If lots of missing data (e.g. 50%) --> Can introduce bias if lots of data are imputed from a poorly fitting imputation model
+
+* Need to consider all of the other factors, and weigh up benefits of MI against potential costs of a poorly fitting imputation model
+
+#### MI in observational studies
+
+* Large, longitudinal studies can have lots of potential auxiliary variables
+
+* Can be missing data in potential auxiliary variables
+
+* Lots of different research questions – different imputation models?
+
+#### MI in trials
+
+* Often missing data on the outcomes – how beneficial is MI likely to be?
+
+* Need to impute outcome data separately by treatment arm (preserves interactions)
+    + separate by treatment arm then stack together
+
+* How to impute missing baseline data?
+    + Imputing by arm induces correlation with treatment
+    + Different method of imputation for baseline data e.g. mean imputation
+    + [see Sullivan TR et al. Stats Methods Med Research]
+
+#### MI – a cautionary tale
+
+* If the exposure of interest (X) is MNAR, missing data mechanism does not depend on Y and we have complete data for the outcome Y, then for the estimate of the association between X and Y, MI has been shown to be biased but a complete-case analysis is unbiased 
+
+* (see White I & Carlin JB, Stats in Medicine 2010).
+
+### Diagnostics (diagnosing problems with imputation models)
+
+* Important step when carrying out MI is imputation model checking
+
+* Approaches to checking imputation models:
+    + Explore the imputed values
+    + Compare the observed and imputed values
+    + Regression diagnostics
+    + More complex approaches e.g. cross-validation, posterior predictive check (not covered today)*
+    
+* Nguyen et al (2017), He and Zaslavsky (2011)
+
+* Explore the imputed values
+    + As with all analyses, it is important to examine at the data (As with any other analysis, important to explore and get a feel for the imputed values
+)
+    + External checks: use subject matter knowledge to assess whether imputed values are sensible (Has the imputation process done what you expected?
+)
+    + Summary statistics or graphical checks
+    + Note: the goal of MI is not to recover the individual missing values – the purpose is to produce valid results with incomplete data. It may not be problematic if a few imputed values fall outside possible range
+    
+* Compare the observed and imputed values
+    + Good idea to check the imputed data and compare with the observed data – using descriptive statistics or graphs
+    + Can check whether imputed values are reasonable by comparing with observed data
+    + Internal check: imputations are being assessed with respect to available data
+    + Can compare using:
+        - Summary statistics
+        - Graphical checks e.g. Histograms, boxplots, density plots, cumulative distribution plots…
+        
+* Check associations between variables
+    + If one is interested in characteristics of marginal distributions (e.g. means, percentiles), then it might be important to preserve the distribution.
+    + If the primary analysis lies in association between variables, can also check this.
+
+* Regression diagnostics
+    + For checking regression imputation models (when imputing a single variable or within chained equations)
+        - Fit the linear regression imputation model  
+        - Then obtain predictions and residuals
+
+* Questions to consider…
+    + Do the imputed values look plausible given subject matter knowledge?
+    + Are there any signals of major problems?
+    + Are there any differences between observed and imputed data?
+    + Are the discrepancies expected given what you know about the incomplete variables and the missing data process?
+    + Consider the analysis of interest. Are key associations of interest preserved in the imputed data?
+    
+* Implementing diagnostics in statistical software
+    + Many checks can be performed using standard syntax in statistical packages
+        - See files “Supplementary_file_diagnostics” for examples of syntax in R and Stata
+    + R – mice, mi, VIM
+    + Stata – midiagplots (user-written command)
+    
+
+### Reporting
+
+* Strengthening the Reporting of Observational Studies in Epidemiology
+(STROBE): Explanation and Elaboration. Vandenbroucke JP et al. PLoS Med 2007
+
+* Missing data. Ware JH et al. New England Journal of Medicine 2012;367:1353.
+
+* Summary of key points...
+    + Description of participants
+        - Report the numbers of individuals at each stage of the study
+        - Give reasons for non-participation at each stage
+        - Indicate number of participants with missing data for each variable
+        - Compare the characteristics of those with & without missing data
+
+    + Statistical Methods
+	      - Explain how missing data were addressed
+
+* Useful to present precise details of imputation
+    + Which variables were imputed
+    + Imputation strategy
+    + Which computer package
+    + How many imputations
+    
+* Good practice to present results from a complete case analysis as well as MI
+    + If they are different – why?
+    + Prespecify if MI is the primary analysis
+    
+* Ideally would present a sensitivity analysis to the decisions made in the imputation procedure
+    + E.g. functional form, imputation strategy,…
+    
+* Sterne et al BMJ 2009
+
+### Summary
+
+* MI is a flexible and relatively straightforward way of dealing with missing data 
+
+* Widely available in modern statistical software
+
+* Particularly useful as part of a sensitivity analysis of the effect of missing data
+    + Reassuring if you get the same conclusions under different assumptions about the missingness
+
+* However…. MI is not a miracle cure
+    + There are lots of decisions that must be made during the imputation stage that can affect the validity of the inference
+    + MI can introduce bias if carried out naively without due consideration of the assumptions made in the imputation model
+    + Still a lot of unanswered questions surrounding MI
+    + Important to consider the sensitivity of the results to the assumptions regarding the missing data and the imputation model
+    + Saw here an example where it makes a difference
+        - Not strong enough to alter the conclusions but it could be
+    + It is therefore important that MI is carried out by someone who knows what they are doing!
+
+### References 
+
+#### For guidance on when MI may be unbiased
+
+* Lee KJ, Simpson JA. Introduction to multiple imputation for dealing with missing data. Respirology 2014; 19:162-167.
+
+* Moreno-Betancur M, Lee KJ, Leacy FP, White IR, Simpson JA, Carlin JB: Canonical Causal Diagrams to Guide the Treatment of Missing Data in Epidemiological Studies. Am J Epidemiol 2018; 187(12):2705-2715.
+
+* Sullivan TR, White IR, Salter A, Ryan P, Lee KJ. Should multiple imputation be the method of choice for handling missing data in randomized trials? Statistical Methods in Medical Research. 2018; 27(9): 2610–2626.
+
+* White IR, Carlin JB. Bias and efficiency of multiple imputation compared with complete-case analysis for missing covariate values. Statistics in Medicine. 2010; 29:2920-2931.
+
+#### for diagnostics
+
+* Abayomi K, Gelman A, Levy M. Diagnostics for multivariate imputations. Journal of the Royal Statistical Society Series C-Applied Statistics. 2008; 57:273-91.
+
+* Marchenko, Y V and Eddings W. 2011. A note on how to perform multiple-imputation diagnostics in Stata. http://www.stata.com/users/ymarchenko/midiagnote.pdf.
+
+* Nguyen et al. Model checking in multiple imputation: an overview and case study. Emerg Themes Epidemiol. 2017 14:8 [*includes Stata code]
+
+* van Buuren S. Flexible Imputation of Missing Data. Boca Raton: CRC Press; 2012.
+
+* White IR, Royston P, Wood AM. Multiple imputation using chained equations: Issues and guidance for practice. Statistics in Medicine. 2011; 30(4):377-99.
+
+* He Y, Zaslavsky AM. Diagnosing imputation models by applying target analyses to posterior replicates of completed data. Statistics in Medicine. 2011; 31(1):1-18.
+
+#### For reporting
+
+* Hayati Rezvan P, Lee KJ, Simpson JA: The rise of multiple imputation: a review of the reporting and implementation of the method in medical research. BMC Med Res Methodol 2015, 15:30.
+
+* Sterne JAC, White IR, Carlin JB, et al. Multiple imputation for missing data in epidemiological and clinical research: potential and pitfalls. BMJ 2009;338:b2393.
+
+* von Elm E, Altman DG, Egger M, et al. Strengthening the reporting of observational studies in epidemiology (STROBE) statement: guidelines for reporting observational studies in epidemiology. PLoS Med 2007; Oct 16;4(10):e296-e297.
+
+* Ware JH, Harrington D, Hunter DJ, Ralph B. D’Agostino. Missing data. New England Journal of Medicine 2012;367:1353.
+
+## MI methods for longitudinal data in the wide format
+
+### A longitudinal case study
+
+* De Silva et al. BMC Med Res Meth 2017
+
+* Research question: What is the association between child’s body mass index (BMI) and sleep problems two years later? 
+
+* Continuous exposure: BMI z-score at waves 1-4
+
+* Binary outcome: Sleep problems (Y/N) at waves 2-5
+
+* Adjusting covariates: 
+    + previous sleep problems (time-varying) 
+    + maternal age and education (fixed)
+    + child’s sex and birthweight (fixed)
+    
+* Assuming constant association over time, what is the analysis model?
+    + Ideally it uses the repeated measures to gain precision. Thus, must account for clustering
+
+* Generalised Estimating Equations (GEE) – extension of logistic regression for correlated data.
+    + Estimates have a “marginal” interpretation
+    + The correlation structure is pre-specified: "independence", "exchangeable", "ar1", "unstructured", "userdefined", and "fixed“
+    + Parameter estimates are consistent even if this is misspecified, and robust (“sandwich”) standard errors are recommended.
+    
+* Mixed-effects models are another paradigm for modelling correlated data, and are useful for hierarchical multiple imputation (Lecture 5)
+
+* 18.1% of records have missing data on BMI
+
+* 16.8% of records have missing data on sleep problems 
+
+* Available case analysis ignores observations where data for any of the variables in the analysis model are missing
+
+* Analysis includes 11,656 of the 20,000 possible observations (58%)
+
+* Estimated coefficient for previous BMI
+    + OR (95%): 1.121 (1.078, 1.167), p < 0.001
+    
+* Can potentially regain information on the 42% with incomplete information
+
+* Can use data from baseline covariates that are not in the analysis model to predict the missing values (auxiliary variables)
+    + Maternal smoking 
+
+* Can use data on the incomplete variable at other waves to inform on the missing values
+    + Last point is a key advantage linked to longitudinal studies
+
+### Recap of MI
+
+* Incomplete dataset --> impute missing data multiple times --> analyse each imputed dataset and estimate parameter of interest --> combine estimates
+
+* A very flexible approach to handling missing data
+
+* Unbiased if the data are MAR (Missing at Random)
+    + But not only in those cases
+    + And only if MI procedure is appropriately tailored to analysis model
+
+* The goal of MI is not to predict missing values, but to obtain unbiased inference. 
+
+* The goal of creating multiple imputations is to obtain standard errors that appropriately account for the uncertainty due to missing data.
+
+* MI – assumes data are MAR – not an inherent concept of MI but in ‘packaged’ approaches to MI
+
+* Multivariate normal imputation (MVNI): Assumes all variables in the imputation model have a joint MVN distribution
+    + Pros: Has a theoretical justification
+    + Cons:
+        - Is it valid for imputing binary and categorical variables?
+	      - Unclear how to round categorical variables (Stata)
+	      - Cannot incorporate interactions/non-linear terms
+
+* “Multiple imputation via chained equations”(MICE): Uses a separate univariate regression model for each variable to be imputed
+    + Pros: Very flexible
+    + Cons:
+        - Lacks theoretical justification 
+        - Risk of incompatible distributions
+        - Managing in large datasets can be challenging
+
+### MI methods for longitudinal data
+
+* Need to account for correlations in imputation step:
+    + For compatibility with analysis model
+    + To exploit auxiliary information from other waves
+        - Important even if analysis model does not use repeated measures
+
+* So how do we do that?
+    + Impute in the wide format (this lecture)
+        - Standard MI methods for multiple incomplete variables
+        - Modified versions for longitudinal data in the wide format
+    + Impute in the long format (Lecture 5)
+        - Imputation methods based on mixed-effects models
+        
+* Longitudinal data in the wide format: 
+    + One row per individual
+
+* Longitudinal data in the long format: 
+    + One row per wave, per individual. 
+
+* Can transform a dataset from long to wide & wide to long:
+    + Stata: reshape command
+    + R: reshape() function available by default
+
+* We will illustrate these later, but usually need to consult help files case-by-case
+
+### Imputation using the wide format
+
+#### Standard methods
+
+* MVNI
+    + bmi1, bmi2, bmi3, bmi4, bmi5, sleep_prob1, sleep_prob2, sleep_prob3, sleep_prob4, and sleep_prob5 assumed to follow a MVN distribution
+    + Sleep problems imputed as continuous (in Stata)
+        - Means these values are imputed as values that are not necessarily 0 or 1
+        - Need to be rounded for analysis* (* Best not to round imputed values if you don’t need to
+)
+            > Crude rounding at 0.5
+            > Adaptive rounding – based on a normal approximation to the binomial distribution
+    + Results
+        - Estimated coefficient for previous BMI:
+            > Available case analysis: OR: 1.121 (1.078, 1.167), p < 0.001
+            > MVNI: OR: 1.107 (1.070, 1.146), p < 0.001
+
+* FCS
+    + bmi1 imputed using a linear regression model including bmi2, bmi3, bmi4, bmi5, and all of the sleep_prob and baseline variables
+    + bmi2 imputed using a linear regression model including bmi1, bmi3, bmi4, bmi5, and all of the sleep_prob and baseline variables 
+    + …
+    + sleep_prob1 imputed using a logistic regression model including sleep_prob2, sleep_prob3, sleep_prob4, sleep_prob5, and all of the bmi and baseline variables 
+    + …
+    + Results: OR: 1.121 (1.076, 1.168), p < 0.001
+
+#### Dealing with convergence issues
+
+* Because of too many variables --> convergence issues
+
+* Both MVNI and FCS can suffer from problems with convergence
+    + Methods are based an iterative procedure which should converge to a stable distribution
+        - Should check convergence following the imputation procedure e.g. using trace plots
+
+    + Estimation based on a maximum-likelihood (ML) procedure
+        - Can have non-convergence of the ML procedure (e.g. ridge in the likelihood; multiple maxima; function has no maximum likelihood – model crashes)
+
+* Trace plots
+    + Plots of estimated parameters or imputed values against iteration no
+    + MVNI – plots of parameter estimates
+        - Use option saveptrace(name, replace)
+        - Then plot using	mi ptrace use name, clear
+			                    tsset iter
+			                    tsline var 
+    + FCS – plots of  means and standard deviations of imputed values
+        - Use option savetrace(name, replace)
+        - Then plot using	use name, clear 
+			                    keep if m==1
+			                    tsset iter
+			                    tsline var
+(R provides similar functionalities – Practical 4)
+
+* Imputation model does not converge
+    + Large amounts of missing data
+    + Lots of variables collected at each wave
+    + Lots of waves of data collection
+    + Lots of categorical variables (perfect prediction)
+    + Highly correlated variables (collinearity) __Particularly problematic for longitudinal data__
+    + Categorical variables with only few observations in a category
+
+* Try to identify the cause of the problem
+    + Cross-tabulation of categorical variables
+    + Correlations between pairs of variables
+    + Look at missingness patterns
+    + Run univariate imputation models 
+    
+* One solution is to try and simplify the model by removing some of the auxiliary variables
+    + Remove categorical variables with rare events 
+    + Remove variables that are highly correlated
+    + Remove auxiliary vars with lots of missing data or low correlations
+    + Use variable reduction techniques e.g. principal components
+    + Use variable selection in the univariate imputation models (FCS)
+    + Impute at the scale level rather than the item level
+
+* Alternatively, can change the imputation approach:
+    + Impute ordinal variables as continuous not indicators (MVNI)
+    + Impute using predictive mean matching (FCS)
+    + Impute using MVNI rather than FCS
+    + Use data augmentation
+
+* When trying alternative imputation models is it very important to make sure that
+    + the imputation model is still sensible
+    + the imputation model is remains compatible with the analysis model
+
+* Another option is to use an alternative method of imputation….
+
+#### Extensions to FCS 
+
+##### Moving time window (MTW)
+
+* Variable at a specific time point is imputed using only information from the previous, current and next time point for all variables* (* Could use all information for that variable and/or all information for the outcome 
+)
+    + bmi1 imputed using bmi2, sleep_prob1, sleep_prob2, and the baseline variables
+    + bmi2 imputed using bmi1, bmi3, sleep_prob1, sleep_prob2, sleep_prob3, and the baseline variables
+    + …
+
+* Can be fitted in Stata/R but needs to be hand-coded!
+
+* Advantages
+    + Reduces the number of variables in each of the univariate imputation models
+    + Can overcome convergence issues
+    + Can be fitted easily using standard packages
+
+* Disadvantages
+    + Does not use potentially important information on the variable of interest
+    + Can be difficult to capture non-linear trends
+    + Time intensive to code
+    
+* Results: 
+    + Estimated coefficient for previous BMI: OR: 1.114 (1.077, 1.152), p < 0.001
+
+##### Two-fold
+
+* Variable at a specific time point is imputed using only information from the previous, current and next time point for all variables
+    + Alternates within and between time iterations
+    + Available in Stata
+    + Nevalainen et al. Statistics in Medicine, 2009
+    
+* Advantages
+    + Reduces the number of variables in each of the univariate imputation models
+    + Can overcome convergence issues
+
+* Disadvantages
+    + Does not use potentially important information on the variable of interest
+    + Can be difficult to capture non-linear trends
+    + Only available in Stata
+    + Takes a while to run given the within and between time iterations
+
+* Results: 
+    + Estimated coefficient for previous BMI: OR: 1.124 (1.049, 1.204), p = 0.006
+    + Results very similar from all MI approaches
+
+#### Comparison of the wide approaches
+
+* (De Silva et al. BMC Med Res Meth 2017)
+
+* Complete case analysis led to increasing bias with increasing proportions of missing data
+
+* Standard MI approaches seem to provide better results if they run
+
+* Two-fold useful to minimise the variables in the imputation model, but it is better to use a wider window
+
+#### Summary
+
+* Various different methods can be used to impute missing data in longitudinal studies in wide format
+    + MNVI and FCS are widely available
+          - Can have issues with convergence if lots of variables 
+          - FCS generally preferable as it imputes the correct variable type
+          - MVNI more likely to run
+    + Alternatives exist (MTW and two-fold)
+          - But do not make the most of the available data
+          - Do not capture non-linear trends
+    + Current evidence from simulations suggests is that it is best to use standard FCS/MVNI if you can
+
+### References
+
+* De Silva, A. P., Moreno-Betancur, M., De Livera, A. M., Lee, K. J., & Simpson, J. A. (2017). A comparison of multiple imputation methods for handling missing values in longitudinal data in the presence of a time-varying covariate with a non-linear association with time: A simulation study. BMC Medical Research Methodology, 17(1), 1–11.
+
+* Huque H, Carlin JB, Simpson JA and Lee KJ. A comparison of multiple imputation methods for missing data in longitudinal studies. BMC Medical Research Metholodgy. 2018 Dec 12;18(1):168. doi: 10.1186/s12874-018-0615-6.
+
+* Kalaycioglu, O., et al., A comparison of multiple imputation methods for handling missing data in repeated measurements observational studies. Journal of the royal Statistical Society Series A, 2016. 179: p. 683–706.
+
+* Lee, KJ, Galati JC, Simpson JA and Carlin JB. Comparison of methods for imputing ordinal data using multivariate normal imputation: a case study of non-linear effects in a large cohort study. Statistics in Medicine, 2012. 31(30): p. 4164-74.
+
+* Lee KJ, Roberts G, Doyle LW, Anderson PJ, and Carlin JB. Multiple imputation for missing outcome data in a longitudinal cohort study: a detailed case study with guidance for practice. International Journal of Social Research Methodology.2016; 19 (5): 575-591.
+
+* Nevalainen, J., M.G. Kenward, and S.M. Virtanen, Missing values in longitudinal dietary data: a multiple imputation approach based on fully conditional specification. Statistics in Medicine, 2009.
+
+* Rubin DB. Multiple Imputation for Nonresponse in Surveys. New York, NY: John Wiley, 1987.
+
+* Sterne JAC, White IR, Carlin JB, et al. Multiple imputation for missing data in epidemiological and clinical research: potential and pitfalls. BMJ 2009;338:b2393.
+
+* Welch, C, Bartlett J, and Peterson I. Application of multiple imputation using the two-fold fully conditional specification algorithm in longitudinal clinical data. The Stata Journal, 2014. 14(2): p. 418-431. 
+
+* White IR, Royston P, Wood AM. Multiple imputation using chained equations: issues and guidance for practice. Statistics in Medicine 2011;30(4):377-399.
+
+## MI methods for longitudinal data in the long format
+
+### MI in wide format vs MI in long format
+
+* Longitudinal data in the long format:
+    + One row per wave, per individual
+    + One column per variable
+    
+* Data in columns bmiz and sleep_prob are “clustered by individual”, i.e. correlation between repeated/longitudinal measures from the same subject
+
+* This is the data structure used by typical methods for modelling longitudinal data in the analysis stage
+
+* Analysis methods for longitudinal data
+    + GEE models (Lecture 1)
+    + Mixed-effect models: regression including “random effects”
+    + Random-intercept linear mixed model for BMI
+    
+* Random effects: intuition
+    + Correlations between repeated measures of an individual arise from “subject effects”
+        - For example, these could be thought to arise from a genetic predisposition to lower or higher BMI.
+    
+    + Usually cannot include the “id” variable as an “explanatory” variable in a regression – too many categories! 
+        - Would need to estimate one regression coefficient 𝑏_𝑖  for each individual $i$=1,…,5000
+    + Random effects represent a way to model those “subject effects” in a parsimonious way, by assuming that they are random variables following a normal distribution:
+        $b_i \sim N(0, \Sigma)$
+    + We thus need only estimate 1 parameter, rather than 5000: $\Sigma$
+    + Generalised linear mixed models extend this idea to non-continuous outcomes
+    
+* Example: Random intercept and slope linear mixed model for BMI
+
+* Analysis methods for longitudinal data
+    + GEE models (Lecture 1)
+    + Mixed-effect models: regression including “random effects”
+    + How are correlations between repeated measures of the same and different variables dealt with in the imputation stage?
+
+* Clustering by individual in MI
+    + MI in the wide format: No distinction between repeated measures of same and different variables
+        - MVNI: All correlations modelled through unstructured covariance matrix of assumed multivariate normal distribution.
+        - FCS: All correlations modelled through regression, by including repeated measures of same and different variables as regressors in the univariate imputation model of each variable
+    
+    + MI in the long format: There is a distinction between repeated measures of same and different variables
+        - Extensions of both MVNI and FCS model correlations between repeated measures
+            > of the same variable, by using random effects in the model for that variable
+            > of different variables, as in wide-format imputation (i.e. unstructured covariance for MVNI, regression for FCS)
+
+* Level 1 and Level 2 variables
+    + Level 1 variables:
+        - Vary within cluster (e.g. BMI), it is for them that we have repeated measures, requiring imputation strategies that account for clustering
+    + Level 2 variables:
+        - Constant within cluster (e.g. sex), we don’t need multilevel models in principle but need to be imputed simultaneously with level 1 variables
+
+* When to use long format imputation?
+    + Visit times are irregular across individuals
+        - Here the wide format is not possible
+    + Convergence issues with MVNI or FCS in wide format
+    + Also (not covered):
+        - “Substantive-model-compatible” routines for some models: R jomo package functions jomo.glmer and jomo.lmer
+        - Necessary for time-to-event outcomes, specialised routines: R survtd package (https://github.com/moreno-betancur/survtd)
+        
+
+### Long data extensions of FCS
+
+* FCS with multilevel models
+    + FCS imputes each incomplete variable at a time using univariate model
+    + For level 1 variables we can use a multilevel univariate model
+    + Continuous level 1 variable: 
+        - Linear mixed model (LMM)
+        
+    + Binary level 1 variable: 
+        - Generalised linear mixed model: a generalised linear model with random effects
+        - However, not too good with many clusters/few observations as with longitudinal data, so we won’t consider it here
+        - Latent normal (LN) variable formulation -> model a “continuous version” of sleep (see Appendix)
+    + Advantages
+        - Same as standard FCS, PLUS
+        - Easy to impute a combination of level 1 and level 2 variables of various types
+        - Extensions exist allowing subject-specific (heterogeneous) residual variance, which may improve performance in some scenarios
+    + Disadvantages
+        - Same as standard FCS, PLUS
+        - Not widespread
+            > R packages mice and micemd
+            > Others: R package miceadds, Mplus
+        - Can be computationally very intensive (slow!) especially versions for binary/categorical data
+    + Results: FCS-LMN-LN: 1.128 (1.091, 1.166), p < 0.001
+    
+### Long data extensions of MVNI
+
+* Multivariate Linear Mixed Model (MLMM)
+    + Multivariate extension of the linear mixed model
+        - Joint model (JM) for a vector of variables, not a single variable
+        - Latent normal (LN) variable to handle binary and categorical variables
+    + Multilevel extension of MVNI
+        - Includes random effects in the imputation model for each of the variables to be imputed
+    + As for MVNI, an iterative procedure fits it and imputations drawn from posterior distribution
+    + Advantages
+        - Same as standard MVNI, PLUS
+        - Simulation evidence shows it works well for random intercept and slope analysis models
+        - Extensions exist allowing subject-specific residual covariance matrix, although this doesn’t appear necessary for the JM-MLMM-LN defined here
+    + Disadvantages
+        - Same as standard MVNI, PLUS
+        - Not widespread 
+            > R packages pan (only for continuous variables or assume normality) and jomo (LN variable approach)
+            > Versions in Mplus & REALCOM-impute (standalone)
+        - Can be computationally very intensive (slow!) especially LN variable approach for binary/categorical data
+    + Results: JM-MLMM-LN: 1.111 (1.074, 1.150), p < 0.001
+        
+* Incomplete level 2 variables
+    + Example: m_education, sex, birthweight, m_age
+    + Imputing these does not require a multilevel model
+    + The joint model can be extended to incorporate these as well 
+    + Results: JM-MLMM-LN (impute level 2 variable): 1.109 (1.058, 1.163), p < 0.001
+    
+### Summary and references
+
+* Need to account for correlations in imputation step:
+    + For compatibility with analysis model
+    + To exploit auxiliary information from other waves
+    
+* Approaches
+    + Impute in the wide format (Stata & R)
+        - Wave-level measurement is “just another variable”
+            > Traditional MVNI & FCS 
+            > Modified versions for longitudinal data (MTW, two-fold)
+    + Impute in the long format (R)
+        - Use random effects for parsimony & unbalanced data
+            > Extensions of MVNI and FCS using random effects
+
+* Choice of approach depends on various issues
+    + Software preference (Stata or R)
+    + Data collection design (balanced or unbalanced)
+    + Convergence of “wide” algorithms
+    + Access to specialised routines tailored to analysis model e.g. mixed-effects model, survival (time-to-event/hazard) model 
+    
+### References
+
+* Huque H, Carlin JB, Simpson JA and Lee KJ. A comparison of multiple imputation methods for missing data in longitudinal studies. BMC Medical Research Metholodgy. 2018 Dec 12;18(1):168. doi: 10.1186/s12874-018-0615-6.
+
+* Huque H, Carlin JB, Moreno-Betancur M, Quartagno M, Simpson JA and Lee KJ. Multiple imputation methods for handling incomplete longitudinal and clustered data where the target analysis is a linear mixed effects model. Biometrical Journal 2019
+
+* Carpenter J.R., Kenward M.G., (2013), Multiple Imputation and its Application. Chapter 9, Wiley, ISBN: 978-0-470-74052-1. 
+
+* van Buuren S, Groothuis-Oudshoorn K. mice: Multivariate Imputation by Chained Equations in R. J Stat Softw. 2011;45(3):1–67. 
+
+* Quartagno M and Carpenter J. jomo: A package for Multilevel Joint Modelling Multiple Imputation. 2017 https://CRAN.R-project.org/package=jomo
+
+* Audigier V and Resche-Rigon M. micemd: Multiple Imputation by Chained Equations with Multilevel Data. 2017 https://CRAN.R-project.org/package=micemd
+
+* Enders, Craig K., Stephen A. Mistler, and Brian T. Keller. Multilevel multiple imputation: A review and evaluation of joint modeling and chained equations imputation. Psychological Methods 21.2 (2016): 222.
+
+* Kalaycioglu, O., et al., A comparison of multiple imputation methods for handling missing data in repeated measurements observational studies. Journal of the royal Statistical Society Series A, 2016. 179: p. 683–706.
+
+* Enders, C., Hayes T., Du, H. A Comparison of Multilevel Imputation Schemes for Random Coefficient Models: Fully Conditional Specification and Joint Model Imputation with Random Covariance Matrices. Multivariate Behavioral Research. Epub ahead of print 2019
+
+* Moreno-Betancur M, Chavance M. Sensitivity analysis of incomplete longitudinal data departing from the missing at random assumption: Methodology and application in a clinical trial with drop-outs. Stat Methods Med Res. 2016;25(4):1471–1489. https://github.com/moreno-betancur/mice 
+
+* Moreno-Betancur M, Carlin JB, Brilleman SL, Tanamas S, Peeters A, Wolfe R. Survival analysis with time-dependent covariates subject to missing data or measurement error: Multiple Imputation for Joint Modeling (MIJM). Biostatistics 2017, forthcoming. see https://github.com/moreno-betancur/survtd
+
+### Appendix: Technical + Details on R implementations
+
+#### Latent normal variable approach
+
+* Carpenter J.R., Kenward M.G. MI and its applications. Wiley 2013
+
+* Let $Y$ be binary and assume a probit model
+
+$$\Phi^{−1} \{P(Y = 1)\}=\beta$$
+
+* Define a latent normal variable $Z \sim N(\beta,1)$ such that $Z > 0$ if and only if $Y = 1$
+
+Then $P(Y = 1) = \phi(\beta)$
+
+So we can model $Z$ in the joint normal model, restricting variance to 1, and then use this transformation to impute $Y$
+
+#### FCS extensions in R: mice & micemd
+
+* mice: general R package for multiple imputation by chained equations
+* micemd: Add-on functions to mice for 2-level imputation
+* method argument to mice main function
+* *Also “2l.lmm” available from https://github.com/moreno-betancur/mice 
+(Moreno-Betancur and Chavance, SMMR, 2016. 24(4): 1471–1489)
+* Currently no available and recommended method for categorical data
+* predictorMatrix argument
+    + # rows= # cols= # of variables in the dataset.
+    + rows and columns in the order in which they appear in the dataset
+    + Cell=1 if column variable predictor with FIXED effects in imp model of row variable 
+    + Cell=2 if column variable predictor with FIXED+RANDOM effects in imp model of row variable 
+    + Cell= -2 if column variable is cluster ID variable for row variable 
+    + Cell=0 otherwise
+
+#### MVNI extensions in R: jomo
+
+* Aside from the jomo1 suite, all routines are long-format extensions of MVNI
+* Allowing for random cluster-specific level-1 covariances may not be so relevant in the longitudinal setting in the MLMM model presented
+* Only some are relevant for general longitudinal data
+
+## Sensitivity analyses within the multiple imputation framework: the pattern mixture method
+
+### Why are the data missing?
+
+* An analysis with missing data must make an assumption some of which are untestable.
+
+* There are three assumptions (within Rubin’s framework) for the ‘distribution of missingness’.
+    + MCAR	– Missing completely at random
+    + MAR	– Missing at random
+    + MNAR	– Missing not at random
+
+* Note that not all assumptions about missing data fit within this framework…
+
+* Missing not at random (MNAR)
+    + ‘Probability of data being missing depends on the values of the missing data, even conditional on the observed data’
+    + Not possible to assess from data whether MAR or MNAR
+
+* MNAR models and need for sensitivity analysis
+    + MNAR: distribution of missing data ≠ distribution of observed data
+    + To fit a model under MNAR, need strong, unverifiable assumptions about how these two distributions differ (a bit more so than MAR)
+    + Need to approach this as a sensitivity analysis (consider several plausible departures from MAR)
+    
+* Missing not at random (MNAR)
+    + What is the association between use of hormone replacement therapy (HRT) & breast cancer risk? missingness(m)DAG - Causal DAG including indicators of missingness for each incomplete variable
+
+### Sensitivity analysis within the Multiple imputation (MI) framework
+
+* Pattern-mixture method – based on a pattern-mixture model (joint modelling approach)
+
+* Pattern-mixture model 
+
+* Pattern-mixture method
+    + Procedure
+        - Define imputation & analysis models as usual
+        - Impute under MAR
+        - Select fixed value (or distribution) for delta 
+            $ \delta_{pm} = 0 $ - imputation assuming MAR
+            $ \delta_{pm} \neq 0 $ - sensitivity analysis, assessing plausible departures from MAR
+            Plausible values for $\delta$: Elicit distribution for $\delta$ from content experts
+        - For continuous variable with missing data – add $\delta_{pm}$ to 	imputed values of imputed dataset 1, repeat for each imputed 	dataset. For binary variables include an offset in the 	imputation model.
+        - Repeat step 4 for a range of values of $\delta_{pm}$, e.g. mean, lower and upper limits of 95% CI.
+    + White, I.R., et al. 2007, Clinical Trials
+    + Hayati Rezvan P, Lee KJ, Simpson JA. 2019, Longitudinal and Life Course Studies
+    + Mason AJ, Gomes M, Grieve R, Ulug P, Powell JT, Carpenter J. 2017, Clinical Trials.
+    + Carpenter, J.R. & Kenward, M.G. 2013, Multiple imputation and its application
+    + Ratitch, B., O'Kelly, M. & Tosiello, R. 2013, Pharmaceutical Statistics
+    + For sensitivity analysis, use the same random number seed across different values of delta
+
+* MCCS case study
+    + Pattern-mixture method:
+        - Define imputation & analysis models as before
+        - Impute under MAR
+        - Select distribution for $\delta$
+            > Experts suggest that women with age at menopause missing are younger (on average 2 years) than those with observed values after controlling for other measured variables.
+            > Distribution for $\delta \sim N(-2, 1)$
+        - Add $\delta_{mean}$ (i.e. -2 for example) to imputed values of age at menopause of imputed dataset 1, repeat for each imputed dataset
+        - Repeat step 5 for maybe $\delta_{lowerCI}$ (i.e. -4 for example) and $\delta_{upperCI}$ (i.e. 0 for example, same as MAR) 
+  + Comparison of estimates for different approaches for handling missing data
+  + Note – Similar story for HRT past versus non-users except estimates of reduced magnitude. See Simpson JA et al. 2007. Why hasn’t the estimate for HRT users changed much? Remember ‘age at menopause’ is not a strong confounder in this example.
+
+### Elicitation of expert opinion
+
+#### Prepare elicitation tool
+
+* MCCS example – we need the difference in mean age at menopause between those with and without this recorded
+
+* We must elicit:-
+    + the value that the expert believes is most likely
+    + the expert’s uncertainty about this value
+
+* Define elicitation questions – structure, wording, feedback
+
+* Presentation of scales for variables with missing data – table, graphical display using web based elicitation tool (e.g. R Shiny app)
+
+* Representation of expert opinion – do not make it overly complex
+
+* Example
+    + Mason AJ, et al. 2017, IMPROVE trial”, Clinical Trials.
+    + Need to elicit difference in mean QoL between patients who did and did not complete the QoL assessment and to do this for each randomised arm of trial. 
+    + R Shiny app – https://ajm-elicit.shinyapps.io/ElicitAppHighQ5 
+
+* Example
+    + Hayati Rezvan P, Lee KJ, Simpson JA. 2019, Longitudinal and Life Course Studies.
+
+#### Elicit experts’ opinions about the unknown quantities
+
+* Recruit experts – identify experts with relevant knowledge about the measures with missing data and the study population 
+    + LSAC study – 3 experts
+    + IMPROVE study – 26 experts (vascular surgeons - 17, specialist or research nurses - 9) 
+
+* Conduct elicitation
+    + Do the experts understand the elicitation task and correctly interpret the tables/graphs?
+    + Face-to face with feedback is the optimal approach. Note, IMPROVE Study administered web-based elicitation tool via email or in conference breaks with a £20 gift voucher.
+    + Elicit expert opinion in separate individual consultations or as a group? – my advice is separate individual consultations; note group-level elicitation has advantages in terms of training in one session but consensus must follow a fair process (e.g. Delphi process).
+
+#### Evaluate the adequacy of the elicitation process by providing feedback to the experts
+
+* Provide feedback (e.g. visual with R Shiny app) of the distribution provided by the expert. 
+
+* Ask - Do the estimated quantities adequately represent their opinions? If the answer is no, repeat the elicitation process.
+
+* IMPROVE Study emailed a feedback questionnaire which allowed experts to revise their answers.
+
+#### Analyse elicitation results
+
+* Combine the resulting distributions elicited from each expert into a single probability distribution. 
+
+* Linear pooling, with equal weights given to each expert
+
+* Software packages available to do this – e.g. SHELF R package
+
+#### Summary
+
+* MAR analysis assumes $\delta = 0$ for some unidentified parameter. This cannot be estimated from the data.
+
+* Many journals now request these sensitivity analyses are performed following MI
+
+* Sensitivity analysis needed to explore a range of plausible values for $\delta$ elicited from content experts.
+
+* Pattern-mixture method
+    + Intuitive and performs well 
+    + Can be implemented in standard statistical software for a single variable with missing data (for categorical variables it is a little more complicated and requires using the offset command in the imputation stage)
+    
+#### Things to consider
+
+* The departure from MAR for imputed ‘age at menopause’ was assumed to be the same for all women with ‘age at menopause’ missing.
+    + Should we have considered using  different d distributions for
+different groups of women? Definitely important to consider in
+Trials – IMPROVE trial elicited by trial arm
+
+* We only had missing data for a single variable - ‘age at menopause’. 
+    + How can I assess departures from MAR when I have missing data
+in more than one variable? E.g. MX1, MX2 and should I assume that these variables are independent.
+    + LSAC example assumed missing data for SDQ total score and maternal emotional distress were independent.
+
+#### References
+
+* Carpenter, J.R. & Kenward, M.G. 2013, ”Multiple imputation and its application” Wiley, 1st ed.
+
+* Molenberghs, G., Fitzmaurice, G., Kenward, M.G., Tsiatis, A., Verbeke, G. 2014, “Handbook of Missing Data Methodology” Chapman & Hall, 1st ed.
+
+* Hayati Rezvan P, Lee KJ, Simpson JA. 2019, “Sensitivity analysis within multiple imputation framework using delta-adjustment: Application to Longitudinal Study of Australian Children”, Longitudinal and Life Course Studies, vo. 9, no. 3, pp. 259-278.
+
+* Mason AJ, Gomes M, Grieve R, Ulug P, Powell JT, Carpenter J. 2017, “ Development of a practical approach to expert elicitation for randomised controlled trials with missing health outcomes: Application to the IMPROVE trial”, Clinical Trials, vol. 14, no. 4, pp. 357-367.
+
+* Ratitch, B., O'Kelly, M. & Tosiello, R. 2013, "Missing data in clinical trials: from clinical assumptions to statistical analysis using pattern mixture models", Pharmaceutical Statistics, vol. 12, no. 6, pp. 337.
+
+* White, I.R., Carpenter, J., Evans, S. & Schroter, S. 2007, "Eliciting and using expert opinions about dropout bias in randomized controlled trials", Clinical Trials, vol. 4, no. 2, pp. 125-139.
+
+## Sensitivity analyses for multiple variables with missing data: the NARFCS procedure
+
+### Example: LSAC case study
+
+* Exposure: $X$ = Maternal mental illness (wave 1)
+* Outcome: $Y$ = Child’s SDQ score (wave 3)
+* Confounders wave 1: $Z = (Z_1, Z_2)$
+    + $Z_1$ = {Sex, Siblings, Maternal education, Maternal age, Consistent parenting, Financial hardship, Child’s wave 1 SQD}
+    + $Z_2$ = {Maternal smoking, Maternal alcohol, Physical functioning}
+
+### Missing data assumptions in problems with multiple incomplete variables
+
+* What does “MAR” mean here?
+    + It is not assumption about conditional independencies between variables, as is often thought
+    + Plausibility very difficult to assess in real settings, no simple definition in lay terms
+    + The increasing stringency as number of incomplete variables increases is poorly understood
+    
+* MAR: sufficient but not necessary
+    + While it is true that
+        - MCAR --> complete case analysis unbiased
+        - MAR --> more sophisticated methods, e.g. MI, unbiased
+        
+    + We must keep in mind that 
+        - MCAR ⇐ complete case unbiased
+        - MAR ⇐ more sophisticated methods, e.g. MI, unbiased
+    + Many MNAR  scenarios allow unbiased estimation of all or some parameters using standard MI or even a complete case analysis
+    
+* So, when are sensitivity analyses needed?
+    + MAR/MNAR framework not very useful to answer this with multivariable missingness
+        - Difficult to assess MAR plausibility using subject-matter knowledge
+        - MNAR potentially more plausible but it doesn’t mean that you can’t do standard MI for target parameter
+    + Causal diagrams provide an appealing alternative particularly as proposed by Mohan, Pearl and co-authors
+
+### Causal diagrams for missing data assumptions
+
+* Directed acyclic graph (DAG): Nodes (variables) connected by directed arrows with no loops from a variable to itself. 
+
+* Causal DAG: Encode assumptions about presence/absence of causal relations (A --> B means A causes B)
+    + Must contain all (measured or unmeasured) common causes of ≥2 variables in the graph
+    
+* Causal diagrams
+    + Used to guide design and analysis of epidemiological studies, e.g. to determine confounding adjustment set
+    + LSAC study
+    
+* Missingness DAG (m-DAG)
+    + Causal DAG including indicators of missingness for each incomplete variable, or subsets of incomplete variables
+    + LSAC study: $X, Y$ and confounders in $Z_2$ have missing data
+        - 𝑀_𝑋=1 if 𝑋 missing, 𝑀_𝑋=0 if not
+        - 𝑀_𝑌=1 if 𝑌 missing, 𝑀_𝑌=0 if not
+        - 𝑀_(𝒁_𝟐 )=1 if 𝒁_𝟐 incomplete, 𝑀_(𝒁_𝟐 )=0 if not
+        
+* Plausible m-DAG in LSAC study
+
+* Missingness DAGs
+    + Causal diagrams intuitive to state/assess assumptions
+        - Causal thinking already implicit in these considerations
+        - Easy to understand and communicate (transparency)
+
+    + However, the number of possible m-DAGs can explode quite quickly and there is no general algorithm that, given an m-DAG, can say how to achieve fully efficient estimation  (e.g. with MI) or whether sensitivity analysis is needed
+
+    + We proposed an readily applicable solution for the case of a point-exposure study
+
+* “Canonical” missingness DAGs
+    + Moreno-Betancur et al. (Am J Epi 2018. 187(12):2705-2715)
+    + Ten m-DAGs that capture typical missingness mechanisms in studies with incomplete data on exposure, outcome, and confounding factors
+    + For each DAG, we say whether E(X), E(Y) and regression-adjusted exposure coefficient can be estimated with e.g. MI, or whether sensitivity analyses are needed
+    + Provide more detailed insight than MAR/MNAR, but complexity contained and results widely applicable
+    
+* Canonical m-DAG in LSAC study
+    + Our findings show that, with canonical m-DAG E, 
+        - Need sensitivity analyses if estimating 
+            > Proportion exposed
+            > Mean of outcome
+        - Can use available case (AC) analysis or MI for regression-adjusted 
+      exposure-outcome association
+      
+* LSAC study: AC and MI results
+    + How do we do that with multiple incomplete variables?
+
+### Not-at-Random Fully Conditional Specification (NARFCS)
+
+* The NARFCS procedure
+    + Extends the delta-adjustment/pattern-mixture method to the setting with multiple incomplete variables within an FCS approach
+        - Like FCS, it posits univariate models for each incomplete variable
+        - For one or some variables, a “delta” parameter is incorporated in this model, shifting the imputations from what they would be with standard FCS
+        - Leacy, PhD dissertation 2016 (MRC Biostatistics Unit)
+        
+* Example: LSAC study
+    + Theoretical result (Moreno-Betancur et al. AJE 2018): estimating proportion exposed requires sensitivity analysis
+    
+* Implementation
+    + Software: 
+        - Currently available in a development version of an extension to the R package mice https://github.com/moreno-betancur/NARFCS
+        - A refined version (easier to use) soon to be incorporated officially in R mice package
+        - Available in Stata 16 (limited functionality/documentation)
+    + Elicitation of parameters not straightforward, as needs to be conditional on other variables, including possibly other missingness indicators. Calibration procedure has been developed
+    + Tompsett et al. (Stat Med, 2018. 37:2338-2353)
+
+### Summary and references
+
+* Usual MAR/MNAR paradigm not very useful in the context of multivariable missingness
+
+* Causal diagrams provide an alternative to depict assumptions in a transparent way, particularly to determine need for sensitivity analysis for target parameter
+    + “Canonical m-DAGs”: make this approach readily usable in practice
+
+* NARFCS extends FCS to enable application of delta-adjustment method in the context of multivariable missingness
+    + Becoming routinely available statistical packages; elicitation remains the main challenge
+
+* Conclusion: “MNAR” not easy with multivariable missingness! But increasing availability of methods to harness it
+
+#### References
+
+* Leacy FP. Multiple imputation under missing not at random assumptions via fully conditional specification (PhD thesis). University of Cambridge, 2016.
+
+* Tompsett DM, Leacy FP, Moreno-Betancur M, Heron J, White IR. On the use of the not at random fully conditional specification procedure (NARFCS) in practice. Statistics in Medicine 2018; Epub ahead of print 2 April 2018.
+
+* Moreno-Betancur M, Leacy FP, Tompsett D, White I. "mice: The NARFCS procedure for sensitivity analyses" (Available at: https://github.com/moreno-betancur/NARFCS)
+
+* Moreno-Betancur M, Chavance M. Sensitivity analysis of incomplete longitudinal data departing from the missing at random assumption: Methodology and application in a clinical trial with drop-outs. Statistical Methods in Medical Research 2016; 25(4) 1471-1489. (longitudinal data)
+
+* Leacy FP, Floyd S, Yates TA, White IR. Analyses of Sensitivity to the Missing-at-Random Assumption Using Multiple Imputation With Delta Adjustment: Application to a Tuberculosis/HIV Prevalence Survey With Incomplete HIV-Status Data. American Journal of Epidemiology 2017, 185(4):304-315. (mediation analysis)
+
+* Direct likelihood inference and sensitivity analysis for competing risks regression with missing causes of failure.Biometrics 2015; 71(2):498-507. (survival analysis with competing risks)
+
+
+
+
+
+## Case studies
+
+### Melbourne Collaborative Cohort Study
+
+#### The research question
+
+#### Investigation of the missing data
+
+#### Set up of the imputation model
+
+#### Multiple Imputation (MI) - Impute data multiple times
+
+#### Comparison of the imputed and observed data
+
+#### MI estimate of the epidemiological association of interest
+
+#### Comparison of estimates of the epidemiological association of interest: MI estimate, complete-case analysis estimate, single imputation estimate
+
+#### Conclusions & things to consider......
+
+### The Victorian Infant Cohort Study
+
+#### The research question
+
+* Increasing number of children born extremely preterm (EP, <28 weeks’ gestation) or extremely low birthweight (ELBW, birth weight <1000 g) surviving into young adulthood.
+
+* Preterm survivors at increased risk of physical, cognitive and psychological impairments.
+
+* Aim: To compare self-reported quality of life, health status, and self-esteem of EP/ELBW adolescents with that of NBW controls at 18 years of age.
+
+#### The Victorian Infant Cohort Study
+
+* Longitudinal study of 298 survivors born EP or ELBW in Victoria in 1991 and 1992, and 262 NBW controls.
+
+* Participants followed up at 2, 5, 8 and 18 years of age.
+
+* Data collected in the newborn period
+    + pregnancy and birth details
+    + complications after birth
+    
+* Retention
+
+Follow up | EP/ELBW | NBW
+----------|---------|--------------
+2 years   | 98%     | 91%
+5 years   | 93%     | 87%
+8 years   | 92%     | 85%
+18 years  | 62%     | 53%
+
+    + Big lost at 18 years
+    + Good rates of follow-up at early waves
+    + Much harder to get participants back at 18 years
+    + Importantly – are there differences in attrition between the two groups that could bias the comparison
+
+
+* Comparison of characteristics for those with/without follow-up at 18 years
+    + Original results published from this study used a complete case analysis
+    + Differences between those with and without data at age 18 years…
+    + Preterm with FUP
+        - More educated
+        - Fewer disability
+        - Better development
+    + Similar for controls
+
+    
+* CC is one approach to dealing with missing data; however:
+    + Complete case analysis excludes 40% of participants
+    + Known differences between those with and without follow-up data
+    + Difference between groups from complete case analysis may not be reflective of the true difference (biased)
+
+--> Alternative method for handling missing data
+
+#### Step 1: Should we use MI?
+
+* Is MI likely to provide a more accurate inference (in terms of reducing bias or improving precision) than complete case analysis?
+
+* Things to consider
+    + Are there differences between those with complete and incomplete data?
+        - If there are differences MI can be used to correct bias
+
+    + Is MAR a plausible assumption? Are there likely to be unknown predictors of missingness?
+        - If unknown predictors MI will still be biased
+
+    + Are there auxiliary variables that are predictive of missing values?
+        - Need to have auxiliary variables (i.e. variables that are predictive of missing values but that are not in the analysis model)
+
+    + Which variables have missing data?
+        - What variables? – more to gain if missingness in a variable that is not of primary interest e.g. in a confounder
+
+    + How much missing data is there?
+        - If hardly any (e.g. <5%), not really worth imputing as there is not much to gain.
+        - If lots (i.e. >50%), more chance to go wrong if imputation model is not great
+
+* Looking at the case study, we can assess whether there are predictors of missing values using logistic regress to look for variables that are predictive of whether the participant has missing data or not.
+
+* Formalises the previous table
+
+* We can also look at whether variables are correlated with variables with missing values – just focus on HUI-3 (QOL)
+
+* Just focussing on two variables we can see both mental and physical development at 2 years are predictive of whether the there are missing data, as development increases, less likely to have missing data.
+    - Better development more likely to have data
+
+* Development also correlated with values of HUI-3, particularly in the preterm group.
+    - Less correlation in the term group
+
+* So
+    + Known differences between those with and without follow-up
+    + Previous waves of data collection can be used to impute missing values
+    + MAR is a plausible assumption
+    + Missing data in outcomes so maybe not much to gain
+        - Missing data in outcomes – means maybe little to gain about the outcomes, although there are potentially strong auxiliary variables from previous waves.
+
+    + 40% with missing data
+        - 40% had some missing data so that there is a reasonable amount of missing data, i.e. if we don’t impute then we are throwing away a lot of data, it is not too much…
+
+
+#### Step 2: Building the imputation model
+
+##### Which variables to include in the imputation model?
+
+* Variables in analysis –> all outcomes and group
+    + Should include all variables in the analysis model – outcomes, predictors, confounders…
+
+* Auxiliary –> previous waves of data collection
+    + Note, these variables may also contain missing data
+    + Benefit of MI comes from the inclusion of auxiliary variables which provide info about the missing values.
+        - Can include lots
+        - (although can sometimes be too many, particularly if there are lots of variables at lots of waves
+        - Preference should be given to variables that are associated with missing values
+        - Also, some baseline characteristics likely to be associated with missing outcomes are not present in the NBW group.
+
+* Correlations between auxiliary and incomplete variables different in EP/ELBW and NBW groups, and some variables only relevant to preterm group –> impute separately in the two groups
+    + Imputing separately preserves the potential interactions between the characteristics and group.
+    + Impute separately then merge the imputed datasets prior to analysis
+        - Allows correlations between all variables to be different in the two groups
+        - Often used when using MI for an RCT
+
+* 23 variables in the imputation model 
+    + Baseline: gender, birthweight, maternal and paternal education, social class (plus IVH grade 3 or 4, cystic PVL, postnatal corticosteroids and surgery in preterm group)
+    + 2, 5 and 8 years: disability and cognitive development 
+    + 8 years: reading, spelling, writing, and motor scores 
+    + 18 years: quality of life, health status, and self-esteem
+    
+IVH = intraventricular haemorrhage 
+cystic PVL = cyctic periventricular leukomalacia
+
+Variables were chosen because clinically we expected them to be associated with the missing outcome – and they generally were.
+
+Some auxiliary variables had missing data themselves although missingness was minimal
+
+##### What level to impute – raw data or composite scores?
+
+* What level to impute – raw data or composite scores?
+    + How many variables?
+    + What is the correlation between the raw scores?
+    + How rare are the composites?
+
+* A second question is then what level of detail to include
+    + Decision will depend on how many raw scales and the correlation between the raw scores
+    + If a combination of events, will depend on how rare the events are
+
+* For example in our dataset we have a composite measure of disability.
+    + Deafness and blindness are very rare, even in the preterm group. Have convergence problems if we include these separate components.
+    + Instead we include the composite disability score and then the continuous IQ score – IQ only one component of disability and used as a threshold effect anyway - not highly correlated
+    
+* See Graham (2012; Chapter 9) for a detailed discussion
+
+##### Method of imputation
+
+* MICE
+    + Linear regression for continuous variables (regress)
+        - IQ, HUI-3, Coopersmith Inventory,…
+    + Logistic regression for binary variables (logit)
+        - Maternal/paternal education <12 years,…
+    + Ordinal logistic regression for ordinal variables
+        - Disability (none, mild, moderate, severe),…
+
+* Carry out the imputation step separately in the two groups
+
+* Some auxiliary vars also have missing data but very little
+
+* Multiple variables with missingness, need multivariable technique
+
+* Use MICE because of its flexibility
+
+#### Step 3: Carrying out MI
+
+#### Step 4: Analysis
+
+* Need to append the two imputed datasets prior to analysis
+
+* Comparisons between groups using quantile regression
+    + Results = regression coefficient for group (difference in medians between the groups) along with 95% confidence interval (CI) and corresponding p-value
+
+#### Results
+
+* HUI-3
+
+Method          | Group diff | SE    | 95% CI          | p
+----------------|------------|-------|-----------------|-----
+Complete case   | -0.014     | 0.014 | (-0.041, 0.014) | 0.33
+MI              | -0.011     | 0.025 | (-0.060, 0.039) | 0.66
+
+  + Estimate from CC and MI similar
+  + Interestingly get wider CI from MI – large between imputation variability (probably due to weak correlations, predicted with lots of uncertainty)
+  + Same overall conclusion of no difference from both analyses
+
+
+* Coopersmith Inventory
+
+Method          | Group diff | SE    | 95% CI          | p
+----------------|------------|-------|-----------------|-----
+Complete case   | 10.0       | 7.67  | (-5.08, 25.1)   | 0.19
+MI              |  4.5       | 5.82  | (-7.04, 16.0)   | 0.44
+
+  + Estimate changes a bit – still clinically small magnitude of change (SD = 31)
+  + With this outcome, get a smaller SE (narrower CI) with MI.
+  + Conclusion not really altered
+
+#### Conclusions
+
+* Similar results from complete case analysis and MI
+
+* Confidence intervals wider from MI than the complete case analysis for HUI-3
+    + Wider CIs from MI – probably because imputing outcomes hence adding uncertainty.
+    + Larger between imputation variability
+
+* Reassuring that the overall conclusions are robust to the method of handling missing data
+
+#### Sensitivity analysis
+
+* Number of decisions made in setting up the imputation model
+
+* Are the MI results robust to decisions made during the imputation process?
+    + MVNI rather than MICE?
+    + Continuous variables imputed under (conditional) normality
+    + Imputed values may fall outside the range of the variable
+    
+--> Do these things matter?
+
+* Imputed under (conditional) normality
+    + Should we impute under a different distribution?
+        - Can’t impute under different with MVNI or MICE at the moment: Not available in standard software
+        
+    + Should we transform data to improve normality prior to imputation?
+        - Which transformation?
+        - Range of transformations e.g. log, shifted log, Box-Cox…
+        - Transform the imputed values back to the raw scale for analysis
+
+* Imputed values may fall outside the range of the variable
+    + E.g. HUI-3 has an expected range from 0 – 1 (although can be <0)
+        - Use out-of-range values
+        - Post-imputation truncation – truncate variables to expected min/max
+        - Truncated regression (MICE) – impute missing values from a truncated normal distribution
+        - Predictive mean matching (MICE) – missing values replaced with the nearest observed value based on the predicted mean from the imputation model
+        - see Rodwell et al (2014)
+
+* Sensitivity analysis - results HUI-3
+    + Results similar irrespective of how MI was carried out – overall conclusions the same
+        - Identical results when the imputed values were truncated following imputation compared with when there was no truncation. This is because the parameter of interest is the difference in medians which is unaffected by the observations in the tail.
+        - Much wider CI’s when data were de-skewed prior to imputation…
+            > Distribution not great from distribution slide
+            > Imputed values look much better when you impute on the raw scale – this is inflating the SE
+            > Shows the importance of looking at the imputed values…
+
+* Summary
+    + Overall conclusion is the same irrespective of the imputation model used
+    + However, there were much wider confidence intervals when the data were deskewed prior to imputation
+    + Results may be sensitive to the decisions made in the imputation process
+        - Useful to present the results from the sensitivity analysis to demonstrate the robustness of the conclusions
+
+#### Summary
+
+* MI can be a useful way to handle missing data
+
+* BUT
+    + Need to spend time developing an appropriate imputation model 
+    + Once the imputations have been generated, it is important to explore whether the imputed values are reasonable
+    + Following MI, it can be valuable to carry out sensitivity analyses around the decisions made in setting up the imputation model
+
+#### References
+
+* Allison P. (2002). Missing Data. Thousand Oaks, California: Sage Publications.
+
+* Carpenter J, & Kenward MG. (2013). Multiple Imputation and its Application. Chichester: WIley.
+
+* Graham J. (2012). Missing data: analysis and design. New York: Springer.
+
+* Lee KJ, Carlin JB. Multiple imputation in the presence of non-normal data. Statistics in Medicine 2017; 36(4): 606-17.
+
+* Lee KJ, Roberts G, Doyle LW, Anderson PJ, Carlin JB. Multiple imputation for missing outcome data in a longitudinal cohort study: a detailed case study with guidance for practice. International Journal of Social Research Methodology 2016; 19(5): 575-91.
+
+* Roberts G, Burnet, A, Lee KJ, Cheong J, Wood S, Anderson PJ, et al. (2013). Quality of life at age 18 after extremely preterm birth in the post-surfactant era. The Journal of Pediatrics, 163(4):1008-1013.
+
+* Rodwell L, Lee KJ, Romaniuk H, Carlin JB. Comparison of methods for imputing limited-range variables: a simulation study. BMC Research Methodology 2014; 14: 57.
+
+* Rubin DB (1987). Multiple imputation for nonresponse in surveys. New York: Wiley.
+
+* Rubin DB (1996). Multiple imputation after 18+ years. Journal of the American Statistical Association, 91(434), 473-489.
+
+* White IR, Royston P, and Wood AM (2011). Multiple imputation using chained equations: issues and guidance for practice. Statistics in Medicine, 30(4);377-399.
+
+
+        
+
+    
+

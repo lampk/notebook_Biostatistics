@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Topic 12 Medical decision making | Notes on Biostatistics</title>
-  <meta name="description" content="My notes on Biostatistics">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="My notes on Biostatistics" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Topic 12 Medical decision making | Notes on Biostatistics" />
   <meta property="og:type" content="book" />
@@ -22,14 +21,14 @@
   <meta name="twitter:description" content="My notes on Biostatistics" />
   
 
-<meta name="author" content="Phùng Khánh Lâm">
+<meta name="author" content="Phùng Khánh Lâm" />
 
 
-<meta name="date" content="2019-11-10">
+<meta name="date" content="2019-12-29" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="PredictionModels.html">
@@ -68,7 +67,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -131,7 +130,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i>Bookdown</a></li>
 <li class="chapter" data-level="1" data-path="new.html"><a href="new.html"><i class="fa fa-check"></i><b>1</b> New</a></li>
 <li class="chapter" data-level="2" data-path="ida.html"><a href="ida.html"><i class="fa fa-check"></i><b>2</b> Initial data analysis</a></li>
 <li class="chapter" data-level="3" data-path="DataCleaning.html"><a href="DataCleaning.html"><i class="fa fa-check"></i><b>3</b> Data cleaning</a></li>
@@ -144,14 +142,62 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8" data-path="HypothesisTesting.html"><a href="HypothesisTesting.html"><i class="fa fa-check"></i><b>8</b> Hypothesis Testing</a></li>
 <li class="chapter" data-level="9" data-path="Pvalue.html"><a href="Pvalue.html"><i class="fa fa-check"></i><b>9</b> P value</a></li>
 <li class="chapter" data-level="10" data-path="Bayesian.html"><a href="Bayesian.html"><i class="fa fa-check"></i><b>10</b> Bayesian data analysis</a></li>
-<li class="chapter" data-level="11" data-path="PredictionModels.html"><a href="PredictionModels.html"><i class="fa fa-check"></i><b>11</b> Prediction models</a></li>
+<li class="chapter" data-level="11" data-path="PredictionModels.html"><a href="PredictionModels.html"><i class="fa fa-check"></i><b>11</b> Prediction models</a><ul>
+<li class="chapter" data-level="11.1" data-path="PredictionModels.html"><a href="PredictionModels.html#pmIntro"><i class="fa fa-check"></i><b>11.1</b> Introduction</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="PredictionModels.html"><a href="PredictionModels.html#what-is-clinical-prediction-model"><i class="fa fa-check"></i><b>11.1.1</b> What is clinical prediction model?</a></li>
+<li class="chapter" data-level="11.1.2" data-path="PredictionModels.html"><a href="PredictionModels.html#why-we-need-prediction-models"><i class="fa fa-check"></i><b>11.1.2</b> Why we need prediction models?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="PredictionModels.html"><a href="PredictionModels.html#part-development"><i class="fa fa-check"></i>(PART) Development</a><ul>
+<li class="chapter" data-level="11.1.3" data-path="PredictionModels.html"><a href="PredictionModels.html#standard-steps-to-develop-clinical-prediction-models"><i class="fa fa-check"></i><b>11.1.3</b> Standard steps to develop clinical prediction models?</a></li>
+<li class="chapter" data-level="11.1.4" data-path="PredictionModels.html"><a href="PredictionModels.html#clinical-outcomes-and-candidate-predictors"><i class="fa fa-check"></i><b>11.1.4</b> Clinical outcomes and candidate predictors</a></li>
+<li class="chapter" data-level="11.1.5" data-path="PredictionModels.html"><a href="PredictionModels.html#statistical-models-of-choice"><i class="fa fa-check"></i><b>11.1.5</b> Statistical models of choice</a></li>
+<li class="chapter" data-level="11.1.6" data-path="PredictionModels.html"><a href="PredictionModels.html#model-specification"><i class="fa fa-check"></i><b>11.1.6</b> Model specification</a></li>
+<li class="chapter" data-level="11.1.7" data-path="PredictionModels.html"><a href="PredictionModels.html#model-assumption-assessments"><i class="fa fa-check"></i><b>11.1.7</b> Model assumption assessments</a></li>
+<li class="chapter" data-level="11.1.8" data-path="PredictionModels.html"><a href="PredictionModels.html#model-estimation"><i class="fa fa-check"></i><b>11.1.8</b> Model estimation</a></li>
+<li class="chapter" data-level="11.1.9" data-path="PredictionModels.html"><a href="PredictionModels.html#model-reduction"><i class="fa fa-check"></i><b>11.1.9</b> Model reduction</a></li>
+<li class="chapter" data-level="11.1.10" data-path="PredictionModels.html"><a href="PredictionModels.html#model-performance"><i class="fa fa-check"></i><b>11.1.10</b> Model performance</a></li>
+<li class="chapter" data-level="11.1.11" data-path="PredictionModels.html"><a href="PredictionModels.html#model-presentation"><i class="fa fa-check"></i><b>11.1.11</b> Model presentation</a></li>
+<li class="chapter" data-level="11.1.12" data-path="PredictionModels.html"><a href="PredictionModels.html#adjustment-of-model-development-and-validation-steps-for-multiple-imputation"><i class="fa fa-check"></i><b>11.1.12</b> Adjustment of model development and validation steps for multiple imputation</a></li>
+<li class="chapter" data-level="11.1.13" data-path="PredictionModels.html"><a href="PredictionModels.html#statistical-software"><i class="fa fa-check"></i><b>11.1.13</b> Statistical software</a></li>
+<li class="chapter" data-level="11.1.14" data-path="PredictionModels.html"><a href="PredictionModels.html#baseline-versus-dynamic-prediction-models"><i class="fa fa-check"></i><b>11.1.14</b> Baseline versus dynamic prediction models</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="PredictionModels.html"><a href="PredictionModels.html#additional-considerations"><i class="fa fa-check"></i><b>11.2</b> Additional considerations</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="PredictionModels.html"><a href="PredictionModels.html#sample-size"><i class="fa fa-check"></i><b>11.2.1</b> Sample size</a></li>
+<li class="chapter" data-level="11.2.2" data-path="PredictionModels.html"><a href="PredictionModels.html#missing-data"><i class="fa fa-check"></i><b>11.2.2</b> Missing data</a></li>
+<li class="chapter" data-level="11.2.3" data-path="PredictionModels.html"><a href="PredictionModels.html#incorporating-longitudinal-predictors"><i class="fa fa-check"></i><b>11.2.3</b> Incorporating longitudinal predictors</a></li>
+<li class="chapter" data-level="11.2.4" data-path="PredictionModels.html"><a href="PredictionModels.html#competing-risks"><i class="fa fa-check"></i><b>11.2.4</b> Competing risks</a></li>
+<li class="chapter" data-level="11.2.5" data-path="PredictionModels.html"><a href="PredictionModels.html#acute-vs.chronic-diseases"><i class="fa fa-check"></i><b>11.2.5</b> Acute vs. chronic diseases</a></li>
+<li class="chapter" data-level="11.2.6" data-path="PredictionModels.html"><a href="PredictionModels.html#big-data"><i class="fa fa-check"></i><b>11.2.6</b> Big data</a></li>
+<li class="chapter" data-level="11.2.7" data-path="PredictionModels.html"><a href="PredictionModels.html#heterogeneity"><i class="fa fa-check"></i><b>11.2.7</b> Heterogeneity</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="PredictionModels.html"><a href="PredictionModels.html#part-utilization"><i class="fa fa-check"></i><b>11.3</b> (PART) Utilization</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="PredictionModels.html"><a href="PredictionModels.html#from-prediction-model-to-prediction-rule"><i class="fa fa-check"></i><b>11.3.1</b> From prediction model to prediction rule</a></li>
+<li class="chapter" data-level="11.3.2" data-path="PredictionModels.html"><a href="PredictionModels.html#how-to-apply-prediction-models-in-clinical-practice"><i class="fa fa-check"></i><b>11.3.2</b> How to apply prediction models in clinical practice?</a></li>
+<li class="chapter" data-level="11.3.3" data-path="PredictionModels.html"><a href="PredictionModels.html#will-prediction-models-be-used-in-clinical-practice"><i class="fa fa-check"></i><b>11.3.3</b> Will prediction models be used in clinical practice?</a></li>
+<li class="chapter" data-level="11.3.4" data-path="PredictionModels.html"><a href="PredictionModels.html#pmCDSS"><i class="fa fa-check"></i><b>11.3.4</b> Clinical Decision Support System</a></li>
+<li class="chapter" data-level="11.3.5" data-path="PredictionModels.html"><a href="PredictionModels.html#lab"><i class="fa fa-check"></i><b>11.3.5</b> Lab</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="PredictionModels.html"><a href="PredictionModels.html#pmImpact"><i class="fa fa-check"></i><b>11.4</b> Impact</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="PredictionModels.html"><a href="PredictionModels.html#reading-lists"><i class="fa fa-check"></i><b>11.4.1</b> Reading lists</a></li>
+<li class="chapter" data-level="11.4.2" data-path="PredictionModels.html"><a href="PredictionModels.html#assessing-models-usefulness"><i class="fa fa-check"></i><b>11.4.2</b> Assessing model’s usefulness</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="PredictionModels.html"><a href="PredictionModels.html#ai-and-ml-in-healthcare"><i class="fa fa-check"></i><b>11.5</b> AI and ML in healthcare</a><ul>
+<li class="chapter" data-level="11.5.1" data-path="PredictionModels.html"><a href="PredictionModels.html#what-is-ai"><i class="fa fa-check"></i><b>11.5.1</b> What is AI?</a></li>
+<li class="chapter" data-level="11.5.2" data-path="PredictionModels.html"><a href="PredictionModels.html#how-ai-can-improve-healthcare"><i class="fa fa-check"></i><b>11.5.2</b> How AI can improve healthcare?</a></li>
+<li class="chapter" data-level="11.5.3" data-path="PredictionModels.html"><a href="PredictionModels.html#current-stage-of-ai-in-healthcare"><i class="fa fa-check"></i><b>11.5.3</b> Current stage of AI in healthcare?</a></li>
+<li class="chapter" data-level="11.5.4" data-path="PredictionModels.html"><a href="PredictionModels.html#underuse-of-ai-in-healthcare-why-and-remedy"><i class="fa fa-check"></i><b>11.5.4</b> Underuse of AI in healthcare: why and remedy?</a></li>
+<li class="chapter" data-level="11.5.5" data-path="PredictionModels.html"><a href="PredictionModels.html#references"><i class="fa fa-check"></i><b>11.5.5</b> References</a></li>
+<li class="chapter" data-level="11.5.6" data-path="PredictionModels.html"><a href="PredictionModels.html#notes-from-literature"><i class="fa fa-check"></i><b>11.5.6</b> Notes from literature</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="12" data-path="mdm.html"><a href="mdm.html"><i class="fa fa-check"></i><b>12</b> Medical decision making</a><ul>
-<li class="chapter" data-level="12.1" data-path="mdm.html"><a href="mdm.html#reading-list-1"><i class="fa fa-check"></i><b>12.1</b> Reading list</a><ul>
+<li class="chapter" data-level="12.1" data-path="mdm.html"><a href="mdm.html#reading-list-2"><i class="fa fa-check"></i><b>12.1</b> Reading list</a><ul>
 <li class="chapter" data-level="12.1.1" data-path="mdm.html"><a href="mdm.html#risk-communication"><i class="fa fa-check"></i><b>12.1.1</b> Risk communication</a></li>
 </ul></li>
+<li class="chapter" data-level="12.2" data-path="mdm.html"><a href="mdm.html#lab-1"><i class="fa fa-check"></i><b>12.2</b> Lab</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="ild.html"><a href="ild.html"><i class="fa fa-check"></i><b>13</b> Intensive Longitudinal data analysis</a><ul>
-<li class="chapter" data-level="13.1" data-path="ild.html"><a href="ild.html#reading-list-2"><i class="fa fa-check"></i><b>13.1</b> Reading list</a><ul>
+<li class="chapter" data-level="13.1" data-path="ild.html"><a href="ild.html#reading-list-3"><i class="fa fa-check"></i><b>13.1</b> Reading list</a><ul>
 <li class="chapter" data-level="13.1.1" data-path="ild.html"><a href="ild.html#papers"><i class="fa fa-check"></i><b>13.1.1</b> Papers:</a></li>
 <li class="chapter" data-level="13.1.2" data-path="ild.html"><a href="ild.html#books"><i class="fa fa-check"></i><b>13.1.2</b> Books</a></li>
 <li class="chapter" data-level="13.1.3" data-path="ild.html"><a href="ild.html#software"><i class="fa fa-check"></i><b>13.1.3</b> Software</a></li>
@@ -161,7 +207,101 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14" data-path="softwares.html"><a href="softwares.html"><i class="fa fa-check"></i><b>14</b> Softwares</a><ul>
 <li class="chapter" data-level="14.1" data-path="softwares.html"><a href="softwares.html#r"><i class="fa fa-check"></i><b>14.1</b> R</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="15" data-path="missingdata.html"><a href="missingdata.html"><i class="fa fa-check"></i><b>15</b> Handling missing data</a><ul>
+<li class="chapter" data-level="15.1" data-path="missingdata.html"><a href="missingdata.html#reading-list-4"><i class="fa fa-check"></i><b>15.1</b> Reading list</a></li>
+<li class="chapter" data-level="15.2" data-path="missingdata.html"><a href="missingdata.html#further-topics"><i class="fa fa-check"></i><b>15.2</b> Further topics</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="missingdata.html"><a href="missingdata.html#when-to-use-mi"><i class="fa fa-check"></i><b>15.2.1</b> When to use MI</a></li>
+<li class="chapter" data-level="15.2.2" data-path="missingdata.html"><a href="missingdata.html#diagnostics-diagnosing-problems-with-imputation-models"><i class="fa fa-check"></i><b>15.2.2</b> Diagnostics (diagnosing problems with imputation models)</a></li>
+<li class="chapter" data-level="15.2.3" data-path="missingdata.html"><a href="missingdata.html#reporting"><i class="fa fa-check"></i><b>15.2.3</b> Reporting</a></li>
+<li class="chapter" data-level="15.2.4" data-path="missingdata.html"><a href="missingdata.html#summary"><i class="fa fa-check"></i><b>15.2.4</b> Summary</a></li>
+<li class="chapter" data-level="15.2.5" data-path="missingdata.html"><a href="missingdata.html#references-1"><i class="fa fa-check"></i><b>15.2.5</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="missingdata.html"><a href="missingdata.html#mi-methods-for-longitudinal-data-in-the-wide-format"><i class="fa fa-check"></i><b>15.3</b> MI methods for longitudinal data in the wide format</a><ul>
+<li class="chapter" data-level="15.3.1" data-path="missingdata.html"><a href="missingdata.html#a-longitudinal-case-study"><i class="fa fa-check"></i><b>15.3.1</b> A longitudinal case study</a></li>
+<li class="chapter" data-level="15.3.2" data-path="missingdata.html"><a href="missingdata.html#recap-of-mi"><i class="fa fa-check"></i><b>15.3.2</b> Recap of MI</a></li>
+<li class="chapter" data-level="15.3.3" data-path="missingdata.html"><a href="missingdata.html#mi-methods-for-longitudinal-data"><i class="fa fa-check"></i><b>15.3.3</b> MI methods for longitudinal data</a></li>
+<li class="chapter" data-level="15.3.4" data-path="missingdata.html"><a href="missingdata.html#imputation-using-the-wide-format"><i class="fa fa-check"></i><b>15.3.4</b> Imputation using the wide format</a></li>
+<li class="chapter" data-level="15.3.5" data-path="missingdata.html"><a href="missingdata.html#references-2"><i class="fa fa-check"></i><b>15.3.5</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="missingdata.html"><a href="missingdata.html#mi-methods-for-longitudinal-data-in-the-long-format"><i class="fa fa-check"></i><b>15.4</b> MI methods for longitudinal data in the long format</a><ul>
+<li class="chapter" data-level="15.4.1" data-path="missingdata.html"><a href="missingdata.html#mi-in-wide-format-vs-mi-in-long-format"><i class="fa fa-check"></i><b>15.4.1</b> MI in wide format vs MI in long format</a></li>
+<li class="chapter" data-level="15.4.2" data-path="missingdata.html"><a href="missingdata.html#long-data-extensions-of-fcs"><i class="fa fa-check"></i><b>15.4.2</b> Long data extensions of FCS</a></li>
+<li class="chapter" data-level="15.4.3" data-path="missingdata.html"><a href="missingdata.html#long-data-extensions-of-mvni"><i class="fa fa-check"></i><b>15.4.3</b> Long data extensions of MVNI</a></li>
+<li class="chapter" data-level="15.4.4" data-path="missingdata.html"><a href="missingdata.html#summary-and-references"><i class="fa fa-check"></i><b>15.4.4</b> Summary and references</a></li>
+<li class="chapter" data-level="15.4.5" data-path="missingdata.html"><a href="missingdata.html#references-3"><i class="fa fa-check"></i><b>15.4.5</b> References</a></li>
+<li class="chapter" data-level="15.4.6" data-path="missingdata.html"><a href="missingdata.html#appendix-technical-details-on-r-implementations"><i class="fa fa-check"></i><b>15.4.6</b> Appendix: Technical + Details on R implementations</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="missingdata.html"><a href="missingdata.html#sensitivity-analyses-within-the-multiple-imputation-framework-the-pattern-mixture-method"><i class="fa fa-check"></i><b>15.5</b> Sensitivity analyses within the multiple imputation framework: the pattern mixture method</a><ul>
+<li class="chapter" data-level="15.5.1" data-path="missingdata.html"><a href="missingdata.html#why-are-the-data-missing"><i class="fa fa-check"></i><b>15.5.1</b> Why are the data missing?</a></li>
+<li class="chapter" data-level="15.5.2" data-path="missingdata.html"><a href="missingdata.html#sensitivity-analysis-within-the-multiple-imputation-mi-framework"><i class="fa fa-check"></i><b>15.5.2</b> Sensitivity analysis within the Multiple imputation (MI) framework</a></li>
+<li class="chapter" data-level="15.5.3" data-path="missingdata.html"><a href="missingdata.html#elicitation-of-expert-opinion"><i class="fa fa-check"></i><b>15.5.3</b> Elicitation of expert opinion</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="missingdata.html"><a href="missingdata.html#sensitivity-analyses-for-multiple-variables-with-missing-data-the-narfcs-procedure"><i class="fa fa-check"></i><b>15.6</b> Sensitivity analyses for multiple variables with missing data: the NARFCS procedure</a><ul>
+<li class="chapter" data-level="15.6.1" data-path="missingdata.html"><a href="missingdata.html#example-lsac-case-study"><i class="fa fa-check"></i><b>15.6.1</b> Example: LSAC case study</a></li>
+<li class="chapter" data-level="15.6.2" data-path="missingdata.html"><a href="missingdata.html#missing-data-assumptions-in-problems-with-multiple-incomplete-variables"><i class="fa fa-check"></i><b>15.6.2</b> Missing data assumptions in problems with multiple incomplete variables</a></li>
+<li class="chapter" data-level="15.6.3" data-path="missingdata.html"><a href="missingdata.html#causal-diagrams-for-missing-data-assumptions"><i class="fa fa-check"></i><b>15.6.3</b> Causal diagrams for missing data assumptions</a></li>
+<li class="chapter" data-level="15.6.4" data-path="missingdata.html"><a href="missingdata.html#not-at-random-fully-conditional-specification-narfcs"><i class="fa fa-check"></i><b>15.6.4</b> Not-at-Random Fully Conditional Specification (NARFCS)</a></li>
+<li class="chapter" data-level="15.6.5" data-path="missingdata.html"><a href="missingdata.html#summary-and-references-1"><i class="fa fa-check"></i><b>15.6.5</b> Summary and references</a></li>
+</ul></li>
+<li class="chapter" data-level="15.7" data-path="missingdata.html"><a href="missingdata.html#case-studies"><i class="fa fa-check"></i><b>15.7</b> Case studies</a><ul>
+<li class="chapter" data-level="15.7.1" data-path="missingdata.html"><a href="missingdata.html#melbourne-collaborative-cohort-study"><i class="fa fa-check"></i><b>15.7.1</b> Melbourne Collaborative Cohort Study</a></li>
+<li class="chapter" data-level="15.7.2" data-path="missingdata.html"><a href="missingdata.html#the-victorian-infant-cohort-study"><i class="fa fa-check"></i><b>15.7.2</b> The Victorian Infant Cohort Study</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="sap.html"><a href="sap.html"><i class="fa fa-check"></i><b>16</b> Statistical analysis plan</a><ul>
+<li class="chapter" data-level="16.1" data-path="sap.html"><a href="sap.html#why"><i class="fa fa-check"></i><b>16.1</b> Why?</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="detectionlimit.html"><a href="detectionlimit.html"><i class="fa fa-check"></i><b>17</b> Detection Limits</a><ul>
+<li class="chapter" data-level="17.1" data-path="detectionlimit.html"><a href="detectionlimit.html#reading-list-5"><i class="fa fa-check"></i><b>17.1</b> Reading list</a></li>
+<li class="chapter" data-level="17.2" data-path="detectionlimit.html"><a href="detectionlimit.html#summary-4"><i class="fa fa-check"></i><b>17.2</b> Summary</a><ul>
+<li class="chapter" data-level="17.2.1" data-path="detectionlimit.html"><a href="detectionlimit.html#below-detection-limit-bdl"><i class="fa fa-check"></i><b>17.2.1</b> Below detection limit (BDL)</a></li>
+<li class="chapter" data-level="17.2.2" data-path="detectionlimit.html"><a href="detectionlimit.html#ways-to-deal-with-bdl"><i class="fa fa-check"></i><b>17.2.2</b> Ways to deal with BDL</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="detectionlimit.html"><a href="detectionlimit.html#case-studies-1"><i class="fa fa-check"></i><b>17.3</b> Case studies</a><ul>
+<li class="chapter" data-level="17.3.1" data-path="detectionlimit.html"><a href="detectionlimit.html#voriconazole-data"><i class="fa fa-check"></i><b>17.3.1</b> Voriconazole data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="epidemiology.html"><a href="epidemiology.html"><i class="fa fa-check"></i><b>18</b> Epidemiology</a><ul>
+<li class="chapter" data-level="18.1" data-path="epidemiology.html"><a href="epidemiology.html#reference"><i class="fa fa-check"></i><b>18.1</b> Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="clinicalepidemiology.html"><a href="clinicalepidemiology.html"><i class="fa fa-check"></i><b>19</b> Clinical epidemiology</a><ul>
+<li class="chapter" data-level="19.1" data-path="clinicalepidemiology.html"><a href="clinicalepidemiology.html#reference-1"><i class="fa fa-check"></i><b>19.1</b> Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="HealthResearch.html"><a href="HealthResearch.html"><i class="fa fa-check"></i><b>20</b> Health Research</a><ul>
+<li class="chapter" data-level="20.1" data-path="HealthResearch.html"><a href="HealthResearch.html#ideas"><i class="fa fa-check"></i><b>20.1</b> ideas</a></li>
+<li class="chapter" data-level="20.2" data-path="HealthResearch.html"><a href="HealthResearch.html#methodology"><i class="fa fa-check"></i><b>20.2</b> methodology</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="cocoscience.html"><a href="cocoscience.html"><i class="fa fa-check"></i><b>21</b> Computational Cognitive Science</a><ul>
+<li class="chapter" data-level="21.1" data-path="cocoscience.html"><a href="cocoscience.html#reading-list-6"><i class="fa fa-check"></i><b>21.1</b> Reading list</a><ul>
+<li class="chapter" data-level="21.1.1" data-path="cocoscience.html"><a href="cocoscience.html#foundations"><i class="fa fa-check"></i><b>21.1.1</b> Foundations</a></li>
+<li class="chapter" data-level="21.1.2" data-path="cocoscience.html"><a href="cocoscience.html#foundations-of-inductive-learning"><i class="fa fa-check"></i><b>21.1.2</b> Foundations of Inductive Learning</a></li>
+<li class="chapter" data-level="21.1.3" data-path="cocoscience.html"><a href="cocoscience.html#concepts-and-learning"><i class="fa fa-check"></i><b>21.1.3</b> Concepts and learning</a></li>
+<li class="chapter" data-level="21.1.4" data-path="cocoscience.html"><a href="cocoscience.html#knowledge-representation-spaces-trees-features"><i class="fa fa-check"></i><b>21.1.4</b> Knowledge Representation: Spaces, Trees, Features</a></li>
+<li class="chapter" data-level="21.1.5" data-path="cocoscience.html"><a href="cocoscience.html#knowledge-representation-language-and-logic"><i class="fa fa-check"></i><b>21.1.5</b> Knowledge Representation: Language and Logic</a></li>
+<li class="chapter" data-level="21.1.6" data-path="cocoscience.html"><a href="cocoscience.html#knowledge-representation-great-debates"><i class="fa fa-check"></i><b>21.1.6</b> Knowledge Representation: Great Debates</a></li>
+<li class="chapter" data-level="21.1.7" data-path="cocoscience.html"><a href="cocoscience.html#basic-bayesian-inference"><i class="fa fa-check"></i><b>21.1.7</b> Basic Bayesian Inference</a></li>
+<li class="chapter" data-level="21.1.8" data-path="cocoscience.html"><a href="cocoscience.html#graphical-models-and-bayes-nets"><i class="fa fa-check"></i><b>21.1.8</b> Graphical Models and Bayes Nets</a></li>
+<li class="chapter" data-level="21.1.9" data-path="cocoscience.html"><a href="cocoscience.html#simple-bayesian-learning"><i class="fa fa-check"></i><b>21.1.9</b> Simple Bayesian Learning</a></li>
+<li class="chapter" data-level="21.1.10" data-path="cocoscience.html"><a href="cocoscience.html#probabilistic-inference"><i class="fa fa-check"></i><b>21.1.10</b> Probabilistic inference</a></li>
+<li class="chapter" data-level="21.1.11" data-path="cocoscience.html"><a href="cocoscience.html#probabilistic-models-of-cognition"><i class="fa fa-check"></i><b>21.1.11</b> Probabilistic models of cognition</a></li>
+<li class="chapter" data-level="21.1.12" data-path="cocoscience.html"><a href="cocoscience.html#formal-grammars"><i class="fa fa-check"></i><b>21.1.12</b> Formal grammars</a></li>
+<li class="chapter" data-level="21.1.13" data-path="cocoscience.html"><a href="cocoscience.html#unsupervised-and-semi-supervised-learning"><i class="fa fa-check"></i><b>21.1.13</b> Unsupervised and Semi-supervised Learning</a></li>
+<li class="chapter" data-level="21.1.14" data-path="cocoscience.html"><a href="cocoscience.html#non-parametric-classification-exemplar-models-and-neural-networks"><i class="fa fa-check"></i><b>21.1.14</b> Non-parametric Classification: Exemplar Models and Neural Networks</a></li>
+<li class="chapter" data-level="21.1.15" data-path="cocoscience.html"><a href="cocoscience.html#controlling-complexity-and-occams-razor"><i class="fa fa-check"></i><b>21.1.15</b> Controlling Complexity and Occam’s Razor</a></li>
+<li class="chapter" data-level="21.1.16" data-path="cocoscience.html"><a href="cocoscience.html#intuitive-biology-and-the-role-of-theories"><i class="fa fa-check"></i><b>21.1.16</b> Intuitive Biology and the Role of Theories</a></li>
+<li class="chapter" data-level="21.1.17" data-path="cocoscience.html"><a href="cocoscience.html#learning-domain-structures"><i class="fa fa-check"></i><b>21.1.17</b> Learning Domain Structures</a></li>
+<li class="chapter" data-level="21.1.18" data-path="cocoscience.html"><a href="cocoscience.html#reinforcement-learning"><i class="fa fa-check"></i><b>21.1.18</b> Reinforcement learning</a></li>
+<li class="chapter" data-level="21.1.19" data-path="cocoscience.html"><a href="cocoscience.html#artificial-neural-networks"><i class="fa fa-check"></i><b>21.1.19</b> Artificial neural networks</a></li>
+<li class="chapter" data-level="21.1.20" data-path="cocoscience.html"><a href="cocoscience.html#language-acquisition-across-modeling-approaches"><i class="fa fa-check"></i><b>21.1.20</b> Language acquisition across modeling approaches</a></li>
+<li class="chapter" data-level="21.1.21" data-path="cocoscience.html"><a href="cocoscience.html#vision-across-modeling-approaches"><i class="fa fa-check"></i><b>21.1.21</b> Vision across modeling approaches</a></li>
+<li class="chapter" data-level="21.1.22" data-path="cocoscience.html"><a href="cocoscience.html#contemporary-artificial-intelligence-and-cognitive-science"><i class="fa fa-check"></i><b>21.1.22</b> Contemporary artificial intelligence and cognitive science</a></li>
+<li class="chapter" data-level="21.1.23" data-path="cocoscience.html"><a href="cocoscience.html#others"><i class="fa fa-check"></i><b>21.1.23</b> Others</a></li>
+</ul></li>
+<li class="chapter" data-level="21.2" data-path="cocoscience.html"><a href="cocoscience.html#courses"><i class="fa fa-check"></i><b>21.2</b> Courses</a></li>
+<li class="chapter" data-level="21.3" data-path="cocoscience.html"><a href="cocoscience.html#labs"><i class="fa fa-check"></i><b>21.3</b> Labs</a></li>
+<li class="chapter" data-level="21.4" data-path="cocoscience.html"><a href="cocoscience.html#others-1"><i class="fa fa-check"></i><b>21.4</b> Others</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references-7.html"><a href="references-7.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/lampk/notebook_Biostatistics" target="blank">Published with bookdown</a></li>
 
@@ -184,7 +324,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="mdm" class="section level1">
 <h1><span class="header-section-number">Topic 12</span> Medical decision making</h1>
-<div id="reading-list-1" class="section level2">
+<div id="reading-list-2" class="section level2">
 <h2><span class="header-section-number">12.1</span> Reading list</h2>
 <div id="risk-communication" class="section level3">
 <h3><span class="header-section-number">12.1.1</span> Risk communication</h3>
@@ -194,11 +334,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Kunneman M, Stiggelbout AM, Pieterse AH (2019) Do clinicians convey what they intend? Lay interpretation of verbal risk labels used in decision encounters. Patient Educ Couns. 2019 Aug 26. pii: S0738-3991(19)30377-5. doi: 10.1016/j.pec.2019.08.035.</li>
 <li>NICE guidance on risk communication: <a href="https://twitter.com/BerksMaternity/status/1171542152842817536/photo/1" class="uri">https://twitter.com/BerksMaternity/status/1171542152842817536/photo/1</a>. <a href="figures/mdm/nicenice_riskcommunication.jpeg">Figure</a></li>
 <li>Okan Y, Smith SG, Bruine de Bruin W (2019) How is cervical cancer screening information communicated in UK websites? Cross-sectional analysis of content and quantitative presentation formatsBMJ Open 2019;9:e029551. doi: 10.1136/bmjopen-2019-029551.</li>
-<li>Yen, Renata W, Barr, Paul J, Cochran, Nan, Aarts, Johanna W, Légaré, France, Reed, Malcolm, O’Mallley, A James, Scalia, Peter, Guérard, Genevieve Painchaud, Backer, Grant, Reilly, Clifford, Elwyn, Glyn and Durand, Marie-Anne (2019) Medical students’ knowledge and attitudes towards shared decision-making: results from a multinational cross-sectional survey. Medical Decision Making. <a href="http://sro.sussex.ac.uk/id/eprint/85728/" class="uri">http://sro.sussex.ac.uk/id/eprint/85728/</a></li>
-<li></li>
+<li><p>Yen, Renata W, Barr, Paul J, Cochran, Nan, Aarts, Johanna W, Légaré, France, Reed, Malcolm, O’Mallley, A James, Scalia, Peter, Guérard, Genevieve Painchaud, Backer, Grant, Reilly, Clifford, Elwyn, Glyn and Durand, Marie-Anne (2019) Medical students’ knowledge and attitudes towards shared decision-making: results from a multinational cross-sectional survey. Medical Decision Making. <a href="http://sro.sussex.ac.uk/id/eprint/85728/" class="uri">http://sro.sussex.ac.uk/id/eprint/85728/</a></p></li>
+<li><p><a href="https://bmcmedinformdecismak.biomedcentral.com/articles/10.1186/s12911-019-0882-0">Radcliffe, K., Lyson, H.C., Barr-Walker, J. et al. Collective intelligence in medical decision-making: a systematic scoping review. BMC Med Inform Decis Mak 19, 158 (2019) doi:10.1186/s12911-019-0882-0</a></p></li>
+</ul>
+</div>
+</div>
+<div id="lab-1" class="section level2">
+<h2><span class="header-section-number">12.2</span> Lab</h2>
+<ul>
+<li><p><a href="https://dbmi.hms.harvard.edu/research-areas/clinical-decision-making">Clinical Decision Making at Havard Medical School</a></p></li>
+<li><p><a href="https://chds.hsph.harvard.edu/">Center for Health Decision Science</a></p></li>
+<li><p><a href="https://www.human.cornell.edu/hd/research/labs/lrdm/home">LABORATORY FOR RATIONAL DECISION MAKING at Cornell University</a></p></li>
+<li><p><a href="http://groups.csail.mit.edu/medg/">MIT CSAIL Clinical Decision Making Group</a></p></li>
+<li><p><a href="https://www2.le.ac.uk/departments/psychology/research/JDMSP">Leicester Judgment and Decision Making Research Group</a></p></li>
 </ul>
 
-</div>
 </div>
 </div>
             </section>

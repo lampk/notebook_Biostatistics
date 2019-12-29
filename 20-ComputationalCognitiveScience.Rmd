@@ -1,0 +1,240 @@
+# Computational Cognitive Science {#cocoscience}
+
+## Reading list
+
+* [Ron Sun. Introduction to Computational Cognitive Modeling](http://www.sts.rpi.edu/public_html/rsun/folder-files/sun-CHCP-intro.pdf)
+
+* [Ron Sun. The Cambridge Handbook of Computational Psychology. 2008](https://www.cambridge.org/gb/academic/subjects/psychology/cognition/cambridge-handbook-computational-psychology?format=PB&isbn=9780521674102)
+
+* [Nikolaus Kriegeskorte and Pamela K. Doug. Cognitive computational neuroscience](https://www.ncbi.nlm.nih.gov/pubmed/30127428)
+
+* [O'Reilly, R. C., Munakata, Y., Frank, M. J., Hazy, T. E., and Contributors (2012). Computational Cognitive Neuroscience. Wiki Book, 1st Edition.](http://ccnbook.colorado.edu)
+
+* [Noah D. Goodman, Joshua B. Tenenbaum & The ProbMods Contributors (2016). Probabilistic Models of Cognition (2nd ed.). Retrieved 2019-12-12 from https://probmods.org/](http://probmods.org/)
+
+### Foundations
+
+* Paul Thagard (2005). Mind: Introduction to cognitive science (2nd ed.)
+* Stephan Lewandowski & Simon Farrell (2012). Computational Modeling in Cognition
+* Marr (1982). Vision.
+
+* Fact, Fiction, and Forecast. Cambridge, MA: Harvard University Press, 1983. ISBN: 0674290712.
+* Language and Learning: The Debate between Jean Piaget and Noam Chomsky. Edited by Massimo Piattelli-Palmarini. Cambridge, MA: Harvard University Press, 1984, ISBN: 0674509412.
+* Fodor, J. A., M. F. Garrett, E. C. T. Walker, and C. H. Parkes. "Against Definitions." Cognition 8 (1980): 263-367.
+* Laurence, Stephen, and Eric Margolis. "Radical Concept Nativism." Cognition 86 (2002): 22-55.
+
+### Foundations of Inductive Learning
+
+* Russell, Stuart J., and Peter Norvig.  Artificial Intelligence: A Modern Approach. 2nd ed. Upper Saddle River, N.J.: Prentice Hall/Pearson Education, 2003. ISBN: 0137903952
+* Berwick, R. C. "Learning From Positive-only Examples: The Subset Principle and Three Case Studies." Machine Learning 2 (1986): 625- 645.
+* Bruner, Jerome S., Jacqueline J. Goodnow, and George Austin. A Study in Thinking. Somerset, NJ: Transaction Publishers, 1986. ISBN: 0887386563
+* Mitchell, Thomas M. Machine Learning. New York, NY: McGraw-Hill, 1997, chapter 2. ISBN: 0070428077.
+* Feldman, J. "Minimization of Boolean Complexity in Human Concept Learning." Nature 407 (2000): 630-633.
+* Kearns, Michael J., and Umesh V. Vasirani. An Introduction to Computational Learning Theory. Cambridge, MA: MIT Press, 1994, pp. 1-7. ISBN: 0262111934.
+* The Psychology of Computer Vision. New York, NY: McGaw-Hill, 1975, pp. 157-209. ISBN: 0070710481.
+
+### Concepts and learning
+
+* Stuart Russell & Peter Norvig (2010). Artificial intelligence: a modern approach (third edition)
+* Gregory Murphy (2002). The big book of concepts.
+
+### Knowledge Representation: Spaces, Trees, Features
+
+* Shepard, R. N. "Multidimensional Scaling, Tree-fitting, and Clustering." Science 210 (1980): 390-398.
+* Landaues, T. K., and S. T. Dumais. "A Solution to Plato's Problem: The Latent Semantic Analysis Theory of the Acquisition, Induction, and Representation of Knowledge." Psychological Review 104 (1997): 211-240.
+* Goldstone, R. L, and J. Son. "Similarity." In Cambridge Handbook of Thinking and Reasoning. Edited by K. Holyoak and R. Morrison. Cambridge, MA: Cambridge University Press, 2005, pp. 13-36.
+
+### Knowledge Representation: Language and Logic
+
+* Chomsky, Noam. Syntactic Structures. Berlin, Germany: Walter De Gruyter, Inc., 1976, pp. 11-48. ISBN: 3110154129.
+* Markman, Arthur. Knowledge Representation. Mahwah, NJ: Lawrence Erlbaum Associates, 1998, pp. 118-146, and 188-216. ISBN: 0805824413.
+* Nowak, M. A., N. L. Komarova, and P. Niyogi. "Computational and Evolutionary Aspects of Language." Nature 417 (2002): 611-617.
+* Gentner, D., and A. B. Markman. "Structural Alignment in Analogy and Similarity." American Psychologist 52, no. 1 (1997): 45-56.
+* Rosch, E. "Principles of Categorization." In Cognition and Categorisation. Edited by E. Rosch and B. Lloyd. Hillsdale, NJ: Erlbaum, 1978, pp. 27-48.
+* Armstrong S. L., L. R. Gleitman, and H. Gleitman. "What Some Concepts Might Not Be." Cognition 13, no. 3 (May 1983): 263-308.
+* An Invitation to Cognitive Science: Language. Edited by L. Gleitman, and M. Liberman. 2nd ed. Vol. 1. Cambridge, MA: MIT Press, 1995. ISBN: 0262650444.
+* Parallel Distributed Processing: Explorations in the Microstructure of Cognition. Vol. 2. Cambridge, MA: MIT Press, 1987. ISBN: 0262631121.
+* Collins, A. M., and M. R. Quillian. "Retrieval Time from Semantic Memory." Journal of Verbal Learning and Verbal Behavior 8 (1969): 240-248.
+* McClelland, and Rogers. "The Parallel Distributed Processing Approach to Semantic Cognition." Nature Reviews Neuroscience 4 (April 2003): 1-14.
+* Comprehensive Handbook of Psychology. Edited by A. F. Healy, and R. W. Proctor. Vol. 4: Experimental Psychology. 2003, pp. 591-621.
+* Paccanaro, A., and G. E. Hinton. "Learning Distributed Representations of Concepts Using Linear Relational Embedding." Technical Report: GCNU TR 2000-002, March 2000.
+
+### Knowledge Representation: Great Debates 
+
+* Jeffreys, and Berger. "Bayesian Occam's Razor." American Scientist 80 (1992): 64-72.
+* Tversky, A., and D. Kahneman. "Judgement under Uncertainty: Heuristics and Biases." Science 185 (1974): 1124-1130.
+* Sivia. Bayesian Data Analysis. New York, NY: Oxford University Press, 1996, pp. 1-23. ISBN: 0198518897.
+* Charniak. "Bayesian Networks without Tears." AI Magazine 12, no. 4 (1991): 50-63.
+* Johnson-Laird, P. N., and Fabien Savary. "Illusory Inferences about Probabilities." Acta Psychologica 93 (1996): 69-90.
+
+### Basic Bayesian Inference
+
+* Bayesian Data Analysis. 2nd ed. London, UK: Chapman & Hall, 1995, pp. 117-131. ISBN: 0412039915.
+* Proceedings of the 24th Annual Conference of the Cognitive Science Society (2002).
+* Fact, Fiction, and Forecast. Cambridge, MA: Harvard University Press, 1983. ISBN: 0674290712.
+
+### Graphical Models and Bayes Nets
+
+* Advances in Neural Information Processing Systems 12. Edited by S. Solla, T. Leen, and K. Muller. Cambridge, MA: MIT Press, 2000, 59-65. ISBN: 0262194503.
+* Posner, and Keele. "On the Genesis of Abstract Ideas." Journal of Experimental Psychology 77 (1968): 353-363.
+* Neural Networks for Pattern Recognition. New York, NY: Oxford University Press, 1995. ISBN: 0198538642.
+
+### Simple Bayesian Learning
+
+* Fried, and Holyoak. "Induction of Category Distributions: A Framework for Classification Learning." Journal of Experimental Psychology: Learning, Memory and Cognition 10 (1984): 234-257.
+* Ghahramani, Z., and M. I. Jordan. "Learning from Incomplete Data." MIT Center for Biological and Computational Learning Technical Report 108 (1994).
+* The Twentieth International Conference on Machine Learning (ICML). Washington, DC: 2003.
+* Nigam, Kamal, Andrew McCallum, Sebastian Thrun, and Tom Mitchell. "Text Classification from Labeled and Unlabeled Documents using EM." Machine Learning 39, no. 2/3 (2000): 103-134.
+* Seeger, M. "Learning with Labeled and Unlabeled Data." University of Edinburgh Institute for Adaptive and Neural Computation Technical Report (2001).
+* Nosofsky, R. M. "Optimal Performance and Exemplar Models of Classification." In Rational Models of Cognition. Edited by M. Oaksford and N. Chater. New York, NY: Oxford University Press, 1998, pp. 219-247.
+* Kruschke, J. K. "Human Category Learning: Implications for Backpropagation Models." Connection Science 5, no. 1 (1993): 3-37.
+* B. W. Silverman. "Maximum Penalized Likelihood Estimators." In Density Estimation. London, UK: Chapman and Hall, 1986, pp. 110-119.
+* Hinton, G. E., P. Dayan, B. J. Frey, and R. M. Neal. "The Wake-sleep Algorithm for Unsupervised Neural Networks." Science 268 (1995): 1158-1160.
+
+### Probabilistic inference
+
+* Sharon Goldwater (2018). Basic probability theory
+* Joshua B. Tenenbaum & Tom Griffiths (2001). Generalization, similarity, and Bayesian inference (pages 629–634). Behavioral and Brain Sciences.
+* Fei Xu & Joshua B. Tenenbaum (2007). Word learning as Bayesian inference
+* Michael C. Frank & Noah D. Goodman (2012). Predicting pragmatic reasoning in language games. Science
+
+* Anderson, J. R. "The Adaptive Nature of Human Categorization." Psychological Review 98, no. 3 (1991): 409-429.
+* Smyth, P. "Model Selection for Probabilistic Clustering using Cross-validated Likelihood." Statistics and Computing 10, no. 1 (2000): 63-72.
+* MacKay, D. J. C. "Probable Networks and Plausible Predictions - A Review of Practical Bayesian Methods for Supervised Neural Networks." Network: Comput. Neural Syst. 6 (1995): 469-505.
+
+### Probabilistic models of cognition
+
+* [Special issue of Trends in Cognitive Sciences on probabilistic models](https://www.sciencedirect.com/journal/trends-in-cognitive-sciences/vol/10/issue/7)
+
+* [IPAM Graduate Summer School on Probabilistic Models of Cognition](http://www.ipam.ucla.edu/programs/summer-schools/graduate-summer-school-probabilistic-models-of-cognition-the-mathematics-of-mind/?tab=overview)
+
+* [Tom Griffiths's reading list on Bayesian methods](https://cocosci.princeton.edu/tom/bayes.html)
+
+* [A tutorial introduction to Bayesian models of cognitive development](https://cocosci.princeton.edu/tom/papers/LabPublications/BayesCogDev.pdf)
+
+### Formal grammars
+
+* Noam Chomsky (1957). Syntactic structures
+* Dan Jurafsky and James Martin (2019). Speech and Language Processing (third edition)
+
+### Unsupervised and Semi-supervised Learning
+
+* Murphy, Gregory L., and Douglas L. Medin. "The Role of Theories in Conceptual Coherence." Chapter 19 in Concepts: Core Readings. Edited by E. Margolis, and S. Laurence. Cambridge, MA: MIT Press, July 1999, pp. 425-458. ISBN: 9780262631938.
+* Gelman, Susan A. The Essential Child. New York, NY: Oxford University Press, March 1, 2003, chapter 1, and 3, pp. 3-18, and 60-88. ISBN: 0195154061.
+* Courville, Aaron C., Nathaniel D. Daw and David S. Touretzky. "Similarity and Discrimination in Classical Conditioning: A Latent Variable Account." Neural Information Processing Systems Conference (2004).
+* Rehder, Bob. "Essentialism as a Generative Theory of Classification." To appear in Gopnik, A., and L. Schulz (Eds.) Causal learning: Psychology, philosophy, and computation. New York, NY: Oxford University Press.
+
+### Non-parametric Classification: Exemplar Models and Neural Networks
+
+* Pearl, Judea. Causality: Models, Reasoning, and Inference. Cambridge, MA: Cambridge University Press, 2000, chapter 1. ISBN: 0521773628.
+* Gregory F. Cooper. "An Overview of the Representation and Discovery of Causal Relationships using Bayesian Networks." In Computation, Causation, and Discovery. Edited by Clark Glymour and Gregory F. Cooper. MIT Press, June 1999, pp. 3-62. ISBN: 0262571242.
+* Gopnik, Alison, and Laura Schulz. "Mechanisms of Theory Formation in Young Children." Trends in Cognitive Sciences 8, no. 8 (August 2004): 371-377.
+
+### Controlling Complexity and Occam's Razor
+
+* Wellman, Henry M., and Susan A. Gelman. "Cognitive Development: Foundational Theories of Core Domains." Annu Rev Psychol 43 (1992): 337-75.
+
+* Tenenbaum J. B., and Griffiths. "The Place of Intuitive Theories in Rational Causal Inference." To appear in Gopnik, A., and L. Schulz (Eds.) Causal learning: Psychology, philosophy, and computation. New York, NY: Oxford University Press.
+
+* Charles Kemp, Thomas L. Griffiths, and Joshua B. Tenenbaum. Discovering Latent Classes in Relational Data. MIT Computer Science and Artificial Intelligence Laboratory. AI Memo 2004-019, September 2004.
+
+* Rehder, Bob. "Essentialism as a Generative Theory of Classification." To appear in Gopnik, A., and L. Schulz (Eds.) Causal learning: Psychology, philosophy, and computation. New York, NY: Oxford University Press.
+
+* Milch, Brian, Bhaskara Marthi, and Stuart Russell. "BLOG: Relational Modeling with Unknown Objects." Workshop on Statistical Relational Learning and Its Connections to Other Fields. The Twenty-First International Conference on Machine Learning (ICML). Banff, Alberta: July 2004.
+
+### Intuitive Biology and the Role of Theories
+
+* Osherson, Daniel N., O. Wilkie, E. E. Smith, A. Lopez, and E. Shafir. "Category-Based Induction." Psychological Review 97, no. 2 (1990): 185-200.
+* Atran, Scott. "Classifying Nature Across Cultures." In Thinking: An Invitation to Cognitive Science. Edited by Edward E. Smith, Daniel N. Osherson, et. al. 2nd ed. Vol. 3. Cambridge, MA: MIT Press, 1995, pp. 131-174. ISBN: 0262150433.
+* Kemp, C., and J. B. Tenenbaum. "Theory-based Induction." In Proceedings of the 25th Annual Conference of the Cognitive Science Society (2003).
+* Kemp, C., T. L. Griffiths, S. Stromsten, and J. B. Tenenbaum. "Semi-supervised Learning with Trees." In Advances in Neural Information Processing Systems (2003).
+
+### Learning Domain Structures
+
+* Keil, Frank C. "Contraints on Knowledge and Cognitive Development." Psychological Review 88, no. 3 (May 1981): 197-227.
+
+* McClelland, and Rogers. "The Parallel Distributed Processing Approach to Semantic Cognition." Nature Reviews Neuroscience 4 (April 2003): 1-14.
+
+* Kemp, Charles, Amy Perfors, and Joshua B. Tenenbaum. Learning Domain Structures. Department of Brain and Cognitive Sciences, MIT. Internal Memo.
+
+* Geman, Stuart, and E. Bienenstock. "Neural Networks and the Bias/Variance Dilemma." Neural Computation 4 (1992): 1-58. [Especially pp. 46-48]
+
+* Scholl, Brian J.,and Patrice D. "Perceptual Causality and Animacy." Tremoulet Trends in Cognitive Sciences 4, no. 8 (August 2000): 299-309.
+
+* Feldman, Jacob, and Patrice D. Tremoulet. The Computation of Intention. (Forthcoming)
+
+### Reinforcement learning
+
+* Sutton and Barto (2018). Reinforcement learning: an introduction
+* Jessica Hamrick (2019). Analogues of mental simulation and imagination in deep learning. Current Opinions in Behavioral Sciences
+
+### Artificial neural networks
+
+* Elman et al (1996). Rethinking Innateness: A connectionist perspective on development
+* James L. McClelland & Timothy T. Rogers (2003). The parallel distributed processing approach to semantic cognition. Nature Reviews Neuroscience
+
+### Language acquisition across modeling approaches
+
+* Afra Alishahi (2010). Computational modeling of human language acquisition
+* Steven Pinker & Michael T. Ullman (2002). The past and future of the past tense. Trends in Cognitive Sciences
+
+### Vision across modeling approaches
+
+* John P. Frisby & James V. Stone (2010). Seeing
+* Nikolaus Kriegeskorte (2015). Deep neural networks: a new framework for modeling biological vision and brain information processing. Annual Review of Vision Science
+* Brenden Lake, Ruslan Salakhutdinov & Joshua B. Tenenbaum (2015). Human-level concept learning through probabilistic program induction. Science
+
+### Contemporary artificial intelligence and cognitive science
+
+* Yann Lecun, Yoshua Bengio & Geoffrey Hinton (2015). Deep learning. Nature.
+* Douglas Heaven (2019). Why deep-learning AIs are so easy to fool. Nature.
+* Sharon Zhou (2018). Has AI surpassed humans at translation? Not even close!. Skynet today.
+
+### Others
+
+* Brenden Lake, Tomer Ullman, Joshua B. Tenenbaum and Sam Gershman. (2017). Building machines that learn and think like people. Behavioral and Brain Sciences.
+* Tal Linzen (2019). What can linguistics and deep learning contribute to each other? Language.
+
+## Courses
+
+* [MIT Open Course: Computational Cognitive Science, Fall 2004](https://ocw.mit.edu/courses/brain-and-cognitive-sciences/9-66j-computational-cognitive-science-fall-2004/)
+
+* [Brains, Minds & Machines Summer Course](https://cbmm.mit.edu/summer-school)
+    + [Brains, Minds and Machines Summer Course 2015](https://ocw.mit.edu/resources/res-9-003-brains-minds-and-machines-summer-course-summer-2015/)
+    + [Brains, Minds and Machines Summer Course 2016](https://cbmm.mit.edu/summer-school/2016)
+    
+* [Science of Intelligence Learning Hub](https://cbmm.mit.edu/learning-hub)
+
+* [John Hopkins University: Introduction to Computational Cognitive Science, Fall 2019](http://tallinzen.net/media/teaching/intro_ccs_fall_2019.html)
+
+* [University of Edinburgh: Computational Cognitive Science](https://www.inf.ed.ac.uk/teaching/courses/ccs/)
+
+* [The University of Adelaide: Computational Cognitive Science, 2014](https://www.adelaide.edu.au/course-outlines/105440/1/sem-1/2014/)
+
+* [IPAM Graduate Summer School on Probabilistic Models of Cognition](http://www.ipam.ucla.edu/programs/summer-schools/graduate-summer-school-probabilistic-models-of-cognition-the-mathematics-of-mind/?tab=overview)
+
+* [Microsoft AI School](https://aischool.microsoft.com/en-us/machine-learning/learning-paths)
+
+## Labs
+
+* [Center for Brains, Minds + Machines](https://cbmm.mit.edu)
+* [Computational Cognitive Science Group at MIT](http://cocosci.mit.edu/)
+* [Computation and Psycholinguistics Lab at John Hopkins University](https://caplabjhu.org/)
+* [Computational Cognitive Science Lab at Princeton University](https://cocosci.princeton.edu/)
+* [Computational Cognitive Science at New York University](http://nyuccl.org/cogsci/)
+* [Learning.Understanding.Cognition.Intelligence.Data science](https://lucid.wisc.edu/what-is-a-computational-cognitive-model/)
+* [Serre Lab at Brown University](http://serre-lab.clps.brown.edu/)
+* [UNSW Computational Cognitive Science](https://compcogscisydney.org/)
+* [Computation & Cognition Lab at Stanford](https://cocolab.stanford.edu/)
+* [Computational Cognitive Neuroscience Lab at Oxford](http://users.ox.ac.uk/~wadh1102/)
+
+## Others
+
+* AI Podcast with Lex Fridman
+    + [Judea Pearl: Causal Reasoning, Counterfactuals, Bayesian Networks, and the Path to AGI](https://www.youtube.com/watch?v=pEBI0vF45ic)
+    + [Gary Marcus: Toward a Hybrid of Deep Learning and Symbolic AI](https://www.youtube.com/watch?v=vNOTDn3D_RI)
+    + [Jeff Hawkins: Thousand Brains Theory of Intelligence](https://www.youtube.com/watch?v=-EVqrDlAqYo)
+    + [Eric Weinstein: Revolutionary Ideas in Science, Math, and Society](https://www.youtube.com/watch?v=2wq9x2QcZN0)
+    + [Elon Musk: Tesla Autopilot](https://www.youtube.com/watch?v=dEv99vxKjVI)
+    + [Elon Musk: Neuralink, AI, Autopilot, and the Pale Blue Dot ](https://www.youtube.com/watch?v=smK9dgdTl40)
+    + [François Chollet: Keras, Deep Learning, and the Progress of AI](https://www.youtube.com/watch?v=Bo8MY4JpiXE)

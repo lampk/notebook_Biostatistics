@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html >
-
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
 <head>
 
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Topic 11 Prediction models | Notes on Biostatistics</title>
-  <meta name="description" content="My notes on Biostatistics">
-  <meta name="generator" content="bookdown  and GitBook 2.6.7">
+  <meta name="description" content="My notes on Biostatistics" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Topic 11 Prediction models | Notes on Biostatistics" />
   <meta property="og:type" content="book" />
@@ -22,14 +21,14 @@
   <meta name="twitter:description" content="My notes on Biostatistics" />
   
 
-<meta name="author" content="Phùng Khánh Lâm">
+<meta name="author" content="Phùng Khánh Lâm" />
 
 
-<meta name="date" content="2019-11-10">
+<meta name="date" content="2019-12-29" />
 
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
 <link rel="prev" href="Bayesian.html">
@@ -68,7 +67,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -131,7 +130,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="" data-path="bookdown.html"><a href="bookdown.html"><i class="fa fa-check"></i>Bookdown</a></li>
 <li class="chapter" data-level="1" data-path="new.html"><a href="new.html"><i class="fa fa-check"></i><b>1</b> New</a></li>
 <li class="chapter" data-level="2" data-path="ida.html"><a href="ida.html"><i class="fa fa-check"></i><b>2</b> Initial data analysis</a></li>
 <li class="chapter" data-level="3" data-path="DataCleaning.html"><a href="DataCleaning.html"><i class="fa fa-check"></i><b>3</b> Data cleaning</a></li>
@@ -144,14 +142,62 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8" data-path="HypothesisTesting.html"><a href="HypothesisTesting.html"><i class="fa fa-check"></i><b>8</b> Hypothesis Testing</a></li>
 <li class="chapter" data-level="9" data-path="Pvalue.html"><a href="Pvalue.html"><i class="fa fa-check"></i><b>9</b> P value</a></li>
 <li class="chapter" data-level="10" data-path="Bayesian.html"><a href="Bayesian.html"><i class="fa fa-check"></i><b>10</b> Bayesian data analysis</a></li>
-<li class="chapter" data-level="11" data-path="PredictionModels.html"><a href="PredictionModels.html"><i class="fa fa-check"></i><b>11</b> Prediction models</a></li>
+<li class="chapter" data-level="11" data-path="PredictionModels.html"><a href="PredictionModels.html"><i class="fa fa-check"></i><b>11</b> Prediction models</a><ul>
+<li class="chapter" data-level="11.1" data-path="PredictionModels.html"><a href="PredictionModels.html#pmIntro"><i class="fa fa-check"></i><b>11.1</b> Introduction</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="PredictionModels.html"><a href="PredictionModels.html#what-is-clinical-prediction-model"><i class="fa fa-check"></i><b>11.1.1</b> What is clinical prediction model?</a></li>
+<li class="chapter" data-level="11.1.2" data-path="PredictionModels.html"><a href="PredictionModels.html#why-we-need-prediction-models"><i class="fa fa-check"></i><b>11.1.2</b> Why we need prediction models?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="PredictionModels.html"><a href="PredictionModels.html#part-development"><i class="fa fa-check"></i>(PART) Development</a><ul>
+<li class="chapter" data-level="11.1.3" data-path="PredictionModels.html"><a href="PredictionModels.html#standard-steps-to-develop-clinical-prediction-models"><i class="fa fa-check"></i><b>11.1.3</b> Standard steps to develop clinical prediction models?</a></li>
+<li class="chapter" data-level="11.1.4" data-path="PredictionModels.html"><a href="PredictionModels.html#clinical-outcomes-and-candidate-predictors"><i class="fa fa-check"></i><b>11.1.4</b> Clinical outcomes and candidate predictors</a></li>
+<li class="chapter" data-level="11.1.5" data-path="PredictionModels.html"><a href="PredictionModels.html#statistical-models-of-choice"><i class="fa fa-check"></i><b>11.1.5</b> Statistical models of choice</a></li>
+<li class="chapter" data-level="11.1.6" data-path="PredictionModels.html"><a href="PredictionModels.html#model-specification"><i class="fa fa-check"></i><b>11.1.6</b> Model specification</a></li>
+<li class="chapter" data-level="11.1.7" data-path="PredictionModels.html"><a href="PredictionModels.html#model-assumption-assessments"><i class="fa fa-check"></i><b>11.1.7</b> Model assumption assessments</a></li>
+<li class="chapter" data-level="11.1.8" data-path="PredictionModels.html"><a href="PredictionModels.html#model-estimation"><i class="fa fa-check"></i><b>11.1.8</b> Model estimation</a></li>
+<li class="chapter" data-level="11.1.9" data-path="PredictionModels.html"><a href="PredictionModels.html#model-reduction"><i class="fa fa-check"></i><b>11.1.9</b> Model reduction</a></li>
+<li class="chapter" data-level="11.1.10" data-path="PredictionModels.html"><a href="PredictionModels.html#model-performance"><i class="fa fa-check"></i><b>11.1.10</b> Model performance</a></li>
+<li class="chapter" data-level="11.1.11" data-path="PredictionModels.html"><a href="PredictionModels.html#model-presentation"><i class="fa fa-check"></i><b>11.1.11</b> Model presentation</a></li>
+<li class="chapter" data-level="11.1.12" data-path="PredictionModels.html"><a href="PredictionModels.html#adjustment-of-model-development-and-validation-steps-for-multiple-imputation"><i class="fa fa-check"></i><b>11.1.12</b> Adjustment of model development and validation steps for multiple imputation</a></li>
+<li class="chapter" data-level="11.1.13" data-path="PredictionModels.html"><a href="PredictionModels.html#statistical-software"><i class="fa fa-check"></i><b>11.1.13</b> Statistical software</a></li>
+<li class="chapter" data-level="11.1.14" data-path="PredictionModels.html"><a href="PredictionModels.html#baseline-versus-dynamic-prediction-models"><i class="fa fa-check"></i><b>11.1.14</b> Baseline versus dynamic prediction models</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="PredictionModels.html"><a href="PredictionModels.html#additional-considerations"><i class="fa fa-check"></i><b>11.2</b> Additional considerations</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="PredictionModels.html"><a href="PredictionModels.html#sample-size"><i class="fa fa-check"></i><b>11.2.1</b> Sample size</a></li>
+<li class="chapter" data-level="11.2.2" data-path="PredictionModels.html"><a href="PredictionModels.html#missing-data"><i class="fa fa-check"></i><b>11.2.2</b> Missing data</a></li>
+<li class="chapter" data-level="11.2.3" data-path="PredictionModels.html"><a href="PredictionModels.html#incorporating-longitudinal-predictors"><i class="fa fa-check"></i><b>11.2.3</b> Incorporating longitudinal predictors</a></li>
+<li class="chapter" data-level="11.2.4" data-path="PredictionModels.html"><a href="PredictionModels.html#competing-risks"><i class="fa fa-check"></i><b>11.2.4</b> Competing risks</a></li>
+<li class="chapter" data-level="11.2.5" data-path="PredictionModels.html"><a href="PredictionModels.html#acute-vs.chronic-diseases"><i class="fa fa-check"></i><b>11.2.5</b> Acute vs. chronic diseases</a></li>
+<li class="chapter" data-level="11.2.6" data-path="PredictionModels.html"><a href="PredictionModels.html#big-data"><i class="fa fa-check"></i><b>11.2.6</b> Big data</a></li>
+<li class="chapter" data-level="11.2.7" data-path="PredictionModels.html"><a href="PredictionModels.html#heterogeneity"><i class="fa fa-check"></i><b>11.2.7</b> Heterogeneity</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="PredictionModels.html"><a href="PredictionModels.html#part-utilization"><i class="fa fa-check"></i><b>11.3</b> (PART) Utilization</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="PredictionModels.html"><a href="PredictionModels.html#from-prediction-model-to-prediction-rule"><i class="fa fa-check"></i><b>11.3.1</b> From prediction model to prediction rule</a></li>
+<li class="chapter" data-level="11.3.2" data-path="PredictionModels.html"><a href="PredictionModels.html#how-to-apply-prediction-models-in-clinical-practice"><i class="fa fa-check"></i><b>11.3.2</b> How to apply prediction models in clinical practice?</a></li>
+<li class="chapter" data-level="11.3.3" data-path="PredictionModels.html"><a href="PredictionModels.html#will-prediction-models-be-used-in-clinical-practice"><i class="fa fa-check"></i><b>11.3.3</b> Will prediction models be used in clinical practice?</a></li>
+<li class="chapter" data-level="11.3.4" data-path="PredictionModels.html"><a href="PredictionModels.html#pmCDSS"><i class="fa fa-check"></i><b>11.3.4</b> Clinical Decision Support System</a></li>
+<li class="chapter" data-level="11.3.5" data-path="PredictionModels.html"><a href="PredictionModels.html#lab"><i class="fa fa-check"></i><b>11.3.5</b> Lab</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="PredictionModels.html"><a href="PredictionModels.html#pmImpact"><i class="fa fa-check"></i><b>11.4</b> Impact</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="PredictionModels.html"><a href="PredictionModels.html#reading-lists"><i class="fa fa-check"></i><b>11.4.1</b> Reading lists</a></li>
+<li class="chapter" data-level="11.4.2" data-path="PredictionModels.html"><a href="PredictionModels.html#assessing-models-usefulness"><i class="fa fa-check"></i><b>11.4.2</b> Assessing model’s usefulness</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="PredictionModels.html"><a href="PredictionModels.html#ai-and-ml-in-healthcare"><i class="fa fa-check"></i><b>11.5</b> AI and ML in healthcare</a><ul>
+<li class="chapter" data-level="11.5.1" data-path="PredictionModels.html"><a href="PredictionModels.html#what-is-ai"><i class="fa fa-check"></i><b>11.5.1</b> What is AI?</a></li>
+<li class="chapter" data-level="11.5.2" data-path="PredictionModels.html"><a href="PredictionModels.html#how-ai-can-improve-healthcare"><i class="fa fa-check"></i><b>11.5.2</b> How AI can improve healthcare?</a></li>
+<li class="chapter" data-level="11.5.3" data-path="PredictionModels.html"><a href="PredictionModels.html#current-stage-of-ai-in-healthcare"><i class="fa fa-check"></i><b>11.5.3</b> Current stage of AI in healthcare?</a></li>
+<li class="chapter" data-level="11.5.4" data-path="PredictionModels.html"><a href="PredictionModels.html#underuse-of-ai-in-healthcare-why-and-remedy"><i class="fa fa-check"></i><b>11.5.4</b> Underuse of AI in healthcare: why and remedy?</a></li>
+<li class="chapter" data-level="11.5.5" data-path="PredictionModels.html"><a href="PredictionModels.html#references"><i class="fa fa-check"></i><b>11.5.5</b> References</a></li>
+<li class="chapter" data-level="11.5.6" data-path="PredictionModels.html"><a href="PredictionModels.html#notes-from-literature"><i class="fa fa-check"></i><b>11.5.6</b> Notes from literature</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="12" data-path="mdm.html"><a href="mdm.html"><i class="fa fa-check"></i><b>12</b> Medical decision making</a><ul>
-<li class="chapter" data-level="12.1" data-path="mdm.html"><a href="mdm.html#reading-list-1"><i class="fa fa-check"></i><b>12.1</b> Reading list</a><ul>
+<li class="chapter" data-level="12.1" data-path="mdm.html"><a href="mdm.html#reading-list-2"><i class="fa fa-check"></i><b>12.1</b> Reading list</a><ul>
 <li class="chapter" data-level="12.1.1" data-path="mdm.html"><a href="mdm.html#risk-communication"><i class="fa fa-check"></i><b>12.1.1</b> Risk communication</a></li>
 </ul></li>
+<li class="chapter" data-level="12.2" data-path="mdm.html"><a href="mdm.html#lab-1"><i class="fa fa-check"></i><b>12.2</b> Lab</a></li>
 </ul></li>
 <li class="chapter" data-level="13" data-path="ild.html"><a href="ild.html"><i class="fa fa-check"></i><b>13</b> Intensive Longitudinal data analysis</a><ul>
-<li class="chapter" data-level="13.1" data-path="ild.html"><a href="ild.html#reading-list-2"><i class="fa fa-check"></i><b>13.1</b> Reading list</a><ul>
+<li class="chapter" data-level="13.1" data-path="ild.html"><a href="ild.html#reading-list-3"><i class="fa fa-check"></i><b>13.1</b> Reading list</a><ul>
 <li class="chapter" data-level="13.1.1" data-path="ild.html"><a href="ild.html#papers"><i class="fa fa-check"></i><b>13.1.1</b> Papers:</a></li>
 <li class="chapter" data-level="13.1.2" data-path="ild.html"><a href="ild.html#books"><i class="fa fa-check"></i><b>13.1.2</b> Books</a></li>
 <li class="chapter" data-level="13.1.3" data-path="ild.html"><a href="ild.html#software"><i class="fa fa-check"></i><b>13.1.3</b> Software</a></li>
@@ -161,7 +207,101 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="14" data-path="softwares.html"><a href="softwares.html"><i class="fa fa-check"></i><b>14</b> Softwares</a><ul>
 <li class="chapter" data-level="14.1" data-path="softwares.html"><a href="softwares.html#r"><i class="fa fa-check"></i><b>14.1</b> R</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="15" data-path="missingdata.html"><a href="missingdata.html"><i class="fa fa-check"></i><b>15</b> Handling missing data</a><ul>
+<li class="chapter" data-level="15.1" data-path="missingdata.html"><a href="missingdata.html#reading-list-4"><i class="fa fa-check"></i><b>15.1</b> Reading list</a></li>
+<li class="chapter" data-level="15.2" data-path="missingdata.html"><a href="missingdata.html#further-topics"><i class="fa fa-check"></i><b>15.2</b> Further topics</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="missingdata.html"><a href="missingdata.html#when-to-use-mi"><i class="fa fa-check"></i><b>15.2.1</b> When to use MI</a></li>
+<li class="chapter" data-level="15.2.2" data-path="missingdata.html"><a href="missingdata.html#diagnostics-diagnosing-problems-with-imputation-models"><i class="fa fa-check"></i><b>15.2.2</b> Diagnostics (diagnosing problems with imputation models)</a></li>
+<li class="chapter" data-level="15.2.3" data-path="missingdata.html"><a href="missingdata.html#reporting"><i class="fa fa-check"></i><b>15.2.3</b> Reporting</a></li>
+<li class="chapter" data-level="15.2.4" data-path="missingdata.html"><a href="missingdata.html#summary"><i class="fa fa-check"></i><b>15.2.4</b> Summary</a></li>
+<li class="chapter" data-level="15.2.5" data-path="missingdata.html"><a href="missingdata.html#references-1"><i class="fa fa-check"></i><b>15.2.5</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="missingdata.html"><a href="missingdata.html#mi-methods-for-longitudinal-data-in-the-wide-format"><i class="fa fa-check"></i><b>15.3</b> MI methods for longitudinal data in the wide format</a><ul>
+<li class="chapter" data-level="15.3.1" data-path="missingdata.html"><a href="missingdata.html#a-longitudinal-case-study"><i class="fa fa-check"></i><b>15.3.1</b> A longitudinal case study</a></li>
+<li class="chapter" data-level="15.3.2" data-path="missingdata.html"><a href="missingdata.html#recap-of-mi"><i class="fa fa-check"></i><b>15.3.2</b> Recap of MI</a></li>
+<li class="chapter" data-level="15.3.3" data-path="missingdata.html"><a href="missingdata.html#mi-methods-for-longitudinal-data"><i class="fa fa-check"></i><b>15.3.3</b> MI methods for longitudinal data</a></li>
+<li class="chapter" data-level="15.3.4" data-path="missingdata.html"><a href="missingdata.html#imputation-using-the-wide-format"><i class="fa fa-check"></i><b>15.3.4</b> Imputation using the wide format</a></li>
+<li class="chapter" data-level="15.3.5" data-path="missingdata.html"><a href="missingdata.html#references-2"><i class="fa fa-check"></i><b>15.3.5</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="missingdata.html"><a href="missingdata.html#mi-methods-for-longitudinal-data-in-the-long-format"><i class="fa fa-check"></i><b>15.4</b> MI methods for longitudinal data in the long format</a><ul>
+<li class="chapter" data-level="15.4.1" data-path="missingdata.html"><a href="missingdata.html#mi-in-wide-format-vs-mi-in-long-format"><i class="fa fa-check"></i><b>15.4.1</b> MI in wide format vs MI in long format</a></li>
+<li class="chapter" data-level="15.4.2" data-path="missingdata.html"><a href="missingdata.html#long-data-extensions-of-fcs"><i class="fa fa-check"></i><b>15.4.2</b> Long data extensions of FCS</a></li>
+<li class="chapter" data-level="15.4.3" data-path="missingdata.html"><a href="missingdata.html#long-data-extensions-of-mvni"><i class="fa fa-check"></i><b>15.4.3</b> Long data extensions of MVNI</a></li>
+<li class="chapter" data-level="15.4.4" data-path="missingdata.html"><a href="missingdata.html#summary-and-references"><i class="fa fa-check"></i><b>15.4.4</b> Summary and references</a></li>
+<li class="chapter" data-level="15.4.5" data-path="missingdata.html"><a href="missingdata.html#references-3"><i class="fa fa-check"></i><b>15.4.5</b> References</a></li>
+<li class="chapter" data-level="15.4.6" data-path="missingdata.html"><a href="missingdata.html#appendix-technical-details-on-r-implementations"><i class="fa fa-check"></i><b>15.4.6</b> Appendix: Technical + Details on R implementations</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="missingdata.html"><a href="missingdata.html#sensitivity-analyses-within-the-multiple-imputation-framework-the-pattern-mixture-method"><i class="fa fa-check"></i><b>15.5</b> Sensitivity analyses within the multiple imputation framework: the pattern mixture method</a><ul>
+<li class="chapter" data-level="15.5.1" data-path="missingdata.html"><a href="missingdata.html#why-are-the-data-missing"><i class="fa fa-check"></i><b>15.5.1</b> Why are the data missing?</a></li>
+<li class="chapter" data-level="15.5.2" data-path="missingdata.html"><a href="missingdata.html#sensitivity-analysis-within-the-multiple-imputation-mi-framework"><i class="fa fa-check"></i><b>15.5.2</b> Sensitivity analysis within the Multiple imputation (MI) framework</a></li>
+<li class="chapter" data-level="15.5.3" data-path="missingdata.html"><a href="missingdata.html#elicitation-of-expert-opinion"><i class="fa fa-check"></i><b>15.5.3</b> Elicitation of expert opinion</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="missingdata.html"><a href="missingdata.html#sensitivity-analyses-for-multiple-variables-with-missing-data-the-narfcs-procedure"><i class="fa fa-check"></i><b>15.6</b> Sensitivity analyses for multiple variables with missing data: the NARFCS procedure</a><ul>
+<li class="chapter" data-level="15.6.1" data-path="missingdata.html"><a href="missingdata.html#example-lsac-case-study"><i class="fa fa-check"></i><b>15.6.1</b> Example: LSAC case study</a></li>
+<li class="chapter" data-level="15.6.2" data-path="missingdata.html"><a href="missingdata.html#missing-data-assumptions-in-problems-with-multiple-incomplete-variables"><i class="fa fa-check"></i><b>15.6.2</b> Missing data assumptions in problems with multiple incomplete variables</a></li>
+<li class="chapter" data-level="15.6.3" data-path="missingdata.html"><a href="missingdata.html#causal-diagrams-for-missing-data-assumptions"><i class="fa fa-check"></i><b>15.6.3</b> Causal diagrams for missing data assumptions</a></li>
+<li class="chapter" data-level="15.6.4" data-path="missingdata.html"><a href="missingdata.html#not-at-random-fully-conditional-specification-narfcs"><i class="fa fa-check"></i><b>15.6.4</b> Not-at-Random Fully Conditional Specification (NARFCS)</a></li>
+<li class="chapter" data-level="15.6.5" data-path="missingdata.html"><a href="missingdata.html#summary-and-references-1"><i class="fa fa-check"></i><b>15.6.5</b> Summary and references</a></li>
+</ul></li>
+<li class="chapter" data-level="15.7" data-path="missingdata.html"><a href="missingdata.html#case-studies"><i class="fa fa-check"></i><b>15.7</b> Case studies</a><ul>
+<li class="chapter" data-level="15.7.1" data-path="missingdata.html"><a href="missingdata.html#melbourne-collaborative-cohort-study"><i class="fa fa-check"></i><b>15.7.1</b> Melbourne Collaborative Cohort Study</a></li>
+<li class="chapter" data-level="15.7.2" data-path="missingdata.html"><a href="missingdata.html#the-victorian-infant-cohort-study"><i class="fa fa-check"></i><b>15.7.2</b> The Victorian Infant Cohort Study</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="sap.html"><a href="sap.html"><i class="fa fa-check"></i><b>16</b> Statistical analysis plan</a><ul>
+<li class="chapter" data-level="16.1" data-path="sap.html"><a href="sap.html#why"><i class="fa fa-check"></i><b>16.1</b> Why?</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="detectionlimit.html"><a href="detectionlimit.html"><i class="fa fa-check"></i><b>17</b> Detection Limits</a><ul>
+<li class="chapter" data-level="17.1" data-path="detectionlimit.html"><a href="detectionlimit.html#reading-list-5"><i class="fa fa-check"></i><b>17.1</b> Reading list</a></li>
+<li class="chapter" data-level="17.2" data-path="detectionlimit.html"><a href="detectionlimit.html#summary-4"><i class="fa fa-check"></i><b>17.2</b> Summary</a><ul>
+<li class="chapter" data-level="17.2.1" data-path="detectionlimit.html"><a href="detectionlimit.html#below-detection-limit-bdl"><i class="fa fa-check"></i><b>17.2.1</b> Below detection limit (BDL)</a></li>
+<li class="chapter" data-level="17.2.2" data-path="detectionlimit.html"><a href="detectionlimit.html#ways-to-deal-with-bdl"><i class="fa fa-check"></i><b>17.2.2</b> Ways to deal with BDL</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="detectionlimit.html"><a href="detectionlimit.html#case-studies-1"><i class="fa fa-check"></i><b>17.3</b> Case studies</a><ul>
+<li class="chapter" data-level="17.3.1" data-path="detectionlimit.html"><a href="detectionlimit.html#voriconazole-data"><i class="fa fa-check"></i><b>17.3.1</b> Voriconazole data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="epidemiology.html"><a href="epidemiology.html"><i class="fa fa-check"></i><b>18</b> Epidemiology</a><ul>
+<li class="chapter" data-level="18.1" data-path="epidemiology.html"><a href="epidemiology.html#reference"><i class="fa fa-check"></i><b>18.1</b> Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="clinicalepidemiology.html"><a href="clinicalepidemiology.html"><i class="fa fa-check"></i><b>19</b> Clinical epidemiology</a><ul>
+<li class="chapter" data-level="19.1" data-path="clinicalepidemiology.html"><a href="clinicalepidemiology.html#reference-1"><i class="fa fa-check"></i><b>19.1</b> Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="HealthResearch.html"><a href="HealthResearch.html"><i class="fa fa-check"></i><b>20</b> Health Research</a><ul>
+<li class="chapter" data-level="20.1" data-path="HealthResearch.html"><a href="HealthResearch.html#ideas"><i class="fa fa-check"></i><b>20.1</b> ideas</a></li>
+<li class="chapter" data-level="20.2" data-path="HealthResearch.html"><a href="HealthResearch.html#methodology"><i class="fa fa-check"></i><b>20.2</b> methodology</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="cocoscience.html"><a href="cocoscience.html"><i class="fa fa-check"></i><b>21</b> Computational Cognitive Science</a><ul>
+<li class="chapter" data-level="21.1" data-path="cocoscience.html"><a href="cocoscience.html#reading-list-6"><i class="fa fa-check"></i><b>21.1</b> Reading list</a><ul>
+<li class="chapter" data-level="21.1.1" data-path="cocoscience.html"><a href="cocoscience.html#foundations"><i class="fa fa-check"></i><b>21.1.1</b> Foundations</a></li>
+<li class="chapter" data-level="21.1.2" data-path="cocoscience.html"><a href="cocoscience.html#foundations-of-inductive-learning"><i class="fa fa-check"></i><b>21.1.2</b> Foundations of Inductive Learning</a></li>
+<li class="chapter" data-level="21.1.3" data-path="cocoscience.html"><a href="cocoscience.html#concepts-and-learning"><i class="fa fa-check"></i><b>21.1.3</b> Concepts and learning</a></li>
+<li class="chapter" data-level="21.1.4" data-path="cocoscience.html"><a href="cocoscience.html#knowledge-representation-spaces-trees-features"><i class="fa fa-check"></i><b>21.1.4</b> Knowledge Representation: Spaces, Trees, Features</a></li>
+<li class="chapter" data-level="21.1.5" data-path="cocoscience.html"><a href="cocoscience.html#knowledge-representation-language-and-logic"><i class="fa fa-check"></i><b>21.1.5</b> Knowledge Representation: Language and Logic</a></li>
+<li class="chapter" data-level="21.1.6" data-path="cocoscience.html"><a href="cocoscience.html#knowledge-representation-great-debates"><i class="fa fa-check"></i><b>21.1.6</b> Knowledge Representation: Great Debates</a></li>
+<li class="chapter" data-level="21.1.7" data-path="cocoscience.html"><a href="cocoscience.html#basic-bayesian-inference"><i class="fa fa-check"></i><b>21.1.7</b> Basic Bayesian Inference</a></li>
+<li class="chapter" data-level="21.1.8" data-path="cocoscience.html"><a href="cocoscience.html#graphical-models-and-bayes-nets"><i class="fa fa-check"></i><b>21.1.8</b> Graphical Models and Bayes Nets</a></li>
+<li class="chapter" data-level="21.1.9" data-path="cocoscience.html"><a href="cocoscience.html#simple-bayesian-learning"><i class="fa fa-check"></i><b>21.1.9</b> Simple Bayesian Learning</a></li>
+<li class="chapter" data-level="21.1.10" data-path="cocoscience.html"><a href="cocoscience.html#probabilistic-inference"><i class="fa fa-check"></i><b>21.1.10</b> Probabilistic inference</a></li>
+<li class="chapter" data-level="21.1.11" data-path="cocoscience.html"><a href="cocoscience.html#probabilistic-models-of-cognition"><i class="fa fa-check"></i><b>21.1.11</b> Probabilistic models of cognition</a></li>
+<li class="chapter" data-level="21.1.12" data-path="cocoscience.html"><a href="cocoscience.html#formal-grammars"><i class="fa fa-check"></i><b>21.1.12</b> Formal grammars</a></li>
+<li class="chapter" data-level="21.1.13" data-path="cocoscience.html"><a href="cocoscience.html#unsupervised-and-semi-supervised-learning"><i class="fa fa-check"></i><b>21.1.13</b> Unsupervised and Semi-supervised Learning</a></li>
+<li class="chapter" data-level="21.1.14" data-path="cocoscience.html"><a href="cocoscience.html#non-parametric-classification-exemplar-models-and-neural-networks"><i class="fa fa-check"></i><b>21.1.14</b> Non-parametric Classification: Exemplar Models and Neural Networks</a></li>
+<li class="chapter" data-level="21.1.15" data-path="cocoscience.html"><a href="cocoscience.html#controlling-complexity-and-occams-razor"><i class="fa fa-check"></i><b>21.1.15</b> Controlling Complexity and Occam’s Razor</a></li>
+<li class="chapter" data-level="21.1.16" data-path="cocoscience.html"><a href="cocoscience.html#intuitive-biology-and-the-role-of-theories"><i class="fa fa-check"></i><b>21.1.16</b> Intuitive Biology and the Role of Theories</a></li>
+<li class="chapter" data-level="21.1.17" data-path="cocoscience.html"><a href="cocoscience.html#learning-domain-structures"><i class="fa fa-check"></i><b>21.1.17</b> Learning Domain Structures</a></li>
+<li class="chapter" data-level="21.1.18" data-path="cocoscience.html"><a href="cocoscience.html#reinforcement-learning"><i class="fa fa-check"></i><b>21.1.18</b> Reinforcement learning</a></li>
+<li class="chapter" data-level="21.1.19" data-path="cocoscience.html"><a href="cocoscience.html#artificial-neural-networks"><i class="fa fa-check"></i><b>21.1.19</b> Artificial neural networks</a></li>
+<li class="chapter" data-level="21.1.20" data-path="cocoscience.html"><a href="cocoscience.html#language-acquisition-across-modeling-approaches"><i class="fa fa-check"></i><b>21.1.20</b> Language acquisition across modeling approaches</a></li>
+<li class="chapter" data-level="21.1.21" data-path="cocoscience.html"><a href="cocoscience.html#vision-across-modeling-approaches"><i class="fa fa-check"></i><b>21.1.21</b> Vision across modeling approaches</a></li>
+<li class="chapter" data-level="21.1.22" data-path="cocoscience.html"><a href="cocoscience.html#contemporary-artificial-intelligence-and-cognitive-science"><i class="fa fa-check"></i><b>21.1.22</b> Contemporary artificial intelligence and cognitive science</a></li>
+<li class="chapter" data-level="21.1.23" data-path="cocoscience.html"><a href="cocoscience.html#others"><i class="fa fa-check"></i><b>21.1.23</b> Others</a></li>
+</ul></li>
+<li class="chapter" data-level="21.2" data-path="cocoscience.html"><a href="cocoscience.html#courses"><i class="fa fa-check"></i><b>21.2</b> Courses</a></li>
+<li class="chapter" data-level="21.3" data-path="cocoscience.html"><a href="cocoscience.html#labs"><i class="fa fa-check"></i><b>21.3</b> Labs</a></li>
+<li class="chapter" data-level="21.4" data-path="cocoscience.html"><a href="cocoscience.html#others-1"><i class="fa fa-check"></i><b>21.4</b> Others</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references-7.html"><a href="references-7.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/lampk/notebook_Biostatistics" target="blank">Published with bookdown</a></li>
 
@@ -184,7 +324,859 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="PredictionModels" class="section level1">
 <h1><span class="header-section-number">Topic 11</span> Prediction models</h1>
+<div id="pmIntro" class="section level2">
+<h2><span class="header-section-number">11.1</span> Introduction</h2>
+<p>In daily clinical practice, one of the main tasks of clinicians is to investigate and develop three main areas of knowledge related to the patient’s illness: diagnosis (whether a particular illness is present), aetiology (what is the cause of the present illness) and prognosis (what is the likely future course of the present illness) <span class="citation">(Miettinen <a href="#ref-Miettinen2011">2011</a>)</span>. Based on this, clinicians can suggest a suitable intervention or management plan for the patient under investigation. Therefore, making prognostic assessments is a natural and familiar task that clinicians have to do every day.</p>
+<p>As prediction is a fundamental component of medical decision-making, it has an important role in clinical practice. However, it is also a generally difficult task because unlike diagnosis or etiognosis, prognosis requires extrapolation to the future based on the present knowledge about a patient’s disease status and characteristics. As the future is uncertain, predictions need to rely on many assumptions and making a good prediction is an extremely difficult task.</p>
+<div id="what-is-clinical-prediction-model" class="section level3">
+<h3><span class="header-section-number">11.1.1</span> What is clinical prediction model?</h3>
+<p>A prognostic model is a formal combination rule of multiple predictors from which a subject’s absolute risk of the occurrence of a disease event of interest can be calculated <span class="citation">(Steyerberg et al. <a href="#ref-Steyerberg2013">2013</a>)</span>. Prognostic modeling is an important part of prognostic research which aims to understand and improve future outcomes in subjects with a given health state <span class="citation">(Hemingway et al. <a href="#ref-Hemingway2013">2013</a>)</span>. Developing a prognostic model is the third step of a 4-step paradigm for prognostic research which includes (1) investigating the variation of outcomes of a health condition in the context of current care (fundamental prognostic research); (2) identifying risk factors which are related to outcomes (prognostic factor research); (3) developing, validating and assessing the impact of prediction models that predict an individual’s risk of a future event (prognostic model research); (4) using prognostic information to help individualize treatment decisions for a subject or group of subjects that share similar characteristics (stratified medicine research) <span class="citation">(Hemingway et al. <a href="#ref-Hemingway2013">2013</a>)</span>.</p>
+<p>A typical prediction model has three main ingredients: an outcome, candidate predictors, and a statistical model. An outcome can be a hard endpoint such as death or the presence of clinical complication, or a surrogate endpoint such as a biomarker of severity, or a composite endpoint. Candidate predictors typically include demographic variables such as age and gender as well as clinical symptoms or biomarkers which are relevant to outcome prediction based on clinical knowledge. As prognosis is aimed to the future, predictors have to be collected at a starting point or baseline which is before the outcome occurs and the length of the lag period between the starting point and the outcome occurrence affects largely the usefulness of the derived prediction model. The relationship between outcome and predictors is modeled using a statistical model and the choice of this model depends on the type of outcome. As clinical outcomes are usually binary or survival data, the most common statistical models of choice are logistic regression and the Cox proportional hazards model, but many other statistical models have been suggested in the literature <span class="citation">(Steyerberg <a href="#ref-Steyerberg2010">2010</a>,@Hastie2009)</span>. As a general rule, these three main components have to be pre-specified before fitting any model in order to avoid over-fitting and therefore to preserve the validity of the derived model.</p>
+<p>Prediction models are different from decision rules. The inputs to a prediction model are values of prognostic factors at a pre-defined time point and the output is an estimated risk of a specific outcome. Even though one may categorize estimated risks and assign suggested actions to each risk category, a typical prediction model only provides a prediction of a risk as it is intended to assist clinicians without suggesting to them what to do <span class="citation">(Reilly and Evans <a href="#ref-Reilly2006a">2006</a>)</span>. In contrast, a decision rule is designed to directly affect clinical decisions by physicians. As accurate predictions do not always improve clinical decisions, a promising prediction model has to demonstrate its positive impact on physicians’ decisions and patients’ outcomes through different levels of impact analysis in order to be successfully translated into a useful clinical decision rule <span class="citation">(Reilly and Evans <a href="#ref-Reilly2006a">2006</a>)</span>.</p>
+</div>
+<div id="why-we-need-prediction-models" class="section level3">
+<h3><span class="header-section-number">11.1.2</span> Why we need prediction models?</h3>
+<p>In general, the prediction making process may come with pitfalls including its subjectivity, and proneness to errors and inconsistencies <span class="citation">(Meehl <a href="#ref-Meehl1954">1954</a>, <span class="citation">@Dawes1989</span>, <span class="citation">@Grove2000</span>, <span class="citation">@Sox2013</span>)</span>. Common pitfalls when estimating probability using only personal experience are:</p>
+<ul>
+<li><p>Focusing on the presence or absence of predictors but ignoring the prior probability of the outcome.</p></li>
+<li><p>Basing predictions on the presence of predictors with low predictive ability or a set of predictors which do not independently affect outcome.</p></li>
+<li><p>Personal experience, especially for clinicians in their early careers, is typically a small and unrepresentative sample of the overall population.</p></li>
+<li><p>Reliance on a false belief in the relationship between candidate predictors and outcome, as it is difficult to differentiate invalid relationships from valid ones theoretically.</p></li>
+<li><p>A tendency to be over-confident and overstate subjective certainty.</p></li>
+</ul>
+<p>As a result, deriving precise and unbiased predictions from personal experience alone is beyond the cognitive ability of almost everyone <span class="citation">(Sox, Higgins, and Owens <a href="#ref-Sox2013">2013</a>)</span>. Therefore, additional knowledge, especially that deriving from an objective source like empirical research, is needed. Such knowledge includes published reports describing the incidence of outcomes amongst patients having a common set of clinical features and clinical prediction models. Compared to personal experience, they provide more objective and more comprehensive information, especially for rare outcomes. However, their utility and validity can vary widely depending on the quality of the clinical studies and the similarities between the research population and the population of interest. Amongst these objective sources of knowledge, clinical prediction models are recognized as powerful tools to derive prediction. Besides their ability to process and produce complex information that may go beyond human mental ability, clinical prediction models provide consistent estimates and have been shown to outperform personal judgment in many situations <span class="citation">(Dawes, Faust, and Meehl <a href="#ref-Dawes1989">1989</a>, <span class="citation">@Grove2000</span>)</span>. Caveats in applying clinical prediction model are related to their potential to over-fit the data when they are not developed or tested properly and their potential to miss predictors which are relevant but difficult to evaluate in clinical research. For more information on what prognostic models are and how they are derived I refer to the following sections and Chapter .</p>
+<p>Based on these rationales, a better model for estimating the risk of the occurrence of a certain outcome in clinical practice requires both published evidence and personal experience. In addition, further adjustments to risk estimation may be required due to differences between the population of interest and the reference population, or due to the presence of extraordinary clinical features in the patient that the physician has never seen and which have not been reported anywhere <span class="citation">(Sox, Higgins, and Owens <a href="#ref-Sox2013">2013</a>)</span>.</p>
+<p>As described in the previous section, the major advantage of prediction models in clinical practice is their ability to provide objective, reproducible and reliable estimation of outcome occurrence. Due to their transparency, prediction models can also enhance communication between physicians and patients <span class="citation">(Steyerberg et al. <a href="#ref-Steyerberg2013">2013</a>)</span>. Moreover, in clinical research prediction models can be used in the design stage to target a population of interest, and in the analysis stage to perform stratified analysis according to predicted risk groups or to improve the power of statistical analyses <span class="citation">(Steyerberg et al. <a href="#ref-Steyerberg2013">2013</a>)</span>.</p>
+<div id="prognosis" class="section level4">
+<h4><span class="header-section-number">11.1.2.1</span> Prognosis</h4>
+<ul>
+<li>Prognosis is considered as “a most excellent thing for the physician to cultivate Prognosis; for by foreseeing and foretelling… the present, the past, and the future, and explaining the omissions which patients have been guilty of, he will be the more readily believed to be ac- quainted with the circumstances of the sick, so that men will have confi- dence to intrust themselves to such a physician.” <span class="citation">(Reynolds <a href="#ref-Reynolds2001">2001</a>)</span></li>
+</ul>
+</div>
+<div id="examples-of-what-is-wrong-with-doctors-prognosis" class="section level4">
+<h4><span class="header-section-number">11.1.2.2</span> Examples of what is wrong with doctor’s prognosis</h4>
+<ul>
+<li><span class="citation">(Parkes <a href="#ref-Parkes1972">1972</a>)</span>:
+<ul>
+<li>Patients with a diagnosis of cancer who were admitted to St. Christopher’s Hospice during 1970-1</li>
+<li>Predictions of expected survival:
+<ul>
+<li>From replies made by referring general practitioners or hospital medical staff on forms of application for admission of cancer patients to the hospice</li>
+<li>From assessments made by experienced medical and nursing staff of the hospice on a short questionnaire on the day of admission</li>
+</ul></li>
+<li>In 140 out of 192 successive referrals by general practitioners and 55 out of 80 referrals by hospital medical staff the referring physician had been unwilling to commit himself to a precise prediction of the probable length of survival of the patient. This left 52 forms from general practitioners and 25 from hospital doctors which contained such a prediction.</li>
+<li>293 predictions of survival were made on 168 cancer patients (83% of whom subsequently died within 12 weeks of admission)
+<ul>
+<li>Figure: survival predicted by admitted doctors on day of admission on 74 patients: 38 (51%) errors, 33 (87%) errors in the optimistic direction.</li>
+</ul></li>
+</ul></li>
+<li><span class="citation">(Christakis <a href="#ref-Christakis2000">2000</a>)</span>:
+<ul>
+<li>Prospective cohort study: 5 outpatient hospice programmes in Chicago, during 130 consecutive days (4 months) in 1996
+<ul>
+<li>343 doctors provided survival estimates for 468 terminally ill patients at the time of hospice referral</li>
+<li>patients: mean age 69 (SD 17), 45% men, 326 (65%) cancer, 62 (12%) AIDS, 116 (23%) others.</li>
+<li>referring doctors: median 16 years of medical practice, 114 (32%) specialized in general internal med, 71 (20%) in non-oncological internal medicine subspecialties, 61 (17%) in oncology, 55 (15%) in family/general practice, 27 (8%) in geriatrics, 30 (8%) in other specialties.</li>
+</ul></li>
+<li>Outcomes: patient’s estimated and actual survival</li>
+<li>Observed/Predicted survival quotient: OPQ &lt; (2/3): optimistic prognosis, 2/3 &lt; OPQ &lt; 4/3: accurate prognosis, OPQ &gt; 4/3: pessimistic</li>
+<li>Results
+<ul>
+<li>Median survival 24 days</li>
+<li>92 (20%) accurate (within 33% difference from actual survival), 295 (63%) overoptimistic, 81 (17%) pessimistic</li>
+<li>multivariable factors
+&gt; Doctors with high experience: more likely to have accurate prediction
+&gt; Doctors in other internal medicine subspecialties (exclude oncologist) more likely to make pessimistic prediction compare to general medicine/geriatrics.
+&gt; duration of doctor-patient relationship: more likely to make pssimistic prediction
+&gt; days since last examination: less likely to make pessimistic prediction</li>
+</ul></li>
+<li>Conclusion:
+<ul>
+<li>Doctors are inaccurate in their prognoses for terminally ill patients and the error is systematically optimistic.</li>
+<li>The inaccuracy is, in general, not restricted to certain kinds of doctors or patients</li>
+<li>The greater the experience of the doctor, the greater the prognostic accuracy.</li>
+<li>A stronger doctor-patient relationship is associated with lower prognostic accuracy.</li>
+</ul></li>
+</ul></li>
+<li>Margaret Jones (Principle Statistician, Pfizer Central Research)
+<ul>
+<li>The preference for indices over doctors’ prognoses is not based on an
+appropriate comparison. A common pitfall in the interpretation of
+prognostic indices is the belief that high statistical significance, and
+the ability to identify subgroups with markedly different survival rates,
+equates with an ability to accurately predict survival for an individual
+patient</li>
+<li>A natural extension is therefore to combine the doctor’s predictions
+with objective prognostic factors in a statistical model in order to
+improve prediction. A simple approach is to add the doctors’ prognosis
+into the model as an additional covariate.</li>
+</ul></li>
+</ul>
+<div id="dawes1954" class="section level5">
+<h5><span class="header-section-number">11.1.2.2.1</span> Dawes1954</h5>
+<ul>
+<li>In psychotherapy</li>
+<li>Clinical method: “the decision-maker combines or processes information in his or her head”</li>
+<li>Actuarial/Statistical method: “conclusions rest solely on empirically established relations between data and the condition or event of interes”</li>
+<li>“The combination of clinical and actuarial methods offers a third potential judgment strategies”. “However, most proposals for combination presume that the two judgment methods work together harmoniously and overlook the many situations that require dichotomous choice”</li>
+<li>“Fair comparison of the two methods”:
+<ul>
+<li>both methods should base judgments on the same data</li>
+<li>one must avoid conditions that can artificially inflate the accuracy of actuarial methods.</li>
+</ul></li>
+</ul>
+</div>
+<div id="robinson-t-jackson-r-wells-s-kerr-a-marshall-r.-an-observational-study-of-how-clinicians-use-cardiovascular-risk-assessment-to-inform-statin-prescribing-decisions.-n-z-med-j.-201713014632838." class="section level5">
+<h5><span class="header-section-number">11.1.2.2.2</span> Robinson T, Jackson R, Wells S, Kerr A, Marshall R. An observational study of how clinicians use cardiovascular risk assessment to inform statin prescribing decisions. N Z Med J. 2017;130(1463):28–38.</h5>
+</div>
+<div id="hobbs-fdr-jukema-jw-da-silva-pm-mccormack-t-catapano-al.-barriers-to-cardiovascular-disease-risk-scoring-and-primary-prevention-in-europe.-qjm.-20101031072739." class="section level5">
+<h5><span class="header-section-number">11.1.2.2.3</span> Hobbs FDR, Jukema JW, Da silva PM, McCormack T, Catapano AL. Barriers to cardiovascular disease risk scoring and primary prevention in Europe. Qjm. 2010;103(10):727–39.</h5>
+</div>
+<div id="lloyd-jones-dm.-cardiovascular-risk-prediction-basic-concepts-current-status-and-future-directions.-circulation.-201012115176877." class="section level5">
+<h5><span class="header-section-number">11.1.2.2.4</span> Lloyd-Jones DM. Cardiovascular risk prediction: Basic concepts, current status, and future directions. Circulation. 2010;121(15):1768–77.</h5>
+</div>
+<div id="koopman-rj-mainous-ag.-evaluating-multivariate-risk-scores-for-clinical-decision-making.-fam-med.-20084064126." class="section level5">
+<h5><span class="header-section-number">11.1.2.2.5</span> Koopman RJ, Mainous AG. Evaluating multivariate risk scores for clinical decision making. Fam Med. 2008;40(6):412–6.</h5>
+</div>
+<div id="jurgensen-js.-the-value-of-risk-scores.-hear-br-card-soc-internet.-2006921217134.-available-from-httpwww.pubmedcentral.nih.govarticlerender.fcgiartid1861264toolpmcentrezrendertypeabstract" class="section level5">
+<h5><span class="header-section-number">11.1.2.2.6</span> Jürgensen JS. The value of risk scores. Hear Br Card Soc [Internet]. 2006;92(12):1713–4. Available from: <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1861264&amp;tool=pmcentrez&amp;rendertype=abstract" class="uri">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=1861264&amp;tool=pmcentrez&amp;rendertype=abstract</a></h5>
+</div>
+<div id="bitton-a-gaziano-t.-the-framingham-heart-studys-impact-on-global-risk-assessment.-prog-cardiovasc-dis.-20105316878." class="section level5">
+<h5><span class="header-section-number">11.1.2.2.7</span> Bitton A, Gaziano T. The Framingham Heart Study’s impact on global risk assessment. Prog Cardiovasc Dis. 2010;53(1):68–78.</h5>
+</div>
+<div id="bellcross-c.-approaches-to-applying-breast-cancer-risk-prediction-models-in-clinical-practice.-community-oncol-internet.-200968august3739.-available-from-httpwww.oncologypractice.comcojournalarticles0608373.pdf" class="section level5">
+<h5><span class="header-section-number">11.1.2.2.8</span> Bellcross C. Approaches to applying breast cancer risk prediction models in clinical practice. Community Oncol [Internet]. 2009;6(8)(August):373–9. Available from: <a href="http://www.oncologypractice.com/co/journal/articles/0608373.pdf" class="uri">http://www.oncologypractice.com/co/journal/articles/0608373.pdf</a></h5>
+</div>
+<div id="karmali-kn-lloydjones-dm.-implementing-cardiovascular-risk-prediction-in-clinical-practice-the-future-is-now.-j-am-heart-assoc-internet.-201764e006019.-available-from-httpjaha.ahajournals.orglookupdoi10.1161jaha.117.006019" class="section level5">
+<h5><span class="header-section-number">11.1.2.2.9</span> Karmali KN, Lloyd‐Jones DM. Implementing Cardiovascular Risk Prediction in Clinical Practice: The Future Is Now. J Am Heart Assoc [Internet]. 2017;6(4):e006019. Available from: <a href="http://jaha.ahajournals.org/lookup/doi/10.1161/JAHA.117.006019" class="uri">http://jaha.ahajournals.org/lookup/doi/10.1161/JAHA.117.006019</a></h5>
+<ul>
+<li><p>The first widely used cardiovascular risk prediction equation was the Framingham Risk Score (FRS). developed from the country’s first longitudinal cardiovascular cohort study. Eventual adoption of the FRS into the Third Report of the National Cholesterol Education Program’s Adult Treatment Panel (ATP-III) cholesterol guidelines in 2001</p></li>
+<li><p>The prevailing uncertainties have led to calls for transformative changes in the way risk prediction algorithms are developed and validated. One potential approach is to move away from population-based cohort studies toward contemporary and real-world populations from electronic health records (EHRs) that reflect current trends in racial diversity, risk factor prevalence, preventive medication use, and disease incidence. Yet, the use of EHRs as a tool for clinical research is still in
+its infancy, and few health systems have follow-up long evaluations to advance the field.</p></li>
+<li><p>Continued progress in health information exchanges and the establish- ment of standards for data harmonization, data quality, and electronic outcome assessment may one day lead to a nationwide electronic cohort capable of supporting ongoing refinement of risk prediction equations using real-world clinical data.</p></li>
+<li><p>However, until that time, we will likely save far more lives and prevent many more events by focusing on implementation of existing guideline-linked equations such as the PCE, with decision-support algorithms, in EHR platforms</p></li>
+<li><p>Predicting the future is an inherently imperfect science, but
+we must not forget that quantitative risk assessment is just the start, not the end, of a treatment decision. Risk estimates must be contextualized by clinicians for patients during a shared treatment discussion.</p></li>
+<li><p>Although recent years have seen great interest in the accuracy of cardiovascular risk prediction equations, there remains uncertainty over whether use of any cardiovascular risk estimate in clinical practice actually improves cardiovascular outcomes and there are very limited data on how to best present this information for clinical decision making.</p></li>
+</ul>
+</div>
+<div id="karmali-kn-persell-sd-perel-p-lloyd-jones-dm-berendsen-ma-huffman-md.-risk-scoring-for-the-primary-prevention-of-cardiovascular-disease.-beswick-a-editor.-cochrane-database-syst-rev-internet.-2017-mar-143.-available-from-httpdoi.wiley.com10.100214651858.cd006887" class="section level5">
+<h5><span class="header-section-number">11.1.2.2.10</span> Karmali KN, Persell SD, Perel P, Lloyd-Jones DM, Berendsen MA, Huffman MD. Risk scoring for the primary prevention of cardiovascular disease. Beswick A, editor. Cochrane Database Syst Rev [Internet]. 2017 Mar 14;(3). Available from: <a href="http://doi.wiley.com/10.1002/14651858.CD006887" class="uri">http://doi.wiley.com/10.1002/14651858.CD006887</a></h5>
+<ul>
+<li><p>We identified 41 trials that included 194,035 participants. that systematically provided CVD risk scores or usual care to adults without a history of heart disease or stroke.</p></li>
+<li><p>The two most common CVD risk scores used were the Framingham CoronaryHeartDiseaseRiskScore (24 trials) and theUKProspec- tive Diabetes Study (UKPDS) risk engine. In these trials, baselineCVDriskwas presented as a5- or 10-year absolute riskofa CVD event. Six trials used risk-adjusted cardiovascular age (called by various names such as heart age, cardiovascular age, or vascular age) in addition to or in lieu ofthe absolute CVD risk information.</p></li>
+<li><p>In addition to the risk mes- sage, interventions also included: patient education material (31 trials); clinician- or patient-facing decision-support tools (27 tri- als); nurse counselling (11 trials); academic detailing/continuing medical education (9 trials); electronic health record integration (10 trials); electronic or paper-based reminders (7 trials); and au- dit and feedback (4 trials).</p></li>
+<li><p>Providing CVD risk scores may reduce CVD risk factor levels (like cholesterol, blood pressure, and multivariable CVD risk) by a small amount and may increase cholesterol-lowering and blood pressure-lowering medication prescribing in higher risk people. Providing CVD risk scores may reduce harms, but the results were imprecise.</p></li>
+<li><p>There is low-quality evidence to guide the use ofCVD risk scores in clinical practice. Studies hadmultiple limitations and used different methods to provide CVD risk scores. It is likely that further research will influence these results.</p></li>
+<li><p>In spite of the widespread promulgation of CVD risk scores in prevention guidelines, there is low-quality evidence and several gaps in evidence for guiding implementation in practice. Future studies should clearly identify how well the in- tended CVD risk score application was implemented in practice and evaluate its effectiveness in studies powered to identify reduc- tions in causal risk factor levels. Moreover, studies should identify the optimal content and format ofCVD risk messages that moti- vate behaviour change in physicians and patients, assess the impact ofproviding CVD risk information longitudinally over time, and look beyond initiation of evidence-based risk-reducing therapies to address uptake and long-term adherence to these therapies to achieve risk factor changes and eventual improvements in health outcomes.</p></li>
+</ul>
+</div>
+<div id="bosomworth-nj.-practical-use-of-the-framingham-risk-score-in-primary-prevention-canadian-perspective.-can-fam-physician-internet.-201157441723.-available-from-httpwww.cfp.cacontent574417.full.pdf" class="section level5">
+<h5><span class="header-section-number">11.1.2.2.11</span> Bosomworth NJ. Practical use of the Framingham risk score in primary prevention: Canadian perspective. Can Fam Physician [Internet]. 2011;57(4):417–23. Available from: <a href="http://www.cfp.ca/content/57/4/417.full.pdf" class="uri">http://www.cfp.ca/content/57/4/417.full.pdf</a></h5>
+</div>
+<div id="wallace-e-uijen-mjm-clyne-b-zarabzadeh-a-keogh-c-galvin-r-et-al.impact-analysis-studies-of-clinical-prediction-rules-relevant-to-primary-care-a-systematic-review.-bmj-open-internet.-201663e009957.-available-from-httpbmjopen.bmj.comlookupdoi10.1136bmjopen-2015-009957" class="section level5">
+<h5><span class="header-section-number">11.1.2.2.12</span> Wallace E, Uijen MJM, Clyne B, Zarabzadeh A, Keogh C, Galvin R, et al. Impact analysis studies of clinical prediction rules relevant to primary care: a systematic review. BMJ Open [Internet]. 2016;6(3):e009957. Available from: <a href="http://bmjopen.bmj.com/lookup/doi/10.1136/bmjopen-2015-009957" class="uri">http://bmjopen.bmj.com/lookup/doi/10.1136/bmjopen-2015-009957</a></h5>
+</div>
+<div id="wallace-e-smith-sm-perera-salazar-r-vaucher-p-mccowan-c-collins-g-et-al.framework-for-the-impact-analysis-and-implementation-of-clinical-prediction-rules-cprs.-bmc-med-inform-decis-mak-internet.-2011-jan-cited-2012-jul-1611162.-available-from-httpwww.pubmedcentral.nih.govarticlerender.fcgiartid3216240toolpmcentrezrendertypeabstract" class="section level5">
+<h5><span class="header-section-number">11.1.2.2.13</span> Wallace E, Smith SM, Perera-Salazar R, Vaucher P, McCowan C, Collins G, et al. Framework for the impact analysis and implementation of Clinical Prediction Rules (CPRs). BMC Med Inform Decis Mak [Internet]. 2011 Jan [cited 2012 Jul 16];11(1):62. Available from: <a href="http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=3216240&amp;tool=pmcentrez&amp;rendertype=abstract" class="uri">http://www.pubmedcentral.nih.gov/articlerender.fcgi?artid=3216240&amp;tool=pmcentrez&amp;rendertype=abstract</a></h5>
+</div>
+</div>
+<div id="how-cpm-can-be-used" class="section level4">
+<h4><span class="header-section-number">11.1.2.3</span> How CPM can be used?</h4>
+<ul>
+<li>Integrated into provider workflow: integration into the electronic health record system <span class="citation">(Karlin-Zysman et al. <a href="#ref-Karlin-Zysman2012">2012</a>)</span></li>
+</ul>
+</div>
+<div id="it-is-time-to-move-forward" class="section level4">
+<h4><span class="header-section-number">11.1.2.4</span> It is time to move forward</h4>
+<ul>
+<li><p>CPM/CPRs has potential to “help clinicians make personalized and complex decisions at the point of care. They have the potential to improve patient care outcomes and reduce healthcare costs, but remain underutilized” <span class="citation">(Karlin-Zysman et al. <a href="#ref-Karlin-Zysman2012">2012</a>)</span></p></li>
+<li><p>“There are a number of well-derived and validated clinical prediction rules, but few have been studied by means of an impact analysis or successfully integrated into provider workflow. There are a number of barriers to adoption at both the infrastructure and organizational levels. Research efforts should focus on impact analysis and how to successfully implement existing, well-validated clinical prediction rules into daily practice” <span class="citation">(Karlin-Zysman et al. <a href="#ref-Karlin-Zysman2012">2012</a>)</span></p></li>
+<li><p>“The other urgent need is for feasibility and impact studies comparing the use of risk prediction models in real clinical practice: Can local computer systems handle the model? Can GPs and others be trained to use it? What are the resource implications?” <span class="citation">(Noble, Dent, and Greenhalgh <a href="#ref-Noble2012">2012</a>)</span></p></li>
+<li><p>“Researchers have spent too much time making minor adjustments to in silico statistical models, and too little considering who would use the model, on whom, and in what circumstances.”<span class="citation">(Noble, Dent, and Greenhalgh <a href="#ref-Noble2012">2012</a>)</span></p></li>
+<li><p>“Recommendations include emphasis on a collaborative framework, using existing technologies, and utilization of usability and workflow integration methodology” <span class="citation">(Karlin-Zysman et al. <a href="#ref-Karlin-Zysman2012">2012</a>)</span></p></li>
+<li><p><span class="citation">(Reynolds <a href="#ref-Reynolds2001">2001</a>)</span></p></li>
+</ul>
+</div>
+<div id="how-to-move-forwards" class="section level4">
+<h4><span class="header-section-number">11.1.2.5</span> How to move forwards</h4>
+<ul>
+<li><p><span class="citation">(Wallace et al. <a href="#ref-Wallace2011">2011</a>)</span></p></li>
+<li><p><span class="citation">(Sheridan, Pignone, and Mulrow <a href="#ref-Sheridan2003">2003</a>)</span></p></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="part-development" class="section level2 unnumbered">
+<h2>(PART) Development</h2>
+<div id="standard-steps-to-develop-clinical-prediction-models" class="section level3">
+<h3><span class="header-section-number">11.1.3</span> Standard steps to develop clinical prediction models?</h3>
+<p>In this project, all prediction models using baseline covariates were developed following current standard methodology and recommendations <span class="citation">(Harrell <a href="#ref-Harrell2001">2001</a>, <span class="citation">@Steyerberg2010</span>)</span>.</p>
+</div>
+<div id="clinical-outcomes-and-candidate-predictors" class="section level3">
+<h3><span class="header-section-number">11.1.4</span> Clinical outcomes and candidate predictors</h3>
+<p>Depending on the specific context of each study, clinical outcomes and candidate predictors were pre-defined based on clinical knowledge and prior to any analysis. All values of candidate predictors were obtained at baseline. All cases in whom the outcome had already occurred at or prior to the baseline assessment were removed from the prediction model development.</p>
+</div>
+<div id="statistical-models-of-choice" class="section level3">
+<h3><span class="header-section-number">11.1.5</span> Statistical models of choice</h3>
+<p>The primary outcomes in both cohorts were binary: severe  (yes/no) in the DF cohort, and  (yes/no) for MD. Hence, the logistic regression model was the statistical model of choice. In the MD data set, the time point of the occurrence of  was also recorded; therefore, in theory, time to  occurrence could also be used as an outcome and a survival model could be applied to develop a prognostic model. However, using time to event as an outcome requires a meaningful time origin. In this setting, two time origins could be used including the time point of enrolment and the time point of disease onset. As the former time point is quite arbitrary, it is less meaningful than the time point of disease onset. However, using the time of disease onset as the time origin posed two problems. First, subjects only came under observation at the time of enrolment and hence, the dataset contains possibly informative left-truncation. Second, several of the selected candidate predictors are in principle time-varying but for the majority of them their values were only recorded at a single time point, i.e. the time of enrolment. Thus, in order, to keep the analysis simple and transparent, I decided to use the logistic regression model as the main statistical model for the analysis of MD data.</p>
+<p>However, the validity of the logistic regression models is based on the assumptions of linearity and additivity of covariate effects while these assumptions are relaxed in several modern approaches. In addition, some of the more modern approaches are also less prone to over-fitting. Therefore, I also applied modern statistical models including the lasso, , , and gradient boosting with trees as base learners <span class="citation">(Hastie, Tibshirani, and Friedman <a href="#ref-Hastie2009">2009</a>)</span> and compared their performances to the main logistic models in order to detect any defects in the latter.</p>
+</div>
+<div id="model-specification" class="section level3">
+<h3><span class="header-section-number">11.1.6</span> Model specification</h3>
+<p>For simplicity, the initial prediction model included all candidate predictors as linear and additive terms. These assumptions were subsequently assessed based on a pre-defined maximum amount of flexibility (``degrees of freedom&quot;) allowed for each continuous variables and pre-defined interaction tests. These pre-specifications depended on clinical judgment, expected associations from the literature, and the number of effective events in the data.</p>
+</div>
+<div id="model-assumption-assessments" class="section level3">
+<h3><span class="header-section-number">11.1.7</span> Model assumption assessments</h3>
+<p>For logistic regression models, the initial simple models were first assessed for the plausibility of common model assumptions.</p>
+<div id="linearity-assumption" class="section level4">
+<h4><span class="header-section-number">11.1.7.1</span> Linearity assumption</h4>
+<p>This assumption states that the effect of a candidate predictor on the outcome depends linearly on its value (the linearity is only applied to the appropriate scale of the model, e.g. linear on the log-odds ratio scale for a logistic model). In reality, this assumption is hardly ever completely true; however if the effect of a covariate on the outcome is approximately linear, using a linear model has the benefits of simplicity and transparency. However, the performance of a prediction model can be hampered when a truly non-linear relationship is forced to be linear. In this project, this assumption was assessed in two ways:</p>
+<ul>
+<li><p>Numerically by performing statistical test to compare goodness-of-fit between the initial model and a more flexible model which allows for non-linear effect. Natural cubic splines with pre-defined degrees of freedom and knot locations are often recommended for modeling non-linear effects <span class="citation">(Harrell <a href="#ref-Harrell2001">2001</a>)</span> and in this case, the linear and non-linear models can be compared using a likelihood ratio test.</p></li>
+<li><p>Graphically by assessing estimated non-linear effects of each continuous variable on the outcome from a flexible multivariable model which allows for non-linearity. The flexible multivariable model was chosen as a generalized additive model which included all continuous variables of interest modeled as natural cubic spline functions with automated selection of the required degree of smoothness, and the partial effect of each variable on outcome was extracted and visualized using term plots <span class="citation">(Wood <a href="#ref-Wood2006">2006</a>)</span>.</p></li>
+</ul>
+<p>If pronounced non-linear terms were detected during this assessment, they were added to the model.</p>
+<p>In contrast to classical linear regression models, ,  and boosting with trees as base learners by default allow for non-linear covariate effects. However, in the case of , the linearity assumption is replaced by the often even less plausible assumption that the covariate effect can be described by a step function.</p>
+</div>
+<div id="additivity-assumption" class="section level4">
+<h4><span class="header-section-number">11.1.7.2</span> Additivity assumption</h4>
+<p>The simple formulation of logistic regression also assumes additivity of covariates effects. This assumption is violated when there are (synergistic or antagonistic) interactions between covariates, i.e. if the effect of one covariate on the outcome depends on the levels of other covariate. Commonly seen interactions in clinical studies are between severity/place/time/age with other candidate predictors <span class="citation">(Steyerberg <a href="#ref-Steyerberg2010">2010</a>)</span>. In my context, relevant potential interactions are between the day of illness at enrolment/gender and other covariates, and these interactions were assessed by overall interaction tests, i.e. likelihood ratio tests comparing the initial model and the extended model which also included pre-defined interaction terms. If this overall test was significant, further investigation was performed to identify the specific interaction. If pronounced interaction terms were detected during this assessment, they were added to the model.</p>
+<p>Of note, the additivity assumption is relaxed in  models and boosting with trees as base learners which automatically include interaction terms.</p>
+</div>
+</div>
+<div id="model-estimation" class="section level3">
+<h3><span class="header-section-number">11.1.8</span> Model estimation</h3>
+<p>Parameters of logistic regression models were estimated using standard maximum likelihood estimation. Estimation of the penalty parameter for the lasso was based on standardized covariates and leave-one-out cross validation with the likelihood as the optimization criterion as implemented in the R package glmnet version 2.0.16 <span class="citation">(<span class="citeproc-not-found" data-reference-id="glmnet"><strong>???</strong></span>)</span>. The  model built and pruned back a classification tree using default parameter settings of the R package rpart version 4.1.13 <span class="citation">(<span class="citeproc-not-found" data-reference-id="rpart"><strong>???</strong></span>)</span>. The  model was built based on default settings of the R package mgcv version 1.8.24 <span class="citation">(<span class="citeproc-not-found" data-reference-id="mgcv"><strong>???</strong></span>)</span>. The implementation automatically estimates the degrees of freedom of smooth terms based on generalized cross-validation. To fit a ``pure&quot; additive model, the interaction terms were not included in the model formula. Finally, a generalized boosted regression model with a Bernoulli distribution for the outcome was fitted using classification trees as base learners as implemented in the R package gbm version 2.1.4 <span class="citation">(<span class="citeproc-not-found" data-reference-id="gbm"><strong>???</strong></span>)</span>. Each tree has a depth of at most 2 which allows for 2-way interactions. The number of 3000 iterations and the learning rate of 0.001 were chosen as recommended by the gbm package author.</p>
+</div>
+<div id="model-reduction" class="section level3">
+<h3><span class="header-section-number">11.1.9</span> Model reduction</h3>
+<p>As some candidate predictors may have negligible effects on the outcome and the full model is generally complex, it is necessary to simplify the model before applying it to clinical practice <span class="citation">(Steyerberg <a href="#ref-Steyerberg2010">2010</a>)</span>. In this project, I used several different variable selection techniques including stepwise selection using the  or the  as selection criteria and best subset selection which searches through all possible models to find the best one regarding  or  criteria. Of note, the lasso by default includes variable selection by shrinking coefficients of unimportant variables to zero.</p>
+</div>
+<div id="model-performance" class="section level3">
+<h3><span class="header-section-number">11.1.10</span> Model performance</h3>
+<div id="performance-criteria" class="section level4">
+<h4><span class="header-section-number">11.1.10.1</span> Performance criteria</h4>
+<p>The performance of developed models was assessed in terms of overall performance, discrimination and calibration. These criteria are described in detail in <span class="citation">(Steyerberg <a href="#ref-Steyerberg2010">2010</a>)</span> and only briefly discussed here. The overall performance of prediction models was quantified with the Brier score which is the average squared difference between patients’ observed outcomes (0 for patients without the outcome, 1 for patients with the outcome) and their predicted risks. This quantity can range from 0 for a perfect model to a maximum value depending on the incidence of outcome for a non-informative model (for example 0.25 with a 0.5 incidence of the outcome). Discrimination measures how well a prognostic model can differentiate subjects with and without outcome. This aspect of model performance can be assessed using the c-statistic defined as the . An  of 1 indicates perfect discrimination whereas an  of 0.5 indicates that the model does not discriminate better than random guessing. Calibration measures the agreement between observed and predicted outcomes. This measure can be quantified in terms of calibration-in-the-large and the calibration slope. Calibration-in-the-large assesses how well the average predicted risk matches the overall observed incidence of the outcome. The optimal value of calibration-in-the-large is 0. Calibration-in-the-large of &lt;0 or &gt;0, respectively, indicate that predicted outcomes are systematically too high or too low. The calibration slope reflects the extremeness of the predicted outcome and is compared to 1. A calibration slope &lt; 1 indicates that the predictions are too extreme; whereas a calibration slope &gt; 1 implies that the predictions are not extreme enough.</p>
+</div>
+<div id="correction-for-optimism" class="section level4">
+<h4><span class="header-section-number">11.1.10.2</span> Correction for optimism</h4>
+<p>As no independent validation datasets were available to assess performance of prediction models developed in this project, models were evaluated on the development dataset which imposes the risk of optimism, i.e. over-estimation of performance due to over-fitting <span class="citation">(Steyerberg <a href="#ref-Steyerberg2010">2010</a>)</span>. In order to compensate for optimism and to get a realistic assessment of the performance of the entire model development process, all performance measures were corrected for optimism using temporal validation or 10-times repeated 10-fold cross-validation technique.</p>
+<p>In temporal validation, the whole data was splitted into a training and a test set based on time. The whole model development process was applied on the training set which was the old data, and subsequently, the derived model was assessed on the test set which was the new data. This so-called ``temporal performance&quot; represents a more truthful assessment of the whole modeling process than the optimistic apparent one <span class="citation">(Steyerberg <a href="#ref-Steyerberg2010">2010</a>)</span> .<br />
+In 10-times repeated 10-fold cross-validation, the whole modeling procedure except for assumption assessments was firstly repeated 10 times by using a selection of nine tenths of the data for model development and one tenth for validation, respectively <span class="citation">(Steyerberg <a href="#ref-Steyerberg2010">2010</a>)</span>. The cross-validation was further repeated ten times to minimize dependence on the random split into ten sub-datasets. The performance of the derived model on the test sets was then averaged across the 100 test sets to provide overall optimism-corrected performance measures.</p>
+</div>
+</div>
+<div id="model-presentation" class="section level3">
+<h3><span class="header-section-number">11.1.11</span> Model presentation</h3>
+<p>The final model which had the best trade-off between simplicity and accuracy was chosen as the basis for a score chart following the approach of <span class="citation">(Sullivan, Massaro, and D’Agostino <a href="#ref-Sullivan2004">2004</a>)</span>. In brief, the linear predictor of the selected model was rounded and simplified, followed by a categorization of continuous variables and assignment of a point value to each category of a covariate. The total point score for each patient obtained from the score chart is an approximation of the linear predictor corresponding to that patient which can then be converted to a predicted risk. Finally, the adequacy of this score chart was evaluated by comparing risk predictions from the score chart to those of the original statistical model, and by visualizing their agreement with a Bland - Altman plot <span class="citation">(Bland and Altman <a href="#ref-Bland1986">1986</a>)</span>.</p>
+</div>
+<div id="adjustment-of-model-development-and-validation-steps-for-multiple-imputation" class="section level3">
+<h3><span class="header-section-number">11.1.12</span> Adjustment of model development and validation steps for multiple imputation</h3>
+<p>For multiple imputed datasets, the above model development and validation steps were adjusted according to current recommendation <span class="citation">(<span class="citeproc-not-found" data-reference-id="White2011"><strong>???</strong></span>)</span>.</p>
+<p>For assessing the linearity and additivity assumptions, likelihood ratio test were performed comparing the simple model with linear terms and no interaction terms to models with more flexible terms for each imputed dataset. The results were then combined with method given by Meng &amp; Rubin <span class="citation">(<span class="citeproc-not-found" data-reference-id="Meng1992"><strong>???</strong></span>)</span>. Likewise, the overall multivariable model was derived by using Rubin’s rule to combine the multivariable models fitted on each imputed dataset.</p>
+<p>Variable selection was based on backwards stepwise model selection <span class="citation">(Hastie, Tibshirani, and Friedman <a href="#ref-Hastie2009">2009</a>)</span>. At each variable selection step, the model of interest was fitted to all imputed datasets and the least significant predictor was excluded if its pooled p value was larger than 0.15 (the p-value cut-off of 0.15 was chosen to approximately mimic variable selection based on ). The final model was obtained by applying Rubin’s rule to aggregate parameter estimates from a model which included all predictors that remained after the variable selection procedure across imputed datasets.</p>
+<p>Regarding model validation, both temporal and cross-validation were performed as described above. In both cases, the whole modeling procedure for each statistical model of interest was applied to each imputed training set. Predictions of each fitted model on the corresponding imputed test set were obtained and then compared to observed outcomes in the test set of each imputed dataset to derive performance measure. These measures were then averaged across imputed test sets to provide a single set of measures for each model.</p>
+</div>
+<div id="statistical-software" class="section level3">
+<h3><span class="header-section-number">11.1.13</span> Statistical software</h3>
+<p></p>
+<p>All analyses were performed with the statistical software R version 3.5.1 (2018-07-02) <span class="citation">(<span class="citeproc-not-found" data-reference-id="R"><strong>???</strong></span>)</span> and its companion packages including machine learning and multiple imputation packages (as described in the previous sections) and other packages including Hmisc version 4.1.1 <span class="citation">(<span class="citeproc-not-found" data-reference-id="Hmisc"><strong>???</strong></span>)</span>, ggplot2 version 3.0.0 <span class="citation">(<span class="citeproc-not-found" data-reference-id="ggplot2"><strong>???</strong></span>)</span>, plyr version 1.8.4 <span class="citation">(<span class="citeproc-not-found" data-reference-id="plyr"><strong>???</strong></span>)</span> and dplyr version 0.8.3 <span class="citation">(<span class="citeproc-not-found" data-reference-id="dplyr"><strong>???</strong></span>)</span>.</p>
+</div>
+<div id="baseline-versus-dynamic-prediction-models" class="section level3">
+<h3><span class="header-section-number">11.1.14</span> Baseline versus dynamic prediction models</h3>
+<p>Traditionally, a prediction models relies on data collected at a single time point (at the time of presentation, admission, diagnosis or initiation of an intervention) to predict outcomes in the future. Even though many of these traditional prediction models are useful in clinical practice, they have several shortcomings:</p>
+<ul>
+<li><p>Initial predictions tend to become less relevant as the disease progresses <span class="citation">(<span class="citeproc-not-found" data-reference-id="Rue2001"><strong>???</strong></span>)</span>. A possible explanation is that a prediction model based on baseline information only cannot capture changes in the patient’s clinical profile according to their response to treatment or natural physiologic variation reflecting the course of the disease, which may be strong predictors of the outcome <span class="citation">(<span class="citeproc-not-found" data-reference-id="Rue2001"><strong>???</strong></span>)</span>. Furthermore, baseline models might also miss complications, which may strongly affect outcome, while being present at baseline but require time to become clinically apparent <span class="citation">(<span class="citeproc-not-found" data-reference-id="Lemeshow1988"><strong>???</strong></span>)</span>. As a result, baseline models might not be transferable to later time points and therefore, they may not be used for individual management decisions at those time points <span class="citation">(<span class="citeproc-not-found" data-reference-id="Lemeshow1994"><strong>???</strong></span>, <span class="citation">@Wagner1994</span>)</span> .</p></li>
+<li><p>Longitudinal information during the patient’s disease course is nowadays frequently collected in clinical practice, especially with the introduction of electronic health record. Baseline models are inefficient in the sense that they ignore all this subsequent after baseline.</p></li>
+</ul>
+<p>For these reasons, dynamic prediction models, which predict the future course of the disease at follow-up time points based on the accruing longitudinal information, are required to allow updating a patients’ prognosis over time <span class="citation">(<span class="citeproc-not-found" data-reference-id="VanHouwelingen2012"><strong>???</strong></span>)</span>. By using all available data, such models may provide much more accurate predictions compared to baseline models in many settings <span class="citation">(<span class="citeproc-not-found" data-reference-id="Lemeshow1988"><strong>???</strong></span>, <span class="citation">@Christensen1993</span>, <span class="citation">@Hughes1992</span>, <span class="citation">@Rue2001</span>, <span class="citation">@Karp2004</span>)</span>. Dynamic prediction may also be appealing for clinicians as it mimics the iteration of obtaining information and updating prognosis based on the new information, a task that physicians routinely do every day in clinical practice.</p>
+</div>
+</div>
+<div id="additional-considerations" class="section level2">
+<h2><span class="header-section-number">11.2</span> Additional considerations</h2>
+<div id="sample-size" class="section level3">
+<h3><span class="header-section-number">11.2.1</span> Sample size</h3>
+</div>
+<div id="missing-data" class="section level3">
+<h3><span class="header-section-number">11.2.2</span> Missing data</h3>
+</div>
+<div id="incorporating-longitudinal-predictors" class="section level3">
+<h3><span class="header-section-number">11.2.3</span> Incorporating longitudinal predictors</h3>
+</div>
+<div id="competing-risks" class="section level3">
+<h3><span class="header-section-number">11.2.4</span> Competing risks</h3>
+</div>
+<div id="acute-vs.chronic-diseases" class="section level3">
+<h3><span class="header-section-number">11.2.5</span> Acute vs. chronic diseases</h3>
+</div>
+<div id="big-data" class="section level3">
+<h3><span class="header-section-number">11.2.6</span> Big data</h3>
+</div>
+<div id="heterogeneity" class="section level3">
+<h3><span class="header-section-number">11.2.7</span> Heterogeneity</h3>
+</div>
+</div>
+<div id="part-utilization" class="section level2">
+<h2><span class="header-section-number">11.3</span> (PART) Utilization</h2>
+<div id="from-prediction-model-to-prediction-rule" class="section level3">
+<h3><span class="header-section-number">11.3.1</span> From prediction model to prediction rule</h3>
+</div>
+<div id="how-to-apply-prediction-models-in-clinical-practice" class="section level3">
+<h3><span class="header-section-number">11.3.2</span> How to apply prediction models in clinical practice?</h3>
+</div>
+<div id="will-prediction-models-be-used-in-clinical-practice" class="section level3">
+<h3><span class="header-section-number">11.3.3</span> Will prediction models be used in clinical practice?</h3>
+</div>
+<div id="pmCDSS" class="section level3">
+<h3><span class="header-section-number">11.3.4</span> Clinical Decision Support System</h3>
+<div id="reading-list-1" class="section level4">
+<h4><span class="header-section-number">11.3.4.1</span> Reading list</h4>
+<ul>
+<li><p>Berner, E. S., Brooks, C. M., Miller, R. A., Masarie, F. E., &amp; Jackson, J. R. (1989). Evaluation issues in the development of expert systems in medicine. Evaluation &amp; the health professions, 12(3), 270–281.</p></li>
+<li><p>Langton, K. B., Johnston, M. E., Haynes, R. B., &amp; Mathieu, A. (1992). A critical appraisal of the literature on the effects of computer-based clinical decision support systems on clinician performance and patient outcomes. Proceedings / the … Annual Symposium on Computer Application [sic] in Medical Care. Symposium on Computer Applications in Medical Care, 626–630.</p></li>
+<li><p>Bankowitz, R. A., Lave, J. R., &amp; McNeil, M. A. (1992). A method for assessing the impact of a computer-based decision support system on health care outcomes. Methods of Information in Medicine, 31(1), 3–10.</p></li>
+<li><p>Shortliffe, E. H. (1993). The adolescence of AI in medicine: will the field come of age in the ’90s? Artificial Intelligence in Medicine, 5(2), 93–106.</p></li>
+<li><p>Johnston, M. E., Langton, K. B., Haynes, R. B., &amp; Mathieu, A. (1994). Effects of computer-based clinical decision support systems on clinician performance and patient outcome. A critical appraisal of research. Annals of Internal Medicine, 120(2), 135–142.</p></li>
+<li><p>Miller, R. A. (1994). Medical diagnostic decision support systems–past, present, and future: a threaded bibliography and brief commentary. Journal of the American Medical Informatics Association, 1(1), 8–27.</p></li>
+<li><p>Li, Y. C., Haug, P. J., Lincoln, M. J., Turner, C. W., Pryor, T. A., &amp; Warner, H. H. (1995). Assessing the behavioral impact of a diagnostic decision support system. Proceedings / the … Annual Symposium on Computer Application [sic] in Medical Care. Symposium on Computer Applications in Medical Care, 805–809.</p></li>
+<li><p>Shortliffe, E. H. (1995). When decision support doesn’t support. Medical Decision Making, 15(2), 187–188.</p></li>
+<li><p>Miller, R. A. (1996). Evaluating evaluations of medical diagnostic systems. Journal of the American Medical Informatics Association, 3(6), 429–431.</p></li>
+<li><p>Ridderikhoff, J., &amp; van Herk, E. (1997). A diagnostic support system in general practice: is it feasible? International Journal of Medical Informatics, 45(3), 133–143.</p></li>
+<li><p>Hunt, D. L., Haynes, R. B., Hanna, S. E., &amp; Smith, K. (1998). Effects of computer-based clinical decision support systems on physician performance and patient outcomes: a systematic review. The Journal of the American Medical Association, 280(15), 1339–1346.</p></li>
+<li><p>Berner, E. S., &amp; Maisiak, R. S. (1999). Influence of case and physician characteristics on perceptions of decision support systems. Journal of the American Medical Informatics Association, 6(5), 428–434.</p></li>
+<li><p>Wendt, T., Knaup-Gregori, P., &amp; Winter, A. (2000). Decision support in medicine: a survey of problems of user acceptance. Studies in Health Technology and Informatics, 77, 852–856.</p></li>
+<li><p>Kaplan, B. (2001). Evaluating informatics applications–clinical decision support systems literature review. International Journal of Medical Informatics, 64(1), 15–37.</p></li>
+<li><p>Sim, I., Gorman, P., Greenes, R. A., Haynes, R. B., Kaplan, B., Lehmann, H., &amp; Tang, P. C. (2001). Clinical decision support systems for the practice of evidence-based medicine. Journal of the American Medical Informatics Association, 8(6), 527–534.</p></li>
+<li><p>Leong, T.-Y. (2003). Decision support systems in healthcare: emerging trends and success factors. In X. Yu &amp; J. Kacprzyk (Eds.), Applied Decision Support with Soft Computing, Studies in fuzziness and soft computing (Vol. 124, pp. 151–179). Berlin, Heidelberg: Springer Berlin Heidelberg.</p></li>
+<li><p>Kalogeropoulos, D. A., Carson, E. R., &amp; Collinson, P. O. (2003). Towards knowledge-based systems in clinical practice: development of an integrated clinical information and knowledge management support system. Computer Methods and Programs in Biomedicine, 72(1), 65–80.</p></li>
+<li><p>Bates, D. W., Kuperman, G. J., Wang, S., Gandhi, T., Kittler, A., Volk, L., Spurr, C., et al. (2003). Ten commandments for effective clinical decision support: making the practice of evidence-based medicine a reality. Journal of the American Medical Informatics Association, 10(6), 523–530.</p></li>
+<li><p>Berner, E. S., &amp; Lande, T. L. (2004). Clinical decision support systems: impacting the future of clinical decision making. In M. J. Ball, C. A. Weaver, &amp; J. M. Kiel (Eds.), Healthcare information management systems (pp. 463–477). New York, NY: Springer New York.</p></li>
+<li><p>Berner, E. S. (2006). Diagnostic decision support systems: why aren’t they used more and what can we do about it? AMIA Annual Symposium Proceedings, 1167–1168.</p></li>
+<li><p>Liu, J., Wyatt, J. C., &amp; Altman, D. G. (2006). Decision tools in health care: focus on the problem, not the solution. BMC Medical Informatics and Decision Making, 6, 4.</p></li>
+<li><p>Osheroff, J. A., Teich, J. M., Middleton, B., Steen, E. B., Wright, A., &amp; Detmer, D. E. (2006). A Roadmap for National Action on Clinical Decision Support . AMIA Board of Directors.</p></li>
+<li><p>Miller, R. A. (2009). Computer-assisted diagnostic decision support: history, challenges, and possible paths forward. Advances in health sciences education : theory and practice, 14 Suppl 1, 89–106.</p></li>
+<li><p>Miller, R. A. (2010). A History of the INTERNIST-1 and Quick Medical Reference (QMR) Computer-Assisted Diagnosis Projects, with Lessons Learned. Yearbook of medical informatics, 19(01), 121–136.</p></li>
+<li><p>Hemens, B. J., Holbrook, A., Tonkin, M., Mackay, J. A., Weise-Kelly, L., Navarro, T., Wilczynski, N. L., et al. (2011). Computerized clinical decision support systems for drug prescribing and management: a decision-maker-researcher partnership systematic review. Implementation Science, 6, 89.</p></li>
+<li><p>Souza, N. M., Sebaldt, R. J., Mackay, J. A., Prorok, J. C., Weise-Kelly, L., Navarro, T., Wilczynski, N. L., et al. (2011). Computerized clinical decision support systems for primary preventive care: a decision-maker-researcher partnership systematic review of effects on process of care and patient outcomes. Implementation Science, 6, 87.</p></li>
+<li><p>Roshanov, P. S., You, J. J., Dhaliwal, J., Koff, D., Mackay, J. A., Weise-Kelly, L., Navarro, T., et al. (2011). Can computerized clinical decision support systems improve practitioners’ diagnostic test ordering behavior? A decision-maker-researcher partnership systematic review. Implementation Science, 6, 88.</p></li>
+<li><p>Roshanov, P. S., Misra, S., Gerstein, H. C., Garg, A. X., Sebaldt, R. J., Mackay, J. A., Weise-Kelly, L., et al. (2011). Computerized clinical decision support systems for chronic disease management: a decision-maker-researcher partnership systematic review. Implementation Science, 6, 92.</p></li>
+<li><p>Sahota, N., Lloyd, R., Ramakrishna, A., Mackay, J. A., Prorok, J. C., Weise-Kelly, L., Navarro, T., et al. (2011). Computerized clinical decision support systems for acute care management: a decision-maker-researcher partnership systematic review of effects on process of care and patient outcomes. Implementation Science, 6, 91.</p></li>
+<li><p>Nieuwlaat, R., Connolly, S. J., Mackay, J. A., Weise-Kelly, L., Navarro, T., Wilczynski, N. L., Haynes, R. B., et al. (2011). Computerized clinical decision support systems for therapeutic drug monitoring and dosing: a decision-maker-researcher partnership systematic review. Implementation Science, 6, 90.</p></li>
+<li><p>Middleton, B. (2012, July 18). The clinical decision support consortium: overview . Presented at the AMIA CDS-WG.</p></li>
+<li><p>Lauterbach, C. V., &amp; Still, J. D. (2013). Implementing Scenarios as an Evaluation Method of the Patient-Physician Interaction in Decision Aids. In V. G. Duffy (Ed.), Digital human modeling and applications in health, safety, ergonomics, and risk management. healthcare and safety of the environment and transport, Lecture notes in computer science (Vol. 8025, pp. 232–239). Berlin, Heidelberg: Springer Berlin Heidelberg.</p></li>
+<li><p>Zuccotti, G., Maloney, F. L., Feblowitz, J., Samal, L., Sato, L., &amp; Wright, A. (2014). Reducing risk with clinical decision support: a study of closed malpractice claims. Applied clinical informatics, 5(3), 746–756.</p></li>
+<li><p>Porat, T., Kostopoulou, O., Woolley, A., &amp; Delaney, B. C. (2016). Eliciting user decision requirements for designing computerized diagnostic support for family physicians. Journal of cognitive engineering and decision making, 10(1), 57–73.</p></li>
+<li><p>Riches, N., Panagioti, M., Alam, R., Cheraghi-Sohi, S., Campbell, S., Esmail, A., &amp; Bower, P. (2016). The Effectiveness of Electronic Differential Diagnoses (DDX) Generators: A Systematic Review and Meta-Analysis. Plos One, 11(3), e0148991.</p></li>
+<li><p>Dagliati, A., Tibollo, V., Sacchi, L., Malovini, A., Limongelli, I., Gabetta, M., Napolitano, C., et al. (2018). Big data as a driver for clinical decision support systems: A learning health systems perspective. Frontiers in Digital Humanities, 5.</p></li>
+<li><p>Van de Velde, S., Kunnamo, I., Roshanov, P., Kortteisto, T., Aertgeerts, B., Vandvik, P. O., Flottorp, S., et al. (2018). The GUIDES checklist: development of a tool to improve the successful use of guideline-based computerised clinical decision support. Implementation Science, 13(1), 86.</p></li>
+<li><p>Zikos, D., &amp; DeLellis, N. (2018). CDSS-RM: a clinical decision support system reference model. BMC Medical Research Methodology, 18(1), 137.</p></li>
+<li><p>Wasylewicz, A. T. M., &amp; Scheepers-Hoeks, A. M. J. W. (2019). Clinical decision support systems. In P. Kubben, M. Dumontier, &amp; A. Dekker (Eds.), Fundamentals of clinical data science. Cham (CH): Springer.</p></li>
+<li><p>Albarillo, F. S., Labuszewski, L., Lopez, J., Santarossa, M., &amp; Bhatia, N. K. (2019). Use of a Clinical Decision Support System (CDSS) to improve antimicrobial stewardship efforts at a single academic medical center. Germs, 9(2), 106–109.</p></li>
+<li><p>Scott, P. J., Brown, A. W., Adedeji, T., Wyatt, J. C., Georgiou, A., Eisenstein, E. L., &amp; Friedman, C. P. (2019). A review of measurement practice in studies of clinical decision support systems 1998-2017. Journal of the American Medical Informatics Association, 26(10), 1120–1128.</p></li>
+<li><p>Clinical Decision Support Systems: Theory and Practice</p></li>
+</ul>
+</div>
+</div>
+<div id="lab" class="section level3">
+<h3><span class="header-section-number">11.3.5</span> Lab</h3>
+<ul>
+<li><p><a href="https://dbmi.hms.harvard.edu/research-areas/clinical-decision-making">Clinical Decision Making at Havard Medical School</a></p></li>
+<li><p><a href="https://chds.hsph.harvard.edu/">Center for Health Decision Science</a></p></li>
+<li><p><a href="https://www.human.cornell.edu/hd/research/labs/lrdm/home">LABORATORY FOR RATIONAL DECISION MAKING at Cornell University</a></p></li>
+<li><p><a href="http://groups.csail.mit.edu/medg/">MIT CSAIL Clinical Decision Making Group</a></p></li>
+<li><p><a href="https://www2.le.ac.uk/departments/psychology/research/JDMSP">Leicester Judgment and Decision Making Research Group</a></p></li>
+</ul>
+</div>
+</div>
+<div id="pmImpact" class="section level2">
+<h2><span class="header-section-number">11.4</span> Impact</h2>
+<div id="reading-lists" class="section level3">
+<h3><span class="header-section-number">11.4.1</span> Reading lists</h3>
+<ul>
+<li>Kappen thesis on Prediciton models: <a href="https://f1000.com/work/#/items/7892986/detail?collection=392279" class="uri">https://f1000.com/work/#/items/7892986/detail?collection=392279</a>
+<ul>
+<li>Adaptation of Clinical Prediction Models for Application in Local Settings: <a href="https://f1000.com/work/#/items/3928461/detail?collection=392279" class="uri">https://f1000.com/work/#/items/3928461/detail?collection=392279</a></li>
+<li>Impact of Risk Assessments on Prophylactic Antiemetic Prescription and the Incidence of Postoperative Nausea and Vomiting: a Cluster-Randomized Trial ()</li>
+<li>How Clinical Prediction Models Impact Decision Making by Physicians: an Example Study</li>
+<li>Impact of Adding Therapeutic Recommendations to Risk Assessments from a Prediction Model for Postoperative Nausea and Vomiting</li>
+<li>Evaluating the Impact of the Use of Prediction Models in Clinical Practice: Challenges and Recommendations</li>
+<li>Decision Support in the Context of a Complex Decision Situation</li>
+</ul></li>
+<li>Pim van Montfort thesis on implementing prediction models:
+<ul>
+<li>Part I: Framework of conditions for implementing personalized obstetric care
+&gt;</li>
+<li>Part II: Implementation and impact of personalized obstetric care</li>
+</ul></li>
+</ul>
+<div id="general-guidelines" class="section level4">
+<h4><span class="header-section-number">11.4.1.1</span> General guidelines</h4>
+<ul>
+<li><p>Recent recommendations on evaluating impact of prediction models: Kappen et al. Diagnostic and Prognostic Research (2018) 2:11, DOI: 0.1186/s41512-018-0033-6 (<a href="https://f1000.com/work/item/6335787/resources/7296795/pdf" class="uri">https://f1000.com/work/item/6335787/resources/7296795/pdf</a>). With real data on 2 prospective studies evaluating directive and assisstive models (suggest that directive model is more useful)</p></li>
+<li><p>Wallace E. et al. BMC Medical Informatics and Decision Making 2011,11:62</p></li>
+<li><p>Example of how decision analytic modeling can be used to assess the impact of a prediction model: Jenniskens, K. et al. J Clin Epidemiol 2019; 115:106-115 (<a href="https://f1000.com/work/#/items/7584644/detail?collection=392279" class="uri">https://f1000.com/work/#/items/7584644/detail?collection=392279</a>)</p></li>
+<li>Case study on CAD:
+<ul>
+<li>Chan, H.P. et al. Investigative Radiology 1990, 25(10):1002-10.</li>
+<li>Fenton, J.J. et al. NEJM 2007, 356:1399-409.</li>
+<li>Lehman, C.D. et al. JAMA Intern Med 2015;175(11):1828-37</li>
+</ul></li>
+<li><p>Assessing new biomarkers and predictive models for use in clinical practice: a clinician’s guide (<a href="https://f1000.com/work/#/items/5511638/detail?collection=392279" class="uri">https://f1000.com/work/#/items/5511638/detail?collection=392279</a>)</p></li>
+<li><p>A new framework to enhance the interpretation of external validation studies of clinical prediction models. (<a href="https://f1000.com/work/#/items/3923939/detail?collection=392279" class="uri">https://f1000.com/work/#/items/3923939/detail?collection=392279</a>)</p></li>
+<li><p>Con: Most clinical risk scores are useless (<a href="https://f1000.com/work/#/items/5513816/detail?collection=392279" class="uri">https://f1000.com/work/#/items/5513816/detail?collection=392279</a>)</p></li>
+<li><p>Understanding clinical prediction models as ‘innovations’: a mixed methods study in UK family practice. (<a href="https://f1000.com/work/#/items/5513821/detail?collection=392279" class="uri">https://f1000.com/work/#/items/5513821/detail?collection=392279</a>)</p></li>
+<li><p>Barriers and facilitators perceived by physicians when using prediction models in practice (<a href="https://f1000.com/work/#/items/6749168/detail?collection=392279" class="uri">https://f1000.com/work/#/items/6749168/detail?collection=392279</a>)</p></li>
+<li><p>Beyond accuracy: Measures for assessing machine learning models, pitfalls and guidelines (<a href="https://f1000.com/work/#/items/7390573/detail?collection=392279" class="uri">https://f1000.com/work/#/items/7390573/detail?collection=392279</a>)</p></li>
+<li><p>Methodological standards for the development and evaluation of clinical prediction rules: a review of the literature (<a href="https://f1000.com/work/#/items/7352060/detail?collection=392279" class="uri">https://f1000.com/work/#/items/7352060/detail?collection=392279</a>)</p></li>
+<li><p>Prospective evaluation of screening performance of first-trimester prediction models for preterm preeclampsia in an Asian population (<a href="https://f1000.com/work/#/items/7892998/detail?collection=392279" class="uri">https://f1000.com/work/#/items/7892998/detail?collection=392279</a>)</p></li>
+<li><p>Diffusing an innovation: clinician perceptions of continuous predictive analytics monitoring in intensive care. (<a href="https://f1000.com/work/#/items/7584901/detail?collection=392279" class="uri">https://f1000.com/work/#/items/7584901/detail?collection=392279</a>)</p></li>
+<li><p>IMPLEMENTATION OF PHARMACOGENETIC RISK PREDICTION MODELS IN PEDIATRIC ONCOLOGY (Master thesis) (<a href="https://f1000.com/work/#/items/7893000/detail?collection=392279" class="uri">https://f1000.com/work/#/items/7893000/detail?collection=392279</a>)</p></li>
+<li><p>Systematic review of health economic impact evaluations of risk prediction models: stop developing, start evaluating (<a href="https://f1000.com/work/#/items/7893006/detail?collection=392279" class="uri">https://f1000.com/work/#/items/7893006/detail?collection=392279</a>)</p></li>
+<li><p>Building Reality Checks into the Translational Pathway for Diagnostic and Prognostic Models (<a href="https://f1000.com/work/#/items/7893007/detail?collection=392279" class="uri">https://f1000.com/work/#/items/7893007/detail?collection=392279</a>)</p></li>
+<li><p>Key steps and common pitfalls in developing and validating risk models (<a href="https://f1000.com/work/#/items/7893014/detail?collection=392279" class="uri">https://f1000.com/work/#/items/7893014/detail?collection=392279</a>)</p></li>
+<li><p>EVALUATING RISK-PREDICTION MODELS USING DATA FROM ELECTRONIC HEALTH RECORDS (<a href="https://f1000.com/work/#/items/7893017/detail?collection=392279" class="uri">https://f1000.com/work/#/items/7893017/detail?collection=392279</a>)</p></li>
+<li><p>Prediction models: the right tool for the right problem (<a href="https://f1000.com/work/#/items/7893020/detail?collection=392279" class="uri">https://f1000.com/work/#/items/7893020/detail?collection=392279</a>)</p></li>
+<li><p>Prediction Models　- Why Are They Used or Not Used? (<a href="https://f1000.com/work/#/items/7893054/detail?collection=392279" class="uri">https://f1000.com/work/#/items/7893054/detail?collection=392279</a>)</p></li>
+<li><p>Clinical prediction rules: A systematic review of healthcare provider opinions and preferences (<a href="https://f1000.com/work/#/items/7893057/detail?collection=392279" class="uri">https://f1000.com/work/#/items/7893057/detail?collection=392279</a>)</p></li>
+<li><p>Defining evidence for precision medicine: A patient is more than a set of covariates (<a href="https://f1000.com/work/#/items/7893062/detail?collection=392279" class="uri">https://f1000.com/work/#/items/7893062/detail?collection=392279</a>)</p></li>
+</ul>
+</div>
+<div id="example" class="section level4">
+<h4><span class="header-section-number">11.4.1.2</span> Example</h4>
+<ul>
+<li><p>Advancing Continuous Predictive Analytics Monitoring: Moving from Implementation to Clinical Action in a Learning Health System (<a href="https://f1000.com/work/#/items/6749187/detail?collection=392279" class="uri">https://f1000.com/work/#/items/6749187/detail?collection=392279</a>)</p></li>
+<li><p>Design and implementation of a pediatric ICU acuity scoring tool as clinical decision support (<a href="https://f1000.com/work/#/items/7893036/detail?collection=392279" class="uri">https://f1000.com/work/#/items/7893036/detail?collection=392279</a>)</p></li>
+<li><p>Impact of risk assessments on prophylactic antiemetic prescription and the incidence of postoperative nausea and vomiting: a cluster-randomized trial (<a href="https://f1000.com/work/#/items/7893070/detail?collection=392279" class="uri">https://f1000.com/work/#/items/7893070/detail?collection=392279</a>)</p></li>
+<li><p>Impact of adding therapeutic recommendations to risk assessments from a prediction model for postoperative nausea and vomiting (<a href="https://f1000.com/work/#/items/5826484/detail?collection=392279" class="uri">https://f1000.com/work/#/items/5826484/detail?collection=392279</a>)</p></li>
+</ul>
+</div>
+</div>
+<div id="assessing-models-usefulness" class="section level3">
+<h3><span class="header-section-number">11.4.2</span> Assessing model’s usefulness</h3>
+</div>
+</div>
+<div id="ai-and-ml-in-healthcare" class="section level2">
+<h2><span class="header-section-number">11.5</span> AI and ML in healthcare</h2>
+<div id="what-is-ai" class="section level3">
+<h3><span class="header-section-number">11.5.1</span> What is AI?</h3>
+</div>
+<div id="how-ai-can-improve-healthcare" class="section level3">
+<h3><span class="header-section-number">11.5.2</span> How AI can improve healthcare?</h3>
+</div>
+<div id="current-stage-of-ai-in-healthcare" class="section level3">
+<h3><span class="header-section-number">11.5.3</span> Current stage of AI in healthcare?</h3>
+<ul>
+<li>Technology?</li>
+<li>Application?</li>
+</ul>
+</div>
+<div id="underuse-of-ai-in-healthcare-why-and-remedy" class="section level3">
+<h3><span class="header-section-number">11.5.4</span> Underuse of AI in healthcare: why and remedy?</h3>
+<ul>
+<li>failed to capitalize on the special observational skills of physicians <span class="citation">(Shortliffe <a href="#ref-Shortliffe1993">1993</a>, <span class="citation">@Miller1990</span>)</span>.</li>
+<li>failed to allow the user adequately to control the interaction, selecting the ways in which the program’s knowledge could most effectively be brought to bear in the consideration of a particular case <span class="citation">(Shortliffe <a href="#ref-Shortliffe1993">1993</a>, <span class="citation">@Miller1990</span>)</span></li>
+<li>the disarray of our health-care system and its failure to build the local, regional, national, and international infrastructure for biomedical computing and communications that will be required before computer-based decision-support tools can become routine elements in the clinical setting <span class="citation">(Shortliffe <a href="#ref-Shortliffe1993">1993</a>)</span></li>
+<li>inertia: systems have been designed for single problems that arise infrequently and have generally not been integrated into the routine data-management environment of the user <span class="citation">(Shortliffe <a href="#ref-Shortliffe1993">1993</a>)</span></li>
+</ul>
+<p>Solutions</p>
+<ul>
+<li><p>Physicians will be attracted to computers when they are useful for essentially every patient and when the metaphor for system use is consistent across the varied applications that are offered: physician’s workstation <span class="citation">(Shortliffe <a href="#ref-Shortliffe1993">1993</a>, <span class="citation">@Tang1991</span>)</span></p></li>
+<li><p>The existence of a high-level institutional support for medical computing applications in clinical settings <span class="citation">(Shortliffe <a href="#ref-Shortliffe1993">1993</a>)</span></p></li>
+</ul>
+</div>
+<div id="references" class="section level3">
+<h3><span class="header-section-number">11.5.5</span> References</h3>
+<ul>
+<li><p>William J. Clancey &amp; Edward H. Shortliffe (1984) Readings in Medical Artificial Intelligence: The First Decade. URL: <a href="http://people.dbmi.columbia.edu/~ehs7001/Clancey-Shortliffe-1984/Readings%20Book.htm" class="uri">http://people.dbmi.columbia.edu/~ehs7001/Clancey-Shortliffe-1984/Readings%20Book.htm</a></p></li>
+<li><p>Ian Goodfellow, Yoshua Bengio, Aaron Courville (2015) Deep Learning.</p></li>
+<li><p>Christopher D. Manning &amp; Hinrich Schütze (1999) Foundations of Statistical Natural Language Processing.</p></li>
+<li><p>Christopher Bishop (2007) Pattern Recognition and Machine Learning (Information Science and Statistics).</p></li>
+<li><p>Decision Making in Health and Medicine: Integrating Evidence and Values</p></li>
+<li><p>Medical Decision Making</p></li>
+<li><p>Computer-Assisted Medical Decision Making</p></li>
+<li><p>Medical Thinking: The Psychology of Medical Judgment and Decision Making</p></li>
+<li><p>Clinical Decision Support Systems: Theory and Practice. URL: <a href="http://eknygos.lsmuni.lt/springer/583/" class="uri">http://eknygos.lsmuni.lt/springer/583/</a></p></li>
+<li><p>BIOMEDICAL INFORMATICS: Computer Applications in Health Care and Biomedicine</p></li>
+<li><p><a href="https://www.youtube.com/watch?v=A4-7kuO4r1o&amp;feature=youtu.be" class="uri">https://www.youtube.com/watch?v=A4-7kuO4r1o&amp;feature=youtu.be</a></p></li>
+<li><p>How AI Can Lead to Better Predictions: <a href="http://ide.mit.edu/news-blog/blog/how-ai-can-lead-better-predictions" class="uri">http://ide.mit.edu/news-blog/blog/how-ai-can-lead-better-predictions</a></p></li>
+<li><p><a href="https://f1000.com/work/item/7236611/resources/6513755/pdf" class="uri">https://f1000.com/work/item/7236611/resources/6513755/pdf</a></p></li>
+</ul>
+</div>
+<div id="notes-from-literature" class="section level3">
+<h3><span class="header-section-number">11.5.6</span> Notes from literature</h3>
+<div id="shortliffe1993-ai-in-medicine" class="section level4">
+<h4><span class="header-section-number">11.5.6.1</span> <span class="citation">Shortliffe (<a href="#ref-Shortliffe1993">1993</a>)</span>: AI in medicine</h4>
+<div id="aim-in-perspective" class="section level5">
+<h5><span class="header-section-number">11.5.6.1.1</span> AIM in perspective</h5>
+<div class="figure"><span id="fig:HermanJimUnger"></span>
+<img src="figures/Herman_ JimUnger_20180319.jpg" alt="Herman by Jim Unger"  />
+<p class="caption">
+Figure 11.1: Herman by Jim Unger
+</p>
+</div>
+<ul>
+<li>The field of AIM began in early 1970s. Emerge at the four earliest American AIM research centers (MIT, Rutgers, the University of Pittsburgh, Stanford)</li>
+<li>It is no longer possible to conduct AIM research in isolation. AIM is simply one component within a wide range of research and development activities. AIM researchers need to be knowledgeable about the interdisciplinary field of medical informatics and to have a perspective, and a willingness to explore, in fields beyond Al itself.</li>
+<li>The AIM field is now well recognized, but is still poorly understood.
+<ul>
+<li>AIM researchers are trying to develop tools to enhance the effectiveness of clinical decision making, not to replace physicians or to offer dogmatic advice.</li>
+<li>We fully recognize the common-sense issues and pragmatic realities that should prevent any system developer from suggesting that a computer program can provide the single source of information used in reaching a diagnostic or therapeutic decision.</li>
+<li>have demonstrated a program’s frailty at the boundaries of its knowledge and the importance of combining the user’s good sense and experience with the information that the program can provide.</li>
+</ul></li>
+<li>the argument that AIM research is experimental science, not computer programming.
+<ul>
+<li>the roots of the discipline arose from within computer-science departments.</li>
+<li>Physicians were intimately involved in all four early projects</li>
+<li>experimental methods used, the technical terminologies, and the intellectual environments were derived from traditions in the still youthful field of computer science.</li>
+</ul></li>
+</ul>
+</div>
+<div id="the-aim-community-examines-itself" class="section level5">
+<h5><span class="header-section-number">11.5.6.1.2</span> The AIM community examines itself</h5>
+</div>
+<div id="to-what-extent-have-aim-systems-ever-been-intended-to-address-user-needs" class="section level5">
+<h5><span class="header-section-number">11.5.6.1.3</span> To what extent have AIM systems ever been intended to address user needs?</h5>
+<ul>
+<li>the bulk of AIM research has been driven precisely by a desire to develop tools that address clinical needs.</li>
+</ul>
+</div>
+<div id="what-have-been-the-contributions-of-aim-research-to-ai-to-cognitive-psychology-to-clinical-medicine" class="section level5">
+<h5><span class="header-section-number">11.5.6.1.4</span> What have been the contributions of AIM research to AI? To cognitive psychology? To clinical medicine?</h5>
+<ul>
+<li><p>AIM researchers have developed methodologies that have contributed broadly to AI: the extensive work on expert systems in medical domains during the 1970s, rule-based systems are in operation in industry and in other segments of society, and they have begun to show their commercial value and effectiveness Ironically, the medical world is still struggling to deliver such tools. We need to understand what has made medicine resistant to the adoption and use of expert-systems techniques. the problems have little to do with AI or with the quality of AIM research.</p></li>
+<li>Related field
+<ul>
+<li>medical educational psychology</li>
+<li>clinical problem solving</li>
+<li>decision-analysis methods</li>
+<li>reasoning biases</li>
+<li>cost-benefit tradeoff</li>
+</ul></li>
+</ul>
+</div>
+<div id="is-aim-part-of-information-science-computer-science-ai-engineering-or-part-of-biomedicine" class="section level5">
+<h5><span class="header-section-number">11.5.6.1.5</span> Is AIM part of information science, computer science, AI, engineering, or part of biomedicine?</h5>
+<ul>
+<li>I believe that the answer to this question is ‘none of the above’.<br />
+</li>
+<li>AIM is one of the core areas of research in the field of medical informat- its, and medical informatics itself is an interdisciplinary field that interacts with information science, computer science, AI, engineering, and biomedicine but is not solely a part of any of them</li>
+</ul>
+</div>
+<div id="are-aim-researchers-adequately-trained-and-to-what-extent-is-there-a-problem-with-inbreeding" class="section level5">
+<h5><span class="header-section-number">11.5.6.1.6</span> Are AIM researchers adequately trained, and to what extent is there a problem with inbreeding?</h5>
+<ul>
+<li>AIM researchers must be well-trained in medical informatics.</li>
+<li>Our group, for example, has in the last decade explicitly attempted to broaden its perspective and expertise beyond medical AI to embrace the wide range of pertinent topics in medical informatics that may be crucial to the effective delivery of decision-support tools:
+<ul>
+<li>database methods,</li>
+<li>human-computer interaction,</li>
+<li>classical statistics,</li>
+<li>computer graphics,</li>
+<li>distributed systems, and</li>
+<li>information retrieval</li>
+</ul></li>
+<li>As recent work has shown at the intersection of (for example) AI and decision analysis, AI and Bayesian statistics, Al and databases, and Al and graphical interfaces, it is in the synergies between AI methods and other techniques that the greatest hope for effective systems may lie</li>
+</ul>
+</div>
+<div id="why-have-there-been-no-articles-in-which-aim-systems-have-been-tested-in-clini--cal-settings-with-regard-to-process-or-outcome-of-clinical-care" class="section level5">
+<h5><span class="header-section-number">11.5.6.1.7</span> Why have there been no articles in which AIM systems have been tested in clini- cal settings with regard to process or outcome of clinical care?</h5>
+<ul>
+<li><p>Anyone who has carried out a major evaluation for an AIM system can testify that such studies are time-consuming and complicated tasks. Thus formal evaluations must not be undertaken lightly, especially since they tend to distract the research team from ongoing system development and refinement.</p></li>
+<li><p>AIM systems will require demonstrations of safety and efficacy before they will be embraced for clinical use, and our credibility with our biomedical colleagues requires that we show them the value of the systems that we develop.</p></li>
+<li>The following questions illustrate the kinds of topics that I would like to see AIM researchers ‘evaluate’ rigorously:
+<ul>
+<li>To what extent, and in what ways, do formal models of uncertainty enhance the performance of AIM systems (when compared with the ad hoc models of the past)?</li>
+<li>To what extent are graphical interfaces mandatory components of clinically acceptable decision support systems ? If they are, what are the implications for the design of AIM systems?</li>
+<li>How best can we interface advanced reasoning systems with the existing commercial soft- ware base (e.g. relational database management systems, forms-design software, hypertext packages)?</li>
+<li>What are the requirements and approaches for modularity and standards assure the smooth integration of AIM systems into clinical environments?</li>
+</ul></li>
+</ul>
+</div>
+<div id="why-isnt-aim-research-better-funded" class="section level5">
+<h5><span class="header-section-number">11.5.6.1.8</span> Why isn’t AIM research better funded?</h5>
+</div>
+<div id="why-have-aim-systems-been-so-difficult-to-transport-from-site-to-site-successfully" class="section level5">
+<h5><span class="header-section-number">11.5.6.1.9</span> Why have AIM systems been so difficult to transport from site to site successfully?</h5>
+<ul>
+<li>In 1990, Miller and Maserie described their belief that early approaches to computer-based decision support in medicine had been flawed in their adoption of the ‘Greek oracle’ model of consultation [24] -computer programs to which a physician would turn for advice, answering patient-related questions but otherwise deferring to the dialog style and recommendations of the machine. The authors correctly observed that this model, adopted by many knowledge- based systems during the first decade of AIM research [4]:
+<ul>
+<li>failed to capitalize on the special observational skills of physicians and</li>
+<li>failed to allow the user adequately to control the interaction, selecting the ways in which the program’s knowledge could most effectively be brought to bear in the consideration of a particular case</li>
+</ul></li>
+<li><p>the reasons for the limited success and adoption of knowledge-based tools in medicine run much deeper than the issue of their interactive style and philosophy. Resistance to system use has occurred despite the inherent merit of the methods that AIM researchers have developed. Many of the problems are, instead, a reflection of the disarray of our health-care system and, more importantly, its failure to build the local, regional, national, and international infrastructure for biomedical computing and communications that will be required before computer-based decision-support tools can become routine elements in the clinical setting.</p></li>
+<li><p>We must resist the temptation to blame practitioners for their typical failure to embrace the decision-support systems that we have offered to them. Fielded Al systems in other areas of society have tended to be introduced in settings where employees are told by supervisors that use of the system is part of their job [8]. In most medical settings it has been difficult to produce systems that have sufficiently clear value, cost-effectiveness, and time-saving characteristics that practitioners themselves have been drawn to use the system on its merits alone. Furthermore, there are still limited numbers of settings in which physicians work in a managerial structure where someone else can direct them to use a tool unless they want to do so. Most physicians resist such pressure, and it is not clear that external requirements for system use would be wise unless the value of the system can be documented - often a challenge for the system developers.</p></li>
+<li><p>If the situation is to change, there must be high-level institutional support for medical com- puting applications in clinical settings. I am not arguing for blind adoption of computational innovations, but I do believe that we must accept the impossibility of viewing the introduction of decision-support tools as a grass-roots activity that emerges from the research lab, appears as an isolated entity in a clinic or on a hospital ward, and then grows by some kind of mass effect to encompass an entire medical community. It is naivete about this point that has characterized our efforts to introduce AIM systems in the past. Instead, the greatest hope for effective systems will be realized when the infrastructure for introducing computational tools in medicine has been put in place by visionary leaders who understand the importance of networking, integration, shared access to patient data bases, and the use of standards for data-exchange, communications, and knowledge sharing.</p></li>
+<li><p>The need to facilitate integration of computational tools derives from an argument that Greenes and I have made about physicians as ‘horizontal’ rather than ‘vertical’ users of infor- mation technology. I believe that the greatest barrier to routine use of decision support by clinicians has simply been inertia; systems have been designed for single problems that arise infrequently and have generally not been integrated into the routine data-management environment of the user. Physicians will be attracted to computers when they are useful for essentially every patient and when the metaphor for system use is consistent across the varied applications that are offered (see e.g. the physician’s workstation scenario presented in Ch. 1 of [44]). The recent emphasis on developing integrated workstations for physicians is responsive to this realization [29,46,53]; many groups are seeking to develop environments which offer, using consistent conventions for human-computer interaction, everything from medical-record review and order entry to bibliographic retrieval and the use of expert systems. Our limited success with dissemination of knowledge-based systems in medicine is, in my view, due more to this failure of integration than it is to any other basic problem with the AI technologies that have been developed.</p></li>
+</ul>
+</div>
+<div id="conclusions" class="section level5">
+<h5><span class="header-section-number">11.5.6.1.10</span> Conclusions</h5>
+<ul>
+<li>AIM is not a field that can be set off to the side, separate from the rest of medical informatics or the world of health planning and policy making. Effective decision-support systems are dependent on the development of integrated environments for communication and computing that allow merging of knowledge-based tools with other patient data-management and information-retrieval applications. The creation of this kind of infrastructure will require vision and resources from leaders who realize that the practice of medicine is inherently an information-management task and that biomedicine must make the same kind of coordinated commitment to computing technologies as have other segments of our society in which the importance of information management is well understood. We can draw from these observations a set of three challenges that sit squarely on the agenda for the medical informatics community in the decade ahead:
+<ul>
+<li>The enhancement of training opportunities so that a large cadre of professionals who are broadly educated regarding the interdisciplinary nature of medical informatics (including AIM) is available to assume leadership roles in both research and in information-technology management.</li>
+<li>The need to develop national and international biomedical-networking infrastructures that use existing and future technologies for communication, data exchange, and information retrieval.</li>
+<li>The need for credible international standards for communications, data, and knowledge exchange that will allow both commercial and academic developers of medical information systems to know what to do in order to assure the integration of their products with other developing systems.</li>
+</ul></li>
+<li>As the communications infrastructure and connectivity/interchange standards are put in place to support broad access to both general and patient-specific information, we will at least see the mechanism for successfully integrating AIM systems into patient-care settings and for distributing them widely.</li>
+</ul>
+</div>
+</div>
+<div id="patel2009-ai-in-medicine" class="section level4">
+<h4><span class="header-section-number">11.5.6.2</span> <span class="citation">Vimla L. Patela (<a href="#ref-Patel2009">1991</a>)</span>: AI in medicine</h4>
+<ul>
+<li>(the phrase ‘‘artificial intelligence’’ had been first coined at a famous Dartmouth College conference in 1956</li>
+<li>The earliest work in medical artificial intelligence (AI) dates to the early 1970s,</li>
+<li>Early AI in medicine (AIM) researchers had discovered the applicability of AI methods to life sciences, most visibly in the Dendral experiments</li>
+<li>Early resources: SUMEX-AIM Computing Resource at Stanford University, and a sister facility at Rutgers University</li>
+<li>early AIM systems:
+<ul>
+<li>Internist-1</li>
+<li>CASNET</li>
+<li>MYCIN</li>
+</ul></li>
+</ul>
+</div>
+<div id="jiang2017-ai-in-healthcare" class="section level4">
+<h4><span class="header-section-number">11.5.6.3</span> <span class="citation">Fei Jiang (<a href="#ref-Jiang2017">2017</a>)</span>: AI in healthcare</h4>
+<ul>
+<li><p>We believe that human physicians will not be replaced by machines in the foreseeable future, but AI can definitely assist physicians to make better clinical decisions or even replace human judgement in certain functional areas of healthcare (eg, radiology).</p></li>
+<li><p>The increasing availability of healthcare data and rapid development of big data analytic methods has made possible the recent successful applications of AI in healthcare</p></li>
+<li><p>Guided by relevant clinical questions, powerful AI techniques can unlock clinically relevant information hidden in the massive amount of data, which in turn can assist clinical decision making.</p></li>
+<li><p>from medical investigators’ perspectives</p></li>
+</ul>
+<div id="motivations-of-applying-ai-in-healthcare" class="section level5">
+<h5><span class="header-section-number">11.5.6.3.1</span> motivations of applying AI in healthcare</h5>
+<p>AI:</p>
+<ul>
+<li>use sophisticated algorithms to ‘learn’ features from a large volume of healthcare data, and then use the obtained insights to assist clinical practice.</li>
+<li>can be equipped with learning and self-correcting abilities to improve its accuracy based on feedback.</li>
+</ul>
+<p>Advantages of AI:</p>
+<ul>
+<li>can assist physicians by providing up-to-date medical information from journals, textbooks and clinical practices to inform proper patient care.</li>
+<li>help to reduce diagnostic and therapeutic errors that are inevitable in the human clinical practice</li>
+<li>extracts useful information from a large patient population to assist making real-time inferences for health risk alert and health outcome prediction</li>
+</ul>
+</div>
+<div id="data-types-that-have-be-analysed-by-ai-systems-healthcare-data" class="section level5">
+<h5><span class="header-section-number">11.5.6.3.2</span> data types that have be analysed by AI systems (Healthcare data)</h5>
+<p>In the diagnosis stage:</p>
+<ul>
+<li>diagnosis imaging</li>
+<li>genetic testing</li>
+<li>electrodiagnosis</li>
+<li>physical examination notes and clinical laboratory results (large portions of unstructured narrative texts, such as clinical that are not directly analysable)</li>
+</ul>
+</div>
+<div id="mechanisms-that-enable-ai-systems-to-generate-clinical-meaningful-results-ai-devices" class="section level5">
+<h5><span class="header-section-number">11.5.6.3.3</span> mechanisms that enable AI systems to generate clinical meaningful results (AI devices)</h5>
+<p>Two major categories</p>
+<div id="machine-learning-ml-techniques" class="section level6">
+<h6><span class="header-section-number">11.5.6.3.3.1</span> machine learning (ML) techniques</h6>
+<ul>
+<li>analyse structured data such as imaging, genetic and EP data</li>
+<li>cluster patients’ traits, or infer the probability of the disease outcomes</li>
+</ul>
+<p>Can be further groups into 2 categories</p>
+</div>
+<div id="classical-machine-learning-techniques" class="section level6">
+<h6><span class="header-section-number">11.5.6.3.3.2</span> classical machine learning techniques</h6>
+<ul>
+<li><p>constructs data analytical algorithms to extract features from data</p></li>
+<li>input:
+<ul>
+<li>patient ‘traits’, commonly include
+<ul>
+<li>baseline data: age, gender, disease history</li>
+<li>disease-specific data, such as diagnostic imaging, gene expressions, EP test, physical examination results, clinical symptoms, medication</li>
+</ul></li>
+<li>patients’ medical outcomes: disease indicators, patient’s survival times and quantitative disease levels (eg: tumor size)</li>
+</ul></li>
+<li>Depending on whether to incorporate the outcomes, ML algorithms can be divided into two major categories:
+<ul>
+<li>unsupervised learning: well known for feature extraction
+<ul>
+<li>Clustering and principal component analysis (PCA) are two major unsupervised learning methods</li>
+<li>Clustering groups subjects with similar traits together into clusters, without using the outcome information, output the cluster labels for the patients through maximising and minimising the similarity of the patients within and between the clusters. Popular clustering algorithms include k-means clustering, hierarchical clustering and Gaussian mixture clustering.</li>
+<li>PCA is mainly for dimension reduction, especially when the trait is recorded in a large number of dimensions, such as the number of genes in a genome-wide association study</li>
+</ul></li>
+<li>supervised learning: suitable for predictive modelling via building some relationships between the patient traits (as input) and the outcome of interest (as output)
+<ul>
+<li>considers the subjects’ outcomes together with their traits, goes through a certain training process to determine the best outputs associated with the inputs that are closest to the outcomes on average.</li>
+<li>compared with unsupervised learning, supervised learning provides more clinically relevant results.</li>
+<li>Relevant techniques include linear regression, logistic regression, naïve Bayes, decision tree, nearest neighbour, random forest, discriminant analysis, support vector machine (SVM) and neural network (SVM and neural network are the most popular ones).</li>
+</ul></li>
+<li>semisupervised learning has been proposed as a hybrid between unsupervised learning and supervised learning, which is suitable for scenarios where the outcome is missing for certain subjects</li>
+</ul></li>
+</ul>
+</div>
+<div id="deep-learning-techniques" class="section level6">
+<h6><span class="header-section-number">11.5.6.3.3.3</span> deep learning techniques</h6>
+<ul>
+<li>a modern extension of the classical neural network technique.</li>
+<li>One can view deep learning as a neural network with many layers, can explore more complex non-linear patterns in the data.</li>
+<li>the application of deep learning in the field of medical research nearly doubled in 2016.</li>
+<li>a clear majority of deep learning is used in imaging analysis, which makes sense given that images are naturally complex and high volume</li>
+<li>reasons for its popularity
+<ul>
+<li>Rapid development of modern computing enables deep learning to build up neural networks with a large number of layers</li>
+<li>the increase of the volume and complexity of data</li>
+</ul></li>
+<li>In the medical applications, the commonly used deep learning algorithms include
+<ul>
+<li>convolution neural network (CNN), (the most popular one in 2016). The implementation of CNN has been included in popular software packages such as Caffe from Berkeley AI Research,39 CNTK from Microsoft40 and TensorFlow from Google</li>
+<li>recurrent neural network,</li>
+<li>deep belief network</li>
+<li>deep neural network</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="natural-language-processing-nlp-methods" class="section level5">
+<h5><span class="header-section-number">11.5.6.3.4</span> natural language processing (NLP) methods</h5>
+<ul>
+<li>extract information from unstructured data such as clinical notes/medical journals to supplement and enrich structured medical data (turning texts to machine-readable structured data)</li>
+<li>An NLP pipeline comprises two main components</li>
+</ul>
+<div id="text-processing" class="section level6">
+<h6><span class="header-section-number">11.5.6.3.4.1</span> text processing</h6>
+<ul>
+<li>identifies a series of disease-relevant keywords in the clinical notes based on the historical databases</li>
+</ul>
+</div>
+<div id="classification" class="section level6">
+<h6><span class="header-section-number">11.5.6.3.4.2</span> classification</h6>
+<ul>
+<li>a subset of the keywords are selected through examining their effects on the classification of the normal and abnormal cases.</li>
+<li>The validated keywords then enter and enrich the structured data to support clinical decision making</li>
+</ul>
+<p>The NLP pipelines have been developed to assist clinical decision making on alerting treatment arrangements, monitoring adverse effects and so on</p>
+<p>Roadmap</p>
+<div class="figure"><span id="fig:Jiang2017"></span>
+<img src="figures/Jiang2017.png" alt="The road map from clinical data generation to natural language processing data enrichment, to machine learning data analysis, to clinical decision making"  />
+<p class="caption">
+Figure 11.2: The road map from clinical data generation to natural language processing data enrichment, to machine learning data analysis, to clinical decision making
+</p>
+</div>
+</div>
+</div>
+<div id="disease-types-that-the-ai-communities-are-currently-tackling-disease-focus" class="section level5">
+<h5><span class="header-section-number">11.5.6.3.5</span> disease types that the AI communities are currently tackling (Disease focus)</h5>
+<p>Three major diseases: cancer, nervous system disease and cardiovascular disease</p>
+<ul>
+<li>leading causes of death; therefore, early diagnoses are crucial to prevent the deterioration of patients’ health status</li>
+<li>early diagnoses can be potentially achieved through improving the analysis procedures on imaging, genetic, EP or EMR, which is the strength of the AI system.</li>
+</ul>
+<p>Other diseases:</p>
+<ul>
+<li>analysed the ocular image data to diagnose congenital cataract disease</li>
+<li>detected referable diabetic retinopathy through the retinal fundus photographs</li>
+</ul>
+<div id="ai-applications-in-stroke" class="section level6">
+<h6><span class="header-section-number">11.5.6.3.5.1</span> AI applications in stroke</h6>
+<ul>
+<li>Early detection and diagnosis</li>
+<li>Treatment: predicting and analysing the performance of stroke treatment</li>
+<li>Outcome prediction and prognosis evaluation</li>
+</ul>
+</div>
+</div>
+<div id="future-of-ai-in-healthcare" class="section level5">
+<h5><span class="header-section-number">11.5.6.3.6</span> future of AI in healthcare</h5>
+<ul>
+<li>A successful AI system must possess the ML component for handling structured data (images, EP data, genetic data) and the NLP component for mining unstructured texts.</li>
+<li>The IBM Watson system is a pioneer in this field. The system includes both ML and NLP modules, and has made promising progress in oncology.</li>
+<li>connect an AI system with the front-end data input and the back-end clinical actions:
+<ul>
+<li>when patients come, with their permission, their demographic information and clinical data (images, EP results, genetic results, blood pressure, medical notes and so on) are collected into the AI system.</li>
+<li>The AI system then uses the patients’ data to come up with clinical suggestions.</li>
+<li>These suggestions are sent to physicians to assist with their clinical decision making.</li>
+<li>Feedback about the suggestions (correct or wrong) will also be collected and fed back into the AI system so that it can keep improving accuracy.</li>
+</ul></li>
+<li>the real-life implementation of AI is still facing obstacles:
+<ul>
+<li>regulations: lack of standards to assess the safety and efficacy of AI systems. the US FDA made the first attempt to provide guidance for assessing AI systems.</li>
+<li>data exchange: AI systems need to be trained (continuously) by data from clinical studies. Current healthcare environment does not provide incentives for sharing data on the system. With the growing awareness of value-based model, all parties will have greater incentives to compile and exchange information.</li>
+</ul></li>
+</ul>
 
+</div>
+</div>
+</div>
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Bland1986">
+<p>Bland, J Martin, and Douglas G Altman. 1986. “Statistical methods for assessing agreement between two methods of clinical measurement.” <em>Lancet</em> 1 (8476): 307–10. <a href="http://www.ncbi.nlm.nih.gov/pubmed/2868172">http://www.ncbi.nlm.nih.gov/pubmed/2868172</a>.</p>
+</div>
+<div id="ref-Christakis2000">
+<p>Christakis, Nicholas A. 2000. “Extent and determinants of error in doctors’ prognoses in terminally ill patients: prospective cohort study Commentary: Why do doctors overestimate? Commentary: Prognoses should be based on proved indices not intuition.” <em>BMJ</em> 320 (7233): 469–73. <a href="https://doi.org/10.1136/bmj.320.7233.469">https://doi.org/10.1136/bmj.320.7233.469</a>.</p>
+</div>
+<div id="ref-Dawes1989">
+<p>Dawes, Robyn M, David Faust, and Paul E Meehl. 1989. “Clinical versus actuarial judgment.” <em>Science (New York, N.Y.)</em> 243 (4899): 1668–74. <a href="http://www.ncbi.nlm.nih.gov/pubmed/2648573">http://www.ncbi.nlm.nih.gov/pubmed/2648573</a>.</p>
+</div>
+<div id="ref-Jiang2017">
+<p>Fei Jiang, Hui Zhi, Yong Jiang. 2017. “Artificial intelligence in healthcare: past, present and future.” <em>Stroke and Vascular Neurology</em> 2: e000101. <a href="https://doi.org/10.1136/svn-2017-000101">https://doi.org/10.1136/svn-2017-000101</a>.</p>
+</div>
+<div id="ref-Harrell2001">
+<p>Harrell, Frank E. 2001. <em>Regression Modeling Strategies: with applications to linear models, logistic regression, and survival analysis</em>. New York: Springer-Verlag.</p>
+</div>
+<div id="ref-Hastie2009">
+<p>Hastie, Trevor J., Robert Tibshirani, and Jerome Friedman. 2009. <em>The Elements of Statistical Learning</em>. 2nd ed. Springer Series in Statistics. New York, NY: Springer New York. <a href="https://doi.org/10.1007/b94608">https://doi.org/10.1007/b94608</a>.</p>
+</div>
+<div id="ref-Hemingway2013">
+<p>Hemingway, H., P. Croft, P. Perel, J. a. Hayden, K. Abrams, A. Timmis, A. Briggs, et al. 2013. “Prognosis research strategy (PROGRESS) 1: A framework for researching clinical outcomes.” <em>Bmj</em> 346 (feb05 1): e5595–e5595. <a href="https://doi.org/10.1136/bmj.e5595">https://doi.org/10.1136/bmj.e5595</a>.</p>
+</div>
+<div id="ref-Karlin-Zysman2012">
+<p>Karlin-Zysman, Corey, Nancy Zeitoun, Lawrence Belletti, Lauren McCullagh, and Thomas McGinn. 2012. “Struggling to bring clinical prediction rules to the point of care: missed opportunities to impact patient care.” <em>Journal of Comparative Effectiveness Research</em> 1 (5): 421–29. <a href="https://doi.org/10.2217/cer.12.51">https://doi.org/10.2217/cer.12.51</a>.</p>
+</div>
+<div id="ref-Meehl1954">
+<p>Meehl, Paul E. 1954. <em>Clinical Versus Statistical Prediction: A Theoretical Analysis and a Review of the Evidence</em>.</p>
+</div>
+<div id="ref-Miettinen2011">
+<p>Miettinen, O. S. 2011. <em>Up from Clinical Epidemiology &amp; EBM</em>. Dordrecht: Springer Netherlands. <a href="https://doi.org/10.1007/978-90-481-9501-5">https://doi.org/10.1007/978-90-481-9501-5</a>.</p>
+</div>
+<div id="ref-Noble2012">
+<p>Noble, Douglas, Tom Dent, and Trisha Greenhalgh. 2012. “Time to compare impact and feasibility of prediction models in real life.” <em>BMJ (Online)</em> 345 (7864): 4357. <a href="https://doi.org/10.1136/bmj.e4357">https://doi.org/10.1136/bmj.e4357</a>.</p>
+</div>
+<div id="ref-Parkes1972">
+<p>Parkes, C. Murray. 1972. “Accuracy of Predictions of Survival in Later Stages of Cancer.” <em>British Medical Journal</em> 2 (5804): 29–31. <a href="https://doi.org/10.1136/bmj.2.5804.29">https://doi.org/10.1136/bmj.2.5804.29</a>.</p>
+</div>
+<div id="ref-Reilly2006a">
+<p>Reilly, Brendan M, and Arthur T Evans. 2006. “Translating clinical research into clinical practice: impact of using prediction rules to make decisions.” <em>Annals of Internal Medicine</em> 144 (3): 201–9. <a href="http://www.ncbi.nlm.nih.gov/pubmed/16461965">http://www.ncbi.nlm.nih.gov/pubmed/16461965</a>.</p>
+</div>
+<div id="ref-Reynolds2001">
+<p>Reynolds, Tom. 2001. “Prognostic Models Abound, but How Useful Are They?” <em>Annals of Internal Medicine</em> 135 (6): 473. <a href="https://doi.org/10.7326/0003-4819-135-6-200109180-00023">https://doi.org/10.7326/0003-4819-135-6-200109180-00023</a>.</p>
+</div>
+<div id="ref-Sheridan2003">
+<p>Sheridan, S, M Pignone, and C Mulrow. 2003. “Framingham-based Tools to Calculate the Global Risk of Coronary Heart Disease: A Systematic Review of Tools for Clinicians.” <em>Journal of General Internal Medicine</em> 18 (12): 1039–52. <a href="https://doi.org/10.1111/j.1525-1497.2003.30107.x">https://doi.org/10.1111/j.1525-1497.2003.30107.x</a>.</p>
+</div>
+<div id="ref-Shortliffe1993">
+<p>Shortliffe, Edward H. 1993. “The adolescence of AI in medicine: will the field come of age in the ’90s?” <em>Artificial Intelligence in Medicine</em> 5 (2): 93–106. <a href="https://doi.org/10.1016/0933-3657(93)90011-Q">https://doi.org/10.1016/0933-3657(93)90011-Q</a>.</p>
+</div>
+<div id="ref-Sox2013">
+<p>Sox, Harold C, Michael C. Higgins, and Douglas K. Owens. 2013. <em>Medical Decision Making</em>. 2nd ed. Chichester, UK: John Wiley &amp; Sons, Ltd. <a href="https://doi.org/10.1002/9781118341544">https://doi.org/10.1002/9781118341544</a>.</p>
+</div>
+<div id="ref-Steyerberg2010">
+<p>Steyerberg, Ewout W. 2010. <em>Clinical Prediction Models: a practical approach to development, validation, and updating</em>. New York: Springer.</p>
+</div>
+<div id="ref-Steyerberg2013">
+<p>Steyerberg, Ewout W., Karel G M Moons, Danielle A. van der Windt, Jill A Hayden, Pablo Perel, Sara Schroter, Richard D Riley, Harry Hemingway, and Douglas G Altman. 2013. “Prognosis Research Strategy (PROGRESS) 3: Prognostic Model Research.” <em>PLoS Medicine</em> 10 (2): e1001381. <a href="https://doi.org/10.1371/journal.pmed.1001381">https://doi.org/10.1371/journal.pmed.1001381</a>.</p>
+</div>
+<div id="ref-Sullivan2004">
+<p>Sullivan, Lisa M, Joseph M Massaro, and D’AgostinoRalph B. 2004. “Presentation of multivariate data for clinical use: The Framingham Study risk score functions.” <em>Statistics in Medicine</em> 23 (10): 1631–60. <a href="https://doi.org/10.1002/sim.1742">https://doi.org/10.1002/sim.1742</a>.</p>
+</div>
+<div id="ref-Patel2009">
+<p>Vimla L. Patela, Mario Stefanellic, Edward H. Shortliffea. 1991. “The coming of age of artificial intelligence in medicine.” <em>Artificial Intelligence in Medicine</em> 46 (1): 5–17. <a href="https://doi.org/10.1016/j.artmed.2008.07.017">https://doi.org/10.1016/j.artmed.2008.07.017</a>.</p>
+</div>
+<div id="ref-Wallace2011">
+<p>Wallace, Emma, Susan M Smith, Rafael Perera-Salazar, Paul Vaucher, Colin McCowan, Gary Collins, Jan Verbakel, Monica Lakhanpaul, and Tom Fahey. 2011. “Framework for the impact analysis and implementation of Clinical Prediction Rules (CPRs).” <em>BMC Medical Informatics and Decision Making</em> 11 (1): 62. <a href="https://doi.org/10.1186/1472-6947-11-62">https://doi.org/10.1186/1472-6947-11-62</a>.</p>
+</div>
+<div id="ref-Wood2006">
+<p>Wood, Simon. 2006. <em>Generalized Additive Models: An Introduction with R</em>. 1st ed. Chapman; Hall/CRC.</p>
+</div>
 </div>
             </section>
 

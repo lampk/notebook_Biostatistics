@@ -1,0 +1,102 @@
+---
+title: "Case Study: MCCS"
+output: html_notebook
+---
+
+## Example: The Melbourne Collaborative Cohort Study (MCCS)
+
+In this tutorial we will again use the MCCS data (mccs.dta) but for this practical we will deal with more complex scenarios that often need to be considered when building an imputation model.
+
+There are 2 scenarios that we will explore when performing multiple imputation:
+
+1. The analysis model of interest includes a nonlinear association between the confounding variable, vitamin C, and the log odds of high cholesterol.
+
+2. The analysis model of interest includes an interaction between the variables heaviest weight and dietary red meat intake.
+
+Below is a description of the variables in the MCCS dataset that we will use for this practical. Please note that for this practical we will ignore the auxiliary variables considered in practical 1 but remember that, in practice, it is important to include auxiliary variables in your imputation model.
+
+## Scenario 1 – nonlinear association in analysis model
+
+The research question of interest is (as for practical 1) whether _alcohol intake_ is related to the _risk of high cholesterol_, and in particular, whether this relationship remains once potential confounders have been adjusted for. The analysis model of interest is a multivariable logistic regression but differs from practical 1 as the model now includes the extra variable _vitc_sq_ to allow for a nonlinear association between vitamin C levels and the log-odds of high cholesterol. The new analysis model is given below:
+
+$$
+highchol \sim binomial(1, p)
+$$
+
+$$
+logit(p) = \alpha + \beta_1 alc_any + \beta_2 age + \beta_3 ethnic_1 + \beta_4 ethnic_2 + \beta_5 ethnic_3 + \beta_6 physic_1 + \beta_7 physic_2 + \beta_8 physic_3 + \beta_9 cig_1 + \beta_10 cig_2 + \beta_{11} dpb + \beta_{12} vitc + \beta_{13} vitc_sq
+$$
+where _highchol_ is an indicator for having high cholesterol (defined as total cholesterol concentration >6.2mmol/L), _alc_any_ is an indicator for any alcohol consumption (compared with a reference group of no alcohol consumption), 𝑎𝑎𝑣𝑣h𝑏𝑏𝑣𝑣𝑣𝑣1, 𝑎𝑎𝑣𝑣h𝑏𝑏𝑣𝑣𝑣𝑣2 and 𝑎𝑎𝑣𝑣h𝑏𝑏𝑣𝑣𝑣𝑣3 are indicators for the participant’s country of birth being the UK/Malta, Italy and Greece respectively (Australia/NZ/Other is the reference group), 𝑝𝑝h𝑎𝑎𝑠𝑠𝑣𝑣𝑣𝑣1, 𝑝𝑝h𝑎𝑎𝑠𝑠𝑣𝑣𝑣𝑣2 and 𝑝𝑝h𝑎𝑎𝑠𝑠𝑣𝑣𝑣𝑣3 are indicators for low, moderate and high levels of physical activity (compared to the reference of no physical activity), 𝑣𝑣𝑣𝑣𝑖𝑖1 and 𝑣𝑣𝑣𝑣𝑖𝑖2 are indicators for current and former smoker (compared with never smoker), 𝑑𝑑𝑏𝑏𝑝𝑝 is the continuous measure of diastolic blood pressure (mmHg), and 𝑣𝑣𝑣𝑣𝑣𝑣𝑣𝑣 is the continuous measure of the level of vitamin C and 𝑣𝑣𝑣𝑣𝑣𝑣𝑣𝑣_𝑠𝑠𝑠𝑠 is the square of vitamin C levels derived from 𝑣𝑣𝑣𝑣𝑣𝑣𝑣𝑣.
+
+### Since we have already investigated the missing data in practical 1 (which is something that we should always do before conducting any analysis), we will simply look again at the missing data patterns, in particular, the percentage of participants with missing data for _vitc_.
+
+```{r 1a}
+summary(mccs) ## missing data in alc_any, physic, vitc, hvy_wgt, hypr_flg, dbt_flg
+md.pattern(mccs[,c("alc_any", "physic","vitc")])
+```
+
+
+### Carry out a complete case analysis using the logistic regression model of interest (remember to include the _vitc_sq_ term and tell Stata that some of the variables in the model are factor variables e.g. using the i. notation).
+
+```{r 1b}
+logitfit <- glm(highchol ~ alc_any + age + ethnic + physic+cig +dbp + vitc + I(vitc^2), 
+                data = mccs, family = "binomial")
+summary(logitfit)
+
+## odds ratios and 95% CI
+exp(cbind(OR = coef(logitfit), confint(logitfit)))
+```
+
+
+### Passive imputation
+
+(i) Impute the missing values in the analysis variables using fully conditional specification applied just to the variables in the analysis model but without including _vitc_sq_ in your imputation model. This approach is commonly termed “passive imputation”.
+[As stated in the previous practical, continuous variables should be imputed using linear regression, binary variables using logistic regression and ordinal variables using ordinal logistic regression.]
+
+```{r 1c1}
+summary(mccs[, -c(1, 10:17)])
+midata1 <- mccs[, -c(1, 10:17)]
+out1 <- mice(midata1, m = 50, method = c("", "logreg", "", "", "polr", "", "", "norm"), maxit = 5, seed = 210115)
+out1 
+
+```
+
+
+(ii) Carry out the analysis of interest using the mi estimate command. Since we have not imputed any values for the variable, 𝑣𝑣𝑣𝑣𝑣𝑣𝑣𝑣_𝑠𝑠𝑠𝑠, you will need to derive the values for this variable by taking the squared values of the imputed vitamin C levels. This can be done using the mi passive command.
+Compare the MI estimate for the exposure of interest, 𝑏𝑏𝑜𝑜𝑣𝑣_𝑏𝑏𝑏𝑏𝑎𝑎, and the confounder vitamin C (remember to look at the coefficients for 𝑣𝑣𝑣𝑣𝑣𝑣𝑣𝑣 and 𝑣𝑣_𝑠𝑠𝑠𝑠 ) with the estimates obtained from the complete case analysis in part (b) (for ease you can write the coefficients in Table 2, provided below).
+[Note, you will need to use the eform option within mi estimate to obtain odds ratios.]
+
+### 
+
+(i) Now repeat the passive imputation approach in part (c) but use predictive mean matching for vitamin C (sometimes referred to as “improved passive imputation”). Predictive mean matching is an ad hoc method of imputing missing values, where imputed values are sampled only from the observed values (i.e. observed values of vitamin C for our example).
+(ii) Carry out the analysis of interest using the mi estimate command. Since we have not imputed any values for the variable, 𝑣𝑣𝑣𝑣𝑣𝑣𝑣𝑣_𝑠𝑠𝑠𝑠, you will need to derive the values for this variable by taking the squared values of the imputed vitamin C levels. This can be done using the mi passive command.
+Compare the MI estimate for the exposure of interest, 𝑏𝑏𝑜𝑜𝑣𝑣_𝑏𝑏𝑏𝑏𝑎𝑎 and the confounder vitamin C (remember to look at the coefficients for 𝑣𝑣𝑣𝑣𝑣𝑣𝑣𝑣 and 𝑣𝑣𝑣𝑣𝑣𝑣𝑣𝑣_𝑠𝑠𝑠𝑠 ) with the estimates obtained in parts (b) and (c).
+
+###
+
+Now repeat the imputation including 𝑣𝑣𝑣𝑣𝑣𝑣𝑣𝑣_𝑠𝑠𝑠𝑠 in the imputation model and re-run the mi estimate command. [Note, when you re-run the imputations you will need to re-open the MCCS data and recalculate the required 𝑣𝑣𝑣𝑣𝑣𝑣𝑣𝑣_𝑠𝑠𝑠𝑠 variable.] The inclusion of the non-linear term in the imputation model is a variant of the original “Just Another Variable” method (the original approach applied this method within multivariate normal imputation).
+The “Just Another Variable” approach (see - White IR, Royston P, Wood AM. Multiple imputation using chained equations: Issues and guidance for practice. Statistics in Medicine, 2011;30(4):377-99) imputes both 𝑣𝑣𝑣𝑣𝑣𝑣𝑣𝑣 and 𝑣𝑣𝑣𝑣𝑣𝑣𝑣𝑣_𝑠𝑠𝑠𝑠 as if 𝑣𝑣𝑣𝑣𝑣𝑣𝑣𝑣_𝑠𝑠𝑠𝑠 was “just another variable” to be imputed rather than being determined from 𝑣𝑣𝑣𝑣𝑣𝑣𝑣𝑣. The obvious disadvantage is that the imputed values of 𝑣𝑣𝑣𝑣𝑣𝑣𝑣𝑣_𝑠𝑠𝑠𝑠 are not equal to the square of the corresponding imputed values for 𝑣𝑣𝑣𝑣𝑣𝑣𝑣𝑣.
+Compare the MI estimates for 𝑏𝑏𝑜𝑜𝑣𝑣h_𝑏𝑏𝑏𝑏𝑎𝑎, 𝑣𝑣𝑣𝑣𝑣𝑣𝑣𝑣 and 𝑣𝑣𝑣𝑣𝑣𝑣𝑣𝑣_𝑠𝑠𝑠𝑠 with those from the complete case analysis from part (b) and the imputation analyses obtained in parts (c) and (d).
+
+## Scenario 2 – interaction term in analysis model
+
+For scenario 2 the analysis model of interest is a multivariable logistic regression that includes the additional variables heaviest weight and dietary red meat intake as well as interaction term between these two variables (and excludes the nonlinear term for vitamin C), see below for details:
+h𝑣𝑣𝑖𝑖h𝑣𝑣h𝑜𝑜𝑜𝑜~𝑏𝑏𝑣𝑣𝑏𝑏𝑜𝑜𝑏𝑏𝑣𝑣𝑏𝑏𝑜𝑜(1, 𝑝𝑝)
+𝑜𝑜𝑜𝑜𝑖𝑖𝑣𝑣𝑣𝑣(𝑝𝑝) = 𝛼𝛼 + 𝛽𝛽1𝑏𝑏𝑜𝑜𝑣𝑣_𝑏𝑏𝑏𝑏𝑎𝑎 + 𝛽𝛽2𝑏𝑏𝑖𝑖𝑎𝑎 + 𝛽𝛽3𝑎𝑎𝑣𝑣h𝑏𝑏𝑣𝑣𝑣𝑣1 + 𝛽𝛽4𝑎𝑎𝑣𝑣h𝑏𝑏𝑣𝑣𝑣𝑣2 + 𝛽𝛽5𝑎𝑎𝑣𝑣h𝑏𝑏𝑣𝑣𝑣𝑣3 + 𝛽𝛽6𝑝𝑝h𝑎𝑎𝑠𝑠𝑣𝑣𝑣𝑣1 + 𝛽𝛽7𝑝𝑝h𝑎𝑎𝑠𝑠𝑣𝑣𝑣𝑣2 + 𝛽𝛽8𝑝𝑝h𝑎𝑎𝑠𝑠𝑣𝑣𝑣𝑣3 + 𝛽𝛽9𝑣𝑣𝑣𝑣𝑖𝑖1 + 𝛽𝛽10𝑣𝑣𝑣𝑣𝑖𝑖2 + 𝛽𝛽11𝑑𝑑𝑏𝑏𝑝𝑝 + 𝛽𝛽12𝑣𝑣𝑣𝑣𝑣𝑣𝑣𝑣+ 𝛽𝛽13h𝑣𝑣𝑎𝑎_𝑤𝑤𝑖𝑖𝑣𝑣 + 𝛽𝛽14𝑑𝑑𝑣𝑣𝑎𝑎𝑣𝑣𝑑𝑑𝑎𝑎𝑑𝑑𝑏𝑏𝑎𝑎𝑏𝑏𝑣𝑣 + 𝛽𝛽15h𝑣𝑣𝑎𝑎_𝑤𝑤𝑖𝑖𝑣𝑣 ∗ 𝑑𝑑𝑣𝑣𝑎𝑎𝑣𝑣𝑑𝑑𝑎𝑎𝑑𝑑𝑏𝑏𝑎𝑎𝑏𝑏𝑣𝑣
+where h𝑣𝑣𝑎𝑎_𝑤𝑤𝑖𝑖𝑣𝑣 ∗ 𝑑𝑑𝑣𝑣𝑎𝑎𝑣𝑣𝑑𝑑𝑎𝑎𝑑𝑑𝑏𝑏𝑎𝑎𝑏𝑏𝑣𝑣 represents the interaction term between the continuous variable heaviest weight, h𝑣𝑣𝑎𝑎_𝑤𝑤𝑖𝑖𝑣𝑣, and the binary variable indicating high dietary red meat intake consumption, 𝑑𝑑𝑣𝑣𝑎𝑎𝑣𝑣𝑑𝑑𝑎𝑎𝑑𝑑𝑏𝑏𝑎𝑎𝑏𝑏𝑣𝑣.
+a. We begin by looking again at the missing data patterns, and in particular, the percentage of participants with missing data for h𝑣𝑣𝑎𝑎_𝑤𝑤𝑖𝑖𝑣𝑣 and 𝑑𝑑𝑣𝑣𝑎𝑎𝑣𝑣𝑑𝑑𝑎𝑎𝑑𝑑𝑏𝑏𝑎𝑎𝑏𝑏𝑣𝑣.
+b. Carry out a complete case analysis using the logistic regression model of interest (remember to include the interaction term between heaviest weight and dietary red meat intake using the Stata c.X1##i.X2 code).
+c. Impute the missing values in the analysis variables using fully conditional specification applied just to the variables in the analysis model but without including the interaction. [Again continuous variables should be imputed using linear regression, binary variables using logistic regression and ordinal variables using ordinal logistic regression.]
+d. Carry out the analysis of interest using the mi estimate command, remembering to include the interaction term in the analysis model.
+Compare the MI estimate for the estimates for h𝑣𝑣𝑎𝑎_𝑤𝑤𝑖𝑖𝑣𝑣 and 𝑑𝑑𝑣𝑣𝑎𝑎𝑣𝑣𝑑𝑑𝑎𝑎𝑑𝑑𝑏𝑏𝑎𝑎𝑏𝑏𝑣𝑣 (i.e. main effects and the interaction term) obtained from the complete case analysis in part (b) (for ease you can write the coefficients in Table 3, provided below).
+e. Now repeat the imputation including h𝑣𝑣𝑎𝑎_𝑤𝑤𝑖𝑖𝑣𝑣 ∗ 𝑑𝑑𝑣𝑣𝑎𝑎𝑣𝑣𝑑𝑑𝑎𝑎𝑑𝑑𝑏𝑏𝑎𝑎𝑏𝑏𝑣𝑣 in the imputation model using the “Just Another Variable” method, and carry out the analysis of interest. Compare the estimates with those obtained in parts (b) and (d).
+Note, as for the nonlinear scenario with the squared term for vitamin C, again the disadvantage of the “Just Another Variable” approach is that the imputed value of say h𝑣𝑣𝑎𝑎_𝑤𝑤𝑖𝑖𝑣𝑣 ∗ 𝑑𝑑𝑣𝑣𝑎𝑎𝑣𝑣𝑑𝑑𝑎𝑎𝑑𝑑𝑏𝑏𝑎𝑎𝑏𝑏𝑣𝑣 will not be the same as the value calculated from multiplying the imputed values of h𝑣𝑣𝑎𝑎_𝑤𝑤𝑖𝑖𝑣𝑣 and 𝑑𝑑𝑣𝑣𝑎𝑎𝑣𝑣𝑑𝑑𝑎𝑎𝑑𝑑𝑏𝑏𝑎𝑎𝑏𝑏𝑣𝑣.
+f. An alternative approach for imputing interaction terms is to impute one of the variables in the interaction e.g. X1 (which can be any data type) separately at different levels of the second variable in the interaction e.g. X2 (which must be a categorical variable). This can be a useful approach as long as there aren’t too many categories for X2 and there are a reasonable number of observations within each category. By imputing separately by levels of X2 allows the relationship between X1 and Y to differ according to the groups of X2, hence allows for the interaction.
+Note, this approach can only be used if X2 has no missing data and is categorical.
+
+For our example impute the variables with missing data separately for those with high and low red meat consumption using the by()option in mi impute in Stata. Compare the estimates with those obtained in parts (b), (d) and (e).
+
+## Summary
+
+The key take home message for this practical is that we can bias our results if there is not congeniality between the imputation model and analysis model, that is, if the form of the relationship between the variables in the analysis model is not reflected in the imputation model. This means that if there are nonlinear and/or interaction terms in the analysis model, we must consider nonlinear and/or interaction terms in the imputation model.
+There has been further work in this area (Bartlett JW et al. Multiple imputation of covariates by fully conditional specification: Accommodating the substantive model. Statistical Methods in Medical Research, 2014) where Bartlett and colleagues have developed another method for carrying out multiple imputation in the presence of nonlinear and interaction terms called “substantive model compatibility full conditional specification”, Stata function SMC-FCS (The Stata Journal, Vol 15(2), pg437-456). Details available at:- www.missingdata.org.uk

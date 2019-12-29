@@ -1,0 +1,109 @@
+# Detection Limits {#detectionlimit}
+
+## Reading list
+
+* Stephen Senn, Nick Holford, Hans Hockey (2012) The ghosts of departed quantities: approaches to dealing with observations below the limit of quantitation. Statistics in Medicine, 31: 4280–4295.
+
+* https://discourse.datamethods.org/t/modelling-outcome-data-with-a-limit-of-detection-is-a-hurdle-model-appropriate/1427/7
+
+* Beal  SJ.  Ways  to  fit  a  PK  model  with  some  data  below  the  quantification  limit. Journal of Pharmacokinetics and Pharmacodynamics 2001; 28 :481–504.
+
+* Beal SL. Errata: ways to fit a PK model with some data below the quantification limit. Journal of Pharmacokinetics and Pharmacodynamics 2002; 29 :309.
+
+## Summary
+
+### Below detection limit (BDL)
+
+* BDL is the problem when the measurements are reported as being below the quantification limit of the assay.
+
+* Commonly seen in pharmacokinetic data.
+
+* "quantification limit" (QL): the lowest concentration at which the assay has been validated
+
+### Ways to deal with BDL
+
+#### M1: discard BDL observations
+
+* simply discard them and apply least squares to the remaining observations
+
+* Problem:
+    + create bias as the lower of the remaining observations misrepresent the true lower concentrations (the lower remaining observations are selectively too high)
+
+#### M2
+
+*  the BQL observations can be discarded, and under the assumption that all the D ( t ) are normal, the method of maximum conditional likelihood estimation can be applied to the remaining observations (method M2)
+
+* the likelihood for the data, conditional on the fact that by design, all (remaining) observations are above the QL, is maximized with respect to the model parameters
+
+#### M3: handle the BQL observations as fixed-point (or Type I) censored observations
+
+* "The maximum likelihood estimation method is used to fit the PK model to all the observations, and the likelihoods for the BQL observations in particular are taken to be the likelihoods that these observations are indeed BQL"
+
+* allows the BQL observations to be retained, but handles these as censored observations, under the assumption that all the D ( t ) are normal.
+
+* The likelihood for all the data is maximized with respect to the model parameters, and the likelihood for a BQL observation in particular is taken to be the likelihood that the observation is indeed BQL.
+
+#### M4: M3 + adjustment to recognize that a measurement cannot really be negative
+
+#### M5: impute with DL/2
+
+#### M6
+
+* each BQL observation x is replaced by QL/2, except that any and all consecutive BQL observations succeeding x are discarded
+
+#### M7: impute with 0
+
+* Problem:
+    + create bias as 0 is always too low.
+    
+## Case studies
+
+### Voriconazole data
+
+```{r}
+## voriconazole data
+
+### original concentration values
+dat <- c(8505, 8489, 8024, 7893, 7284, 7180, 6417, 6286, 5956, 5771, 
+         5602, 5478, 5354, 5324, 4887, 4240, 3614, 3611, 3484, 3402,
+         3110, 2851, 2736, 2730, 2687, 2603, 2433, 2426, 2389, 2359,
+         1981, 1952, 1821, 1771, 1699, 1530, 1528, 1526, 1409, 1290,
+          965,  844,  715,  689,  516,  467,  231,  206,  164, 40.6
+         )
+
+### define censoring limit (Lower Limit Of Quantification)
+LLOQ <- 1000
+
+### assumed data are censored at the LLOQ
+### - create censoring indicator
+CENSOR <- I(dat < LLOQ) 
+### - numeric version of censoring indicator
+Ind <- as.numeric(CENSOR)
+### - calculate censored values
+COBS <- dat + (LLOQ - dat) * Ind
+### - create data frame for analysis
+vori <- data.frame(concentration = dat,
+                   censor = CENSOR,
+                   values = COBS)
+
+### Analysis using censReg package of Arne Henningsen
+### - load library censReg
+library(censReg)
+### - Fit data
+voriCR <- censReg(values ~ 1, left = LLOQ, data = vori)
+### - Results of fitting data as censored
+summary(voriCR)
+### - Estimated parameter estimates
+(estimate <- coef(voriCR))
+### - calculate sigma from log-sigma
+(sigma <- exp(estimate[2]))
+### - extract SE of log-sigma
+(se.logsigma <- summary(voriCR)$estimate[2, 2])
+### - calculate SE of sigma based on delta method
+(se.sigma <- sigma * se.logsigma)
+### - so standard deviation is sigma
+sigma
+### - standard error of standard deviation
+se.sigma
+```
+

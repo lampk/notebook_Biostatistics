@@ -16,3 +16,7 @@ refs <- lapply(c("10.1371/journal.pntd.0005498"), bib_metadata)
 write.bibtex(refs[[1]], file="refs.bib")
 
 "10.1002/sim.6265"
+
+## preview chapter
+
+preview_chapter(input = ...)

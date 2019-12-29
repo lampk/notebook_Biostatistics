@@ -1,0 +1,1979 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Topic 15 Handling missing data | Notes on Biostatistics</title>
+  <meta name="description" content="My notes on Biostatistics" />
+  <meta name="generator" content="bookdown 0.11 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Topic 15 Handling missing data | Notes on Biostatistics" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="My notes on Biostatistics" />
+  <meta name="github-repo" content="lampk/notebook_Biostatistics" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Topic 15 Handling missing data | Notes on Biostatistics" />
+  
+  <meta name="twitter:description" content="My notes on Biostatistics" />
+  
+
+<meta name="author" content="Phùng Khánh Lâm" />
+
+
+<meta name="date" content="2019-12-29" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="softwares.html">
+<link rel="next" href="sap.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Notes on Biostatistics</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="new.html"><a href="new.html"><i class="fa fa-check"></i><b>1</b> New</a></li>
+<li class="chapter" data-level="2" data-path="ida.html"><a href="ida.html"><i class="fa fa-check"></i><b>2</b> Initial data analysis</a></li>
+<li class="chapter" data-level="3" data-path="DataCleaning.html"><a href="DataCleaning.html"><i class="fa fa-check"></i><b>3</b> Data cleaning</a></li>
+<li class="chapter" data-level="4" data-path="DescriptiveAnalysis.html"><a href="DescriptiveAnalysis.html"><i class="fa fa-check"></i><b>4</b> Descriptive analysis</a></li>
+<li class="chapter" data-level="5" data-path="graphics.html"><a href="graphics.html"><i class="fa fa-check"></i><b>5</b> Graphics</a></li>
+<li class="chapter" data-level="6" data-path="CausalInference.html"><a href="CausalInference.html"><i class="fa fa-check"></i><b>6</b> Causal Inference</a><ul>
+<li class="chapter" data-level="6.1" data-path="CausalInference.html"><a href="CausalInference.html#reading-list"><i class="fa fa-check"></i><b>6.1</b> Reading list</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="StudyDesign.html"><a href="StudyDesign.html"><i class="fa fa-check"></i><b>7</b> Study design</a></li>
+<li class="chapter" data-level="8" data-path="HypothesisTesting.html"><a href="HypothesisTesting.html"><i class="fa fa-check"></i><b>8</b> Hypothesis Testing</a></li>
+<li class="chapter" data-level="9" data-path="Pvalue.html"><a href="Pvalue.html"><i class="fa fa-check"></i><b>9</b> P value</a></li>
+<li class="chapter" data-level="10" data-path="Bayesian.html"><a href="Bayesian.html"><i class="fa fa-check"></i><b>10</b> Bayesian data analysis</a></li>
+<li class="chapter" data-level="11" data-path="PredictionModels.html"><a href="PredictionModels.html"><i class="fa fa-check"></i><b>11</b> Prediction models</a><ul>
+<li class="chapter" data-level="11.1" data-path="PredictionModels.html"><a href="PredictionModels.html#pmIntro"><i class="fa fa-check"></i><b>11.1</b> Introduction</a><ul>
+<li class="chapter" data-level="11.1.1" data-path="PredictionModels.html"><a href="PredictionModels.html#what-is-clinical-prediction-model"><i class="fa fa-check"></i><b>11.1.1</b> What is clinical prediction model?</a></li>
+<li class="chapter" data-level="11.1.2" data-path="PredictionModels.html"><a href="PredictionModels.html#why-we-need-prediction-models"><i class="fa fa-check"></i><b>11.1.2</b> Why we need prediction models?</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="PredictionModels.html"><a href="PredictionModels.html#part-development"><i class="fa fa-check"></i>(PART) Development</a><ul>
+<li class="chapter" data-level="11.1.3" data-path="PredictionModels.html"><a href="PredictionModels.html#standard-steps-to-develop-clinical-prediction-models"><i class="fa fa-check"></i><b>11.1.3</b> Standard steps to develop clinical prediction models?</a></li>
+<li class="chapter" data-level="11.1.4" data-path="PredictionModels.html"><a href="PredictionModels.html#clinical-outcomes-and-candidate-predictors"><i class="fa fa-check"></i><b>11.1.4</b> Clinical outcomes and candidate predictors</a></li>
+<li class="chapter" data-level="11.1.5" data-path="PredictionModels.html"><a href="PredictionModels.html#statistical-models-of-choice"><i class="fa fa-check"></i><b>11.1.5</b> Statistical models of choice</a></li>
+<li class="chapter" data-level="11.1.6" data-path="PredictionModels.html"><a href="PredictionModels.html#model-specification"><i class="fa fa-check"></i><b>11.1.6</b> Model specification</a></li>
+<li class="chapter" data-level="11.1.7" data-path="PredictionModels.html"><a href="PredictionModels.html#model-assumption-assessments"><i class="fa fa-check"></i><b>11.1.7</b> Model assumption assessments</a></li>
+<li class="chapter" data-level="11.1.8" data-path="PredictionModels.html"><a href="PredictionModels.html#model-estimation"><i class="fa fa-check"></i><b>11.1.8</b> Model estimation</a></li>
+<li class="chapter" data-level="11.1.9" data-path="PredictionModels.html"><a href="PredictionModels.html#model-reduction"><i class="fa fa-check"></i><b>11.1.9</b> Model reduction</a></li>
+<li class="chapter" data-level="11.1.10" data-path="PredictionModels.html"><a href="PredictionModels.html#model-performance"><i class="fa fa-check"></i><b>11.1.10</b> Model performance</a></li>
+<li class="chapter" data-level="11.1.11" data-path="PredictionModels.html"><a href="PredictionModels.html#model-presentation"><i class="fa fa-check"></i><b>11.1.11</b> Model presentation</a></li>
+<li class="chapter" data-level="11.1.12" data-path="PredictionModels.html"><a href="PredictionModels.html#adjustment-of-model-development-and-validation-steps-for-multiple-imputation"><i class="fa fa-check"></i><b>11.1.12</b> Adjustment of model development and validation steps for multiple imputation</a></li>
+<li class="chapter" data-level="11.1.13" data-path="PredictionModels.html"><a href="PredictionModels.html#statistical-software"><i class="fa fa-check"></i><b>11.1.13</b> Statistical software</a></li>
+<li class="chapter" data-level="11.1.14" data-path="PredictionModels.html"><a href="PredictionModels.html#baseline-versus-dynamic-prediction-models"><i class="fa fa-check"></i><b>11.1.14</b> Baseline versus dynamic prediction models</a></li>
+</ul></li>
+<li class="chapter" data-level="11.2" data-path="PredictionModels.html"><a href="PredictionModels.html#additional-considerations"><i class="fa fa-check"></i><b>11.2</b> Additional considerations</a><ul>
+<li class="chapter" data-level="11.2.1" data-path="PredictionModels.html"><a href="PredictionModels.html#sample-size"><i class="fa fa-check"></i><b>11.2.1</b> Sample size</a></li>
+<li class="chapter" data-level="11.2.2" data-path="PredictionModels.html"><a href="PredictionModels.html#missing-data"><i class="fa fa-check"></i><b>11.2.2</b> Missing data</a></li>
+<li class="chapter" data-level="11.2.3" data-path="PredictionModels.html"><a href="PredictionModels.html#incorporating-longitudinal-predictors"><i class="fa fa-check"></i><b>11.2.3</b> Incorporating longitudinal predictors</a></li>
+<li class="chapter" data-level="11.2.4" data-path="PredictionModels.html"><a href="PredictionModels.html#competing-risks"><i class="fa fa-check"></i><b>11.2.4</b> Competing risks</a></li>
+<li class="chapter" data-level="11.2.5" data-path="PredictionModels.html"><a href="PredictionModels.html#acute-vs.chronic-diseases"><i class="fa fa-check"></i><b>11.2.5</b> Acute vs. chronic diseases</a></li>
+<li class="chapter" data-level="11.2.6" data-path="PredictionModels.html"><a href="PredictionModels.html#big-data"><i class="fa fa-check"></i><b>11.2.6</b> Big data</a></li>
+<li class="chapter" data-level="11.2.7" data-path="PredictionModels.html"><a href="PredictionModels.html#heterogeneity"><i class="fa fa-check"></i><b>11.2.7</b> Heterogeneity</a></li>
+</ul></li>
+<li class="chapter" data-level="11.3" data-path="PredictionModels.html"><a href="PredictionModels.html#part-utilization"><i class="fa fa-check"></i><b>11.3</b> (PART) Utilization</a><ul>
+<li class="chapter" data-level="11.3.1" data-path="PredictionModels.html"><a href="PredictionModels.html#from-prediction-model-to-prediction-rule"><i class="fa fa-check"></i><b>11.3.1</b> From prediction model to prediction rule</a></li>
+<li class="chapter" data-level="11.3.2" data-path="PredictionModels.html"><a href="PredictionModels.html#how-to-apply-prediction-models-in-clinical-practice"><i class="fa fa-check"></i><b>11.3.2</b> How to apply prediction models in clinical practice?</a></li>
+<li class="chapter" data-level="11.3.3" data-path="PredictionModels.html"><a href="PredictionModels.html#will-prediction-models-be-used-in-clinical-practice"><i class="fa fa-check"></i><b>11.3.3</b> Will prediction models be used in clinical practice?</a></li>
+<li class="chapter" data-level="11.3.4" data-path="PredictionModels.html"><a href="PredictionModels.html#pmCDSS"><i class="fa fa-check"></i><b>11.3.4</b> Clinical Decision Support System</a></li>
+<li class="chapter" data-level="11.3.5" data-path="PredictionModels.html"><a href="PredictionModels.html#lab"><i class="fa fa-check"></i><b>11.3.5</b> Lab</a></li>
+</ul></li>
+<li class="chapter" data-level="11.4" data-path="PredictionModels.html"><a href="PredictionModels.html#pmImpact"><i class="fa fa-check"></i><b>11.4</b> Impact</a><ul>
+<li class="chapter" data-level="11.4.1" data-path="PredictionModels.html"><a href="PredictionModels.html#reading-lists"><i class="fa fa-check"></i><b>11.4.1</b> Reading lists</a></li>
+<li class="chapter" data-level="11.4.2" data-path="PredictionModels.html"><a href="PredictionModels.html#assessing-models-usefulness"><i class="fa fa-check"></i><b>11.4.2</b> Assessing model’s usefulness</a></li>
+</ul></li>
+<li class="chapter" data-level="11.5" data-path="PredictionModels.html"><a href="PredictionModels.html#ai-and-ml-in-healthcare"><i class="fa fa-check"></i><b>11.5</b> AI and ML in healthcare</a><ul>
+<li class="chapter" data-level="11.5.1" data-path="PredictionModels.html"><a href="PredictionModels.html#what-is-ai"><i class="fa fa-check"></i><b>11.5.1</b> What is AI?</a></li>
+<li class="chapter" data-level="11.5.2" data-path="PredictionModels.html"><a href="PredictionModels.html#how-ai-can-improve-healthcare"><i class="fa fa-check"></i><b>11.5.2</b> How AI can improve healthcare?</a></li>
+<li class="chapter" data-level="11.5.3" data-path="PredictionModels.html"><a href="PredictionModels.html#current-stage-of-ai-in-healthcare"><i class="fa fa-check"></i><b>11.5.3</b> Current stage of AI in healthcare?</a></li>
+<li class="chapter" data-level="11.5.4" data-path="PredictionModels.html"><a href="PredictionModels.html#underuse-of-ai-in-healthcare-why-and-remedy"><i class="fa fa-check"></i><b>11.5.4</b> Underuse of AI in healthcare: why and remedy?</a></li>
+<li class="chapter" data-level="11.5.5" data-path="PredictionModels.html"><a href="PredictionModels.html#references"><i class="fa fa-check"></i><b>11.5.5</b> References</a></li>
+<li class="chapter" data-level="11.5.6" data-path="PredictionModels.html"><a href="PredictionModels.html#notes-from-literature"><i class="fa fa-check"></i><b>11.5.6</b> Notes from literature</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="12" data-path="mdm.html"><a href="mdm.html"><i class="fa fa-check"></i><b>12</b> Medical decision making</a><ul>
+<li class="chapter" data-level="12.1" data-path="mdm.html"><a href="mdm.html#reading-list-2"><i class="fa fa-check"></i><b>12.1</b> Reading list</a><ul>
+<li class="chapter" data-level="12.1.1" data-path="mdm.html"><a href="mdm.html#risk-communication"><i class="fa fa-check"></i><b>12.1.1</b> Risk communication</a></li>
+</ul></li>
+<li class="chapter" data-level="12.2" data-path="mdm.html"><a href="mdm.html#lab-1"><i class="fa fa-check"></i><b>12.2</b> Lab</a></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="ild.html"><a href="ild.html"><i class="fa fa-check"></i><b>13</b> Intensive Longitudinal data analysis</a><ul>
+<li class="chapter" data-level="13.1" data-path="ild.html"><a href="ild.html#reading-list-3"><i class="fa fa-check"></i><b>13.1</b> Reading list</a><ul>
+<li class="chapter" data-level="13.1.1" data-path="ild.html"><a href="ild.html#papers"><i class="fa fa-check"></i><b>13.1.1</b> Papers:</a></li>
+<li class="chapter" data-level="13.1.2" data-path="ild.html"><a href="ild.html#books"><i class="fa fa-check"></i><b>13.1.2</b> Books</a></li>
+<li class="chapter" data-level="13.1.3" data-path="ild.html"><a href="ild.html#software"><i class="fa fa-check"></i><b>13.1.3</b> Software</a></li>
+<li class="chapter" data-level="13.1.4" data-path="ild.html"><a href="ild.html#presentations"><i class="fa fa-check"></i><b>13.1.4</b> Presentations</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="softwares.html"><a href="softwares.html"><i class="fa fa-check"></i><b>14</b> Softwares</a><ul>
+<li class="chapter" data-level="14.1" data-path="softwares.html"><a href="softwares.html#r"><i class="fa fa-check"></i><b>14.1</b> R</a></li>
+</ul></li>
+<li class="chapter" data-level="15" data-path="missingdata.html"><a href="missingdata.html"><i class="fa fa-check"></i><b>15</b> Handling missing data</a><ul>
+<li class="chapter" data-level="15.1" data-path="missingdata.html"><a href="missingdata.html#reading-list-4"><i class="fa fa-check"></i><b>15.1</b> Reading list</a></li>
+<li class="chapter" data-level="15.2" data-path="missingdata.html"><a href="missingdata.html#further-topics"><i class="fa fa-check"></i><b>15.2</b> Further topics</a><ul>
+<li class="chapter" data-level="15.2.1" data-path="missingdata.html"><a href="missingdata.html#when-to-use-mi"><i class="fa fa-check"></i><b>15.2.1</b> When to use MI</a></li>
+<li class="chapter" data-level="15.2.2" data-path="missingdata.html"><a href="missingdata.html#diagnostics-diagnosing-problems-with-imputation-models"><i class="fa fa-check"></i><b>15.2.2</b> Diagnostics (diagnosing problems with imputation models)</a></li>
+<li class="chapter" data-level="15.2.3" data-path="missingdata.html"><a href="missingdata.html#reporting"><i class="fa fa-check"></i><b>15.2.3</b> Reporting</a></li>
+<li class="chapter" data-level="15.2.4" data-path="missingdata.html"><a href="missingdata.html#summary"><i class="fa fa-check"></i><b>15.2.4</b> Summary</a></li>
+<li class="chapter" data-level="15.2.5" data-path="missingdata.html"><a href="missingdata.html#references-1"><i class="fa fa-check"></i><b>15.2.5</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="15.3" data-path="missingdata.html"><a href="missingdata.html#mi-methods-for-longitudinal-data-in-the-wide-format"><i class="fa fa-check"></i><b>15.3</b> MI methods for longitudinal data in the wide format</a><ul>
+<li class="chapter" data-level="15.3.1" data-path="missingdata.html"><a href="missingdata.html#a-longitudinal-case-study"><i class="fa fa-check"></i><b>15.3.1</b> A longitudinal case study</a></li>
+<li class="chapter" data-level="15.3.2" data-path="missingdata.html"><a href="missingdata.html#recap-of-mi"><i class="fa fa-check"></i><b>15.3.2</b> Recap of MI</a></li>
+<li class="chapter" data-level="15.3.3" data-path="missingdata.html"><a href="missingdata.html#mi-methods-for-longitudinal-data"><i class="fa fa-check"></i><b>15.3.3</b> MI methods for longitudinal data</a></li>
+<li class="chapter" data-level="15.3.4" data-path="missingdata.html"><a href="missingdata.html#imputation-using-the-wide-format"><i class="fa fa-check"></i><b>15.3.4</b> Imputation using the wide format</a></li>
+<li class="chapter" data-level="15.3.5" data-path="missingdata.html"><a href="missingdata.html#references-2"><i class="fa fa-check"></i><b>15.3.5</b> References</a></li>
+</ul></li>
+<li class="chapter" data-level="15.4" data-path="missingdata.html"><a href="missingdata.html#mi-methods-for-longitudinal-data-in-the-long-format"><i class="fa fa-check"></i><b>15.4</b> MI methods for longitudinal data in the long format</a><ul>
+<li class="chapter" data-level="15.4.1" data-path="missingdata.html"><a href="missingdata.html#mi-in-wide-format-vs-mi-in-long-format"><i class="fa fa-check"></i><b>15.4.1</b> MI in wide format vs MI in long format</a></li>
+<li class="chapter" data-level="15.4.2" data-path="missingdata.html"><a href="missingdata.html#long-data-extensions-of-fcs"><i class="fa fa-check"></i><b>15.4.2</b> Long data extensions of FCS</a></li>
+<li class="chapter" data-level="15.4.3" data-path="missingdata.html"><a href="missingdata.html#long-data-extensions-of-mvni"><i class="fa fa-check"></i><b>15.4.3</b> Long data extensions of MVNI</a></li>
+<li class="chapter" data-level="15.4.4" data-path="missingdata.html"><a href="missingdata.html#summary-and-references"><i class="fa fa-check"></i><b>15.4.4</b> Summary and references</a></li>
+<li class="chapter" data-level="15.4.5" data-path="missingdata.html"><a href="missingdata.html#references-3"><i class="fa fa-check"></i><b>15.4.5</b> References</a></li>
+<li class="chapter" data-level="15.4.6" data-path="missingdata.html"><a href="missingdata.html#appendix-technical-details-on-r-implementations"><i class="fa fa-check"></i><b>15.4.6</b> Appendix: Technical + Details on R implementations</a></li>
+</ul></li>
+<li class="chapter" data-level="15.5" data-path="missingdata.html"><a href="missingdata.html#sensitivity-analyses-within-the-multiple-imputation-framework-the-pattern-mixture-method"><i class="fa fa-check"></i><b>15.5</b> Sensitivity analyses within the multiple imputation framework: the pattern mixture method</a><ul>
+<li class="chapter" data-level="15.5.1" data-path="missingdata.html"><a href="missingdata.html#why-are-the-data-missing"><i class="fa fa-check"></i><b>15.5.1</b> Why are the data missing?</a></li>
+<li class="chapter" data-level="15.5.2" data-path="missingdata.html"><a href="missingdata.html#sensitivity-analysis-within-the-multiple-imputation-mi-framework"><i class="fa fa-check"></i><b>15.5.2</b> Sensitivity analysis within the Multiple imputation (MI) framework</a></li>
+<li class="chapter" data-level="15.5.3" data-path="missingdata.html"><a href="missingdata.html#elicitation-of-expert-opinion"><i class="fa fa-check"></i><b>15.5.3</b> Elicitation of expert opinion</a></li>
+</ul></li>
+<li class="chapter" data-level="15.6" data-path="missingdata.html"><a href="missingdata.html#sensitivity-analyses-for-multiple-variables-with-missing-data-the-narfcs-procedure"><i class="fa fa-check"></i><b>15.6</b> Sensitivity analyses for multiple variables with missing data: the NARFCS procedure</a><ul>
+<li class="chapter" data-level="15.6.1" data-path="missingdata.html"><a href="missingdata.html#example-lsac-case-study"><i class="fa fa-check"></i><b>15.6.1</b> Example: LSAC case study</a></li>
+<li class="chapter" data-level="15.6.2" data-path="missingdata.html"><a href="missingdata.html#missing-data-assumptions-in-problems-with-multiple-incomplete-variables"><i class="fa fa-check"></i><b>15.6.2</b> Missing data assumptions in problems with multiple incomplete variables</a></li>
+<li class="chapter" data-level="15.6.3" data-path="missingdata.html"><a href="missingdata.html#causal-diagrams-for-missing-data-assumptions"><i class="fa fa-check"></i><b>15.6.3</b> Causal diagrams for missing data assumptions</a></li>
+<li class="chapter" data-level="15.6.4" data-path="missingdata.html"><a href="missingdata.html#not-at-random-fully-conditional-specification-narfcs"><i class="fa fa-check"></i><b>15.6.4</b> Not-at-Random Fully Conditional Specification (NARFCS)</a></li>
+<li class="chapter" data-level="15.6.5" data-path="missingdata.html"><a href="missingdata.html#summary-and-references-1"><i class="fa fa-check"></i><b>15.6.5</b> Summary and references</a></li>
+</ul></li>
+<li class="chapter" data-level="15.7" data-path="missingdata.html"><a href="missingdata.html#case-studies"><i class="fa fa-check"></i><b>15.7</b> Case studies</a><ul>
+<li class="chapter" data-level="15.7.1" data-path="missingdata.html"><a href="missingdata.html#melbourne-collaborative-cohort-study"><i class="fa fa-check"></i><b>15.7.1</b> Melbourne Collaborative Cohort Study</a></li>
+<li class="chapter" data-level="15.7.2" data-path="missingdata.html"><a href="missingdata.html#the-victorian-infant-cohort-study"><i class="fa fa-check"></i><b>15.7.2</b> The Victorian Infant Cohort Study</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="sap.html"><a href="sap.html"><i class="fa fa-check"></i><b>16</b> Statistical analysis plan</a><ul>
+<li class="chapter" data-level="16.1" data-path="sap.html"><a href="sap.html#why"><i class="fa fa-check"></i><b>16.1</b> Why?</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="detectionlimit.html"><a href="detectionlimit.html"><i class="fa fa-check"></i><b>17</b> Detection Limits</a><ul>
+<li class="chapter" data-level="17.1" data-path="detectionlimit.html"><a href="detectionlimit.html#reading-list-5"><i class="fa fa-check"></i><b>17.1</b> Reading list</a></li>
+<li class="chapter" data-level="17.2" data-path="detectionlimit.html"><a href="detectionlimit.html#summary-4"><i class="fa fa-check"></i><b>17.2</b> Summary</a><ul>
+<li class="chapter" data-level="17.2.1" data-path="detectionlimit.html"><a href="detectionlimit.html#below-detection-limit-bdl"><i class="fa fa-check"></i><b>17.2.1</b> Below detection limit (BDL)</a></li>
+<li class="chapter" data-level="17.2.2" data-path="detectionlimit.html"><a href="detectionlimit.html#ways-to-deal-with-bdl"><i class="fa fa-check"></i><b>17.2.2</b> Ways to deal with BDL</a></li>
+</ul></li>
+<li class="chapter" data-level="17.3" data-path="detectionlimit.html"><a href="detectionlimit.html#case-studies-1"><i class="fa fa-check"></i><b>17.3</b> Case studies</a><ul>
+<li class="chapter" data-level="17.3.1" data-path="detectionlimit.html"><a href="detectionlimit.html#voriconazole-data"><i class="fa fa-check"></i><b>17.3.1</b> Voriconazole data</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="18" data-path="epidemiology.html"><a href="epidemiology.html"><i class="fa fa-check"></i><b>18</b> Epidemiology</a><ul>
+<li class="chapter" data-level="18.1" data-path="epidemiology.html"><a href="epidemiology.html#reference"><i class="fa fa-check"></i><b>18.1</b> Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="19" data-path="clinicalepidemiology.html"><a href="clinicalepidemiology.html"><i class="fa fa-check"></i><b>19</b> Clinical epidemiology</a><ul>
+<li class="chapter" data-level="19.1" data-path="clinicalepidemiology.html"><a href="clinicalepidemiology.html#reference-1"><i class="fa fa-check"></i><b>19.1</b> Reference</a></li>
+</ul></li>
+<li class="chapter" data-level="20" data-path="HealthResearch.html"><a href="HealthResearch.html"><i class="fa fa-check"></i><b>20</b> Health Research</a><ul>
+<li class="chapter" data-level="20.1" data-path="HealthResearch.html"><a href="HealthResearch.html#ideas"><i class="fa fa-check"></i><b>20.1</b> ideas</a></li>
+<li class="chapter" data-level="20.2" data-path="HealthResearch.html"><a href="HealthResearch.html#methodology"><i class="fa fa-check"></i><b>20.2</b> methodology</a></li>
+</ul></li>
+<li class="chapter" data-level="21" data-path="cocoscience.html"><a href="cocoscience.html"><i class="fa fa-check"></i><b>21</b> Computational Cognitive Science</a><ul>
+<li class="chapter" data-level="21.1" data-path="cocoscience.html"><a href="cocoscience.html#reading-list-6"><i class="fa fa-check"></i><b>21.1</b> Reading list</a><ul>
+<li class="chapter" data-level="21.1.1" data-path="cocoscience.html"><a href="cocoscience.html#foundations"><i class="fa fa-check"></i><b>21.1.1</b> Foundations</a></li>
+<li class="chapter" data-level="21.1.2" data-path="cocoscience.html"><a href="cocoscience.html#foundations-of-inductive-learning"><i class="fa fa-check"></i><b>21.1.2</b> Foundations of Inductive Learning</a></li>
+<li class="chapter" data-level="21.1.3" data-path="cocoscience.html"><a href="cocoscience.html#concepts-and-learning"><i class="fa fa-check"></i><b>21.1.3</b> Concepts and learning</a></li>
+<li class="chapter" data-level="21.1.4" data-path="cocoscience.html"><a href="cocoscience.html#knowledge-representation-spaces-trees-features"><i class="fa fa-check"></i><b>21.1.4</b> Knowledge Representation: Spaces, Trees, Features</a></li>
+<li class="chapter" data-level="21.1.5" data-path="cocoscience.html"><a href="cocoscience.html#knowledge-representation-language-and-logic"><i class="fa fa-check"></i><b>21.1.5</b> Knowledge Representation: Language and Logic</a></li>
+<li class="chapter" data-level="21.1.6" data-path="cocoscience.html"><a href="cocoscience.html#knowledge-representation-great-debates"><i class="fa fa-check"></i><b>21.1.6</b> Knowledge Representation: Great Debates</a></li>
+<li class="chapter" data-level="21.1.7" data-path="cocoscience.html"><a href="cocoscience.html#basic-bayesian-inference"><i class="fa fa-check"></i><b>21.1.7</b> Basic Bayesian Inference</a></li>
+<li class="chapter" data-level="21.1.8" data-path="cocoscience.html"><a href="cocoscience.html#graphical-models-and-bayes-nets"><i class="fa fa-check"></i><b>21.1.8</b> Graphical Models and Bayes Nets</a></li>
+<li class="chapter" data-level="21.1.9" data-path="cocoscience.html"><a href="cocoscience.html#simple-bayesian-learning"><i class="fa fa-check"></i><b>21.1.9</b> Simple Bayesian Learning</a></li>
+<li class="chapter" data-level="21.1.10" data-path="cocoscience.html"><a href="cocoscience.html#probabilistic-inference"><i class="fa fa-check"></i><b>21.1.10</b> Probabilistic inference</a></li>
+<li class="chapter" data-level="21.1.11" data-path="cocoscience.html"><a href="cocoscience.html#probabilistic-models-of-cognition"><i class="fa fa-check"></i><b>21.1.11</b> Probabilistic models of cognition</a></li>
+<li class="chapter" data-level="21.1.12" data-path="cocoscience.html"><a href="cocoscience.html#formal-grammars"><i class="fa fa-check"></i><b>21.1.12</b> Formal grammars</a></li>
+<li class="chapter" data-level="21.1.13" data-path="cocoscience.html"><a href="cocoscience.html#unsupervised-and-semi-supervised-learning"><i class="fa fa-check"></i><b>21.1.13</b> Unsupervised and Semi-supervised Learning</a></li>
+<li class="chapter" data-level="21.1.14" data-path="cocoscience.html"><a href="cocoscience.html#non-parametric-classification-exemplar-models-and-neural-networks"><i class="fa fa-check"></i><b>21.1.14</b> Non-parametric Classification: Exemplar Models and Neural Networks</a></li>
+<li class="chapter" data-level="21.1.15" data-path="cocoscience.html"><a href="cocoscience.html#controlling-complexity-and-occams-razor"><i class="fa fa-check"></i><b>21.1.15</b> Controlling Complexity and Occam’s Razor</a></li>
+<li class="chapter" data-level="21.1.16" data-path="cocoscience.html"><a href="cocoscience.html#intuitive-biology-and-the-role-of-theories"><i class="fa fa-check"></i><b>21.1.16</b> Intuitive Biology and the Role of Theories</a></li>
+<li class="chapter" data-level="21.1.17" data-path="cocoscience.html"><a href="cocoscience.html#learning-domain-structures"><i class="fa fa-check"></i><b>21.1.17</b> Learning Domain Structures</a></li>
+<li class="chapter" data-level="21.1.18" data-path="cocoscience.html"><a href="cocoscience.html#reinforcement-learning"><i class="fa fa-check"></i><b>21.1.18</b> Reinforcement learning</a></li>
+<li class="chapter" data-level="21.1.19" data-path="cocoscience.html"><a href="cocoscience.html#artificial-neural-networks"><i class="fa fa-check"></i><b>21.1.19</b> Artificial neural networks</a></li>
+<li class="chapter" data-level="21.1.20" data-path="cocoscience.html"><a href="cocoscience.html#language-acquisition-across-modeling-approaches"><i class="fa fa-check"></i><b>21.1.20</b> Language acquisition across modeling approaches</a></li>
+<li class="chapter" data-level="21.1.21" data-path="cocoscience.html"><a href="cocoscience.html#vision-across-modeling-approaches"><i class="fa fa-check"></i><b>21.1.21</b> Vision across modeling approaches</a></li>
+<li class="chapter" data-level="21.1.22" data-path="cocoscience.html"><a href="cocoscience.html#contemporary-artificial-intelligence-and-cognitive-science"><i class="fa fa-check"></i><b>21.1.22</b> Contemporary artificial intelligence and cognitive science</a></li>
+<li class="chapter" data-level="21.1.23" data-path="cocoscience.html"><a href="cocoscience.html#others"><i class="fa fa-check"></i><b>21.1.23</b> Others</a></li>
+</ul></li>
+<li class="chapter" data-level="21.2" data-path="cocoscience.html"><a href="cocoscience.html#courses"><i class="fa fa-check"></i><b>21.2</b> Courses</a></li>
+<li class="chapter" data-level="21.3" data-path="cocoscience.html"><a href="cocoscience.html#labs"><i class="fa fa-check"></i><b>21.3</b> Labs</a></li>
+<li class="chapter" data-level="21.4" data-path="cocoscience.html"><a href="cocoscience.html#others-1"><i class="fa fa-check"></i><b>21.4</b> Others</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references-7.html"><a href="references-7.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/lampk/notebook_Biostatistics" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Notes on Biostatistics</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="missingdata" class="section level1">
+<h1><span class="header-section-number">Topic 15</span> Handling missing data</h1>
+<div id="reading-list-4" class="section level2">
+<h2><span class="header-section-number">15.1</span> Reading list</h2>
+</div>
+<div id="further-topics" class="section level2">
+<h2><span class="header-section-number">15.2</span> Further topics</h2>
+<div id="when-to-use-mi" class="section level3">
+<h3><span class="header-section-number">15.2.1</span> When to use MI</h3>
+<div id="whether-mi-is-likely-to-be-beneficial-depends-on-range-of-factors" class="section level4">
+<h4><span class="header-section-number">15.2.1.1</span> Whether MI is likely to be beneficial depends on range of factors…</h4>
+<pre><code>+ How much data are missing
++ Which variables have missing data: confounder or outcomes/exposure
++ Patterns of missingness
++ Presence of auxiliary variables
++ Correlation between the variables
++ Correlation between variables and missingness</code></pre>
+<p>–&gt; Should consider all of these factors when making the decision whether to use MI</p>
+</div>
+<div id="which-variables-to-impute" class="section level4">
+<h4><span class="header-section-number">15.2.1.2</span> Which variables to impute?</h4>
+<ul>
+<li>Common scenario:
+<ul>
+<li>exposure –&gt; outcome (relationship of interest), confounder</li>
+</ul></li>
+<li>Missing data in the exposure or outcome
+<ul>
+<li>Imputing the missing values will generally not add much information about <span class="math inline">\(\beta\)</span></li>
+<li>Unless, there are strong predictors of the missing values</li>
+<li>MI can introduce noise though uncertainty in the missing values (due to large between imputation variation)</li>
+</ul></li>
+<li>Missing data in the confounding variable
+<ul>
+<li>Much more to gain in terms of <span class="math inline">\(\beta\)</span></li>
+<li>Expect to gain precision for estimating <span class="math inline">\(\beta\)</span></li>
+<li>Reduces bias from exclusion of participants with incomplete confounder information</li>
+</ul></li>
+</ul>
+</div>
+<div id="how-much-missing-data-to-impute" class="section level4">
+<h4><span class="header-section-number">15.2.1.3</span> How much missing data to impute?</h4>
+<ul>
+<li><p>Common question but no easy answer!</p></li>
+<li><p>If little missing data (e.g. &lt;5%) –&gt; Little to regain from MI</p></li>
+<li><p>If lots of missing data (e.g. 50%) –&gt; Can introduce bias if lots of data are imputed from a poorly fitting imputation model</p></li>
+<li><p>Need to consider all of the other factors, and weigh up benefits of MI against potential costs of a poorly fitting imputation model</p></li>
+</ul>
+</div>
+<div id="mi-in-observational-studies" class="section level4">
+<h4><span class="header-section-number">15.2.1.4</span> MI in observational studies</h4>
+<ul>
+<li><p>Large, longitudinal studies can have lots of potential auxiliary variables</p></li>
+<li><p>Can be missing data in potential auxiliary variables</p></li>
+<li><p>Lots of different research questions – different imputation models?</p></li>
+</ul>
+</div>
+<div id="mi-in-trials" class="section level4">
+<h4><span class="header-section-number">15.2.1.5</span> MI in trials</h4>
+<ul>
+<li><p>Often missing data on the outcomes – how beneficial is MI likely to be?</p></li>
+<li>Need to impute outcome data separately by treatment arm (preserves interactions)
+<ul>
+<li>separate by treatment arm then stack together</li>
+</ul></li>
+<li>How to impute missing baseline data?
+<ul>
+<li>Imputing by arm induces correlation with treatment</li>
+<li>Different method of imputation for baseline data e.g. mean imputation</li>
+<li>[see Sullivan TR et al. Stats Methods Med Research]</li>
+</ul></li>
+</ul>
+</div>
+<div id="mi-a-cautionary-tale" class="section level4">
+<h4><span class="header-section-number">15.2.1.6</span> MI – a cautionary tale</h4>
+<ul>
+<li><p>If the exposure of interest (X) is MNAR, missing data mechanism does not depend on Y and we have complete data for the outcome Y, then for the estimate of the association between X and Y, MI has been shown to be biased but a complete-case analysis is unbiased</p></li>
+<li><p>(see White I &amp; Carlin JB, Stats in Medicine 2010).</p></li>
+</ul>
+</div>
+</div>
+<div id="diagnostics-diagnosing-problems-with-imputation-models" class="section level3">
+<h3><span class="header-section-number">15.2.2</span> Diagnostics (diagnosing problems with imputation models)</h3>
+<ul>
+<li><p>Important step when carrying out MI is imputation model checking</p></li>
+<li>Approaches to checking imputation models:
+<ul>
+<li>Explore the imputed values</li>
+<li>Compare the observed and imputed values</li>
+<li>Regression diagnostics</li>
+<li>More complex approaches e.g. cross-validation, posterior predictive check (not covered today)*</li>
+</ul></li>
+<li><p>Nguyen et al (2017), He and Zaslavsky (2011)</p></li>
+<li>Explore the imputed values
+<ul>
+<li>As with all analyses, it is important to examine at the data (As with any other analysis, important to explore and get a feel for the imputed values
+)</li>
+<li>External checks: use subject matter knowledge to assess whether imputed values are sensible (Has the imputation process done what you expected?
+)</li>
+<li>Summary statistics or graphical checks</li>
+<li>Note: the goal of MI is not to recover the individual missing values – the purpose is to produce valid results with incomplete data. It may not be problematic if a few imputed values fall outside possible range</li>
+</ul></li>
+<li>Compare the observed and imputed values
+<ul>
+<li>Good idea to check the imputed data and compare with the observed data – using descriptive statistics or graphs</li>
+<li>Can check whether imputed values are reasonable by comparing with observed data</li>
+<li>Internal check: imputations are being assessed with respect to available data</li>
+<li>Can compare using:
+<ul>
+<li>Summary statistics</li>
+<li>Graphical checks e.g. Histograms, boxplots, density plots, cumulative distribution plots…</li>
+</ul></li>
+</ul></li>
+<li>Check associations between variables
+<ul>
+<li>If one is interested in characteristics of marginal distributions (e.g. means, percentiles), then it might be important to preserve the distribution.</li>
+<li>If the primary analysis lies in association between variables, can also check this.</li>
+</ul></li>
+<li>Regression diagnostics
+<ul>
+<li>For checking regression imputation models (when imputing a single variable or within chained equations)
+<ul>
+<li>Fit the linear regression imputation model<br />
+</li>
+<li>Then obtain predictions and residuals</li>
+</ul></li>
+</ul></li>
+<li>Questions to consider…
+<ul>
+<li>Do the imputed values look plausible given subject matter knowledge?</li>
+<li>Are there any signals of major problems?</li>
+<li>Are there any differences between observed and imputed data?</li>
+<li>Are the discrepancies expected given what you know about the incomplete variables and the missing data process?</li>
+<li>Consider the analysis of interest. Are key associations of interest preserved in the imputed data?</li>
+</ul></li>
+<li>Implementing diagnostics in statistical software
+<ul>
+<li>Many checks can be performed using standard syntax in statistical packages
+<ul>
+<li>See files “Supplementary_file_diagnostics” for examples of syntax in R and Stata</li>
+</ul></li>
+<li>R – mice, mi, VIM</li>
+<li>Stata – midiagplots (user-written command)</li>
+</ul></li>
+</ul>
+</div>
+<div id="reporting" class="section level3">
+<h3><span class="header-section-number">15.2.3</span> Reporting</h3>
+<ul>
+<li><p>Strengthening the Reporting of Observational Studies in Epidemiology
+(STROBE): Explanation and Elaboration. Vandenbroucke JP et al. PLoS Med 2007</p></li>
+<li><p>Missing data. Ware JH et al. New England Journal of Medicine 2012;367:1353.</p></li>
+<li>Summary of key points…
+<ul>
+<li>Description of participants
+<ul>
+<li>Report the numbers of individuals at each stage of the study</li>
+<li>Give reasons for non-participation at each stage</li>
+<li>Indicate number of participants with missing data for each variable</li>
+<li>Compare the characteristics of those with &amp; without missing data</li>
+</ul></li>
+<li>Statistical Methods
+- Explain how missing data were addressed</li>
+</ul></li>
+<li>Useful to present precise details of imputation
+<ul>
+<li>Which variables were imputed</li>
+<li>Imputation strategy</li>
+<li>Which computer package</li>
+<li>How many imputations</li>
+</ul></li>
+<li>Good practice to present results from a complete case analysis as well as MI
+<ul>
+<li>If they are different – why?</li>
+<li>Prespecify if MI is the primary analysis</li>
+</ul></li>
+<li>Ideally would present a sensitivity analysis to the decisions made in the imputation procedure
+<ul>
+<li>E.g. functional form, imputation strategy,…</li>
+</ul></li>
+<li><p>Sterne et al BMJ 2009</p></li>
+</ul>
+</div>
+<div id="summary" class="section level3">
+<h3><span class="header-section-number">15.2.4</span> Summary</h3>
+<ul>
+<li><p>MI is a flexible and relatively straightforward way of dealing with missing data</p></li>
+<li><p>Widely available in modern statistical software</p></li>
+<li>Particularly useful as part of a sensitivity analysis of the effect of missing data
+<ul>
+<li>Reassuring if you get the same conclusions under different assumptions about the missingness</li>
+</ul></li>
+<li>However…. MI is not a miracle cure
+<ul>
+<li>There are lots of decisions that must be made during the imputation stage that can affect the validity of the inference</li>
+<li>MI can introduce bias if carried out naively without due consideration of the assumptions made in the imputation model</li>
+<li>Still a lot of unanswered questions surrounding MI</li>
+<li>Important to consider the sensitivity of the results to the assumptions regarding the missing data and the imputation model</li>
+<li>Saw here an example where it makes a difference
+<ul>
+<li>Not strong enough to alter the conclusions but it could be</li>
+</ul></li>
+<li>It is therefore important that MI is carried out by someone who knows what they are doing!</li>
+</ul></li>
+</ul>
+</div>
+<div id="references-1" class="section level3">
+<h3><span class="header-section-number">15.2.5</span> References</h3>
+<div id="for-guidance-on-when-mi-may-be-unbiased" class="section level4">
+<h4><span class="header-section-number">15.2.5.1</span> For guidance on when MI may be unbiased</h4>
+<ul>
+<li><p>Lee KJ, Simpson JA. Introduction to multiple imputation for dealing with missing data. Respirology 2014; 19:162-167.</p></li>
+<li><p>Moreno-Betancur M, Lee KJ, Leacy FP, White IR, Simpson JA, Carlin JB: Canonical Causal Diagrams to Guide the Treatment of Missing Data in Epidemiological Studies. Am J Epidemiol 2018; 187(12):2705-2715.</p></li>
+<li><p>Sullivan TR, White IR, Salter A, Ryan P, Lee KJ. Should multiple imputation be the method of choice for handling missing data in randomized trials? Statistical Methods in Medical Research. 2018; 27(9): 2610–2626.</p></li>
+<li><p>White IR, Carlin JB. Bias and efficiency of multiple imputation compared with complete-case analysis for missing covariate values. Statistics in Medicine. 2010; 29:2920-2931.</p></li>
+</ul>
+</div>
+<div id="for-diagnostics" class="section level4">
+<h4><span class="header-section-number">15.2.5.2</span> for diagnostics</h4>
+<ul>
+<li><p>Abayomi K, Gelman A, Levy M. Diagnostics for multivariate imputations. Journal of the Royal Statistical Society Series C-Applied Statistics. 2008; 57:273-91.</p></li>
+<li><p>Marchenko, Y V and Eddings W. 2011. A note on how to perform multiple-imputation diagnostics in Stata. <a href="http://www.stata.com/users/ymarchenko/midiagnote.pdf" class="uri">http://www.stata.com/users/ymarchenko/midiagnote.pdf</a>.</p></li>
+<li><p>Nguyen et al. Model checking in multiple imputation: an overview and case study. Emerg Themes Epidemiol. 2017 14:8 [*includes Stata code]</p></li>
+<li><p>van Buuren S. Flexible Imputation of Missing Data. Boca Raton: CRC Press; 2012.</p></li>
+<li><p>White IR, Royston P, Wood AM. Multiple imputation using chained equations: Issues and guidance for practice. Statistics in Medicine. 2011; 30(4):377-99.</p></li>
+<li><p>He Y, Zaslavsky AM. Diagnosing imputation models by applying target analyses to posterior replicates of completed data. Statistics in Medicine. 2011; 31(1):1-18.</p></li>
+</ul>
+</div>
+<div id="for-reporting" class="section level4">
+<h4><span class="header-section-number">15.2.5.3</span> For reporting</h4>
+<ul>
+<li><p>Hayati Rezvan P, Lee KJ, Simpson JA: The rise of multiple imputation: a review of the reporting and implementation of the method in medical research. BMC Med Res Methodol 2015, 15:30.</p></li>
+<li><p>Sterne JAC, White IR, Carlin JB, et al. Multiple imputation for missing data in epidemiological and clinical research: potential and pitfalls. BMJ 2009;338:b2393.</p></li>
+<li><p>von Elm E, Altman DG, Egger M, et al. Strengthening the reporting of observational studies in epidemiology (STROBE) statement: guidelines for reporting observational studies in epidemiology. PLoS Med 2007; Oct 16;4(10):e296-e297.</p></li>
+<li><p>Ware JH, Harrington D, Hunter DJ, Ralph B. D’Agostino. Missing data. New England Journal of Medicine 2012;367:1353.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="mi-methods-for-longitudinal-data-in-the-wide-format" class="section level2">
+<h2><span class="header-section-number">15.3</span> MI methods for longitudinal data in the wide format</h2>
+<div id="a-longitudinal-case-study" class="section level3">
+<h3><span class="header-section-number">15.3.1</span> A longitudinal case study</h3>
+<ul>
+<li><p>De Silva et al. BMC Med Res Meth 2017</p></li>
+<li><p>Research question: What is the association between child’s body mass index (BMI) and sleep problems two years later?</p></li>
+<li><p>Continuous exposure: BMI z-score at waves 1-4</p></li>
+<li><p>Binary outcome: Sleep problems (Y/N) at waves 2-5</p></li>
+<li>Adjusting covariates:
+<ul>
+<li>previous sleep problems (time-varying)</li>
+<li>maternal age and education (fixed)</li>
+<li>child’s sex and birthweight (fixed)</li>
+</ul></li>
+<li>Assuming constant association over time, what is the analysis model?
+<ul>
+<li>Ideally it uses the repeated measures to gain precision. Thus, must account for clustering</li>
+</ul></li>
+<li>Generalised Estimating Equations (GEE) – extension of logistic regression for correlated data.
+<ul>
+<li>Estimates have a “marginal” interpretation</li>
+<li>The correlation structure is pre-specified: “independence”, “exchangeable”, “ar1”, “unstructured”, “userdefined”, and &quot;fixed“</li>
+<li>Parameter estimates are consistent even if this is misspecified, and robust (“sandwich”) standard errors are recommended.</li>
+</ul></li>
+<li><p>Mixed-effects models are another paradigm for modelling correlated data, and are useful for hierarchical multiple imputation (Lecture 5)</p></li>
+<li><p>18.1% of records have missing data on BMI</p></li>
+<li><p>16.8% of records have missing data on sleep problems</p></li>
+<li><p>Available case analysis ignores observations where data for any of the variables in the analysis model are missing</p></li>
+<li><p>Analysis includes 11,656 of the 20,000 possible observations (58%)</p></li>
+<li>Estimated coefficient for previous BMI
+<ul>
+<li>OR (95%): 1.121 (1.078, 1.167), p &lt; 0.001</li>
+</ul></li>
+<li><p>Can potentially regain information on the 42% with incomplete information</p></li>
+<li>Can use data from baseline covariates that are not in the analysis model to predict the missing values (auxiliary variables)
+<ul>
+<li>Maternal smoking</li>
+</ul></li>
+<li>Can use data on the incomplete variable at other waves to inform on the missing values
+<ul>
+<li>Last point is a key advantage linked to longitudinal studies</li>
+</ul></li>
+</ul>
+</div>
+<div id="recap-of-mi" class="section level3">
+<h3><span class="header-section-number">15.3.2</span> Recap of MI</h3>
+<ul>
+<li><p>Incomplete dataset –&gt; impute missing data multiple times –&gt; analyse each imputed dataset and estimate parameter of interest –&gt; combine estimates</p></li>
+<li><p>A very flexible approach to handling missing data</p></li>
+<li>Unbiased if the data are MAR (Missing at Random)
+<ul>
+<li>But not only in those cases</li>
+<li>And only if MI procedure is appropriately tailored to analysis model</li>
+</ul></li>
+<li><p>The goal of MI is not to predict missing values, but to obtain unbiased inference.</p></li>
+<li><p>The goal of creating multiple imputations is to obtain standard errors that appropriately account for the uncertainty due to missing data.</p></li>
+<li><p>MI – assumes data are MAR – not an inherent concept of MI but in ‘packaged’ approaches to MI</p></li>
+<li>Multivariate normal imputation (MVNI): Assumes all variables in the imputation model have a joint MVN distribution
+<ul>
+<li>Pros: Has a theoretical justification</li>
+<li>Cons:
+<ul>
+<li>Is it valid for imputing binary and categorical variables?
+<ul>
+<li>Unclear how to round categorical variables (Stata)</li>
+<li>Cannot incorporate interactions/non-linear terms</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>“Multiple imputation via chained equations”(MICE): Uses a separate univariate regression model for each variable to be imputed
+<ul>
+<li>Pros: Very flexible</li>
+<li>Cons:
+<ul>
+<li>Lacks theoretical justification</li>
+<li>Risk of incompatible distributions</li>
+<li>Managing in large datasets can be challenging</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div id="mi-methods-for-longitudinal-data" class="section level3">
+<h3><span class="header-section-number">15.3.3</span> MI methods for longitudinal data</h3>
+<ul>
+<li>Need to account for correlations in imputation step:
+<ul>
+<li>For compatibility with analysis model</li>
+<li>To exploit auxiliary information from other waves
+<ul>
+<li>Important even if analysis model does not use repeated measures</li>
+</ul></li>
+</ul></li>
+<li>So how do we do that?
+<ul>
+<li>Impute in the wide format (this lecture)
+<ul>
+<li>Standard MI methods for multiple incomplete variables</li>
+<li>Modified versions for longitudinal data in the wide format</li>
+</ul></li>
+<li>Impute in the long format (Lecture 5)
+<ul>
+<li>Imputation methods based on mixed-effects models</li>
+</ul></li>
+</ul></li>
+<li>Longitudinal data in the wide format:
+<ul>
+<li>One row per individual</li>
+</ul></li>
+<li>Longitudinal data in the long format:
+<ul>
+<li>One row per wave, per individual.</li>
+</ul></li>
+<li>Can transform a dataset from long to wide &amp; wide to long:
+<ul>
+<li>Stata: reshape command</li>
+<li>R: reshape() function available by default</li>
+</ul></li>
+<li>We will illustrate these later, but usually need to consult help files case-by-case</li>
+</ul>
+</div>
+<div id="imputation-using-the-wide-format" class="section level3">
+<h3><span class="header-section-number">15.3.4</span> Imputation using the wide format</h3>
+<div id="standard-methods" class="section level4">
+<h4><span class="header-section-number">15.3.4.1</span> Standard methods</h4>
+<ul>
+<li>MVNI
+<ul>
+<li>bmi1, bmi2, bmi3, bmi4, bmi5, sleep_prob1, sleep_prob2, sleep_prob3, sleep_prob4, and sleep_prob5 assumed to follow a MVN distribution</li>
+<li>Sleep problems imputed as continuous (in Stata)
+<ul>
+<li>Means these values are imputed as values that are not necessarily 0 or 1</li>
+<li>Need to be rounded for analysis* (* Best not to round imputed values if you don’t need to
+)
+&gt; Crude rounding at 0.5
+&gt; Adaptive rounding – based on a normal approximation to the binomial distribution</li>
+</ul></li>
+<li>Results
+<ul>
+<li>Estimated coefficient for previous BMI:
+&gt; Available case analysis: OR: 1.121 (1.078, 1.167), p &lt; 0.001
+&gt; MVNI: OR: 1.107 (1.070, 1.146), p &lt; 0.001</li>
+</ul></li>
+</ul></li>
+<li>FCS
+<ul>
+<li>bmi1 imputed using a linear regression model including bmi2, bmi3, bmi4, bmi5, and all of the sleep_prob and baseline variables</li>
+<li>bmi2 imputed using a linear regression model including bmi1, bmi3, bmi4, bmi5, and all of the sleep_prob and baseline variables</li>
+<li>…</li>
+<li>sleep_prob1 imputed using a logistic regression model including sleep_prob2, sleep_prob3, sleep_prob4, sleep_prob5, and all of the bmi and baseline variables</li>
+<li>…</li>
+<li>Results: OR: 1.121 (1.076, 1.168), p &lt; 0.001</li>
+</ul></li>
+</ul>
+</div>
+<div id="dealing-with-convergence-issues" class="section level4">
+<h4><span class="header-section-number">15.3.4.2</span> Dealing with convergence issues</h4>
+<ul>
+<li><p>Because of too many variables –&gt; convergence issues</p></li>
+<li>Both MVNI and FCS can suffer from problems with convergence
+<ul>
+<li>Methods are based an iterative procedure which should converge to a stable distribution
+<ul>
+<li>Should check convergence following the imputation procedure e.g. using trace plots</li>
+</ul></li>
+<li>Estimation based on a maximum-likelihood (ML) procedure
+<ul>
+<li>Can have non-convergence of the ML procedure (e.g. ridge in the likelihood; multiple maxima; function has no maximum likelihood – model crashes)</li>
+</ul></li>
+</ul></li>
+<li>Trace plots
+<ul>
+<li>Plots of estimated parameters or imputed values against iteration no</li>
+<li>MVNI – plots of parameter estimates
+<ul>
+<li>Use option saveptrace(name, replace)</li>
+<li>Then plot using mi ptrace use name, clear
+tsset iter
+tsline var</li>
+</ul></li>
+<li>FCS – plots of means and standard deviations of imputed values
+<ul>
+<li>Use option savetrace(name, replace)</li>
+<li>Then plot using use name, clear
+keep if m==1
+tsset iter
+tsline var
+(R provides similar functionalities – Practical 4)</li>
+</ul></li>
+</ul></li>
+<li>Imputation model does not converge
+<ul>
+<li>Large amounts of missing data</li>
+<li>Lots of variables collected at each wave</li>
+<li>Lots of waves of data collection</li>
+<li>Lots of categorical variables (perfect prediction)</li>
+<li>Highly correlated variables (collinearity) <strong>Particularly problematic for longitudinal data</strong></li>
+<li>Categorical variables with only few observations in a category</li>
+</ul></li>
+<li>Try to identify the cause of the problem
+<ul>
+<li>Cross-tabulation of categorical variables</li>
+<li>Correlations between pairs of variables</li>
+<li>Look at missingness patterns</li>
+<li>Run univariate imputation models</li>
+</ul></li>
+<li>One solution is to try and simplify the model by removing some of the auxiliary variables
+<ul>
+<li>Remove categorical variables with rare events</li>
+<li>Remove variables that are highly correlated</li>
+<li>Remove auxiliary vars with lots of missing data or low correlations</li>
+<li>Use variable reduction techniques e.g. principal components</li>
+<li>Use variable selection in the univariate imputation models (FCS)</li>
+<li>Impute at the scale level rather than the item level</li>
+</ul></li>
+<li>Alternatively, can change the imputation approach:
+<ul>
+<li>Impute ordinal variables as continuous not indicators (MVNI)</li>
+<li>Impute using predictive mean matching (FCS)</li>
+<li>Impute using MVNI rather than FCS</li>
+<li>Use data augmentation</li>
+</ul></li>
+<li>When trying alternative imputation models is it very important to make sure that
+<ul>
+<li>the imputation model is still sensible</li>
+<li>the imputation model is remains compatible with the analysis model</li>
+</ul></li>
+<li><p>Another option is to use an alternative method of imputation….</p></li>
+</ul>
+</div>
+<div id="extensions-to-fcs" class="section level4">
+<h4><span class="header-section-number">15.3.4.3</span> Extensions to FCS</h4>
+<div id="moving-time-window-mtw" class="section level5">
+<h5><span class="header-section-number">15.3.4.3.1</span> Moving time window (MTW)</h5>
+<ul>
+<li>Variable at a specific time point is imputed using only information from the previous, current and next time point for all variables* (* Could use all information for that variable and/or all information for the outcome
+)
+<ul>
+<li>bmi1 imputed using bmi2, sleep_prob1, sleep_prob2, and the baseline variables</li>
+<li>bmi2 imputed using bmi1, bmi3, sleep_prob1, sleep_prob2, sleep_prob3, and the baseline variables</li>
+<li>…</li>
+</ul></li>
+<li><p>Can be fitted in Stata/R but needs to be hand-coded!</p></li>
+<li>Advantages
+<ul>
+<li>Reduces the number of variables in each of the univariate imputation models</li>
+<li>Can overcome convergence issues</li>
+<li>Can be fitted easily using standard packages</li>
+</ul></li>
+<li>Disadvantages
+<ul>
+<li>Does not use potentially important information on the variable of interest</li>
+<li>Can be difficult to capture non-linear trends</li>
+<li>Time intensive to code</li>
+</ul></li>
+<li>Results:
+<ul>
+<li>Estimated coefficient for previous BMI: OR: 1.114 (1.077, 1.152), p &lt; 0.001</li>
+</ul></li>
+</ul>
+</div>
+<div id="two-fold" class="section level5">
+<h5><span class="header-section-number">15.3.4.3.2</span> Two-fold</h5>
+<ul>
+<li>Variable at a specific time point is imputed using only information from the previous, current and next time point for all variables
+<ul>
+<li>Alternates within and between time iterations</li>
+<li>Available in Stata</li>
+<li>Nevalainen et al. Statistics in Medicine, 2009</li>
+</ul></li>
+<li>Advantages
+<ul>
+<li>Reduces the number of variables in each of the univariate imputation models</li>
+<li>Can overcome convergence issues</li>
+</ul></li>
+<li>Disadvantages
+<ul>
+<li>Does not use potentially important information on the variable of interest</li>
+<li>Can be difficult to capture non-linear trends</li>
+<li>Only available in Stata</li>
+<li>Takes a while to run given the within and between time iterations</li>
+</ul></li>
+<li>Results:
+<ul>
+<li>Estimated coefficient for previous BMI: OR: 1.124 (1.049, 1.204), p = 0.006</li>
+<li>Results very similar from all MI approaches</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="comparison-of-the-wide-approaches" class="section level4">
+<h4><span class="header-section-number">15.3.4.4</span> Comparison of the wide approaches</h4>
+<ul>
+<li><p>(De Silva et al. BMC Med Res Meth 2017)</p></li>
+<li><p>Complete case analysis led to increasing bias with increasing proportions of missing data</p></li>
+<li><p>Standard MI approaches seem to provide better results if they run</p></li>
+<li><p>Two-fold useful to minimise the variables in the imputation model, but it is better to use a wider window</p></li>
+</ul>
+</div>
+<div id="summary-1" class="section level4">
+<h4><span class="header-section-number">15.3.4.5</span> Summary</h4>
+<ul>
+<li>Various different methods can be used to impute missing data in longitudinal studies in wide format
+<ul>
+<li>MNVI and FCS are widely available
+- Can have issues with convergence if lots of variables
+- FCS generally preferable as it imputes the correct variable type
+- MVNI more likely to run</li>
+<li>Alternatives exist (MTW and two-fold)
+- But do not make the most of the available data
+- Do not capture non-linear trends</li>
+<li>Current evidence from simulations suggests is that it is best to use standard FCS/MVNI if you can</li>
+</ul></li>
+</ul>
+</div>
+</div>
+<div id="references-2" class="section level3">
+<h3><span class="header-section-number">15.3.5</span> References</h3>
+<ul>
+<li><p>De Silva, A. P., Moreno-Betancur, M., De Livera, A. M., Lee, K. J., &amp; Simpson, J. A. (2017). A comparison of multiple imputation methods for handling missing values in longitudinal data in the presence of a time-varying covariate with a non-linear association with time: A simulation study. BMC Medical Research Methodology, 17(1), 1–11.</p></li>
+<li><p>Huque H, Carlin JB, Simpson JA and Lee KJ. A comparison of multiple imputation methods for missing data in longitudinal studies. BMC Medical Research Metholodgy. 2018 Dec 12;18(1):168. doi: 10.1186/s12874-018-0615-6.</p></li>
+<li><p>Kalaycioglu, O., et al., A comparison of multiple imputation methods for handling missing data in repeated measurements observational studies. Journal of the royal Statistical Society Series A, 2016. 179: p. 683–706.</p></li>
+<li><p>Lee, KJ, Galati JC, Simpson JA and Carlin JB. Comparison of methods for imputing ordinal data using multivariate normal imputation: a case study of non-linear effects in a large cohort study. Statistics in Medicine, 2012. 31(30): p. 4164-74.</p></li>
+<li><p>Lee KJ, Roberts G, Doyle LW, Anderson PJ, and Carlin JB. Multiple imputation for missing outcome data in a longitudinal cohort study: a detailed case study with guidance for practice. International Journal of Social Research Methodology.2016; 19 (5): 575-591.</p></li>
+<li><p>Nevalainen, J., M.G. Kenward, and S.M. Virtanen, Missing values in longitudinal dietary data: a multiple imputation approach based on fully conditional specification. Statistics in Medicine, 2009.</p></li>
+<li><p>Rubin DB. Multiple Imputation for Nonresponse in Surveys. New York, NY: John Wiley, 1987.</p></li>
+<li><p>Sterne JAC, White IR, Carlin JB, et al. Multiple imputation for missing data in epidemiological and clinical research: potential and pitfalls. BMJ 2009;338:b2393.</p></li>
+<li><p>Welch, C, Bartlett J, and Peterson I. Application of multiple imputation using the two-fold fully conditional specification algorithm in longitudinal clinical data. The Stata Journal, 2014. 14(2): p. 418-431.</p></li>
+<li><p>White IR, Royston P, Wood AM. Multiple imputation using chained equations: issues and guidance for practice. Statistics in Medicine 2011;30(4):377-399.</p></li>
+</ul>
+</div>
+</div>
+<div id="mi-methods-for-longitudinal-data-in-the-long-format" class="section level2">
+<h2><span class="header-section-number">15.4</span> MI methods for longitudinal data in the long format</h2>
+<div id="mi-in-wide-format-vs-mi-in-long-format" class="section level3">
+<h3><span class="header-section-number">15.4.1</span> MI in wide format vs MI in long format</h3>
+<ul>
+<li>Longitudinal data in the long format:
+<ul>
+<li>One row per wave, per individual</li>
+<li>One column per variable</li>
+</ul></li>
+<li><p>Data in columns bmiz and sleep_prob are “clustered by individual”, i.e. correlation between repeated/longitudinal measures from the same subject</p></li>
+<li><p>This is the data structure used by typical methods for modelling longitudinal data in the analysis stage</p></li>
+<li>Analysis methods for longitudinal data
+<ul>
+<li>GEE models (Lecture 1)</li>
+<li>Mixed-effect models: regression including “random effects”</li>
+<li>Random-intercept linear mixed model for BMI</li>
+</ul></li>
+<li>Random effects: intuition
+<ul>
+<li>Correlations between repeated measures of an individual arise from “subject effects”
+<ul>
+<li>For example, these could be thought to arise from a genetic predisposition to lower or higher BMI.</li>
+</ul></li>
+<li>Usually cannot include the “id” variable as an “explanatory” variable in a regression – too many categories!
+<ul>
+<li>Would need to estimate one regression coefficient 𝑏_𝑖 for each individual <span class="math inline">\(i\)</span>=1,…,5000</li>
+</ul></li>
+<li>Random effects represent a way to model those “subject effects” in a parsimonious way, by assuming that they are random variables following a normal distribution:
+<span class="math inline">\(b_i \sim N(0, \Sigma)\)</span></li>
+<li>We thus need only estimate 1 parameter, rather than 5000: <span class="math inline">\(\Sigma\)</span></li>
+<li>Generalised linear mixed models extend this idea to non-continuous outcomes</li>
+</ul></li>
+<li><p>Example: Random intercept and slope linear mixed model for BMI</p></li>
+<li>Analysis methods for longitudinal data
+<ul>
+<li>GEE models (Lecture 1)</li>
+<li>Mixed-effect models: regression including “random effects”</li>
+<li>How are correlations between repeated measures of the same and different variables dealt with in the imputation stage?</li>
+</ul></li>
+<li>Clustering by individual in MI
+<ul>
+<li>MI in the wide format: No distinction between repeated measures of same and different variables
+<ul>
+<li>MVNI: All correlations modelled through unstructured covariance matrix of assumed multivariate normal distribution.</li>
+<li>FCS: All correlations modelled through regression, by including repeated measures of same and different variables as regressors in the univariate imputation model of each variable</li>
+</ul></li>
+<li>MI in the long format: There is a distinction between repeated measures of same and different variables
+<ul>
+<li>Extensions of both MVNI and FCS model correlations between repeated measures
+&gt; of the same variable, by using random effects in the model for that variable
+&gt; of different variables, as in wide-format imputation (i.e. unstructured covariance for MVNI, regression for FCS)</li>
+</ul></li>
+</ul></li>
+<li>Level 1 and Level 2 variables
+<ul>
+<li>Level 1 variables:
+<ul>
+<li>Vary within cluster (e.g. BMI), it is for them that we have repeated measures, requiring imputation strategies that account for clustering</li>
+</ul></li>
+<li>Level 2 variables:
+<ul>
+<li>Constant within cluster (e.g. sex), we don’t need multilevel models in principle but need to be imputed simultaneously with level 1 variables</li>
+</ul></li>
+</ul></li>
+<li>When to use long format imputation?
+<ul>
+<li>Visit times are irregular across individuals
+<ul>
+<li>Here the wide format is not possible</li>
+</ul></li>
+<li>Convergence issues with MVNI or FCS in wide format</li>
+<li>Also (not covered):
+<ul>
+<li>“Substantive-model-compatible” routines for some models: R jomo package functions jomo.glmer and jomo.lmer</li>
+<li>Necessary for time-to-event outcomes, specialised routines: R survtd package (<a href="https://github.com/moreno-betancur/survtd" class="uri">https://github.com/moreno-betancur/survtd</a>)</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div id="long-data-extensions-of-fcs" class="section level3">
+<h3><span class="header-section-number">15.4.2</span> Long data extensions of FCS</h3>
+<ul>
+<li>FCS with multilevel models
+<ul>
+<li>FCS imputes each incomplete variable at a time using univariate model</li>
+<li>For level 1 variables we can use a multilevel univariate model</li>
+<li>Continuous level 1 variable:
+<ul>
+<li>Linear mixed model (LMM)</li>
+</ul></li>
+<li>Binary level 1 variable:
+<ul>
+<li>Generalised linear mixed model: a generalised linear model with random effects</li>
+<li>However, not too good with many clusters/few observations as with longitudinal data, so we won’t consider it here</li>
+<li>Latent normal (LN) variable formulation -&gt; model a “continuous version” of sleep (see Appendix)</li>
+</ul></li>
+<li>Advantages
+<ul>
+<li>Same as standard FCS, PLUS</li>
+<li>Easy to impute a combination of level 1 and level 2 variables of various types</li>
+<li>Extensions exist allowing subject-specific (heterogeneous) residual variance, which may improve performance in some scenarios</li>
+</ul></li>
+<li>Disadvantages
+<ul>
+<li>Same as standard FCS, PLUS</li>
+<li>Not widespread
+&gt; R packages mice and micemd
+&gt; Others: R package miceadds, Mplus</li>
+<li>Can be computationally very intensive (slow!) especially versions for binary/categorical data</li>
+</ul></li>
+<li>Results: FCS-LMN-LN: 1.128 (1.091, 1.166), p &lt; 0.001</li>
+</ul></li>
+</ul>
+</div>
+<div id="long-data-extensions-of-mvni" class="section level3">
+<h3><span class="header-section-number">15.4.3</span> Long data extensions of MVNI</h3>
+<ul>
+<li>Multivariate Linear Mixed Model (MLMM)
+<ul>
+<li>Multivariate extension of the linear mixed model
+<ul>
+<li>Joint model (JM) for a vector of variables, not a single variable</li>
+<li>Latent normal (LN) variable to handle binary and categorical variables</li>
+</ul></li>
+<li>Multilevel extension of MVNI
+<ul>
+<li>Includes random effects in the imputation model for each of the variables to be imputed</li>
+</ul></li>
+<li>As for MVNI, an iterative procedure fits it and imputations drawn from posterior distribution</li>
+<li>Advantages
+<ul>
+<li>Same as standard MVNI, PLUS</li>
+<li>Simulation evidence shows it works well for random intercept and slope analysis models</li>
+<li>Extensions exist allowing subject-specific residual covariance matrix, although this doesn’t appear necessary for the JM-MLMM-LN defined here</li>
+</ul></li>
+<li>Disadvantages
+<ul>
+<li>Same as standard MVNI, PLUS</li>
+<li>Not widespread
+&gt; R packages pan (only for continuous variables or assume normality) and jomo (LN variable approach)
+&gt; Versions in Mplus &amp; REALCOM-impute (standalone)</li>
+<li>Can be computationally very intensive (slow!) especially LN variable approach for binary/categorical data</li>
+</ul></li>
+<li>Results: JM-MLMM-LN: 1.111 (1.074, 1.150), p &lt; 0.001</li>
+</ul></li>
+<li>Incomplete level 2 variables
+<ul>
+<li>Example: m_education, sex, birthweight, m_age</li>
+<li>Imputing these does not require a multilevel model</li>
+<li>The joint model can be extended to incorporate these as well</li>
+<li>Results: JM-MLMM-LN (impute level 2 variable): 1.109 (1.058, 1.163), p &lt; 0.001</li>
+</ul></li>
+</ul>
+</div>
+<div id="summary-and-references" class="section level3">
+<h3><span class="header-section-number">15.4.4</span> Summary and references</h3>
+<ul>
+<li>Need to account for correlations in imputation step:
+<ul>
+<li>For compatibility with analysis model</li>
+<li>To exploit auxiliary information from other waves</li>
+</ul></li>
+<li>Approaches
+<ul>
+<li>Impute in the wide format (Stata &amp; R)
+<ul>
+<li>Wave-level measurement is “just another variable”
+&gt; Traditional MVNI &amp; FCS
+&gt; Modified versions for longitudinal data (MTW, two-fold)</li>
+</ul></li>
+<li>Impute in the long format (R)
+<ul>
+<li>Use random effects for parsimony &amp; unbalanced data
+&gt; Extensions of MVNI and FCS using random effects</li>
+</ul></li>
+</ul></li>
+<li>Choice of approach depends on various issues
+<ul>
+<li>Software preference (Stata or R)</li>
+<li>Data collection design (balanced or unbalanced)</li>
+<li>Convergence of “wide” algorithms</li>
+<li>Access to specialised routines tailored to analysis model e.g. mixed-effects model, survival (time-to-event/hazard) model</li>
+</ul></li>
+</ul>
+</div>
+<div id="references-3" class="section level3">
+<h3><span class="header-section-number">15.4.5</span> References</h3>
+<ul>
+<li><p>Huque H, Carlin JB, Simpson JA and Lee KJ. A comparison of multiple imputation methods for missing data in longitudinal studies. BMC Medical Research Metholodgy. 2018 Dec 12;18(1):168. doi: 10.1186/s12874-018-0615-6.</p></li>
+<li><p>Huque H, Carlin JB, Moreno-Betancur M, Quartagno M, Simpson JA and Lee KJ. Multiple imputation methods for handling incomplete longitudinal and clustered data where the target analysis is a linear mixed effects model. Biometrical Journal 2019</p></li>
+<li><p>Carpenter J.R., Kenward M.G., (2013), Multiple Imputation and its Application. Chapter 9, Wiley, ISBN: 978-0-470-74052-1.</p></li>
+<li><p>van Buuren S, Groothuis-Oudshoorn K. mice: Multivariate Imputation by Chained Equations in R. J Stat Softw. 2011;45(3):1–67.</p></li>
+<li><p>Quartagno M and Carpenter J. jomo: A package for Multilevel Joint Modelling Multiple Imputation. 2017 <a href="https://CRAN.R-project.org/package=jomo" class="uri">https://CRAN.R-project.org/package=jomo</a></p></li>
+<li><p>Audigier V and Resche-Rigon M. micemd: Multiple Imputation by Chained Equations with Multilevel Data. 2017 <a href="https://CRAN.R-project.org/package=micemd" class="uri">https://CRAN.R-project.org/package=micemd</a></p></li>
+<li><p>Enders, Craig K., Stephen A. Mistler, and Brian T. Keller. Multilevel multiple imputation: A review and evaluation of joint modeling and chained equations imputation. Psychological Methods 21.2 (2016): 222.</p></li>
+<li><p>Kalaycioglu, O., et al., A comparison of multiple imputation methods for handling missing data in repeated measurements observational studies. Journal of the royal Statistical Society Series A, 2016. 179: p. 683–706.</p></li>
+<li><p>Enders, C., Hayes T., Du, H. A Comparison of Multilevel Imputation Schemes for Random Coefficient Models: Fully Conditional Specification and Joint Model Imputation with Random Covariance Matrices. Multivariate Behavioral Research. Epub ahead of print 2019</p></li>
+<li><p>Moreno-Betancur M, Chavance M. Sensitivity analysis of incomplete longitudinal data departing from the missing at random assumption: Methodology and application in a clinical trial with drop-outs. Stat Methods Med Res. 2016;25(4):1471–1489. <a href="https://github.com/moreno-betancur/mice" class="uri">https://github.com/moreno-betancur/mice</a></p></li>
+<li><p>Moreno-Betancur M, Carlin JB, Brilleman SL, Tanamas S, Peeters A, Wolfe R. Survival analysis with time-dependent covariates subject to missing data or measurement error: Multiple Imputation for Joint Modeling (MIJM). Biostatistics 2017, forthcoming. see <a href="https://github.com/moreno-betancur/survtd" class="uri">https://github.com/moreno-betancur/survtd</a></p></li>
+</ul>
+</div>
+<div id="appendix-technical-details-on-r-implementations" class="section level3">
+<h3><span class="header-section-number">15.4.6</span> Appendix: Technical + Details on R implementations</h3>
+<div id="latent-normal-variable-approach" class="section level4">
+<h4><span class="header-section-number">15.4.6.1</span> Latent normal variable approach</h4>
+<ul>
+<li><p>Carpenter J.R., Kenward M.G. MI and its applications. Wiley 2013</p></li>
+<li><p>Let <span class="math inline">\(Y\)</span> be binary and assume a probit model</p></li>
+</ul>
+<p><span class="math display">\[\Phi^{−1} \{P(Y = 1)\}=\beta\]</span></p>
+<ul>
+<li>Define a latent normal variable <span class="math inline">\(Z \sim N(\beta,1)\)</span> such that <span class="math inline">\(Z &gt; 0\)</span> if and only if <span class="math inline">\(Y = 1\)</span></li>
+</ul>
+<p>Then <span class="math inline">\(P(Y = 1) = \phi(\beta)\)</span></p>
+<p>So we can model <span class="math inline">\(Z\)</span> in the joint normal model, restricting variance to 1, and then use this transformation to impute <span class="math inline">\(Y\)</span></p>
+</div>
+<div id="fcs-extensions-in-r-mice-micemd" class="section level4">
+<h4><span class="header-section-number">15.4.6.2</span> FCS extensions in R: mice &amp; micemd</h4>
+<ul>
+<li>mice: general R package for multiple imputation by chained equations</li>
+<li>micemd: Add-on functions to mice for 2-level imputation</li>
+<li>method argument to mice main function</li>
+<li>*Also “2l.lmm” available from <a href="https://github.com/moreno-betancur/mice" class="uri">https://github.com/moreno-betancur/mice</a>
+(Moreno-Betancur and Chavance, SMMR, 2016. 24(4): 1471–1489)</li>
+<li>Currently no available and recommended method for categorical data</li>
+<li>predictorMatrix argument
+<ul>
+<li><h1 id="rows-cols-of-variables-in-the-dataset."><span class="header-section-number">15.4.6.2</span> rows= # cols= # of variables in the dataset.</h1></li>
+<li>rows and columns in the order in which they appear in the dataset</li>
+<li>Cell=1 if column variable predictor with FIXED effects in imp model of row variable</li>
+<li>Cell=2 if column variable predictor with FIXED+RANDOM effects in imp model of row variable</li>
+<li>Cell= -2 if column variable is cluster ID variable for row variable</li>
+<li>Cell=0 otherwise</li>
+</ul></li>
+</ul>
+</div>
+<div id="mvni-extensions-in-r-jomo" class="section level4">
+<h4><span class="header-section-number">15.4.6.3</span> MVNI extensions in R: jomo</h4>
+<ul>
+<li>Aside from the jomo1 suite, all routines are long-format extensions of MVNI</li>
+<li>Allowing for random cluster-specific level-1 covariances may not be so relevant in the longitudinal setting in the MLMM model presented</li>
+<li>Only some are relevant for general longitudinal data</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="sensitivity-analyses-within-the-multiple-imputation-framework-the-pattern-mixture-method" class="section level2">
+<h2><span class="header-section-number">15.5</span> Sensitivity analyses within the multiple imputation framework: the pattern mixture method</h2>
+<div id="why-are-the-data-missing" class="section level3">
+<h3><span class="header-section-number">15.5.1</span> Why are the data missing?</h3>
+<ul>
+<li><p>An analysis with missing data must make an assumption some of which are untestable.</p></li>
+<li>There are three assumptions (within Rubin’s framework) for the ‘distribution of missingness’.
+<ul>
+<li>MCAR – Missing completely at random</li>
+<li>MAR – Missing at random</li>
+<li>MNAR – Missing not at random</li>
+</ul></li>
+<li><p>Note that not all assumptions about missing data fit within this framework…</p></li>
+<li>Missing not at random (MNAR)
+<ul>
+<li>‘Probability of data being missing depends on the values of the missing data, even conditional on the observed data’</li>
+<li>Not possible to assess from data whether MAR or MNAR</li>
+</ul></li>
+<li>MNAR models and need for sensitivity analysis
+<ul>
+<li>MNAR: distribution of missing data ≠ distribution of observed data</li>
+<li>To fit a model under MNAR, need strong, unverifiable assumptions about how these two distributions differ (a bit more so than MAR)</li>
+<li>Need to approach this as a sensitivity analysis (consider several plausible departures from MAR)</li>
+</ul></li>
+<li>Missing not at random (MNAR)
+<ul>
+<li>What is the association between use of hormone replacement therapy (HRT) &amp; breast cancer risk? missingness(m)DAG - Causal DAG including indicators of missingness for each incomplete variable</li>
+</ul></li>
+</ul>
+</div>
+<div id="sensitivity-analysis-within-the-multiple-imputation-mi-framework" class="section level3">
+<h3><span class="header-section-number">15.5.2</span> Sensitivity analysis within the Multiple imputation (MI) framework</h3>
+<ul>
+<li><p>Pattern-mixture method – based on a pattern-mixture model (joint modelling approach)</p></li>
+<li><p>Pattern-mixture model</p></li>
+<li>Pattern-mixture method
+<ul>
+<li>Procedure
+<ul>
+<li>Define imputation &amp; analysis models as usual</li>
+<li>Impute under MAR</li>
+<li>Select fixed value (or distribution) for delta
+$ <em>{pm} = 0 $ - imputation assuming MAR
+$ </em>{pm} 0 $ - sensitivity analysis, assessing plausible departures from MAR
+Plausible values for <span class="math inline">\(\delta\)</span>: Elicit distribution for <span class="math inline">\(\delta\)</span> from content experts</li>
+<li>For continuous variable with missing data – add <span class="math inline">\(\delta_{pm}\)</span> to imputed values of imputed dataset 1, repeat for each imputed dataset. For binary variables include an offset in the imputation model.</li>
+<li>Repeat step 4 for a range of values of <span class="math inline">\(\delta_{pm}\)</span>, e.g. mean, lower and upper limits of 95% CI.</li>
+</ul></li>
+<li>White, I.R., et al. 2007, Clinical Trials</li>
+<li>Hayati Rezvan P, Lee KJ, Simpson JA. 2019, Longitudinal and Life Course Studies</li>
+<li>Mason AJ, Gomes M, Grieve R, Ulug P, Powell JT, Carpenter J. 2017, Clinical Trials.</li>
+<li>Carpenter, J.R. &amp; Kenward, M.G. 2013, Multiple imputation and its application</li>
+<li>Ratitch, B., O’Kelly, M. &amp; Tosiello, R. 2013, Pharmaceutical Statistics</li>
+<li>For sensitivity analysis, use the same random number seed across different values of delta</li>
+</ul></li>
+<li>MCCS case study
+<ul>
+<li>Pattern-mixture method:
+<ul>
+<li>Define imputation &amp; analysis models as before</li>
+<li>Impute under MAR</li>
+<li>Select distribution for <span class="math inline">\(\delta\)</span>
+&gt; Experts suggest that women with age at menopause missing are younger (on average 2 years) than those with observed values after controlling for other measured variables.
+&gt; Distribution for <span class="math inline">\(\delta \sim N(-2, 1)\)</span></li>
+<li>Add <span class="math inline">\(\delta_{mean}\)</span> (i.e. -2 for example) to imputed values of age at menopause of imputed dataset 1, repeat for each imputed dataset</li>
+<li>Repeat step 5 for maybe <span class="math inline">\(\delta_{lowerCI}\)</span> (i.e. -4 for example) and <span class="math inline">\(\delta_{upperCI}\)</span> (i.e. 0 for example, same as MAR)</li>
+</ul></li>
+<li>Comparison of estimates for different approaches for handling missing data</li>
+<li>Note – Similar story for HRT past versus non-users except estimates of reduced magnitude. See Simpson JA et al. 2007. Why hasn’t the estimate for HRT users changed much? Remember ‘age at menopause’ is not a strong confounder in this example.</li>
+</ul></li>
+</ul>
+</div>
+<div id="elicitation-of-expert-opinion" class="section level3">
+<h3><span class="header-section-number">15.5.3</span> Elicitation of expert opinion</h3>
+<div id="prepare-elicitation-tool" class="section level4">
+<h4><span class="header-section-number">15.5.3.1</span> Prepare elicitation tool</h4>
+<ul>
+<li><p>MCCS example – we need the difference in mean age at menopause between those with and without this recorded</p></li>
+<li>We must elicit:-
+<ul>
+<li>the value that the expert believes is most likely</li>
+<li>the expert’s uncertainty about this value</li>
+</ul></li>
+<li><p>Define elicitation questions – structure, wording, feedback</p></li>
+<li><p>Presentation of scales for variables with missing data – table, graphical display using web based elicitation tool (e.g. R Shiny app)</p></li>
+<li><p>Representation of expert opinion – do not make it overly complex</p></li>
+<li>Example
+<ul>
+<li>Mason AJ, et al. 2017, IMPROVE trial”, Clinical Trials.</li>
+<li>Need to elicit difference in mean QoL between patients who did and did not complete the QoL assessment and to do this for each randomised arm of trial.</li>
+<li>R Shiny app – <a href="https://ajm-elicit.shinyapps.io/ElicitAppHighQ5" class="uri">https://ajm-elicit.shinyapps.io/ElicitAppHighQ5</a></li>
+</ul></li>
+<li>Example
+<ul>
+<li>Hayati Rezvan P, Lee KJ, Simpson JA. 2019, Longitudinal and Life Course Studies.</li>
+</ul></li>
+</ul>
+</div>
+<div id="elicit-experts-opinions-about-the-unknown-quantities" class="section level4">
+<h4><span class="header-section-number">15.5.3.2</span> Elicit experts’ opinions about the unknown quantities</h4>
+<ul>
+<li>Recruit experts – identify experts with relevant knowledge about the measures with missing data and the study population
+<ul>
+<li>LSAC study – 3 experts</li>
+<li>IMPROVE study – 26 experts (vascular surgeons - 17, specialist or research nurses - 9)</li>
+</ul></li>
+<li>Conduct elicitation
+<ul>
+<li>Do the experts understand the elicitation task and correctly interpret the tables/graphs?</li>
+<li>Face-to face with feedback is the optimal approach. Note, IMPROVE Study administered web-based elicitation tool via email or in conference breaks with a £20 gift voucher.</li>
+<li>Elicit expert opinion in separate individual consultations or as a group? – my advice is separate individual consultations; note group-level elicitation has advantages in terms of training in one session but consensus must follow a fair process (e.g. Delphi process).</li>
+</ul></li>
+</ul>
+</div>
+<div id="evaluate-the-adequacy-of-the-elicitation-process-by-providing-feedback-to-the-experts" class="section level4">
+<h4><span class="header-section-number">15.5.3.3</span> Evaluate the adequacy of the elicitation process by providing feedback to the experts</h4>
+<ul>
+<li><p>Provide feedback (e.g. visual with R Shiny app) of the distribution provided by the expert.</p></li>
+<li><p>Ask - Do the estimated quantities adequately represent their opinions? If the answer is no, repeat the elicitation process.</p></li>
+<li><p>IMPROVE Study emailed a feedback questionnaire which allowed experts to revise their answers.</p></li>
+</ul>
+</div>
+<div id="analyse-elicitation-results" class="section level4">
+<h4><span class="header-section-number">15.5.3.4</span> Analyse elicitation results</h4>
+<ul>
+<li><p>Combine the resulting distributions elicited from each expert into a single probability distribution.</p></li>
+<li><p>Linear pooling, with equal weights given to each expert</p></li>
+<li><p>Software packages available to do this – e.g. SHELF R package</p></li>
+</ul>
+</div>
+<div id="summary-2" class="section level4">
+<h4><span class="header-section-number">15.5.3.5</span> Summary</h4>
+<ul>
+<li><p>MAR analysis assumes <span class="math inline">\(\delta = 0\)</span> for some unidentified parameter. This cannot be estimated from the data.</p></li>
+<li><p>Many journals now request these sensitivity analyses are performed following MI</p></li>
+<li><p>Sensitivity analysis needed to explore a range of plausible values for <span class="math inline">\(\delta\)</span> elicited from content experts.</p></li>
+<li>Pattern-mixture method
+<ul>
+<li>Intuitive and performs well</li>
+<li>Can be implemented in standard statistical software for a single variable with missing data (for categorical variables it is a little more complicated and requires using the offset command in the imputation stage)</li>
+</ul></li>
+</ul>
+</div>
+<div id="things-to-consider" class="section level4">
+<h4><span class="header-section-number">15.5.3.6</span> Things to consider</h4>
+<ul>
+<li>The departure from MAR for imputed ‘age at menopause’ was assumed to be the same for all women with ‘age at menopause’ missing.
+<ul>
+<li>Should we have considered using different d distributions for
+different groups of women? Definitely important to consider in
+Trials – IMPROVE trial elicited by trial arm</li>
+</ul></li>
+<li>We only had missing data for a single variable - ‘age at menopause’.
+<ul>
+<li>How can I assess departures from MAR when I have missing data
+in more than one variable? E.g. MX1, MX2 and should I assume that these variables are independent.</li>
+<li>LSAC example assumed missing data for SDQ total score and maternal emotional distress were independent.</li>
+</ul></li>
+</ul>
+</div>
+<div id="references-4" class="section level4">
+<h4><span class="header-section-number">15.5.3.7</span> References</h4>
+<ul>
+<li><p>Carpenter, J.R. &amp; Kenward, M.G. 2013, ”Multiple imputation and its application” Wiley, 1st ed.</p></li>
+<li><p>Molenberghs, G., Fitzmaurice, G., Kenward, M.G., Tsiatis, A., Verbeke, G. 2014, “Handbook of Missing Data Methodology” Chapman &amp; Hall, 1st ed.</p></li>
+<li><p>Hayati Rezvan P, Lee KJ, Simpson JA. 2019, “Sensitivity analysis within multiple imputation framework using delta-adjustment: Application to Longitudinal Study of Australian Children”, Longitudinal and Life Course Studies, vo. 9, no. 3, pp. 259-278.</p></li>
+<li><p>Mason AJ, Gomes M, Grieve R, Ulug P, Powell JT, Carpenter J. 2017, “ Development of a practical approach to expert elicitation for randomised controlled trials with missing health outcomes: Application to the IMPROVE trial”, Clinical Trials, vol. 14, no. 4, pp. 357-367.</p></li>
+<li><p>Ratitch, B., O’Kelly, M. &amp; Tosiello, R. 2013, “Missing data in clinical trials: from clinical assumptions to statistical analysis using pattern mixture models”, Pharmaceutical Statistics, vol. 12, no. 6, pp. 337.</p></li>
+<li><p>White, I.R., Carpenter, J., Evans, S. &amp; Schroter, S. 2007, “Eliciting and using expert opinions about dropout bias in randomized controlled trials”, Clinical Trials, vol. 4, no. 2, pp. 125-139.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="sensitivity-analyses-for-multiple-variables-with-missing-data-the-narfcs-procedure" class="section level2">
+<h2><span class="header-section-number">15.6</span> Sensitivity analyses for multiple variables with missing data: the NARFCS procedure</h2>
+<div id="example-lsac-case-study" class="section level3">
+<h3><span class="header-section-number">15.6.1</span> Example: LSAC case study</h3>
+<ul>
+<li>Exposure: <span class="math inline">\(X\)</span> = Maternal mental illness (wave 1)</li>
+<li>Outcome: <span class="math inline">\(Y\)</span> = Child’s SDQ score (wave 3)</li>
+<li>Confounders wave 1: <span class="math inline">\(Z = (Z_1, Z_2)\)</span>
+<ul>
+<li><span class="math inline">\(Z_1\)</span> = {Sex, Siblings, Maternal education, Maternal age, Consistent parenting, Financial hardship, Child’s wave 1 SQD}</li>
+<li><span class="math inline">\(Z_2\)</span> = {Maternal smoking, Maternal alcohol, Physical functioning}</li>
+</ul></li>
+</ul>
+</div>
+<div id="missing-data-assumptions-in-problems-with-multiple-incomplete-variables" class="section level3">
+<h3><span class="header-section-number">15.6.2</span> Missing data assumptions in problems with multiple incomplete variables</h3>
+<ul>
+<li>What does “MAR” mean here?
+<ul>
+<li>It is not assumption about conditional independencies between variables, as is often thought</li>
+<li>Plausibility very difficult to assess in real settings, no simple definition in lay terms</li>
+<li>The increasing stringency as number of incomplete variables increases is poorly understood</li>
+</ul></li>
+<li>MAR: sufficient but not necessary
+<ul>
+<li>While it is true that
+<ul>
+<li>MCAR –&gt; complete case analysis unbiased</li>
+<li>MAR –&gt; more sophisticated methods, e.g. MI, unbiased</li>
+</ul></li>
+<li>We must keep in mind that
+<ul>
+<li>MCAR ⇐ complete case unbiased</li>
+<li>MAR ⇐ more sophisticated methods, e.g. MI, unbiased</li>
+</ul></li>
+<li>Many MNAR scenarios allow unbiased estimation of all or some parameters using standard MI or even a complete case analysis</li>
+</ul></li>
+<li>So, when are sensitivity analyses needed?
+<ul>
+<li>MAR/MNAR framework not very useful to answer this with multivariable missingness
+<ul>
+<li>Difficult to assess MAR plausibility using subject-matter knowledge</li>
+<li>MNAR potentially more plausible but it doesn’t mean that you can’t do standard MI for target parameter</li>
+</ul></li>
+<li>Causal diagrams provide an appealing alternative particularly as proposed by Mohan, Pearl and co-authors</li>
+</ul></li>
+</ul>
+</div>
+<div id="causal-diagrams-for-missing-data-assumptions" class="section level3">
+<h3><span class="header-section-number">15.6.3</span> Causal diagrams for missing data assumptions</h3>
+<ul>
+<li><p>Directed acyclic graph (DAG): Nodes (variables) connected by directed arrows with no loops from a variable to itself.</p></li>
+<li>Causal DAG: Encode assumptions about presence/absence of causal relations (A –&gt; B means A causes B)
+<ul>
+<li>Must contain all (measured or unmeasured) common causes of ≥2 variables in the graph</li>
+</ul></li>
+<li>Causal diagrams
+<ul>
+<li>Used to guide design and analysis of epidemiological studies, e.g. to determine confounding adjustment set</li>
+<li>LSAC study</li>
+</ul></li>
+<li>Missingness DAG (m-DAG)
+<ul>
+<li>Causal DAG including indicators of missingness for each incomplete variable, or subsets of incomplete variables</li>
+<li>LSAC study: <span class="math inline">\(X, Y\)</span> and confounders in <span class="math inline">\(Z_2\)</span> have missing data
+<ul>
+<li>𝑀_𝑋=1 if 𝑋 missing, 𝑀_𝑋=0 if not</li>
+<li>𝑀_𝑌=1 if 𝑌 missing, 𝑀_𝑌=0 if not</li>
+<li>𝑀_(𝒁_𝟐 )=1 if 𝒁_𝟐 incomplete, 𝑀_(𝒁_𝟐 )=0 if not</li>
+</ul></li>
+</ul></li>
+<li><p>Plausible m-DAG in LSAC study</p></li>
+<li>Missingness DAGs
+<ul>
+<li>Causal diagrams intuitive to state/assess assumptions
+<ul>
+<li>Causal thinking already implicit in these considerations</li>
+<li>Easy to understand and communicate (transparency)</li>
+</ul></li>
+<li><p>However, the number of possible m-DAGs can explode quite quickly and there is no general algorithm that, given an m-DAG, can say how to achieve fully efficient estimation (e.g. with MI) or whether sensitivity analysis is needed</p></li>
+<li><p>We proposed an readily applicable solution for the case of a point-exposure study</p></li>
+</ul></li>
+<li>“Canonical” missingness DAGs
+<ul>
+<li>Moreno-Betancur et al. (Am J Epi 2018. 187(12):2705-2715)</li>
+<li>Ten m-DAGs that capture typical missingness mechanisms in studies with incomplete data on exposure, outcome, and confounding factors</li>
+<li>For each DAG, we say whether E(X), E(Y) and regression-adjusted exposure coefficient can be estimated with e.g. MI, or whether sensitivity analyses are needed</li>
+<li>Provide more detailed insight than MAR/MNAR, but complexity contained and results widely applicable</li>
+</ul></li>
+<li>Canonical m-DAG in LSAC study
+<ul>
+<li>Our findings show that, with canonical m-DAG E,
+<ul>
+<li>Need sensitivity analyses if estimating
+&gt; Proportion exposed
+&gt; Mean of outcome</li>
+<li>Can use available case (AC) analysis or MI for regression-adjusted
+exposure-outcome association</li>
+</ul></li>
+</ul></li>
+<li>LSAC study: AC and MI results
+<ul>
+<li>How do we do that with multiple incomplete variables?</li>
+</ul></li>
+</ul>
+</div>
+<div id="not-at-random-fully-conditional-specification-narfcs" class="section level3">
+<h3><span class="header-section-number">15.6.4</span> Not-at-Random Fully Conditional Specification (NARFCS)</h3>
+<ul>
+<li>The NARFCS procedure
+<ul>
+<li>Extends the delta-adjustment/pattern-mixture method to the setting with multiple incomplete variables within an FCS approach
+<ul>
+<li>Like FCS, it posits univariate models for each incomplete variable</li>
+<li>For one or some variables, a “delta” parameter is incorporated in this model, shifting the imputations from what they would be with standard FCS</li>
+<li>Leacy, PhD dissertation 2016 (MRC Biostatistics Unit)</li>
+</ul></li>
+</ul></li>
+<li>Example: LSAC study
+<ul>
+<li>Theoretical result (Moreno-Betancur et al. AJE 2018): estimating proportion exposed requires sensitivity analysis</li>
+</ul></li>
+<li>Implementation
+<ul>
+<li>Software:
+<ul>
+<li>Currently available in a development version of an extension to the R package mice <a href="https://github.com/moreno-betancur/NARFCS" class="uri">https://github.com/moreno-betancur/NARFCS</a></li>
+<li>A refined version (easier to use) soon to be incorporated officially in R mice package</li>
+<li>Available in Stata 16 (limited functionality/documentation)</li>
+</ul></li>
+<li>Elicitation of parameters not straightforward, as needs to be conditional on other variables, including possibly other missingness indicators. Calibration procedure has been developed</li>
+<li>Tompsett et al. (Stat Med, 2018. 37:2338-2353)</li>
+</ul></li>
+</ul>
+</div>
+<div id="summary-and-references-1" class="section level3">
+<h3><span class="header-section-number">15.6.5</span> Summary and references</h3>
+<ul>
+<li><p>Usual MAR/MNAR paradigm not very useful in the context of multivariable missingness</p></li>
+<li>Causal diagrams provide an alternative to depict assumptions in a transparent way, particularly to determine need for sensitivity analysis for target parameter
+<ul>
+<li>“Canonical m-DAGs”: make this approach readily usable in practice</li>
+</ul></li>
+<li>NARFCS extends FCS to enable application of delta-adjustment method in the context of multivariable missingness
+<ul>
+<li>Becoming routinely available statistical packages; elicitation remains the main challenge</li>
+</ul></li>
+<li><p>Conclusion: “MNAR” not easy with multivariable missingness! But increasing availability of methods to harness it</p></li>
+</ul>
+<div id="references-5" class="section level4">
+<h4><span class="header-section-number">15.6.5.1</span> References</h4>
+<ul>
+<li><p>Leacy FP. Multiple imputation under missing not at random assumptions via fully conditional specification (PhD thesis). University of Cambridge, 2016.</p></li>
+<li><p>Tompsett DM, Leacy FP, Moreno-Betancur M, Heron J, White IR. On the use of the not at random fully conditional specification procedure (NARFCS) in practice. Statistics in Medicine 2018; Epub ahead of print 2 April 2018.</p></li>
+<li><p>Moreno-Betancur M, Leacy FP, Tompsett D, White I. “mice: The NARFCS procedure for sensitivity analyses” (Available at: <a href="https://github.com/moreno-betancur/NARFCS" class="uri">https://github.com/moreno-betancur/NARFCS</a>)</p></li>
+<li><p>Moreno-Betancur M, Chavance M. Sensitivity analysis of incomplete longitudinal data departing from the missing at random assumption: Methodology and application in a clinical trial with drop-outs. Statistical Methods in Medical Research 2016; 25(4) 1471-1489. (longitudinal data)</p></li>
+<li><p>Leacy FP, Floyd S, Yates TA, White IR. Analyses of Sensitivity to the Missing-at-Random Assumption Using Multiple Imputation With Delta Adjustment: Application to a Tuberculosis/HIV Prevalence Survey With Incomplete HIV-Status Data. American Journal of Epidemiology 2017, 185(4):304-315. (mediation analysis)</p></li>
+<li><p>Direct likelihood inference and sensitivity analysis for competing risks regression with missing causes of failure.Biometrics 2015; 71(2):498-507. (survival analysis with competing risks)</p></li>
+</ul>
+</div>
+</div>
+</div>
+<div id="case-studies" class="section level2">
+<h2><span class="header-section-number">15.7</span> Case studies</h2>
+<div id="melbourne-collaborative-cohort-study" class="section level3">
+<h3><span class="header-section-number">15.7.1</span> Melbourne Collaborative Cohort Study</h3>
+<div id="the-research-question" class="section level4">
+<h4><span class="header-section-number">15.7.1.1</span> The research question</h4>
+</div>
+<div id="investigation-of-the-missing-data" class="section level4">
+<h4><span class="header-section-number">15.7.1.2</span> Investigation of the missing data</h4>
+</div>
+<div id="set-up-of-the-imputation-model" class="section level4">
+<h4><span class="header-section-number">15.7.1.3</span> Set up of the imputation model</h4>
+</div>
+<div id="multiple-imputation-mi---impute-data-multiple-times" class="section level4">
+<h4><span class="header-section-number">15.7.1.4</span> Multiple Imputation (MI) - Impute data multiple times</h4>
+</div>
+<div id="comparison-of-the-imputed-and-observed-data" class="section level4">
+<h4><span class="header-section-number">15.7.1.5</span> Comparison of the imputed and observed data</h4>
+</div>
+<div id="mi-estimate-of-the-epidemiological-association-of-interest" class="section level4">
+<h4><span class="header-section-number">15.7.1.6</span> MI estimate of the epidemiological association of interest</h4>
+</div>
+<div id="comparison-of-estimates-of-the-epidemiological-association-of-interest-mi-estimate-complete-case-analysis-estimate-single-imputation-estimate" class="section level4">
+<h4><span class="header-section-number">15.7.1.7</span> Comparison of estimates of the epidemiological association of interest: MI estimate, complete-case analysis estimate, single imputation estimate</h4>
+</div>
+<div id="conclusions-things-to-consider" class="section level4">
+<h4><span class="header-section-number">15.7.1.8</span> Conclusions &amp; things to consider……</h4>
+</div>
+</div>
+<div id="the-victorian-infant-cohort-study" class="section level3">
+<h3><span class="header-section-number">15.7.2</span> The Victorian Infant Cohort Study</h3>
+<div id="the-research-question-1" class="section level4">
+<h4><span class="header-section-number">15.7.2.1</span> The research question</h4>
+<ul>
+<li><p>Increasing number of children born extremely preterm (EP, &lt;28 weeks’ gestation) or extremely low birthweight (ELBW, birth weight &lt;1000 g) surviving into young adulthood.</p></li>
+<li><p>Preterm survivors at increased risk of physical, cognitive and psychological impairments.</p></li>
+<li><p>Aim: To compare self-reported quality of life, health status, and self-esteem of EP/ELBW adolescents with that of NBW controls at 18 years of age.</p></li>
+</ul>
+</div>
+<div id="the-victorian-infant-cohort-study-1" class="section level4">
+<h4><span class="header-section-number">15.7.2.2</span> The Victorian Infant Cohort Study</h4>
+<ul>
+<li><p>Longitudinal study of 298 survivors born EP or ELBW in Victoria in 1991 and 1992, and 262 NBW controls.</p></li>
+<li><p>Participants followed up at 2, 5, 8 and 18 years of age.</p></li>
+<li>Data collected in the newborn period
+<ul>
+<li>pregnancy and birth details</li>
+<li>complications after birth</li>
+</ul></li>
+<li><p>Retention</p></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Follow up</th>
+<th>EP/ELBW</th>
+<th>NBW</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>2 years</td>
+<td>98%</td>
+<td>91%</td>
+</tr>
+<tr class="even">
+<td>5 years</td>
+<td>93%</td>
+<td>87%</td>
+</tr>
+<tr class="odd">
+<td>8 years</td>
+<td>92%</td>
+<td>85%</td>
+</tr>
+<tr class="even">
+<td>18 years</td>
+<td>62%</td>
+<td>53%</td>
+</tr>
+</tbody>
+</table>
+<pre><code>+ Big lost at 18 years
++ Good rates of follow-up at early waves
++ Much harder to get participants back at 18 years
++ Importantly – are there differences in attrition between the two groups that could bias the comparison</code></pre>
+<ul>
+<li>Comparison of characteristics for those with/without follow-up at 18 years
+<ul>
+<li>Original results published from this study used a complete case analysis</li>
+<li>Differences between those with and without data at age 18 years…</li>
+<li>Preterm with FUP
+<ul>
+<li>More educated</li>
+<li>Fewer disability</li>
+<li>Better development</li>
+</ul></li>
+<li>Similar for controls</li>
+</ul></li>
+<li>CC is one approach to dealing with missing data; however:
+<ul>
+<li>Complete case analysis excludes 40% of participants</li>
+<li>Known differences between those with and without follow-up data</li>
+<li>Difference between groups from complete case analysis may not be reflective of the true difference (biased)</li>
+</ul></li>
+</ul>
+<p>–&gt; Alternative method for handling missing data</p>
+</div>
+<div id="step-1-should-we-use-mi" class="section level4">
+<h4><span class="header-section-number">15.7.2.3</span> Step 1: Should we use MI?</h4>
+<ul>
+<li><p>Is MI likely to provide a more accurate inference (in terms of reducing bias or improving precision) than complete case analysis?</p></li>
+<li>Things to consider
+<ul>
+<li>Are there differences between those with complete and incomplete data?
+<ul>
+<li>If there are differences MI can be used to correct bias</li>
+</ul></li>
+<li>Is MAR a plausible assumption? Are there likely to be unknown predictors of missingness?
+<ul>
+<li>If unknown predictors MI will still be biased</li>
+</ul></li>
+<li>Are there auxiliary variables that are predictive of missing values?
+<ul>
+<li>Need to have auxiliary variables (i.e. variables that are predictive of missing values but that are not in the analysis model)</li>
+</ul></li>
+<li>Which variables have missing data?
+<ul>
+<li>What variables? – more to gain if missingness in a variable that is not of primary interest e.g. in a confounder</li>
+</ul></li>
+<li>How much missing data is there?
+<ul>
+<li>If hardly any (e.g. &lt;5%), not really worth imputing as there is not much to gain.</li>
+<li>If lots (i.e. &gt;50%), more chance to go wrong if imputation model is not great</li>
+</ul></li>
+</ul></li>
+<li><p>Looking at the case study, we can assess whether there are predictors of missing values using logistic regress to look for variables that are predictive of whether the participant has missing data or not.</p></li>
+<li><p>Formalises the previous table</p></li>
+<li><p>We can also look at whether variables are correlated with variables with missing values – just focus on HUI-3 (QOL)</p></li>
+<li>Just focussing on two variables we can see both mental and physical development at 2 years are predictive of whether the there are missing data, as development increases, less likely to have missing data.
+<ul>
+<li>Better development more likely to have data</li>
+</ul></li>
+<li>Development also correlated with values of HUI-3, particularly in the preterm group.
+<ul>
+<li>Less correlation in the term group</li>
+</ul></li>
+<li>So
+<ul>
+<li>Known differences between those with and without follow-up</li>
+<li>Previous waves of data collection can be used to impute missing values</li>
+<li>MAR is a plausible assumption</li>
+<li>Missing data in outcomes so maybe not much to gain
+<ul>
+<li>Missing data in outcomes – means maybe little to gain about the outcomes, although there are potentially strong auxiliary variables from previous waves.</li>
+</ul></li>
+<li>40% with missing data
+<ul>
+<li>40% had some missing data so that there is a reasonable amount of missing data, i.e. if we don’t impute then we are throwing away a lot of data, it is not too much…</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div id="step-2-building-the-imputation-model" class="section level4">
+<h4><span class="header-section-number">15.7.2.4</span> Step 2: Building the imputation model</h4>
+<div id="which-variables-to-include-in-the-imputation-model" class="section level5">
+<h5><span class="header-section-number">15.7.2.4.1</span> Which variables to include in the imputation model?</h5>
+<ul>
+<li>Variables in analysis –&gt; all outcomes and group
+<ul>
+<li>Should include all variables in the analysis model – outcomes, predictors, confounders…</li>
+</ul></li>
+<li>Auxiliary –&gt; previous waves of data collection
+<ul>
+<li>Note, these variables may also contain missing data</li>
+<li>Benefit of MI comes from the inclusion of auxiliary variables which provide info about the missing values.
+<ul>
+<li>Can include lots</li>
+<li>(although can sometimes be too many, particularly if there are lots of variables at lots of waves</li>
+<li>Preference should be given to variables that are associated with missing values</li>
+<li>Also, some baseline characteristics likely to be associated with missing outcomes are not present in the NBW group.</li>
+</ul></li>
+</ul></li>
+<li>Correlations between auxiliary and incomplete variables different in EP/ELBW and NBW groups, and some variables only relevant to preterm group –&gt; impute separately in the two groups
+<ul>
+<li>Imputing separately preserves the potential interactions between the characteristics and group.</li>
+<li>Impute separately then merge the imputed datasets prior to analysis
+<ul>
+<li>Allows correlations between all variables to be different in the two groups</li>
+<li>Often used when using MI for an RCT</li>
+</ul></li>
+</ul></li>
+<li>23 variables in the imputation model
+<ul>
+<li>Baseline: gender, birthweight, maternal and paternal education, social class (plus IVH grade 3 or 4, cystic PVL, postnatal corticosteroids and surgery in preterm group)</li>
+<li>2, 5 and 8 years: disability and cognitive development</li>
+<li>8 years: reading, spelling, writing, and motor scores</li>
+<li>18 years: quality of life, health status, and self-esteem</li>
+</ul></li>
+</ul>
+<p>IVH = intraventricular haemorrhage
+cystic PVL = cyctic periventricular leukomalacia</p>
+<p>Variables were chosen because clinically we expected them to be associated with the missing outcome – and they generally were.</p>
+<p>Some auxiliary variables had missing data themselves although missingness was minimal</p>
+</div>
+<div id="what-level-to-impute-raw-data-or-composite-scores" class="section level5">
+<h5><span class="header-section-number">15.7.2.4.2</span> What level to impute – raw data or composite scores?</h5>
+<ul>
+<li>What level to impute – raw data or composite scores?
+<ul>
+<li>How many variables?</li>
+<li>What is the correlation between the raw scores?</li>
+<li>How rare are the composites?</li>
+</ul></li>
+<li>A second question is then what level of detail to include
+<ul>
+<li>Decision will depend on how many raw scales and the correlation between the raw scores</li>
+<li>If a combination of events, will depend on how rare the events are</li>
+</ul></li>
+<li>For example in our dataset we have a composite measure of disability.
+<ul>
+<li>Deafness and blindness are very rare, even in the preterm group. Have convergence problems if we include these separate components.</li>
+<li>Instead we include the composite disability score and then the continuous IQ score – IQ only one component of disability and used as a threshold effect anyway - not highly correlated</li>
+</ul></li>
+<li>See Graham (2012; Chapter 9) for a detailed discussion</li>
+</ul>
+</div>
+<div id="method-of-imputation" class="section level5">
+<h5><span class="header-section-number">15.7.2.4.3</span> Method of imputation</h5>
+<ul>
+<li>MICE
+<ul>
+<li>Linear regression for continuous variables (regress)
+<ul>
+<li>IQ, HUI-3, Coopersmith Inventory,…</li>
+</ul></li>
+<li>Logistic regression for binary variables (logit)
+<ul>
+<li>Maternal/paternal education &lt;12 years,…</li>
+</ul></li>
+<li>Ordinal logistic regression for ordinal variables
+<ul>
+<li>Disability (none, mild, moderate, severe),…</li>
+</ul></li>
+</ul></li>
+<li><p>Carry out the imputation step separately in the two groups</p></li>
+<li><p>Some auxiliary vars also have missing data but very little</p></li>
+<li><p>Multiple variables with missingness, need multivariable technique</p></li>
+<li><p>Use MICE because of its flexibility</p></li>
+</ul>
+</div>
+</div>
+<div id="step-3-carrying-out-mi" class="section level4">
+<h4><span class="header-section-number">15.7.2.5</span> Step 3: Carrying out MI</h4>
+</div>
+<div id="step-4-analysis" class="section level4">
+<h4><span class="header-section-number">15.7.2.6</span> Step 4: Analysis</h4>
+<ul>
+<li><p>Need to append the two imputed datasets prior to analysis</p></li>
+<li>Comparisons between groups using quantile regression
+<ul>
+<li>Results = regression coefficient for group (difference in medians between the groups) along with 95% confidence interval (CI) and corresponding p-value</li>
+</ul></li>
+</ul>
+</div>
+<div id="results" class="section level4">
+<h4><span class="header-section-number">15.7.2.7</span> Results</h4>
+<ul>
+<li>HUI-3</li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Group diff</th>
+<th>SE</th>
+<th>95% CI</th>
+<th>p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Complete case</td>
+<td>-0.014</td>
+<td>0.014</td>
+<td>(-0.041, 0.014)</td>
+<td>0.33</td>
+</tr>
+<tr class="even">
+<td>MI</td>
+<td>-0.011</td>
+<td>0.025</td>
+<td>(-0.060, 0.039)</td>
+<td>0.66</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Estimate from CC and MI similar</li>
+<li>Interestingly get wider CI from MI – large between imputation variability (probably due to weak correlations, predicted with lots of uncertainty)</li>
+<li><p>Same overall conclusion of no difference from both analyses</p></li>
+<li><p>Coopersmith Inventory</p></li>
+</ul>
+<table>
+<thead>
+<tr class="header">
+<th>Method</th>
+<th>Group diff</th>
+<th>SE</th>
+<th>95% CI</th>
+<th>p</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Complete case</td>
+<td>10.0</td>
+<td>7.67</td>
+<td>(-5.08, 25.1)</td>
+<td>0.19</td>
+</tr>
+<tr class="even">
+<td>MI</td>
+<td>4.5</td>
+<td>5.82</td>
+<td>(-7.04, 16.0)</td>
+<td>0.44</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Estimate changes a bit – still clinically small magnitude of change (SD = 31)</li>
+<li>With this outcome, get a smaller SE (narrower CI) with MI.</li>
+<li>Conclusion not really altered</li>
+</ul>
+</div>
+<div id="conclusions-1" class="section level4">
+<h4><span class="header-section-number">15.7.2.8</span> Conclusions</h4>
+<ul>
+<li><p>Similar results from complete case analysis and MI</p></li>
+<li>Confidence intervals wider from MI than the complete case analysis for HUI-3
+<ul>
+<li>Wider CIs from MI – probably because imputing outcomes hence adding uncertainty.</li>
+<li>Larger between imputation variability</li>
+</ul></li>
+<li><p>Reassuring that the overall conclusions are robust to the method of handling missing data</p></li>
+</ul>
+</div>
+<div id="sensitivity-analysis" class="section level4">
+<h4><span class="header-section-number">15.7.2.9</span> Sensitivity analysis</h4>
+<ul>
+<li><p>Number of decisions made in setting up the imputation model</p></li>
+<li>Are the MI results robust to decisions made during the imputation process?
+<ul>
+<li>MVNI rather than MICE?</li>
+<li>Continuous variables imputed under (conditional) normality</li>
+<li>Imputed values may fall outside the range of the variable</li>
+</ul></li>
+</ul>
+<p>–&gt; Do these things matter?</p>
+<ul>
+<li>Imputed under (conditional) normality
+<ul>
+<li>Should we impute under a different distribution?
+<ul>
+<li>Can’t impute under different with MVNI or MICE at the moment: Not available in standard software</li>
+</ul></li>
+<li>Should we transform data to improve normality prior to imputation?
+<ul>
+<li>Which transformation?</li>
+<li>Range of transformations e.g. log, shifted log, Box-Cox…</li>
+<li>Transform the imputed values back to the raw scale for analysis</li>
+</ul></li>
+</ul></li>
+<li>Imputed values may fall outside the range of the variable
+<ul>
+<li>E.g. HUI-3 has an expected range from 0 – 1 (although can be &lt;0)
+<ul>
+<li>Use out-of-range values</li>
+<li>Post-imputation truncation – truncate variables to expected min/max</li>
+<li>Truncated regression (MICE) – impute missing values from a truncated normal distribution</li>
+<li>Predictive mean matching (MICE) – missing values replaced with the nearest observed value based on the predicted mean from the imputation model</li>
+<li>see Rodwell et al (2014)</li>
+</ul></li>
+</ul></li>
+<li>Sensitivity analysis - results HUI-3
+<ul>
+<li>Results similar irrespective of how MI was carried out – overall conclusions the same
+<ul>
+<li>Identical results when the imputed values were truncated following imputation compared with when there was no truncation. This is because the parameter of interest is the difference in medians which is unaffected by the observations in the tail.</li>
+<li>Much wider CI’s when data were de-skewed prior to imputation…
+&gt; Distribution not great from distribution slide
+&gt; Imputed values look much better when you impute on the raw scale – this is inflating the SE
+&gt; Shows the importance of looking at the imputed values…</li>
+</ul></li>
+</ul></li>
+<li>Summary
+<ul>
+<li>Overall conclusion is the same irrespective of the imputation model used</li>
+<li>However, there were much wider confidence intervals when the data were deskewed prior to imputation</li>
+<li>Results may be sensitive to the decisions made in the imputation process
+<ul>
+<li>Useful to present the results from the sensitivity analysis to demonstrate the robustness of the conclusions</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+<div id="summary-3" class="section level4">
+<h4><span class="header-section-number">15.7.2.10</span> Summary</h4>
+<ul>
+<li><p>MI can be a useful way to handle missing data</p></li>
+<li>BUT
+<ul>
+<li>Need to spend time developing an appropriate imputation model</li>
+<li>Once the imputations have been generated, it is important to explore whether the imputed values are reasonable</li>
+<li>Following MI, it can be valuable to carry out sensitivity analyses around the decisions made in setting up the imputation model</li>
+</ul></li>
+</ul>
+</div>
+<div id="references-6" class="section level4">
+<h4><span class="header-section-number">15.7.2.11</span> References</h4>
+<ul>
+<li><p>Allison P. (2002). Missing Data. Thousand Oaks, California: Sage Publications.</p></li>
+<li><p>Carpenter J, &amp; Kenward MG. (2013). Multiple Imputation and its Application. Chichester: WIley.</p></li>
+<li><p>Graham J. (2012). Missing data: analysis and design. New York: Springer.</p></li>
+<li><p>Lee KJ, Carlin JB. Multiple imputation in the presence of non-normal data. Statistics in Medicine 2017; 36(4): 606-17.</p></li>
+<li><p>Lee KJ, Roberts G, Doyle LW, Anderson PJ, Carlin JB. Multiple imputation for missing outcome data in a longitudinal cohort study: a detailed case study with guidance for practice. International Journal of Social Research Methodology 2016; 19(5): 575-91.</p></li>
+<li><p>Roberts G, Burnet, A, Lee KJ, Cheong J, Wood S, Anderson PJ, et al. (2013). Quality of life at age 18 after extremely preterm birth in the post-surfactant era. The Journal of Pediatrics, 163(4):1008-1013.</p></li>
+<li><p>Rodwell L, Lee KJ, Romaniuk H, Carlin JB. Comparison of methods for imputing limited-range variables: a simulation study. BMC Research Methodology 2014; 14: 57.</p></li>
+<li><p>Rubin DB (1987). Multiple imputation for nonresponse in surveys. New York: Wiley.</p></li>
+<li><p>Rubin DB (1996). Multiple imputation after 18+ years. Journal of the American Statistical Association, 91(434), 473-489.</p></li>
+<li><p>White IR, Royston P, and Wood AM (2011). Multiple imputation using chained equations: issues and guidance for practice. Statistics in Medicine, 30(4);377-399.</p></li>
+</ul>
+
+</div>
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="softwares.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="sap.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": null,
+"history": {
+"link": null,
+"text": null
+},
+"download": ["notebook_Biostatistics.pdf", "notebook_Biostatistics.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:" && /^https?:/.test(src))
+      src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
