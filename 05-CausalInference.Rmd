@@ -3,3 +3,17 @@
 ## Reading list
 
 * Daniel Westreich (2019) Epidemiology by Design: A Causal Approach to the Health Sciences. Oxford University Press. https://global.oup.com/academic/product/epidemiology-by-design-9780190665760?cc=vn&lang=en&
+
+## Correction for baseline severity
+
+### Propensity score/IPW
+
+#### Reading
+
+* Stratification and Weighting Via the Propensity Score in Estimation of Causal Treatment Effects: A Comparative Study.
+* Variance estimation when using inverse probability of treatment weighting (IPTW) with survival analysis
+* Rosenbaum PR, Rubin DB. The central role of the propensity score in observational studies for causal effects. Biometrika 1983; 70:41–55.
+* Austin PC. A tutorial and case study in propensity score analysis: an application to estimating the effect of in-hospital smoking cessation counseling on mortality. Multivariate Behavioral Research 2011; 46:119–151.
+* Austin PC. An introduction to propensity-score methods for reducing the effects of confounding in observational studies. Multivariate Behavioral Research 2011; 46:399–424.
+*  Weitzen S, Lapane KL, Toledano AY, Hume AL, Mor V. Principles for modeling propensity scores in medical research: a systematic literature review. Pharmacoepidemiology and Drug Safety 2004; 13(12):841–853.
+* Lunceford JK, Davidian M. Stratification and weighting via the propensity score in estimation of causal treatment effects: a comparative study. Statistics in Medicine 2004; 23(19):2937–2960.

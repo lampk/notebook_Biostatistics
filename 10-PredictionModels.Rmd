@@ -170,7 +170,7 @@ we must not forget that quantitative risk assessment is just the start, not the 
 
 * [@Sheridan2003]
 
-## (PART) Development {-}
+## Development
 
 ### Standard steps to develop clinical prediction models?
 
@@ -262,6 +262,8 @@ Traditionally, a prediction models relies on data collected at a single time poi
 
 For these reasons, dynamic prediction models, which predict the future course of the disease at follow-up time points based on the accruing longitudinal information, are required to allow updating a patients' prognosis over time [@VanHouwelingen2012]. By using all available data, such models may provide much more accurate predictions compared to baseline models in many settings [@Lemeshow1988, @Christensen1993, @Hughes1992, @Rue2001, @Karp2004]. Dynamic prediction may also be appealing for clinicians as it mimics the iteration of obtaining information and updating prognosis based on the new information, a task that physicians routinely do every day in clinical practice.
 
+## Validation
+
 ## Additional considerations
 
 ### Sample size
@@ -278,7 +280,11 @@ For these reasons, dynamic prediction models, which predict the future course of
 
 ### Heterogeneity
 
-## (PART) Utilization
+## Improvement
+
+
+
+## Utilization/Implementation
 
 ### From prediction model to prediction rule
 
@@ -287,6 +293,121 @@ For these reasons, dynamic prediction models, which predict the future course of
 ### Will prediction models be used in clinical practice?
 
 ### Clinical Decision Support System {#pmCDSS}
+
+#### Definition 
+
+> Clinical decision support systems (CDSS) are computer systems designed
+to impact clinician decision making about individual patients at the point
+in time that these decisions are made [@Berner2007]
+
+#### Type
+
+* Even Medline and similar healthcare literature databases can support clinical decisions
+* timing at which they provide support: before, during, or after the clinical decision is made.
+* how active or passive the support is: actively provides alerts or passively responds to physician input or patient-specific information.
+* how easy they are for busy clinicians to access:
+        + stand-alone systems
+        + part of noncommercial computerbased patient record systems
+* the information provided is general or specialty-based
+* knowledge-based systems, or nonknowledge-based systems
+
+##### knowledge-based CDSS
+
+* earlier expert systems research: the aim was to build a computer program that could simulate human thinking.
+* was no longer to simulate an expert’s decision making, but to assist the clinician in his or her own decision making.
+* The system was expected to provide information for the user, rather than to come up with “the answer,” as was the goal of earlier expert systems. The user was expected to filter that information and to discard erroneous or useless information. The user was expected to be active and to interact with the system, rather than just be a passive recipient of the output. This focus on the interaction of the user with the system
+is important in setting appropriate expectations for the way the system will
+be used.
+* three parts to most CDSS:
+        + the knowledge base: if-then rules/probabilistic associations of signs and symptoms with diagnoses/known drug–drug or drug–food interactions
+        + the inference or reasoning engine: the formulas for combining the rules or associations in the knowledge base with actual patient data
+        + a mechanism to communicate with the user: a way of getting the
+patient data into the system and getting the output of the system to the user
+                > Input: entered directly by the user or already in electronic form and come from the computer-based patient
+record,
+                > Output: a recommendation or alert at the time of order entry, or, if the alert was triggered after the initial order was entered, systems of email and wireless notification have been employed
+
+##### Nonknowledge-Based Clinical Decision Support Systems
+
+* use a form of artificial intelligence called machine learning, which allows the computer to learn from past experiences and/or to recognize patterns in the clinical data
+
+* Artificial Neural Networks
+        + simulate human thinking and learn from examples
+        + rather than having a knowledge base derived from the medical literature or from an expert clinician’s knowledge, the ANN analyzes the patterns in the patient data, to derive the associations between the patient’s signs and symptoms and a diagnosis
+        + can learn from examples when supplied with known results for a large amount of data
+        
+* Genetic Algorithms
+        + based on the evolutionary theories by Darwin that dealt with natural selection and survival of the fittest
+        
+#### Effectiveness
+
+* [@Berner2007]
+        + have been shown to improve both patient outcomes, as well as the cost of care
+        + can minimize errors by alerting the physician to potentially dangerous drug interactions, and the diagnostic programs have also been shown to improve physician diagnoses, the reminder and alerting programs can potentially minimize problem severity and prevent complications, can warn of early adverse drug events that have an
+impact on both cost and quality of care.
+        + most of the studies that have shown the strongest impact on reducing medication errors have been done at institutions with very sophisticated, internally developed systems, and where use of an EMR, CPOE, and CDSS are a routine and accepted part of the work environment.
+        + showed success in the original environment and much more limited success when the system was implemented more broadly
+        + still limited systematic, broad-scale studies of the effectiveness of CDSS
+        + despite evidence that CDSS have many benefits, as the KLAS report states, “The use of active complex alerts is in its infancy.”
+        + While such descriptions can motivate others to adopt CDSS, they are not a substitute for systematic evaluation of implementation in a wide range of settings. Unfortunately, when such evaluations are done, the results have sometimes been
+disappointing.
+        + although care was not optimal before implementing the computer-based guidelines, there was little change in health outcomes after the system was implemented. 
+        + although the guideline was triggered appropriately, clinicians did not go past the first page and essentially did not use it. clinicians did not follow the guideline advice because they did not agree with it.
+        + a study tracking the use of a diagnostic system by medical residents indicated very little use, may be partially explained by the fact that the system was
+a stand-alone system not directly integrated into the workflow.
+        + reminder systems and alerts usually work, but systems that challenge the physicians’ judgment, or require them to change their care plans, are much more difficult to implement
+        
+#### Implementation Challenges
+
+* how the data will actually get into the system?
+        + systems require the user to query the systems and/or enter patient data manually: disruptive to the patient care process, time consuming.
+        
+* who should enter the data?
+        + Physicians are usually the key decision makers, but they are not always the person who interacts with the hospital systems
+
+* there are no standards that are universally agreed upon for clinical vocabulary and, since most of the decision support systems have a controlled vocabulary, errors can have a major impact
+
+* A practical implementation guidlines
+        + Assuring That Users Understand the Limitations: understand expectations of stakeholders
+        + Assuring That the Knowledge Is From Reputable Sources: transparent on source of the knowledge, the validation process of programming as well as knowledge-engineering
+        + Assuring That the System Is Appropriate for the Local Site: whether the system match to the local site on: clinical vocabulary, test abnormality/normal threshold, 
+        + Assuring That Users Are Properly Trained
+        + Monitoring Proper Utilization of the Installed Clinical Decision Support Systems
+        + Assuring the Knowledge Base Is Monitored and Maintained
+        
+* Design issues
+        + Broad-based vs single problem system: systems dedicated to a single problem tend to discourage wide usage because of their limited scope.
+        + lack of integration into standard information systems
+        + (1) technical design issues
+                > Adding Structure to Medical Knowledge. The representational scheme, along with domain facts, together, constitute a knowledge base
+                > Knowledge Representation Formats: logic, procedural, graph/network, or structured
+                > Reasoning
+        + (2) human–computer interaction
+        
+#### Examples
+
+* Broad-based systems: QMR, Iliad, DXplain
+* Single problem system: Pathfinder, Leeds abdominal pain system
+
+##### CASNET
+
+* causal reasoning
+
+##### CHF Advisor
+
+* causal reasoning
+
+##### ABEL
+
+* causal reasoning
+
+##### Caduceus
+
+* causal reasoning
+
+##### MYCIN
+
+##### Vanderbilt WizOrder CPOE system
 
 #### Reading list
 
@@ -464,6 +585,8 @@ For these reasons, dynamic prediction models, which predict the future course of
 * Impact of adding therapeutic recommendations to risk assessments from a prediction model for postoperative nausea and vomiting (https://f1000.com/work/#/items/5826484/detail?collection=392279)
 
 ### Assessing model's usefulness
+
+## Review
 
 ## AI and ML in healthcare
 

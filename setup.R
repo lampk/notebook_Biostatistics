@@ -20,3 +20,4 @@ write.bibtex(refs[[1]], file="refs.bib")
 ## preview chapter
 
 preview_chapter(input = ...)
+bookdown:::preview_chapter(input = "10-PredictionModels.Rmd")
